@@ -1,28 +1,44 @@
 /*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
+ * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
 package Business.Roles;
 
+import Business.WorkArea.WorkArea;
+
 /**
  *
- * @author srush
+ * @author bobba
  */
-public class Role {
+public abstract class Role {
+    
+     WorkArea workArea;
     private String roleName;
+    
+    
+
+    public Role(String roleName) {
+        this.roleName=roleName;
+    }
 
     public String getRoleName() {
         return roleName;
     }
+    
+    
 
-    public void setRoleName(String roleName) {
-        this.roleName = roleName;
+    public WorkArea getWorkArea() {
+        return workArea;
+    }
+
+    public void setWorkArea(WorkArea workArea) {
+        this.workArea = workArea;
     }
     
-     public Role(String roleName) {
-        this.roleName=roleName;
-    }
     
+    public String toString()
+    {
+        return roleName;
+    }
     
 }
