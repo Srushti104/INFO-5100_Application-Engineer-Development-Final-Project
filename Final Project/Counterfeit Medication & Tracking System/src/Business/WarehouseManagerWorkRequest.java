@@ -8,25 +8,17 @@ package Business;
  *
  * @author srush
  */
-public class WareHouseManagerWorkRequest extends WorkRequest{
+public class WarehouseManagerWorkRequest extends WorkRequest{
     
     
      private String result;
      private Drug drug;
-     private Order order;
+    // private Order order;
    // private int licenseNumber;
    // LicenseManagerWorkRequest licenseManagerWorkRequest;
   //  private int quant;
    // private String manuName;
    // private String drName;
-
-    public Order getOrder() {
-        return order;
-    }
-
-    public void setOrder(Order order) {
-        this.order = order;
-    }
 
      
      

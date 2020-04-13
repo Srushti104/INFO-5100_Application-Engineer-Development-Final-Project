@@ -5,7 +5,7 @@
 package Business;
 
 import Business.Roles.Role;
-import Business.Roles.WareHouseManagerRole;
+import Business.Roles.WarehouseManagerRole;
 import java.util.ArrayList;
 
 /**
@@ -107,7 +107,7 @@ public class DistributorEnterprise extends Enterprise{
         
         
         ArrayList<Role> roles = new ArrayList<Role>();
-        roles.add(new WareHouseManagerRole());
+        roles.add(new WarehouseManagerRole());
        
         
         return roles; 

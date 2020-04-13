@@ -74,7 +74,6 @@ public class ManageNetworkJPanel extends javax.swing.JPanel {
         refreshButton = new javax.swing.JButton();
         backButton = new javax.swing.JButton();
 
-        setBackground(new java.awt.Color(51, 102, 255));
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
@@ -113,7 +112,7 @@ public class ManageNetworkJPanel extends javax.swing.JPanel {
                 backButtonActionPerformed(evt);
             }
         });
-        add(backButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 400, 42, 27));
+        add(backButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 20, 42, 27));
     }// </editor-fold>//GEN-END:initComponents
 
     private void backButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backButtonActionPerformed

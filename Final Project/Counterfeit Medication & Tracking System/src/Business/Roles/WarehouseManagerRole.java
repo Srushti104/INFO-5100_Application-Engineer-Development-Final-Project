@@ -4,17 +4,17 @@
  */
 package Business.Roles;
 
-import Business.WorkArea.WareHouseManagerWorkArea;
+import Business.WorkArea.WarehouseManagerWorkArea;
 
 /**
  *
  * @author bobba
  */
-public class WareHouseManagerRole extends Role{
+public class WarehouseManagerRole extends Role{
 
-    public WareHouseManagerRole() {
+    public WarehouseManagerRole() {
         super("Ware House Manager Role");
-        workArea=new WareHouseManagerWorkArea();
+        workArea=new WarehouseManagerWorkArea();
     }
     
     

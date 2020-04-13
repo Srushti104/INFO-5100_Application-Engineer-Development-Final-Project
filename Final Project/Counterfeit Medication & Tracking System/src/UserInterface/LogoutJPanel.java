@@ -41,8 +41,6 @@ public class LogoutJPanel extends javax.swing.JPanel {
         userNameLabel = new javax.swing.JLabel();
         logoutJButton = new javax.swing.JButton();
 
-        setBackground(new java.awt.Color(255, 255, 255));
-
         userNameLabel.setText("username");
 
         logoutJButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/UserInterface/button_logout.gif"))); // NOI18N
@@ -61,7 +59,7 @@ public class LogoutJPanel extends javax.swing.JPanel {
                 .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
                     .add(layout.createSequentialGroup()
                         .add(logoutJButton, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 87, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                        .add(0, 0, Short.MAX_VALUE))
+                        .add(0, 0, 0))
                     .add(userNameLabel, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 115, Short.MAX_VALUE))
                 .addContainerGap())
         );

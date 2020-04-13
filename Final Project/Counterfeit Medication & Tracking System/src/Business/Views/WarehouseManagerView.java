@@ -13,9 +13,9 @@ import javax.swing.JPanel;
  *
  * @author bobba
  */
-public class WareHouseManagerView extends View{
+public class WarehouseManagerView extends View{
 
-    public WareHouseManagerView(JPanel userProcessContainer,Business business,UserAccount userAccount) {
+    public WarehouseManagerView(JPanel userProcessContainer,Business business,UserAccount userAccount) {
         
         
         viewPanel=new WarehouseManagerJPanel(userProcessContainer,business,userAccount);

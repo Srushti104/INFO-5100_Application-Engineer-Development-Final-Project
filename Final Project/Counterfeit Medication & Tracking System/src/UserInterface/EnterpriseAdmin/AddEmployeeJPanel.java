@@ -18,7 +18,7 @@ import javax.swing.JPanel;
  * @author nived
  */
 public class AddEmployeeJPanel extends javax.swing.JPanel {
-    
+
     JPanel userProcessContainer;
     Network network;
     UserAccount userAccount;
@@ -26,18 +26,17 @@ public class AddEmployeeJPanel extends javax.swing.JPanel {
     /**
      * Creates new form AddEmployeeJPanel
      */
-    public AddEmployeeJPanel(JPanel userProcessContainer,Network network,UserAccount userAccount) {
+    public AddEmployeeJPanel(JPanel userProcessContainer, Network network, UserAccount userAccount) {
         initComponents();
-        this.userProcessContainer=userProcessContainer;
-        this.network=network;
-        this.userAccount=userAccount;
-        
-        
-         organizationJComboBox.removeAllItems();
-        Enterprise e=network.getEnterpriseDirectory().getMyEnterprise(userAccount);
-        
-        organizationJComboBox.addItem((Organization)e);   // Admin organization
-        for(Organization org : e.getOrganizationDirectory().getOrgList()) {
+        this.userProcessContainer = userProcessContainer;
+        this.network = network;
+        this.userAccount = userAccount;
+
+        organizationJComboBox.removeAllItems();
+        Enterprise e = network.getEnterpriseDirectory().getMyEnterprise(userAccount);
+
+        organizationJComboBox.addItem((Organization) e);   // Admin organization
+        for (Organization org : e.getOrganizationDirectory().getOrgList()) {
             organizationJComboBox.addItem(org);
         }
     }
@@ -146,10 +145,9 @@ public class AddEmployeeJPanel extends javax.swing.JPanel {
 
     private void addEmployeeeJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addEmployeeeJButtonActionPerformed
 
-        Organization organization = (Organization)organizationJComboBox.getSelectedItem();
+        Organization organization = (Organization) organizationJComboBox.getSelectedItem();
 
-        if(!firstNameJTextField.getText().isEmpty() && !lastNameJTextField.getText().isEmpty())
-        {
+        if (!firstNameJTextField.getText().isEmpty() && !lastNameJTextField.getText().isEmpty()) {
             Employee employee = organization.getEmployeeDirectory().newEmployee();
             employee.setFirstName(firstNameJTextField.getText());
             employee.setLastName(lastNameJTextField.getText());
@@ -158,18 +156,15 @@ public class AddEmployeeJPanel extends javax.swing.JPanel {
 
             firstNameJTextField.setText("");
             lastNameJTextField.setText("");
-        }
-
-        else
-        {
-            JOptionPane.showMessageDialog(this,"FirstName/Last Name cannot be left blank" );
+        } else {
+            JOptionPane.showMessageDialog(this, "FirstName/Last Name cannot be left blank");
         }
 
     }//GEN-LAST:event_addEmployeeeJButtonActionPerformed
 
     private void backButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backButtonActionPerformed
         // TODO add your handling code here:
-         userProcessContainer.remove(this);
+        userProcessContainer.remove(this);
         CardLayout cardLayout = (CardLayout) userProcessContainer.getLayout();
         cardLayout.previous(userProcessContainer);
     }//GEN-LAST:event_backButtonActionPerformed
