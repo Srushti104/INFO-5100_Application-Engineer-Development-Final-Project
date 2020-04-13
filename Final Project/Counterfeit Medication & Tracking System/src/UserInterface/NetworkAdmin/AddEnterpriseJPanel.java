@@ -23,34 +23,27 @@ import javax.swing.JPanel;
  */
 public class AddEnterpriseJPanel extends javax.swing.JPanel {
 
-    
-    
     JPanel userProcessContainer;
     Network network;
     UserAccount userAccount;
+
     /**
      * Creates new form AddEnterpriseJPanel
      */
-    public AddEnterpriseJPanel(JPanel userProcessContainer,Network network,UserAccount userAccount) {
+    public AddEnterpriseJPanel(JPanel userProcessContainer, Network network, UserAccount userAccount) {
         initComponents();
-        this.userProcessContainer=userProcessContainer;
-        this.network=network;
-        this.userAccount=userAccount;
+        this.userProcessContainer = userProcessContainer;
+        this.network = network;
+        this.userAccount = userAccount;
         enterpriseTypeComboBox.removeAllItems();
 
-        
-            
-            enterpriseTypeComboBox.addItem(Enterprise.FDA);
-        enterpriseTypeComboBox.addItem(Enterprise.STATEREGULATORYAFFAIRS);
-        enterpriseTypeComboBox.addItem(Enterprise.LAWENFORCEMENTUNIT);
-        
-            enterpriseTypeComboBox.addItem(Enterprise.MANUFACTURER);
+        enterpriseTypeComboBox.addItem(Enterprise.FDA);
+        enterpriseTypeComboBox.addItem(Enterprise.MANUFACTURER);
         enterpriseTypeComboBox.addItem(Enterprise.DISTRIBUTOR);
-        enterpriseTypeComboBox.addItem(Enterprise.HOSPITAL);
-        
-            enterpriseTypeComboBox.addItem(Enterprise.RETAILPHARMACY);
-        enterpriseTypeComboBox.addItem(Enterprise.THIRDPARTYLOGISTICS);
-           
+ //       enterpriseTypeComboBox.addItem(Enterprise.HOSPITAL);
+//        enterpriseTypeComboBox.addItem(Enterprise.STATEREGULATORYAFFAIRS);
+//        enterpriseTypeComboBox.addItem(Enterprise.LAWENFORCEMENTUNIT);
+
     }
 
     /**
@@ -84,6 +77,11 @@ public class AddEnterpriseJPanel extends javax.swing.JPanel {
         jLabel7.setText("First Name:");
 
         enterpriseTypeComboBox.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        enterpriseTypeComboBox.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                enterpriseTypeComboBoxActionPerformed(evt);
+            }
+        });
 
         jLabel8.setText("Last Name:");
 
@@ -113,14 +111,14 @@ public class AddEnterpriseJPanel extends javax.swing.JPanel {
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(26, 26, 26)
-                .addComponent(backButton)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(561, Short.MAX_VALUE)
+                .addGap(575, 575, 575)
                 .addComponent(addButton)
                 .addGap(119, 119, 119))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(21, 21, 21)
+                .addComponent(backButton)
+                .addContainerGap())
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(layout.createSequentialGroup()
                     .addGap(244, 244, 244)
@@ -150,11 +148,11 @@ public class AddEnterpriseJPanel extends javax.swing.JPanel {
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(311, Short.MAX_VALUE)
-                .addComponent(addButton)
-                .addGap(35, 35, 35)
+                .addGap(20, 20, 20)
                 .addComponent(backButton)
-                .addContainerGap())
+                .addGap(273, 273, 273)
+                .addComponent(addButton)
+                .addGap(73, 73, 73))
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(layout.createSequentialGroup()
                     .addGap(49, 49, 49)
@@ -189,112 +187,90 @@ public class AddEnterpriseJPanel extends javax.swing.JPanel {
 
     private void addButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addButtonActionPerformed
         // TODO add your handling code here:
-        
+
         String enpName = enterpriseNameField.getText();
-        String enprise = (String) enterpriseTypeComboBox.getSelectedItem();
-        // System.out.println("ent"+enprise);
+        String enterprise = (String) enterpriseTypeComboBox.getSelectedItem();
+        // System.out.println("ent"+enterprise);
 
-        if (enprise == Enterprise.FDA) {
+        if (enterprise == Enterprise.FDA) {
 
-            if (!userNameField.getText().isEmpty() &&!passwordField.getText().isEmpty()) {
+            if (!userNameField.getText().isEmpty() && !passwordField.getText().isEmpty()) {
 
-                if(!network.getEnterpriseDirectory().isUserExisting(userNameField.getText()))
-                {
-                FDAEnterprise fdaEnterprise = (FDAEnterprise) network.getEnterpriseDirectory().newEnterprise(Enterprise.FDA, enpName);
+                if (!network.getEnterpriseDirectory().isUserExisting(userNameField.getText())) {
+                    FDAEnterprise fdaEnterprise = (FDAEnterprise) network.getEnterpriseDirectory().newEnterprise(Enterprise.FDA, enpName);
 
+                    Employee employee = fdaEnterprise.getEmployeeDirectory().newEmployee();
+                    employee.setFirstName(firstNameField.getText());
+                    employee.setLastName(lastNameField.getText());
 
-                Employee employee = fdaEnterprise.getEmployeeDirectory().newEmployee();
-                employee.setFirstName(firstNameField.getText());
-                employee.setLastName(lastNameField.getText());
+                    fdaEnterprise.setEnterpriseName(enpName);
+                    fdaEnterprise.setEnterpriseType(enterprise);
 
-                fdaEnterprise.setEnterpriseName(enpName);
-                fdaEnterprise.setEnterpriseType(enprise);
+                    UserAccount userAccount = fdaEnterprise.getUserAccountDirectory().newAccount();
+                    userAccount.setUserName(userNameField.getText());
+                    userAccount.setPassword(passwordField.getText());
+                    userAccount.setRole(new EnterpriseAdminRole());
+                    userAccount.setEmployee(employee);
 
+                    JOptionPane.showMessageDialog(this, "FDA Enterprise added");
 
+                    enterpriseNameField.setText("");
+                    firstNameField.setText("");
+                    lastNameField.setText("");
+                    userNameField.setText("");
+                    passwordField.setText("");
 
-                UserAccount userAccount = fdaEnterprise.getUserAccountDirectory().newAccount();
-                userAccount.setUserName(userNameField.getText());
-                userAccount.setPassword(passwordField.getText());
-                userAccount.setRole(new EnterpriseAdminRole());
-                userAccount.setEmployee(employee);
-
-
-                JOptionPane.showMessageDialog(this, "FDA Enterprise added");
-
-
-                enterpriseNameField.setText("");
-                firstNameField.setText("");
-                lastNameField.setText("");
-                userNameField.setText("");
-                passwordField.setText("");
-
-
-
-            } 
-                else
-                {
+                } else {
                     JOptionPane.showMessageDialog(this, "Username is already existing");
-                    
+
                 }
-                
-            }
-        else {
+
+            } else {
 
                 JOptionPane.showMessageDialog(this, "Username/Password is empty");
             }
 
+        }
+        if (enterprise == Enterprise.STATEREGULATORYAFFAIRS) {
 
-        } 
-        if (enprise == Enterprise.STATEREGULATORYAFFAIRS) {
+            if (!userNameField.getText().isEmpty() && !passwordField.getText().isEmpty()) {
+                //getText() != null && passwordField.getText() != null
 
-            if (!userNameField.getText().isEmpty() &&!passwordField.getText().isEmpty()) {
-                    //getText() != null && passwordField.getText() != null
-                
-                 if(!network.getEnterpriseDirectory().isUserExisting(userNameField.getText()))
-                {
-                    
+                if (!network.getEnterpriseDirectory().isUserExisting(userNameField.getText())) {
 
-                StateRegulatoryEnterprise stateRegulatoryEnterprise = (StateRegulatoryEnterprise) network.getEnterpriseDirectory().newEnterprise(Enterprise.STATEREGULATORYAFFAIRS, enpName);
+                    StateRegulatoryEnterprise stateRegulatoryEnterprise = (StateRegulatoryEnterprise) network.getEnterpriseDirectory().newEnterprise(Enterprise.STATEREGULATORYAFFAIRS, enpName);
 
+                    Employee employee = stateRegulatoryEnterprise.getEmployeeDirectory().newEmployee();
+                    employee.setFirstName(firstNameField.getText());
+                    employee.setLastName(lastNameField.getText());
 
-                Employee employee = stateRegulatoryEnterprise.getEmployeeDirectory().newEmployee();
-                employee.setFirstName(firstNameField.getText());
-                employee.setLastName(lastNameField.getText());
+                    stateRegulatoryEnterprise.setEnterpriseName(enpName);
+                    stateRegulatoryEnterprise.setEnterpriseType(enterprise);
 
-                stateRegulatoryEnterprise.setEnterpriseName(enpName);
-                stateRegulatoryEnterprise.setEnterpriseType(enprise);
+                    UserAccount userAccount1 = stateRegulatoryEnterprise.getUserAccountDirectory().newAccount();
+                    userAccount1.setUserName(userNameField.getText());
+                    userAccount1.setPassword(passwordField.getText());
+                    userAccount1.setRole(new EnterpriseAdminRole());
+                    userAccount1.setEmployee(employee);
 
+                    JOptionPane.showMessageDialog(this, "State Reulatory Affairs Enterprise added");
 
-                UserAccount userAccount1 = stateRegulatoryEnterprise.getUserAccountDirectory().newAccount();
-                userAccount1.setUserName(userNameField.getText());
-                userAccount1.setPassword(passwordField.getText());
-                userAccount1.setRole(new EnterpriseAdminRole());
-                userAccount1.setEmployee(employee);
+                    enterpriseNameField.setText("");
+                    firstNameField.setText("");
+                    lastNameField.setText("");
+                    userNameField.setText("");
+                    passwordField.setText("");
+                } else {
+                    JOptionPane.showMessageDialog(this, "Username already existing");
 
-
-
-                JOptionPane.showMessageDialog(this, "State Reulatory Affairs Enterprise added");
-
-                enterpriseNameField.setText("");
-                firstNameField.setText("");
-                lastNameField.setText("");
-                userNameField.setText("");
-                passwordField.setText("");
-            } 
-                 
-                 else
-                 {
-                      JOptionPane.showMessageDialog(this, "Username already existing");
-                     
-                 }
-            }
-            else {
+                }
+            } else {
                 JOptionPane.showMessageDialog(this, "Username/Password is empty");
             }
 
         }
 
-//        if (enprise == Enterprise.LAWENFORCEMENTUNIT) {
+//        if (enterprise == Enterprise.LAWENFORCEMENTUNIT) {
 //
 //            if (!userNameField.getText().isEmpty() &&!passwordField.getText().isEmpty()) {
 //                    //getText() != null && passwordField.getText() != null
@@ -311,7 +287,7 @@ public class AddEnterpriseJPanel extends javax.swing.JPanel {
 //                employee.setLastName(lastNameField.getText());
 //
 //                lawEnforcementUnitEnterprise.setEnterpriseName(enpName);
-//                lawEnforcementUnitEnterprise.setEnterpriseType(enprise);
+//                lawEnforcementUnitEnterprise.setEnterpriseType(enterprise);
 //
 //
 //                UserAccount userAccount1 = lawEnforcementUnitEnterprise.getUserAccountDirectory().newAccount();
@@ -340,105 +316,84 @@ public class AddEnterpriseJPanel extends javax.swing.JPanel {
 //            else {
 //                JOptionPane.showMessageDialog(this, "Username/Password is empty");
 //            }
+        //     }
+        if (enterprise == Enterprise.MANUFACTURER) {
 
-   //     }
-        if (enprise == Enterprise.MANUFACTURER) {
+            if (!userNameField.getText().isEmpty() && !passwordField.getText().isEmpty()) {
+                //getText() != null && passwordField.getText() != null
 
-            if (!userNameField.getText().isEmpty() &&!passwordField.getText().isEmpty()) {
-                    //getText() != null && passwordField.getText() != null
-                
-                 if(!network.getEnterpriseDirectory().isUserExisting(userNameField.getText()))
-                {
-                    
+                if (!network.getEnterpriseDirectory().isUserExisting(userNameField.getText())) {
 
-                ManufacturerEnterprise manufacturerEnterprise = (ManufacturerEnterprise) network.getEnterpriseDirectory().newEnterprise(Enterprise.MANUFACTURER, enpName);
+                    ManufacturerEnterprise manufacturerEnterprise = (ManufacturerEnterprise) network.getEnterpriseDirectory().newEnterprise(Enterprise.MANUFACTURER, enpName);
 
+                    Employee employee = manufacturerEnterprise.getEmployeeDirectory().newEmployee();
+                    employee.setFirstName(firstNameField.getText());
+                    employee.setLastName(lastNameField.getText());
 
-                Employee employee = manufacturerEnterprise.getEmployeeDirectory().newEmployee();
-                employee.setFirstName(firstNameField.getText());
-                employee.setLastName(lastNameField.getText());
+                    manufacturerEnterprise.setEnterpriseName(enpName);
+                    manufacturerEnterprise.setEnterpriseType(enterprise);
 
-                manufacturerEnterprise.setEnterpriseName(enpName);
-                manufacturerEnterprise.setEnterpriseType(enprise);
+                    UserAccount userAccount1 = manufacturerEnterprise.getUserAccountDirectory().newAccount();
+                    userAccount1.setUserName(userNameField.getText());
+                    userAccount1.setPassword(passwordField.getText());
+                    userAccount1.setRole(new EnterpriseAdminRole());
+                    userAccount1.setEmployee(employee);
 
+                    JOptionPane.showMessageDialog(this, "Manufacturers Enterprise added");
 
-                UserAccount userAccount1 = manufacturerEnterprise.getUserAccountDirectory().newAccount();
-                userAccount1.setUserName(userNameField.getText());
-                userAccount1.setPassword(passwordField.getText());
-                userAccount1.setRole(new EnterpriseAdminRole());
-                userAccount1.setEmployee(employee);
+                    enterpriseNameField.setText("");
+                    firstNameField.setText("");
+                    lastNameField.setText("");
+                    userNameField.setText("");
+                    passwordField.setText("");
+                } else {
+                    JOptionPane.showMessageDialog(this, "Username already existing");
 
-
-
-                JOptionPane.showMessageDialog(this, "Manufacturers Enterprise added");
-
-                enterpriseNameField.setText("");
-                firstNameField.setText("");
-                lastNameField.setText("");
-                userNameField.setText("");
-                passwordField.setText("");
-            } 
-                 
-                 else
-                 {
-                      JOptionPane.showMessageDialog(this, "Username already existing");
-                     
-                 }
-            }
-            else {
+                }
+            } else {
                 JOptionPane.showMessageDialog(this, "Username/Password is empty");
             }
 
         }
-        if (enprise == Enterprise.DISTRIBUTOR) {
+        if (enterprise == Enterprise.DISTRIBUTOR) {
 
-            if (!userNameField.getText().isEmpty() &&!passwordField.getText().isEmpty()) {
-                    //getText() != null && passwordField.getText() != null
-                
-                 if(!network.getEnterpriseDirectory().isUserExisting(userNameField.getText()))
-                {
-                    
+            if (!userNameField.getText().isEmpty() && !passwordField.getText().isEmpty()) {
+                //getText() != null && passwordField.getText() != null
 
-                DistributorEnterprise distributorEnterprise = (DistributorEnterprise) network.getEnterpriseDirectory().newEnterprise(Enterprise.DISTRIBUTOR, enpName);
+                if (!network.getEnterpriseDirectory().isUserExisting(userNameField.getText())) {
 
+                    DistributorEnterprise distributorEnterprise = (DistributorEnterprise) network.getEnterpriseDirectory().newEnterprise(Enterprise.DISTRIBUTOR, enpName);
 
-                Employee employee = distributorEnterprise.getEmployeeDirectory().newEmployee();
-                employee.setFirstName(firstNameField.getText());
-                employee.setLastName(lastNameField.getText());
+                    Employee employee = distributorEnterprise.getEmployeeDirectory().newEmployee();
+                    employee.setFirstName(firstNameField.getText());
+                    employee.setLastName(lastNameField.getText());
 
-                distributorEnterprise.setEnterpriseName(enpName);
-                distributorEnterprise.setEnterpriseType(enprise);
+                    distributorEnterprise.setEnterpriseName(enpName);
+                    distributorEnterprise.setEnterpriseType(enterprise);
 
+                    UserAccount userAccount1 = distributorEnterprise.getUserAccountDirectory().newAccount();
+                    userAccount1.setUserName(userNameField.getText());
+                    userAccount1.setPassword(passwordField.getText());
+                    userAccount1.setRole(new EnterpriseAdminRole());
+                    userAccount1.setEmployee(employee);
 
-                UserAccount userAccount1 = distributorEnterprise.getUserAccountDirectory().newAccount();
-                userAccount1.setUserName(userNameField.getText());
-                userAccount1.setPassword(passwordField.getText());
-                userAccount1.setRole(new EnterpriseAdminRole());
-                userAccount1.setEmployee(employee);
+                    JOptionPane.showMessageDialog(this, "Distributor Enterprise added");
 
+                    enterpriseNameField.setText("");
+                    firstNameField.setText("");
+                    lastNameField.setText("");
+                    userNameField.setText("");
+                    passwordField.setText("");
+                } else {
+                    JOptionPane.showMessageDialog(this, "Username already existing");
 
-
-                JOptionPane.showMessageDialog(this, "Distributor Enterprise added");
-
-                enterpriseNameField.setText("");
-                firstNameField.setText("");
-                lastNameField.setText("");
-                userNameField.setText("");
-                passwordField.setText("");
-            } 
-                 
-                 else
-                 {
-                      JOptionPane.showMessageDialog(this, "Username already existing");
-                     
-                 }
-            }
-            else {
+                }
+            } else {
                 JOptionPane.showMessageDialog(this, "Username/Password is empty");
             }
 
         }
-//        if (enprise == Enterprise.HOSPITAL) {
+//        if (enterprise == Enterprise.HOSPITAL) {
 //
 //            if (!userNameField.getText().isEmpty() &&!passwordField.getText().isEmpty()) {
 //                    //getText() != null && passwordField.getText() != null
@@ -455,7 +410,7 @@ public class AddEnterpriseJPanel extends javax.swing.JPanel {
 //                employee.setLastName(lastNameField.getText());
 //
 //                hospitalEnterprise.setEnterpriseName(enpName);
-//                hospitalEnterprise.setEnterpriseType(enprise);
+//                hospitalEnterprise.setEnterpriseType(enterprise);
 //
 //
 //                UserAccount userAccount1 = hospitalEnterprise.getUserAccountDirectory().newAccount();
@@ -486,66 +441,23 @@ public class AddEnterpriseJPanel extends javax.swing.JPanel {
 //            }
 //
 //        }
-//        if (enprise == Enterprise.RETAILPHARMACY) {
-//
-//            if (!userNameField.getText().isEmpty() &&!passwordField.getText().isEmpty()) {
-//                    //getText() != null && passwordField.getText() != null
-//                
-//                 if(!network.getEnterpriseDirectory().isUserExisting(userNameField.getText()))
-//                {
-//                    
-//
-//                RetailPharmacyEnterprise retailPharmacyEnterprise = (RetailPharmacyEnterprise) network.getEnterpriseDirectory().newEnterprise(Enterprise.RETAILPHARMACY, enpName);
-//
-//
-//                Employee employee = retailPharmacyEnterprise.getEmployeeDirectory().newEmployee();
-//                employee.setFirstName(firstNameField.getText());
-//                employee.setLastName(lastNameField.getText());
-//
-//                retailPharmacyEnterprise.setEnterpriseName(enpName);
-//                retailPharmacyEnterprise.setEnterpriseType(enprise);
-//
-//
-//                UserAccount userAccount1 = retailPharmacyEnterprise.getUserAccountDirectory().newAccount();
-//                userAccount1.setUserName(userNameField.getText());
-//                userAccount1.setPassword(passwordField.getText());
-//                userAccount1.setRole(new EnterpriseAdminRole());
-//                userAccount1.setEmployee(employee);
-//
-//
-//
-//                JOptionPane.showMessageDialog(this, "Retail Pharmacy Enterprise added");
-//
-//                enterpriseNameField.setText("");
-//                firstNameField.setText("");
-//                lastNameField.setText("");
-//                userNameField.setText("");
-//                passwordField.setText("");
-//            } 
-//                 
-//                 else
-//                 {
-//                      JOptionPane.showMessageDialog(this, "Username already existing");
-//                     
-//                 }
-//            }
-//            else {
-//                JOptionPane.showMessageDialog(this, "Username/Password is empty");
-//            }
-//
-//        }
-      
+//       
+
 
     }//GEN-LAST:event_addButtonActionPerformed
 
     private void backButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backButtonActionPerformed
         // TODO add your handling code here:
-        
-          userProcessContainer.remove(this);
+
+        userProcessContainer.remove(this);
 
         CardLayout cardLayout = (CardLayout) userProcessContainer.getLayout();
         cardLayout.previous(userProcessContainer);
     }//GEN-LAST:event_backButtonActionPerformed
+
+    private void enterpriseTypeComboBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_enterpriseTypeComboBoxActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_enterpriseTypeComboBoxActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton addButton;

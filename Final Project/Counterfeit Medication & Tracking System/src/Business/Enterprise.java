@@ -25,9 +25,7 @@ public abstract class Enterprise extends Organization{
     public static final String FDA="FDA Enterprise";
     public static final String LAWENFORCEMENTUNIT="Law Enforcement Enterprise";
     public static final String STATEREGULATORYAFFAIRS="State Regulatory affairs Enterprise";
-    public static final String HOSPITAL="Hospital Enterprise";
-    public static final String RETAILPHARMACY="Retail Pharmacy Enterprise";
-    public static final String THIRDPARTYLOGISTICS="Third Party Logistics Enterprise";
+//    public static final String HOSPITAL="Hospital Enterprise";
     
     
     private OrganizationDirectory organizationDirectory;

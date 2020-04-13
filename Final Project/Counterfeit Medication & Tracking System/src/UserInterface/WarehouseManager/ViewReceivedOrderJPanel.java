@@ -9,11 +9,11 @@ import Business.Drug;
 import Business.Enterprise;
 import Business.LotOfDrug;
 import Business.Network;
-import Business.Order;
+//import Business.Order;
 import Business.Organization;
 import Business.Package1;
 import Business.UserAccount;
-import Business.WareHouseManagerWorkRequest;
+import Business.WarehouseManagerWorkRequest;
 import Business.WorkRequest;
 import java.awt.CardLayout;
 import javax.swing.JOptionPane;
@@ -71,7 +71,7 @@ public class ViewReceivedOrderJPanel extends javax.swing.JPanel {
         for(WorkRequest workRequest:org.getWorkQueue().getWorkRequestList())
                 
         {
-            WareHouseManagerWorkRequest wareHouseManagerWorkRequest=(WareHouseManagerWorkRequest)workRequest;
+            WarehouseManagerWorkRequest wareHouseManagerWorkRequest=(WarehouseManagerWorkRequest)workRequest;
          Object row[]=new Object[7];
          row[0]=workRequest;
          row[1]=workRequest.getSender().getEmployee().getFirstName();
@@ -85,7 +85,7 @@ public class ViewReceivedOrderJPanel extends javax.swing.JPanel {
          row[3]=workRequest.getStatus();
          row[4]=wareHouseManagerWorkRequest.getDrug();
          row[5]=wareHouseManagerWorkRequest.getQuantity();
-         row[6]=wareHouseManagerWorkRequest.getOrder();
+      //   row[6]=wareHouseManagerWorkRequest.getOrder();
       //  row[4]=workRequest.getDrugName();
       //  row[5]=workRequest.getQuantity();
          
@@ -275,39 +275,39 @@ public class ViewReceivedOrderJPanel extends javax.swing.JPanel {
             return;
         }
 
-        WareHouseManagerWorkRequest wareHouseManagerWorkRequest=(WareHouseManagerWorkRequest)requestsTable.getValueAt(selectedRow, 0);
+        WarehouseManagerWorkRequest wareHouseManagerWorkRequest=(WarehouseManagerWorkRequest)requestsTable.getValueAt(selectedRow, 0);
 
-        if(wareHouseManagerWorkRequest.getReceiver()!= null && userAccount == wareHouseManagerWorkRequest.getReceiver())
-        {
-            for(Enterprise enterprise:network.getEnterpriseDirectory().getEnterpriseList())
-            {
-                if(enterprise.getClass().equals(DistributorEnterprise.class))
-                {
-                    DistributorEnterprise distributorEnterprise=(DistributorEnterprise)enterprise;
-                                        
-                    int q=wareHouseManagerWorkRequest.getQuantity();
-                    
-                    Order ord=wareHouseManagerWorkRequest.getOrder();
-                    
-                    for(LotOfDrug lotOfDrug:ord.getLotOfDrugsList())
-                    {
-                    for(Package1 p:lotOfDrug.getPackageList())
-                    {
-                        distributorEnterprise.getInventoryCatalog().newInventoryItem(p);
-                        addDrugButton.setEnabled(false);
-                    }
-                    
-                    }
-                    
-                    JOptionPane.showMessageDialog(null,"Drugs added to Inventory");
-                }
-            }
-        }
-
-        else
-        {
-            JOptionPane.showMessageDialog(this, "Please assign it and then proceed/Task might be assigned to other person");
-        }
+//        if(wareHouseManagerWorkRequest.getReceiver()!= null && userAccount == wareHouseManagerWorkRequest.getReceiver())
+//        {
+//            for(Enterprise enterprise:network.getEnterpriseDirectory().getEnterpriseList())
+//            {
+//                if(enterprise.getClass().equals(DistributorEnterprise.class))
+//                {
+//                    DistributorEnterprise distributorEnterprise=(DistributorEnterprise)enterprise;
+//                                        
+//                    int q=wareHouseManagerWorkRequest.getQuantity();
+//                    
+//        //            Order ord=wareHouseManagerWorkRequest.getOrder();
+//                    
+//                    for(LotOfDrug lotOfDrug:ord.getLotOfDrugsList())
+//                    {
+//                    for(Package1 p:lotOfDrug.getPackageList())
+//                    {
+//                        distributorEnterprise.getInventoryCatalog().newInventoryItem(p);
+//                        addDrugButton.setEnabled(false);
+//                    }
+//                    
+//                    }
+//                    
+//                    JOptionPane.showMessageDialog(null,"Drugs added to Inventory");
+//                }
+//            }
+//        }
+//
+//        else
+//        {
+//            JOptionPane.showMessageDialog(this, "Please assign it and then proceed/Task might be assigned to other person");
+//        }
     }//GEN-LAST:event_addDrugButtonActionPerformed
 
     private void refreshButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_refreshButtonActionPerformed
@@ -334,7 +334,7 @@ public class ViewReceivedOrderJPanel extends javax.swing.JPanel {
             return;
         }
 
-        WareHouseManagerWorkRequest wareHouseManagerWorkRequest=(WareHouseManagerWorkRequest)requestsTable.getValueAt(selectedRow, 0);
+        WarehouseManagerWorkRequest wareHouseManagerWorkRequest=(WarehouseManagerWorkRequest)requestsTable.getValueAt(selectedRow, 0);
 
 //        for(Transaction transaction:network.getTransactionHistory().getTransactionList())
 //        {
@@ -409,7 +409,7 @@ public class ViewReceivedOrderJPanel extends javax.swing.JPanel {
             return;
         }
 
-        WareHouseManagerWorkRequest wareHouseManagerWorkRequest=(WareHouseManagerWorkRequest)requestsTable.getValueAt(selectedRow, 0);
+        WarehouseManagerWorkRequest wareHouseManagerWorkRequest=(WarehouseManagerWorkRequest)requestsTable.getValueAt(selectedRow, 0);
 
 //        ViewDrugsForSuspectWhileAddingJPanel viewDrugsForSuspectWhileAddingJPanel=new ViewDrugsForSuspectWhileAddingJPanel(userProcessContainer,network,userAccount,wareHouseManagerWorkRequest);
 //        userProcessContainer.add("vssukjs",viewDrugsForSuspectWhileAddingJPanel);

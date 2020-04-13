@@ -15,7 +15,7 @@ import java.util.ArrayList;
 public class Business extends Enterprise{
     
     public static Business business;
-        private NetworkDirectory networkDirectory;
+    private NetworkDirectory networkDirectory;
 
     public Business() {
         super("Drug Counterfeit System");

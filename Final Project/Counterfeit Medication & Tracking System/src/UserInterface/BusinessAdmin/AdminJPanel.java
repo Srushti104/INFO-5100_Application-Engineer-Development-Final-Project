@@ -44,8 +44,6 @@ public class AdminJPanel extends javax.swing.JPanel {
         addNetworkButton = new javax.swing.JButton();
         manageNetworkButton = new javax.swing.JButton();
 
-        setBackground(new java.awt.Color(102, 153, 255));
-
         jLabel1.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jLabel1.setText("Admin Work Area");
 
@@ -67,24 +65,24 @@ public class AdminJPanel extends javax.swing.JPanel {
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-            .add(org.jdesktop.layout.GroupLayout.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(509, Short.MAX_VALUE)
+            .add(layout.createSequentialGroup()
+                .add(114, 114, 114)
                 .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
                     .add(addNetworkButton, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 111, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
                     .add(jLabel1)
                     .add(manageNetworkButton))
-                .add(102, 102, 102))
+                .add(135, 135, 135))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
             .add(layout.createSequentialGroup()
-                .add(21, 21, 21)
+                .add(47, 47, 47)
                 .add(jLabel1)
                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.UNRELATED)
                 .add(addNetworkButton)
                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.UNRELATED)
                 .add(manageNetworkButton)
-                .addContainerGap(283, Short.MAX_VALUE))
+                .add(167, 167, 167))
         );
     }// </editor-fold>//GEN-END:initComponents
 

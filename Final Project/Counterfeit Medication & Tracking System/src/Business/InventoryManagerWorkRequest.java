@@ -8,15 +8,11 @@ package Business;
  *
  * @author srush
  */
-public class InventoryManagerWorkRequest extends WorkRequest{
-    
-    
+public class InventoryManagerWorkRequest extends WorkRequest {
+
     private String result;
     private Drug drug;
-    private Order order;
     private int qt;
-   
-    
 
     public int getQt() {
         return qt;
@@ -25,22 +21,6 @@ public class InventoryManagerWorkRequest extends WorkRequest{
     public void setQt(int qt) {
         this.qt = qt;
     }
-    
-    
-
-    public Order getOrder() {
-        return order;
-    }
-    
-
-    public void setOrder(Order order) {
-        this.order = order;
-    }
-    
-    
-   
-    
-    
 
     public String getResult() {
         return result;
@@ -57,8 +37,5 @@ public class InventoryManagerWorkRequest extends WorkRequest{
     public void setDrug(Drug drug) {
         this.drug = drug;
     }
-    
-    
-    
-    
+
 }

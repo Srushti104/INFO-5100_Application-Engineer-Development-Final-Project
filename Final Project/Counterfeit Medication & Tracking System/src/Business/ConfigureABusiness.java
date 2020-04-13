@@ -9,7 +9,7 @@ import Business.Roles.EnterpriseAdminRole;
 import Business.Roles.LicenseInspectorRole;
 import Business.Roles.NetworkAdminRole;
 import Business.Roles.ProductManagerRole;
-import Business.Roles.WareHouseManagerRole;
+import Business.Roles.WarehouseManagerRole;
 import java.util.Date;
 
 

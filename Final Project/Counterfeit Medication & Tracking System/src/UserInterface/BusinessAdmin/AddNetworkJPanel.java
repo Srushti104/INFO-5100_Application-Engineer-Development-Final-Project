@@ -10,6 +10,10 @@ import Business.Network;
 import Business.Roles.NetworkAdminRole;
 import Business.UserAccount;
 import java.awt.CardLayout;
+import java.awt.Color;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+import javax.swing.BorderFactory;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
@@ -25,10 +29,10 @@ public class AddNetworkJPanel extends javax.swing.JPanel {
     /**
      * Creates new form AddNetworkJPanel
      */
-    public AddNetworkJPanel(JPanel userProcessContainer,Business business) {
+    public AddNetworkJPanel(JPanel userProcessContainer, Business business) {
         initComponents();
-        this.userProcessContainer=userProcessContainer;
-        this.business=business;
+        this.userProcessContainer = userProcessContainer;
+        this.business = business;
     }
 
     /**
@@ -53,8 +57,9 @@ public class AddNetworkJPanel extends javax.swing.JPanel {
         firstNameField = new javax.swing.JTextField();
         jLabel6 = new javax.swing.JLabel();
         lastNameField = new javax.swing.JTextField();
+        reenterPass = new javax.swing.JLabel();
+        reenterPassField = new javax.swing.JTextField();
 
-        setBackground(new java.awt.Color(51, 102, 255));
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
@@ -71,7 +76,7 @@ public class AddNetworkJPanel extends javax.swing.JPanel {
                 backButtonActionPerformed(evt);
             }
         });
-        add(backButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 430, 40, 30));
+        add(backButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 20, 40, 30));
 
         addButton.setText("Add");
         addButton.addActionListener(new java.awt.event.ActionListener() {
@@ -96,56 +101,86 @@ public class AddNetworkJPanel extends javax.swing.JPanel {
         jLabel6.setText("Last Name:");
         add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(231, 137, -1, -1));
         add(lastNameField, new org.netbeans.lib.awtextra.AbsoluteConstraints(365, 134, 119, -1));
+
+        reenterPass.setText("Re-enter Password:");
+        add(reenterPass, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 240, -1, -1));
+        add(reenterPassField, new org.netbeans.lib.awtextra.AbsoluteConstraints(369, 230, 120, -1));
     }// </editor-fold>//GEN-END:initComponents
 
     private void backButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backButtonActionPerformed
         // TODO add your handling code here:
         userProcessContainer.remove(this);
-
+        
         CardLayout cardLayout = (CardLayout) userProcessContainer.getLayout();
         cardLayout.previous(userProcessContainer);
     }//GEN-LAST:event_backButtonActionPerformed
 
     private void addButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addButtonActionPerformed
         // TODO add your handling code here
-        
-        if (!userAccountField.getText().isEmpty() &&!passwordField.getText().isEmpty() && !networkNameField.getText().isEmpty()) 
-        {
-        Network network=business.getNetworkDirectory().newNetwork();
-        network.setNetworkName(networkNameField.getText());
-        
-        
-        Employee employee = network.getEmployeeDirectory().newEmployee();
-                employee.setFirstName(firstNameField.getText());
-                employee.setLastName(lastNameField.getText());
 
+        if (!userAccountField.getText().isEmpty() && !passwordField.getText().isEmpty() && !networkNameField.getText().isEmpty()) {
+            if (passwordPattern() == false) {
+                jLabel2.setForeground(Color.red);
+                passwordField.setBorder(BorderFactory.createLineBorder(Color.RED));
+                JOptionPane.showMessageDialog(null, "Password should be at least 6 digits and contain at least one upper case letter, "
+                        + "one lower case letter, one digit and one special character $, *, # or &.");
+                return;
                 
-
-
-                UserAccount userAccount1 = network.getUserAccountDirectory().newAccount();
-                userAccount1.setUserName(userAccountField.getText());
-                userAccount1.setPassword(passwordField.getText());
-                userAccount1.setRole(new NetworkAdminRole());
-                userAccount1.setEmployee(employee);
+            }            
+            
+            if (rePasswordPattern() == false) {
+                jLabel3.setForeground(Color.red);
+                reenterPassField.setBorder(BorderFactory.createLineBorder(Color.RED));
+                JOptionPane.showMessageDialog(null, "Passwords do not match");
+                return;
                 
-                                JOptionPane.showMessageDialog(this, "Network added");
-
-        
-        
-        networkNameField.setText("");
-        firstNameField.setText("");
-        lastNameField.setText("");
-        userAccountField.setText("");
-        passwordField.setText("");
+            }            
+            
+            Network network = business.getNetworkDirectory().newNetwork();
+            network.setNetworkName(networkNameField.getText());
+            
+            Employee employee = network.getEmployeeDirectory().newEmployee();
+            employee.setFirstName(firstNameField.getText());
+            employee.setLastName(lastNameField.getText());
+            
+            UserAccount userAccount1 = network.getUserAccountDirectory().newAccount();
+            userAccount1.setUserName(userAccountField.getText());
+            userAccount1.setPassword(passwordField.getText());
+            userAccount1.setRole(new NetworkAdminRole());
+            userAccount1.setEmployee(employee);
+            
+            JOptionPane.showMessageDialog(this, "Network added");
+            
+            networkNameField.setText("");
+            firstNameField.setText("");
+            lastNameField.setText("");
+            userAccountField.setText("");
+            passwordField.setText("");
+            reenterPassField.setText("");
+        } else {
+            JOptionPane.showMessageDialog(this, "Please enter all the fields");
+            
         }
-         else
-                 {
-                      JOptionPane.showMessageDialog(this, "Please enter all the fields");
-                     
-                 }
         
-        
+
     }//GEN-LAST:event_addButtonActionPerformed
+    
+    private boolean passwordPattern() {
+        Pattern p = Pattern.compile("^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{6,}$");
+        Matcher m = p.matcher(passwordField.getText());
+        boolean b = m.matches();
+        return b;
+    }
+    
+    private boolean rePasswordPattern() {
+        String password = passwordField.getText();
+        String rePassword = reenterPassField.getText();
+        if (password.equals(rePassword)) {
+            return true;
+        } else {
+            return false;
+        }
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton addButton;
@@ -160,6 +195,8 @@ public class AddNetworkJPanel extends javax.swing.JPanel {
     private javax.swing.JTextField lastNameField;
     private javax.swing.JTextField networkNameField;
     private javax.swing.JTextField passwordField;
+    private javax.swing.JLabel reenterPass;
+    private javax.swing.JTextField reenterPassField;
     private javax.swing.JTextField userAccountField;
     // End of variables declaration//GEN-END:variables
 }

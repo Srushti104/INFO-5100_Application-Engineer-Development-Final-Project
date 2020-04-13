@@ -8,25 +8,24 @@ package Business;
  *
  * @author srush
  */
-public class SalesManagerWorkRequest extends WorkRequest{
-    
-    
-     private String result;
-   // private int licenseNumber;
-    WareHouseManagerWorkRequest wareHouseManagerWorkRequest;
+public class SalesManagerWorkRequest extends WorkRequest {
+
+    private String result;
+    // private int licenseNumber;
+    WarehouseManagerWorkRequest warehouseManagerWorkRequest;
     private int quant;
     private String manuName;
     private String drName;
-    private Drug drug;
+    private String drug;
 
-    public WareHouseManagerWorkRequest getWareHouseManagerWorkRequest() {
-        return wareHouseManagerWorkRequest;
+    public WarehouseManagerWorkRequest getWarehouseManagerWorkRequest() {
+        return warehouseManagerWorkRequest;
     }
 
-    public void setWareHouseManagerWorkRequest(WareHouseManagerWorkRequest wareHouseManagerWorkRequest) {
-        this.wareHouseManagerWorkRequest = wareHouseManagerWorkRequest;
+    public void setWarehouseManagerWorkRequest(WarehouseManagerWorkRequest warehouseManagerWorkRequest) {
+        this.warehouseManagerWorkRequest = warehouseManagerWorkRequest;
     }
-    
+
     
 
     public String getResult() {
@@ -61,16 +60,12 @@ public class SalesManagerWorkRequest extends WorkRequest{
         this.drName = drName;
     }
 
-    public Drug getDrug() {
+    public String getDrug() {
         return drug;
     }
 
-    public void setDrug(Drug drug) {
+    public void setDrug(String drug) {
         this.drug = drug;
     }
-    
-    
-    
- 
-    
+
 }

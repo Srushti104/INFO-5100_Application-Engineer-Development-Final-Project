@@ -34,7 +34,7 @@ public class MainJFrame extends javax.swing.JFrame {
         mainJSpliPane.setLeftComponent(new LoginJPanel(this));
         
     }
-     public Business getBusiness(){
+    public Business getBusiness(){
     return business;
     }
     
@@ -66,12 +66,12 @@ public class MainJFrame extends javax.swing.JFrame {
      public void logoutUser(JPanel userProcessContainer) {
         // do any cleanup here
         // do any cleanup here
-    db4o.db4oUtil.storeObject(business);
+        db4o.db4oUtil.storeObject(business);
         // set login jpanel
          
          userProcessContainer.removeAll();
          userProcessContainer.repaint();
-        mainJSpliPane.setLeftComponent(new LoginJPanel(this));
+         mainJSpliPane.setLeftComponent(new LoginJPanel(this));
     }
     
      /*private void formWindowClosing(java.awt.event.WindowEvent evt)

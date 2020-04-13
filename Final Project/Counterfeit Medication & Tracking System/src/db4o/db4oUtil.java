@@ -18,7 +18,7 @@ import com.db4o.ta.TransparentPersistenceSupport;
  */
 public class db4oUtil {
     
-    private static final String FILENAME="Test2_db4.db4o";
+    private static final String FILENAME="Database.db4o";
     
     private static ObjectContainer _container =null;
 
