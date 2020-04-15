@@ -77,24 +77,24 @@ public class LoginJPanel extends javax.swing.JPanel {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(10, 10, 10)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(loginJButton, javax.swing.GroupLayout.DEFAULT_SIZE, 104, Short.MAX_VALUE)
+                .addContainerGap()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                        .addComponent(usernameJTextField, javax.swing.GroupLayout.DEFAULT_SIZE, 104, Short.MAX_VALUE)
+                        .addComponent(loginJButton, javax.swing.GroupLayout.DEFAULT_SIZE, 104, Short.MAX_VALUE)
+                        .addComponent(usernameJTextField)
                         .addComponent(passwordJPasswordField)
                         .addGroup(layout.createSequentialGroup()
                             .addGap(10, 10, 10)
                             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                 .addComponent(jLabel2)
-                                .addComponent(jLabel1)))
-                        .addComponent(enterpriseJComboBox, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                .addGap(125, 125, 125))
+                                .addComponent(jLabel1))))
+                    .addComponent(enterpriseJComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(33, 33, 33))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
+                .addGap(61, 61, 61)
                 .addComponent(jLabel1)
                 .addGap(4, 4, 4)
                 .addComponent(usernameJTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -106,7 +106,7 @@ public class LoginJPanel extends javax.swing.JPanel {
                 .addComponent(enterpriseJComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(loginJButton, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(144, 144, 144))
+                .addGap(89, 89, 89))
         );
     }// </editor-fold>//GEN-END:initComponents
 
