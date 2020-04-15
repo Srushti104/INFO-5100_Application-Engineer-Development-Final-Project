@@ -70,7 +70,6 @@ public class AddNetworkJPanel extends javax.swing.JPanel {
         add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(231, 78, -1, -1));
         add(networkNameField, new org.netbeans.lib.awtextra.AbsoluteConstraints(365, 72, 119, -1));
 
-        backButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/UserInterface/backButton.jpg"))); // NOI18N
         backButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 backButtonActionPerformed(evt);

@@ -6,12 +6,12 @@ package UserInterface.LicenseInspectorRole;
 
 import Business.Enterprise;
 import Business.FDAEnterprise;
-import Business.LicenseManagerWorkRequest;
+import Business.WorkRequests.LicenseManagerWorkRequest;
 import Business.Network;
 import Business.Organization;
 import Business.StateRegulatoryEnterprise;
 import Business.UserAccount;
-import Business.WorkRequest;
+import Business.WorkRequests.WorkRequest;
 import java.awt.CardLayout;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
@@ -137,8 +137,6 @@ public class ApproveLicensesJPanel extends javax.swing.JPanel {
         assignButton = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         backButton = new javax.swing.JButton();
-
-        setBackground(new java.awt.Color(255, 255, 255));
 
         requestsTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {

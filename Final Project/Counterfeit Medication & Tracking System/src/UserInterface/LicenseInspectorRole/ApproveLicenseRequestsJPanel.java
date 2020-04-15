@@ -8,14 +8,14 @@ import Business.DistributorEnterprise;
 import Business.Enterprise;
 import Business.FDAEnterprise;
 import Business.InventoryManagementOrganization;
-import Business.LicenseManagerWorkRequest;
+import Business.WorkRequests.LicenseManagerWorkRequest;
 import Business.ManagementOrganization;
-import Business.ManagerWokrRequest;
+import Business.WorkRequests.ManagerWorkRequest;
 import Business.ManufacturerEnterprise;
 import Business.Network;
 import Business.Organization;
 import Business.ProductManagementOrganization;
-import Business.ProductManagerWorkRequest;
+import Business.WorkRequests.ProductManagerWorkRequest;
 import Business.StateRegulatoryEnterprise;
 import Business.UserAccount;
 import java.awt.CardLayout;
@@ -240,7 +240,7 @@ public class ApproveLicenseRequestsJPanel extends javax.swing.JPanel {
                     {
                       
             DistributorEnterprise distributorEnterprise=(DistributorEnterprise)enterprise;
-            ManagerWokrRequest managerWokrRequest=new ManagerWokrRequest();
+            ManagerWorkRequest managerWokrRequest=new ManagerWorkRequest();
             managerWokrRequest.setSender(userAccount);
             managerWokrRequest.setRequestDate(new Date());
             managerWokrRequest.setStatus("License Approved");

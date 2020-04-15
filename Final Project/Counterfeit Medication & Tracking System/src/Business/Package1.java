@@ -9,9 +9,9 @@ package Business;
  * @author srush
  */
 public class Package1 {
-    
+
     Drug drug;
-    private static int count=0;
+    private static int count = 0;
     private int packageID;
     private String packageStatus;
     private int manuLotID;
@@ -25,8 +25,6 @@ public class Package1 {
     public void setHosID(int hosID) {
         this.hosID = hosID;
     }
-    
-    
 
     public int getManuLotID() {
         return manuLotID;
@@ -43,9 +41,6 @@ public class Package1 {
     public void setDisLotID(int disLotID) {
         this.disLotID = disLotID;
     }
-    
-
-    
 
     public String getPackageStatus() {
         return packageStatus;
@@ -54,13 +49,11 @@ public class Package1 {
     public void setPackageStatus(String packageStatus) {
         this.packageStatus = packageStatus;
     }
-    
-    
 
     public Package1() {
-        
+
         count++;
-        packageID=count;
+        packageID = count;
     }
 
     public Drug getDrug() {
@@ -78,16 +71,10 @@ public class Package1 {
     public void setPackageID(int packageID) {
         this.packageID = packageID;
     }
-    
-    
-    
-  public String toString()
-  {
-      
-      return drug.getDrugName();
-  }
-    
-    
-    
-    
+
+    public String toString() {
+
+        return drug.getDrugName();
+    }
+
 }

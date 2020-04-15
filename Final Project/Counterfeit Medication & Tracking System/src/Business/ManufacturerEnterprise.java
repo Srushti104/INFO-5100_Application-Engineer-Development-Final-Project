@@ -6,6 +6,7 @@ package Business;
 
 import Business.Roles.ProductManagerRole;
 import Business.Roles.Role;
+import Business.Roles.SalesManagerRole;
 import java.util.ArrayList;
 
 /**
@@ -13,7 +14,7 @@ import java.util.ArrayList;
  * @author srush
  */
 public class ManufacturerEnterprise extends Enterprise {
-    
+
     SalesManagementOrganization salesManagementOrganization;
     ProductManagementOrganization productManagementOrganization;
     DrugCatalog drugCatalog;
@@ -36,17 +37,13 @@ public class ManufacturerEnterprise extends Enterprise {
     public void setManuN(String manuN) {
         this.manuN = manuN;
     }
-    
-    
-    
-    
 
     public ManufacturerEnterprise(String enterpriseName) {
         super(enterpriseName);
-        
-        salesManagementOrganization=(SalesManagementOrganization)getOrganizationDirectory().newOrganization(Organization.SALES);
-        productManagementOrganization=(ProductManagementOrganization)getOrganizationDirectory().newOrganization(Organization.PRODUCCT);
-        drugCatalog=new DrugCatalog();
+
+        salesManagementOrganization = (SalesManagementOrganization) getOrganizationDirectory().newOrganization(Organization.SALES);
+        productManagementOrganization = (ProductManagementOrganization) getOrganizationDirectory().newOrganization(Organization.PRODUCT);
+        drugCatalog = new DrugCatalog();
     }
 
     public SalesManagementOrganization getSalesManagementOrganization() {
@@ -80,20 +77,14 @@ public class ManufacturerEnterprise extends Enterprise {
     public void setDrugCatalog(DrugCatalog drugCatalog) {
         this.drugCatalog = drugCatalog;
     }
-    
-    
-    
-    
-    
-    
 
     @Override
     public ArrayList<Role> getSupportedRoles() {
-        
+
         ArrayList<Role> roles = new ArrayList<Role>();
         roles.add(new ProductManagerRole());
-        
-        return roles;   
+        roles.add(new SalesManagerRole());
+        return roles;
     }
-    
+
 }

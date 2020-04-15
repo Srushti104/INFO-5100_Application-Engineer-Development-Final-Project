@@ -11,7 +11,7 @@ package Business;
 public class ProductManagementOrganization extends Organization{
     
      public ProductManagementOrganization() {
-        super(Organization.PRODUCCT);
+        super(Organization.PRODUCT);
     }
     
 }

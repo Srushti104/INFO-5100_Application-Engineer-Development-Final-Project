@@ -6,7 +6,7 @@ package UserInterface.ProductManager;
 
 import Business.Enterprise;
 import Business.FDAEnterprise;
-import Business.LicenseManagerWorkRequest;
+import Business.WorkRequests.LicenseManagerWorkRequest;
 import Business.LicensingOrganization;
 import Business.ManufacturerEnterprise;
 import Business.Network;
@@ -58,25 +58,25 @@ public class RequestLicenseForManufacturingJPanel extends javax.swing.JPanel {
         jLabel1 = new javax.swing.JLabel();
 
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-        add(messageField, new org.netbeans.lib.awtextra.AbsoluteConstraints(363, 91, 166, -1));
-        add(manuNameField, new org.netbeans.lib.awtextra.AbsoluteConstraints(363, 53, 166, -1));
+        add(messageField, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 100, 166, -1));
+        add(manuNameField, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 60, 166, -1));
 
         jLabel4.setText("Drugs Manufactured:");
-        add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 142, -1, -1));
+        add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 150, -1, -1));
 
-        backButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/UserInterface/backButton.jpg"))); // NOI18N
+        backButton.setText("Back");
         backButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 backButtonActionPerformed(evt);
             }
         });
-        add(backButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 20, 40, 30));
+        add(backButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 20, 80, 30));
 
         drugaManuTextArea.setColumns(20);
         drugaManuTextArea.setRows(5);
         jScrollPane1.setViewportView(drugaManuTextArea);
 
-        add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(363, 129, -1, -1));
+        add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 140, -1, -1));
 
         sendRequestButton.setText("Send Request");
         sendRequestButton.addActionListener(new java.awt.event.ActionListener() {
@@ -84,17 +84,17 @@ public class RequestLicenseForManufacturingJPanel extends javax.swing.JPanel {
                 sendRequestButtonActionPerformed(evt);
             }
         });
-        add(sendRequestButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 236, -1, -1));
+        add(sendRequestButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 230, -1, -1));
 
         jLabel2.setText("Manufacturer Name:");
-        add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(203, 59, -1, -1));
+        add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 70, -1, -1));
 
         jLabel3.setText("Message:");
-        add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(256, 97, -1, -1));
+        add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 110, -1, -1));
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jLabel1.setText("License Request");
-        add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(276, 11, -1, -1));
+        add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 20, -1, -1));
     }// </editor-fold>//GEN-END:initComponents
 
     private void backButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backButtonActionPerformed

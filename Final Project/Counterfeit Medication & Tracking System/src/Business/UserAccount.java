@@ -11,28 +11,23 @@ import Business.Roles.Role;
  * @author srush
  */
 public class UserAccount {
-    
+
     private String userName;
     private String password;
     private Employee employee;
-   // private WorkQueue workQueue;
-    
-    
+    private Doctor doctor;
+    // private WorkQueue workQueue;
+
     Role role;
 
-   public Role getRole() {
-        
-        
-        
+    public Role getRole() {
+
         return role;
     }
 
     public void setRole(Role role) {
         this.role = role;
     }
-    
-    
-    
 
     public String getUserName() {
         return userName;
@@ -58,13 +53,19 @@ public class UserAccount {
         this.employee = employee;
     }
 
-    
-    
-    public String toString()    {
-        
-        return userName;
+    public Doctor getDoctor() {
+        return doctor;
+    }
+
+    public void setDoctor(Doctor doctor) {
+        this.doctor = doctor;
     }
     
-   
     
+
+    public String toString() {
+
+        return userName;
+    }
+
 }

@@ -4,7 +4,6 @@
  */
 package Business;
 
-
 import Business.Roles.LicenseInspectorRole;
 import Business.Roles.Role;
 import java.util.ArrayList;
@@ -13,16 +12,18 @@ import java.util.ArrayList;
  *
  * @author nived
  */
-public class FDAEnterprise extends Enterprise{
-    
+public class FDAEnterprise extends Enterprise {
+
     private LicensingOrganization licensingOrganization;
     private ManagementOrganization managementOrganization;
+    private DrugTestingOrganization drugTestingOrganization;
 
     public FDAEnterprise(String enterpriseName) {
         super(enterpriseName);
- 
-        licensingOrganization=(LicensingOrganization)getOrganizationDirectory().newOrganization(Organization.LICENSING);
-        managementOrganization=(ManagementOrganization)getOrganizationDirectory().newOrganization(Organization.MANAGEMENT);
+
+        licensingOrganization = (LicensingOrganization) getOrganizationDirectory().newOrganization(Organization.LICENSING);
+        managementOrganization = (ManagementOrganization) getOrganizationDirectory().newOrganization(Organization.MANAGEMENT);
+        drugTestingOrganization = (DrugTestingOrganization) getOrganizationDirectory().newOrganization(DRUGTESTING);
     }
 
     public LicensingOrganization getLicensingOrganization() {
@@ -33,9 +34,6 @@ public class FDAEnterprise extends Enterprise{
         this.licensingOrganization = licensingOrganization;
     }
 
-  
-
-
     public ManagementOrganization getManagementOrganization() {
         return managementOrganization;
     }
@@ -43,19 +41,21 @@ public class FDAEnterprise extends Enterprise{
     public void setManagementOrganization(ManagementOrganization managementOrganization) {
         this.managementOrganization = managementOrganization;
     }
-    
-    
 
-    
-    
+    public DrugTestingOrganization getDrugTestingOrganization() {
+        return drugTestingOrganization;
+    }
+
+    public void setDrugTestingOrganization(DrugTestingOrganization drugTestingOrganization) {
+        this.drugTestingOrganization = drugTestingOrganization;
+    }
+
     @Override
     public ArrayList<Role> getSupportedRoles() {
         ArrayList<Role> roles = new ArrayList<Role>();
         roles.add(new LicenseInspectorRole());
-        return roles;        
-    
+        return roles;
+
     }
-    
-    
-    
+
 }

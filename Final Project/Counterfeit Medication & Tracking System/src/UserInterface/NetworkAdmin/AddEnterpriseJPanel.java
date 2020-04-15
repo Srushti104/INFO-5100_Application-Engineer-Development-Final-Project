@@ -8,6 +8,7 @@ import Business.DistributorEnterprise;
 import Business.Employee;
 import Business.Enterprise;
 import Business.FDAEnterprise;
+import Business.HospitalEnterprise;
 import Business.ManufacturerEnterprise;
 import Business.Network;
 import Business.Roles.EnterpriseAdminRole;
@@ -40,7 +41,7 @@ public class AddEnterpriseJPanel extends javax.swing.JPanel {
         enterpriseTypeComboBox.addItem(Enterprise.FDA);
         enterpriseTypeComboBox.addItem(Enterprise.MANUFACTURER);
         enterpriseTypeComboBox.addItem(Enterprise.DISTRIBUTOR);
- //       enterpriseTypeComboBox.addItem(Enterprise.HOSPITAL);
+        enterpriseTypeComboBox.addItem(Enterprise.HOSPITAL);
 //        enterpriseTypeComboBox.addItem(Enterprise.STATEREGULATORYAFFAIRS);
 //        enterpriseTypeComboBox.addItem(Enterprise.LAWENFORCEMENTUNIT);
 
@@ -393,55 +394,44 @@ public class AddEnterpriseJPanel extends javax.swing.JPanel {
             }
 
         }
-//        if (enterprise == Enterprise.HOSPITAL) {
-//
-//            if (!userNameField.getText().isEmpty() &&!passwordField.getText().isEmpty()) {
-//                    //getText() != null && passwordField.getText() != null
-//                
-//                 if(!network.getEnterpriseDirectory().isUserExisting(userNameField.getText()))
-//                {
-//                    
-//
-//                HospitalEnterprise hospitalEnterprise = (HospitalEnterprise) network.getEnterpriseDirectory().newEnterprise(Enterprise.HOSPITAL, enpName);
-//
-//
-//                Employee employee = hospitalEnterprise.getEmployeeDirectory().newEmployee();
-//                employee.setFirstName(firstNameField.getText());
-//                employee.setLastName(lastNameField.getText());
-//
-//                hospitalEnterprise.setEnterpriseName(enpName);
-//                hospitalEnterprise.setEnterpriseType(enterprise);
-//
-//
-//                UserAccount userAccount1 = hospitalEnterprise.getUserAccountDirectory().newAccount();
-//                userAccount1.setUserName(userNameField.getText());
-//                userAccount1.setPassword(passwordField.getText());
-//                userAccount1.setRole(new EnterpriseAdminRole());
-//                userAccount1.setEmployee(employee);
-//
-//
-//
-//                JOptionPane.showMessageDialog(this, "Hospital Enterprise added");
-//
-//                enterpriseNameField.setText("");
-//                firstNameField.setText("");
-//                lastNameField.setText("");
-//                userNameField.setText("");
-//                passwordField.setText("");
-//            } 
-//                 
-//                 else
-//                 {
-//                      JOptionPane.showMessageDialog(this, "Username already existing");
-//                     
-//                 }
-//            }
-//            else {
-//                JOptionPane.showMessageDialog(this, "Username/Password is empty");
-//            }
-//
-//        }
-//       
+        if (enterprise == Enterprise.HOSPITAL) {
+
+            if (!userNameField.getText().isEmpty() && !passwordField.getText().isEmpty()) {
+                //getText() != null && passwordField.getText() != null
+
+                if (!network.getEnterpriseDirectory().isUserExisting(userNameField.getText())) {
+
+                    HospitalEnterprise hospitalEnterprise = (HospitalEnterprise) network.getEnterpriseDirectory().newEnterprise(Enterprise.HOSPITAL, enpName);
+
+                    Employee employee = hospitalEnterprise.getEmployeeDirectory().newEmployee();
+                    employee.setFirstName(firstNameField.getText());
+                    employee.setLastName(lastNameField.getText());
+
+                    hospitalEnterprise.setEnterpriseName(enpName);
+                    hospitalEnterprise.setEnterpriseType(enterprise);
+
+                    UserAccount userAccount1 = hospitalEnterprise.getUserAccountDirectory().newAccount();
+                    userAccount1.setUserName(userNameField.getText());
+                    userAccount1.setPassword(passwordField.getText());
+                    userAccount1.setRole(new EnterpriseAdminRole());
+                    userAccount1.setEmployee(employee);
+
+                    JOptionPane.showMessageDialog(this, "Hospital Enterprise added");
+
+                    enterpriseNameField.setText("");
+                    firstNameField.setText("");
+                    lastNameField.setText("");
+                    userNameField.setText("");
+                    passwordField.setText("");
+                } else {
+                    JOptionPane.showMessageDialog(this, "Username already existing");
+
+                }
+            } else {
+                JOptionPane.showMessageDialog(this, "Username/Password is empty");
+            }
+
+        }
 
 
     }//GEN-LAST:event_addButtonActionPerformed
