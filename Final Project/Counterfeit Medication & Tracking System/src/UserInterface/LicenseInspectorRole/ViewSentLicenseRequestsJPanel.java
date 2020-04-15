@@ -5,7 +5,7 @@
 package UserInterface.LicenseInspectorRole;
 
 import Business.WorkQueue;
-import Business.WorkRequest;
+import Business.WorkRequests.WorkRequest;
 import java.awt.CardLayout;
 import javax.swing.JPanel;
 import javax.swing.table.DefaultTableModel;
@@ -68,8 +68,6 @@ public class ViewSentLicenseRequestsJPanel extends javax.swing.JPanel {
         jScrollPane1 = new javax.swing.JScrollPane();
         sentWorkRequestJTable = new javax.swing.JTable();
         jLabel1 = new javax.swing.JLabel();
-
-        setBackground(new java.awt.Color(255, 255, 255));
 
         backButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/UserInterface/backButton.jpg"))); // NOI18N
         backButton.addActionListener(new java.awt.event.ActionListener() {

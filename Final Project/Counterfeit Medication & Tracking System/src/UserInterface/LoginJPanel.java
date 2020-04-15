@@ -13,7 +13,7 @@ import Business.Network;
  * @author srush
  */
 public class LoginJPanel extends javax.swing.JPanel {
-    
+
     private MainJFrame mainJFrame;
 
     /**
@@ -21,22 +21,21 @@ public class LoginJPanel extends javax.swing.JPanel {
      */
     public LoginJPanel(MainJFrame frame) {
         initComponents();
-    //     avilbl.setIcon(new javax.swing.ImageIcon(getClass().getResource("/UserInterface/trough_level_of_drugs.jpg")));
-         mainJFrame=frame;
+        //     avilbl.setIcon(new javax.swing.ImageIcon(getClass().getResource("/UserInterface/trough_level_of_drugs.jpg")));
+        mainJFrame = frame;
         enterpriseJComboBox.removeAllItems();
-       //Business business = Business.getInstance();
-        
- Business business = frame.getBusiness();
+        //Business business = Business.getInstance();
+
+        Business business = frame.getBusiness();
         enterpriseJComboBox.addItem(business);
-        for(Network network : business.getNetworkDirectory().getNetworkList()) {
+        for (Network network : business.getNetworkDirectory().getNetworkList()) {
             enterpriseJComboBox.addItem(network);
-            
-            for(Enterprise enterprise:network.getEnterpriseDirectory().getEnterpriseList())
-            {
+
+            for (Enterprise enterprise : network.getEnterpriseDirectory().getEnterpriseList()) {
                 enterpriseJComboBox.addItem(enterprise);
             }
         }
-        
+
     }
 
     /**
@@ -62,7 +61,7 @@ public class LoginJPanel extends javax.swing.JPanel {
             }
         });
 
-        loginJButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/UserInterface/login-button.gif"))); // NOI18N
+        loginJButton.setText("Login");
         loginJButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 loginJButtonActionPerformed(evt);
@@ -80,18 +79,17 @@ public class LoginJPanel extends javax.swing.JPanel {
             .addGroup(layout.createSequentialGroup()
                 .addGap(10, 10, 10)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(usernameJTextField, javax.swing.GroupLayout.DEFAULT_SIZE, 104, Short.MAX_VALUE)
-                    .addComponent(passwordJPasswordField)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(10, 10, 10)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel2)
-                            .addComponent(jLabel1)))
-                    .addComponent(enterpriseJComboBox, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(23, 23, 23)
-                        .addComponent(loginJButton, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(15, Short.MAX_VALUE))
+                    .addComponent(loginJButton, javax.swing.GroupLayout.DEFAULT_SIZE, 104, Short.MAX_VALUE)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addComponent(usernameJTextField, javax.swing.GroupLayout.DEFAULT_SIZE, 104, Short.MAX_VALUE)
+                        .addComponent(passwordJPasswordField)
+                        .addGroup(layout.createSequentialGroup()
+                            .addGap(10, 10, 10)
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(jLabel2)
+                                .addComponent(jLabel1)))
+                        .addComponent(enterpriseJComboBox, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                .addGap(125, 125, 125))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -108,7 +106,7 @@ public class LoginJPanel extends javax.swing.JPanel {
                 .addComponent(enterpriseJComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(loginJButton, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
+                .addGap(144, 144, 144))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -116,7 +114,7 @@ public class LoginJPanel extends javax.swing.JPanel {
         // TODO add your handling code here:
         String username = usernameJTextField.getText();
         String password = passwordJPasswordField.getText();
-        Enterprise enterprise = (Enterprise)enterpriseJComboBox.getSelectedItem();
+        Enterprise enterprise = (Enterprise) enterpriseJComboBox.getSelectedItem();
 
         mainJFrame.loginUser(username, password, enterprise);
     }//GEN-LAST:event_loginJButtonActionPerformed

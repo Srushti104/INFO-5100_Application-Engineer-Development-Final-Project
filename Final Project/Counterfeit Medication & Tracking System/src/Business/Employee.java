@@ -9,21 +9,18 @@ package Business;
  * @author nived
  */
 public class Employee extends Person {
-    
-    
+
     private String firstName;
     private String lastName;
     private int empID;
-    public static int count=0;
+    public static int count = 0;
     private String enterpriseName;
 
     public Employee() {
-        
+
         count++;
-        empID=count;
+        empID = count;
     }
-    
-    
 
     public String getFirstName() {
         return firstName;
@@ -45,8 +42,6 @@ public class Employee extends Person {
         return empID;
     }
 
-    
-
     public String getEnterpriseName() {
         return enterpriseName;
     }
@@ -54,12 +49,10 @@ public class Employee extends Person {
     public void setEnterpriseName(String enterpriseName) {
         this.enterpriseName = enterpriseName;
     }
-    
-    public String toString()
-    {
-        
-        return firstName +" "+ lastName;
+
+    public String toString() {
+
+        return firstName + " " + lastName;
     }
-    
-    
+
 }

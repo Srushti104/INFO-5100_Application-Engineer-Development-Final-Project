@@ -9,10 +9,8 @@ import Business.Drug;
 import Business.Enterprise;
 import Business.ManufacturerEnterprise;
 import Business.Network;
-import Business.ProductManagementOrganization;
-import Business.ProductManagerWorkRequest;
 import Business.SalesManagementOrganization;
-import Business.SalesManagerWorkRequest;
+import Business.WorkRequests.SalesManagerWorkRequest;
 import Business.UserAccount;
 import java.awt.CardLayout;
 import java.util.Date;
@@ -52,7 +50,7 @@ public class OrderDrugsJPanel extends javax.swing.JPanel {
                 //manufacturerComboBox.addItem(enterprise);
                 ManufacturerEnterprise manufacturerEnterprise = (ManufacturerEnterprise) enterprise;
                 if (manufacturerEnterprise.getLicenseNumber() != 0) {
-   //                 manufacturerComboBox.addItem(enterprise);
+                    //                 manufacturerComboBox.addItem(enterprise);
 
                 }
 
@@ -75,13 +73,13 @@ public class OrderDrugsJPanel extends javax.swing.JPanel {
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
-        manuNameField = new javax.swing.JTextField();
         orderDrugButton = new javax.swing.JButton();
         backButton = new javax.swing.JButton();
         jLabel5 = new javax.swing.JLabel();
         resultField = new javax.swing.JTextField();
-        quantityField1 = new javax.swing.JTextField();
+        quantityField = new javax.swing.JTextField();
         drugNameField = new javax.swing.JTextField();
+        drugComboBox = new javax.swing.JComboBox<>();
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jLabel1.setText("Order Drugs");
@@ -108,6 +106,8 @@ public class OrderDrugsJPanel extends javax.swing.JPanel {
 
         jLabel5.setText("Result:");
 
+        drugComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
@@ -122,10 +122,6 @@ public class OrderDrugsJPanel extends javax.swing.JPanel {
                     .addGroup(layout.createSequentialGroup()
                         .addGap(145, 145, 145)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(jLabel3)
-                                .addGap(32, 32, 32)
-                                .addComponent(drugNameField, javax.swing.GroupLayout.PREFERRED_SIZE, 121, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addComponent(orderDrugButton)
                             .addGroup(layout.createSequentialGroup()
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -137,11 +133,18 @@ public class OrderDrugsJPanel extends javax.swing.JPanel {
                                         .addGap(30, 30, 30)))
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(resultField, javax.swing.GroupLayout.PREFERRED_SIZE, 121, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(quantityField1)))
+                                    .addComponent(quantityField)))
                             .addGroup(layout.createSequentialGroup()
-                                .addComponent(jLabel2)
-                                .addGap(33, 33, 33)
-                                .addComponent(manuNameField, javax.swing.GroupLayout.PREFERRED_SIZE, 121, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                        .addComponent(jLabel3)
+                                        .addGap(32, 32, 32))
+                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                        .addComponent(jLabel2)
+                                        .addGap(33, 33, 33)))
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(drugNameField, javax.swing.GroupLayout.DEFAULT_SIZE, 121, Short.MAX_VALUE)
+                                    .addComponent(drugComboBox, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))))
                 .addGap(388, 388, 388))
         );
         layout.setVerticalGroup(
@@ -151,10 +154,10 @@ public class OrderDrugsJPanel extends javax.swing.JPanel {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(backButton, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel1))
-                .addGap(32, 32, 32)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGap(26, 26, 26)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(jLabel2)
-                    .addComponent(manuNameField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(drugComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel3)
@@ -162,7 +165,7 @@ public class OrderDrugsJPanel extends javax.swing.JPanel {
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel4)
-                    .addComponent(quantityField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(quantityField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel5)
@@ -178,15 +181,14 @@ public class OrderDrugsJPanel extends javax.swing.JPanel {
 
         // String drugname=(String)drugComboBox.getSelectedItem();
         // String manuName=(String)manufacturerComboBox.getSelectedItem();
- //       Drug drug = (Drug) drugComboBox.getSelectedItem();
-
-        if (manuNameField.getText().isEmpty()) {
+              Drug drug = (Drug) drugComboBox.getSelectedItem();
+        if (quantityField.getText().isEmpty()) {
             JOptionPane.showMessageDialog(null, "Enter the value for the quantity required");
 
         } else {
-            if (manuNameField.getText().isEmpty() == false) {
+            if (quantityField.getText().isEmpty() == false) {
                 try {
-                    String stringPrice = manuNameField.getText();
+                    String stringPrice = quantityField.getText();
                     if (stringPrice.isEmpty() == false) {
                         int price = Integer.parseInt(stringPrice);
 
@@ -204,12 +206,14 @@ public class OrderDrugsJPanel extends javax.swing.JPanel {
             salesManagerWorkRequest.setMessage("Request for Drugs");
             salesManagerWorkRequest.setStatus("Request for Drug Sent");
             //productManagerWorkRequest.setManuName(manufacturerComboBox.getSelectedItem());
-            salesManagerWorkRequest.setQuant(Integer.parseInt(manuNameField.getText()));
+            salesManagerWorkRequest.setQuant(Integer.parseInt(quantityField.getText()));
             //licenseManagerWorkRequest.setDrugManu(drugaManuTextArea.getText());
             salesManagerWorkRequest.setResult(resultField.getText());
-  //          salesManagerWorkRequest.setDrName(drug.getDrugName());
-            salesManagerWorkRequest.setDrug(drugNameField.getText());
-            salesManagerWorkRequest.setManuName(manuNameField.getText());
+            //  salesManagerWorkRequest.setDrName(drug.getDrugName());
+            //    salesManagerWorkRequest.setDrug(drugNameField.getText());
+            salesManagerWorkRequest.setDrName(drug.getDrugName());
+            salesManagerWorkRequest.setDrug(drug);
+       //     salesManagerWorkRequest.setManuName(manuNameField.getText());
 
             DistributorEnterprise e = (DistributorEnterprise) network.getEnterpriseDirectory().getMyEnterprise(userAccount);
 
@@ -239,15 +243,15 @@ public class OrderDrugsJPanel extends javax.swing.JPanel {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton backButton;
+    private javax.swing.JComboBox<String> drugComboBox;
     private javax.swing.JTextField drugNameField;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
-    private javax.swing.JTextField manuNameField;
     private javax.swing.JButton orderDrugButton;
-    private javax.swing.JTextField quantityField1;
+    private javax.swing.JTextField quantityField;
     private javax.swing.JTextField resultField;
     // End of variables declaration//GEN-END:variables
 }

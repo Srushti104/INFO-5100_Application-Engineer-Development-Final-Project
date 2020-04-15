@@ -11,29 +11,24 @@ import java.util.ArrayList;
  *
  * @author nived
  */
-public abstract class Enterprise extends Organization{
-    
-    
-     private String enterpriseName;
+public abstract class Enterprise extends Organization {
+
+    private String enterpriseName;
     private String enterpriseType;
-    
-    
-    
-    
-    public static final String MANUFACTURER="Manufacturer Enterprise";
-    public static final String DISTRIBUTOR="Distributor Enterprise";
-    public static final String FDA="FDA Enterprise";
-    public static final String LAWENFORCEMENTUNIT="Law Enforcement Enterprise";
-    public static final String STATEREGULATORYAFFAIRS="State Regulatory affairs Enterprise";
-//    public static final String HOSPITAL="Hospital Enterprise";
-    
-    
+
+    public static final String MANUFACTURER = "Manufacturer Enterprise";
+    public static final String DISTRIBUTOR = "Distributor Enterprise";
+    public static final String FDA = "FDA Enterprise";
+    public static final String LAWENFORCEMENTUNIT = "Law Enforcement Enterprise";
+    public static final String STATEREGULATORYAFFAIRS = "State Regulatory affairs Enterprise";
+    public static final String HOSPITAL = "Hospital Enterprise";
+
     private OrganizationDirectory organizationDirectory;
 
     public Enterprise(String enterpriseName) {
         super(enterpriseName);
         this.enterpriseName = enterpriseName;
-        organizationDirectory=new OrganizationDirectory();
+        organizationDirectory = new OrganizationDirectory();
     }
 
     public String getEnterpriseName() {
@@ -55,9 +50,8 @@ public abstract class Enterprise extends Organization{
     public void setEnterpriseType(String enterpriseType) {
         this.enterpriseType = enterpriseType;
     }
-    
-    
-     public UserAccount authenticateUser(String username, String password) {
+
+    public UserAccount authenticateUser(String username, String password) {
         // first check in UAD inherited from Organization
         UserAccount ua = getUserAccountDirectory().authenticateUser(username, password);
         if (ua != null) {
@@ -71,15 +65,14 @@ public abstract class Enterprise extends Organization{
                 return ua;
             }
         }
-        
+
         return null;
     }
-     
-     
-    public String toString()
-    {
+
+    public String toString() {
         return enterpriseName;
     }
+
     public abstract ArrayList<Role> getSupportedRoles();
-    
+
 }

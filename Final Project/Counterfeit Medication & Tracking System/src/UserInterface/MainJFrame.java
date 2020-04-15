@@ -17,71 +17,66 @@ import javax.swing.JPanel;
  * @author srush
  */
 public class MainJFrame extends javax.swing.JFrame {
-    
-     Business business;
+
+    Business business;
 
     /**
      * Creates new form MainJFrame
      */
     public MainJFrame() {
         initComponents();
-        
-       // business=ConfigureABusiness.initialize();
-        
-        business=db4o.db4oUtil.getBusiness();
+
+        // business=ConfigureABusiness.initialize();
+        business = db4o.db4oUtil.getBusiness();
         this.setExtendedState(MAXIMIZED_BOTH);
-        
+
         mainJSpliPane.setLeftComponent(new LoginJPanel(this));
-        
+
     }
-    public Business getBusiness(){
-    return business;
+
+    public Business getBusiness() {
+        return business;
     }
-    
-    
-     public void loginUser(String username, String password, Enterprise enterprise) {
+
+    public void loginUser(String username, String password, Enterprise enterprise) {
 
         UserAccount ua = enterprise.authenticateUser(username, password);
         if (ua != null) {
-            
+
             //
-            mainJSpliPane.setLeftComponent(new LogoutJPanel(this, ua,userProcessContainer));
-            
+            mainJSpliPane.setLeftComponent(new LogoutJPanel(this, ua, userProcessContainer));
+
             userProcessContainer.removeAll();
             JPanel panel = ua.getRole().getWorkArea().createView(userProcessContainer, business, ua).getViewPanel();
             userProcessContainer.add("WorkArea", panel);
             CardLayout cardLayout = (CardLayout) userProcessContainer.getLayout();
             cardLayout.next(userProcessContainer);
         } else {
-            JOptionPane.showMessageDialog(this, "Invalid username or password");            
+            JOptionPane.showMessageDialog(this, "Invalid username or password");
         }
     }
 
-    private void formWindowClosing(java.awt.event.WindowEvent evt)
-{
-    
-    db4o.db4oUtil.storeObject(business);
-}
-    
-     public void logoutUser(JPanel userProcessContainer) {
+    private void formWindowClosing(java.awt.event.WindowEvent evt) {
+
+        db4o.db4oUtil.storeObject(business);
+    }
+
+    public void logoutUser(JPanel userProcessContainer) {
         // do any cleanup here
         // do any cleanup here
         db4o.db4oUtil.storeObject(business);
         // set login jpanel
-         
-         userProcessContainer.removeAll();
-         userProcessContainer.repaint();
-         mainJSpliPane.setLeftComponent(new LoginJPanel(this));
+
+        userProcessContainer.removeAll();
+        userProcessContainer.repaint();
+        mainJSpliPane.setLeftComponent(new LoginJPanel(this));
     }
-    
-     /*private void formWindowClosing(java.awt.event.WindowEvent evt)
+
+    /*private void formWindowClosing(java.awt.event.WindowEvent evt)
 {
     
     db4o.db4oUtil.storeObject(business);
 }*/
-    
-    
-
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -96,7 +91,6 @@ public class MainJFrame extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        userProcessContainer.setBackground(new java.awt.Color(255, 255, 255));
         userProcessContainer.setLayout(new java.awt.CardLayout());
         mainJSpliPane.setRightComponent(userProcessContainer);
 

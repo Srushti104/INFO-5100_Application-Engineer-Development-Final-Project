@@ -120,7 +120,6 @@ public class CheckWarehouseInventoryJPanel extends javax.swing.JPanel {
         backButton = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
 
-        setBackground(new java.awt.Color(153, 153, 255));
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel3.setText("Threshold:");
@@ -156,7 +155,7 @@ public class CheckWarehouseInventoryJPanel extends javax.swing.JPanel {
                 backButtonActionPerformed(evt);
             }
         });
-        add(backButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 600, 39, 24));
+        add(backButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 20, 39, 24));
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jLabel1.setText("Manage Inventory");

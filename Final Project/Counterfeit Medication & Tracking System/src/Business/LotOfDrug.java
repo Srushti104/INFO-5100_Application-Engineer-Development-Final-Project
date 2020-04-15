@@ -11,7 +11,7 @@ import java.util.ArrayList;
  * @author srush
  */
 public class LotOfDrug {
-    
+
     private ArrayList<Package1> packageList;
     private int lotID;
     private String lotStatus;
@@ -23,10 +23,8 @@ public class LotOfDrug {
     public void setLotStatus(String lotStatus) {
         this.lotStatus = lotStatus;
     }
-    
-    
- 
-    private static int count=0;
+
+    private static int count = 0;
 
     public int getLotID() {
         return lotID;
@@ -36,19 +34,13 @@ public class LotOfDrug {
         this.lotID = lotID;
     }
 
-    
-    
-    
-    
-
     public LotOfDrug() {
-        
+
         count++;
-        lotID=count;
-        packageList=new ArrayList<Package1>();
+        lotID = count;
+        packageList = new ArrayList<Package1>();
     }
-    
-    
+
     public ArrayList<Package1> getPackageList() {
         return packageList;
     }
@@ -56,25 +48,15 @@ public class LotOfDrug {
     public void setPackageList(ArrayList<Package1> packageList) {
         this.packageList = packageList;
     }
-    
-    
-    public void addPackage(Package1 p){
-        
-        packageList.add(p);
-        
-    }
-    
-   public String toString()
-   {
-       return Integer.toString(lotID);
-   }
-    
-    
-    
-    
 
-    
-    
-    
-    
+    public void addPackage(Package1 p) {
+
+        packageList.add(p);
+
+    }
+
+    public String toString() {
+        return Integer.toString(lotID);
+    }
+
 }

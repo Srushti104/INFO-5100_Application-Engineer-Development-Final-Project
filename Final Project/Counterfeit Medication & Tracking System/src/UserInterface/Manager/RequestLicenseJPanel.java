@@ -7,7 +7,7 @@ package UserInterface.Manager;
 import Business.DistributorEnterprise;
 import Business.Enterprise;
 import Business.FDAEnterprise;
-import Business.LicenseManagerWorkRequest;
+import Business.WorkRequests.LicenseManagerWorkRequest;
 import Business.LicensingOrganization;
 import Business.ManufacturerEnterprise;
 import Business.Network;
@@ -58,7 +58,6 @@ public class RequestLicenseJPanel extends javax.swing.JPanel {
         backButton = new javax.swing.JButton();
         sendRequestButton = new javax.swing.JButton();
 
-        setBackground(new java.awt.Color(204, 255, 255));
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
@@ -88,7 +87,7 @@ public class RequestLicenseJPanel extends javax.swing.JPanel {
                 backButtonActionPerformed(evt);
             }
         });
-        add(backButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 460, 41, 23));
+        add(backButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 30, 41, 23));
 
         sendRequestButton.setText("Send Request");
         sendRequestButton.addActionListener(new java.awt.event.ActionListener() {

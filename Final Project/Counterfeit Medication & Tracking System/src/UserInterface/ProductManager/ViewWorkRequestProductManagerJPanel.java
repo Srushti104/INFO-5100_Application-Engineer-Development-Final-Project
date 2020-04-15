@@ -8,9 +8,9 @@ import Business.Enterprise;
 import Business.ManufacturerEnterprise;
 import Business.Network;
 import Business.Organization;
-import Business.ProductManagerWorkRequest;
+import Business.WorkRequests.ProductManagerWorkRequest;
 import Business.UserAccount;
-import Business.WorkRequest;
+import Business.WorkRequests.WorkRequest;
 import java.awt.CardLayout;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
@@ -21,8 +21,7 @@ import javax.swing.table.DefaultTableModel;
  * @author srush
  */
 public class ViewWorkRequestProductManagerJPanel extends javax.swing.JPanel {
-    
-    
+
     JPanel userProcessContainer;
     Network network;
     UserAccount userAccount;
@@ -30,76 +29,54 @@ public class ViewWorkRequestProductManagerJPanel extends javax.swing.JPanel {
     /**
      * Creates new form ViewWorkRequestProductManagerJPanel
      */
-    public ViewWorkRequestProductManagerJPanel(JPanel userProcessContainer,Network network,UserAccount userAccount) {
+    public ViewWorkRequestProductManagerJPanel(JPanel userProcessContainer, Network network, UserAccount userAccount) {
         initComponents();
-        this.userProcessContainer=userProcessContainer;
-        this.network=network;
-        this.userAccount=userAccount;
-        
+        this.userProcessContainer = userProcessContainer;
+        this.network = network;
+        this.userAccount = userAccount;
+
         addDrugButton.setVisible(false);
-        
+
         Refresh();
-        
-        
+
     }
 
-    
-    public void Refresh()
-    {
-        
-        
-        
-        int rowcount=requestsTable.getRowCount();
-        
-        for(int i=rowcount-1;i>=0;i--)
-        {
-            ((DefaultTableModel)requestsTable.getModel()).removeRow(i);
-            
-            
-            
+    public void Refresh() {
+
+        int rowcount = requestsTable.getRowCount();
+
+        for (int i = rowcount - 1; i >= 0; i--) {
+            ((DefaultTableModel) requestsTable.getModel()).removeRow(i);
+
         }
-        
-        Enterprise e=network.getEnterpriseDirectory().getMyEnterprise(userAccount);
-       
-       /*  SupplierEnterprise e1 = null;
-        for(Enterprise enterprise:business.getEnterpriseDirectory().getEnterpriseList())
-        {
-            if(enterprise.getClass().equals(SupplierEnterprise.class))
-                
-            {
-                e1=(SupplierEnterprise)enterprise;
+
+        Enterprise e = network.getEnterpriseDirectory().getMyEnterprise(userAccount);
+
+        Organization org = ((ManufacturerEnterprise) e).getProductManagementOrganization();
+        for (WorkRequest workRequest : org.getWorkQueue().getWorkRequestList()) {
+            ProductManagerWorkRequest productManagerWorkRequest = (ProductManagerWorkRequest) workRequest;
+            Object row[] = new Object[6];
+            row[0] = workRequest;
+            row[1] = workRequest.getSender().getEmployee().getFirstName();
+
+            if (workRequest.getReceiver() != null) {
+                row[2] = workRequest.getReceiver().getEmployee().getFirstName();
+
             }
-        }*/
-       Organization org=((ManufacturerEnterprise)e).getProductManagementOrganization();
-        for(WorkRequest workRequest:org.getWorkQueue().getWorkRequestList())
-                
-        {
-            ProductManagerWorkRequest productManagerWorkRequest=(ProductManagerWorkRequest)workRequest;
-         Object row[]=new Object[6];
-         row[0]=workRequest;
-         row[1]=workRequest.getSender().getEmployee().getFirstName();
-         
-         if(workRequest.getReceiver()!= null)
-         {
-         row[2]=workRequest.getReceiver().getEmployee().getFirstName();
-         
-         }
-         
-         row[3]=workRequest.getStatus();
-         row[4]=productManagerWorkRequest.getLicenseNumber();
-      //  row[4]=workRequest.getDrugName();
-      //  row[5]=workRequest.getQuantity();
-         
-         if(productManagerWorkRequest.getLicenseNumber()!=0)
-         {
-             addDrugButton.setVisible(true);
-         }
-            
-            
-            
-           ((DefaultTableModel)requestsTable.getModel()).addRow(row);   
+
+            row[3] = workRequest.getStatus();
+            row[4] = productManagerWorkRequest.getLicenseNumber();
+            //  row[4]=workRequest.getDrugName();
+            //  row[5]=workRequest.getQuantity();
+
+            if (productManagerWorkRequest.getLicenseNumber() != 0) {
+                addDrugButton.setVisible(true);
+            }
+
+            ((DefaultTableModel) requestsTable.getModel()).addRow(row);
         }
     }
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -183,13 +160,15 @@ public class ViewWorkRequestProductManagerJPanel extends javax.swing.JPanel {
                     .addGroup(layout.createSequentialGroup()
                         .addGap(69, 69, 69)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                            .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 452, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(refreshButton, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(assignButton)
                                 .addGap(282, 282, 282)
-                                .addComponent(addDrugButton)))))
-                .addGap(140, 140, 140))
+                                .addComponent(addDrugButton))))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(31, 31, 31)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 563, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(83, 83, 83))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -213,27 +192,22 @@ public class ViewWorkRequestProductManagerJPanel extends javax.swing.JPanel {
 
     private void addDrugButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addDrugButtonActionPerformed
         // TODO add your handling code here:
-        int selectedRow=requestsTable.getSelectedRow();
+        int selectedRow = requestsTable.getSelectedRow();
 
-        if(selectedRow<0)
-        {
+        if (selectedRow < 0) {
             JOptionPane.showMessageDialog(null, "Please select a work request");
             return;
         }
 
-        ProductManagerWorkRequest productManagerWorkRequest=(ProductManagerWorkRequest)requestsTable.getValueAt(selectedRow, 0);
+        ProductManagerWorkRequest productManagerWorkRequest = (ProductManagerWorkRequest) requestsTable.getValueAt(selectedRow, 0);
 
-        if(productManagerWorkRequest.getReceiver()!= null && userAccount == productManagerWorkRequest.getReceiver())
-        {
-            AddDrugJPanel addDrugJPanel=new AddDrugJPanel(userProcessContainer,productManagerWorkRequest,userAccount,network);
-            userProcessContainer.add("test",addDrugJPanel);
+        if (productManagerWorkRequest.getReceiver() != null && userAccount == productManagerWorkRequest.getReceiver()) {
+            AddDrugJPanel addDrugJPanel = new AddDrugJPanel(userProcessContainer, productManagerWorkRequest, userAccount, network);
+            userProcessContainer.add("test", addDrugJPanel);
 
-            CardLayout cardLayout=(CardLayout)userProcessContainer.getLayout();
+            CardLayout cardLayout = (CardLayout) userProcessContainer.getLayout();
             cardLayout.next(userProcessContainer);
-        }
-
-        else
-        {
+        } else {
             JOptionPane.showMessageDialog(this, "Please assign it and then proceed/Task might be assigned to other person");
         }
     }//GEN-LAST:event_addDrugButtonActionPerformed
@@ -241,36 +215,31 @@ public class ViewWorkRequestProductManagerJPanel extends javax.swing.JPanel {
     private void assignButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_assignButtonActionPerformed
         // TODO add your handling code here:
 
-        int row=requestsTable.getSelectedRow();
+        int row = requestsTable.getSelectedRow();
 
-        if(row<0)
-        {
+        if (row < 0) {
             JOptionPane.showMessageDialog(null, "Please select a work request");
             return;
         }
 
-        WorkRequest workRequest=(WorkRequest)requestsTable.getValueAt(row, 0);
+        WorkRequest workRequest = (WorkRequest) requestsTable.getValueAt(row, 0);
 
-        if(workRequest.getReceiver()==null)
-        {
+        if (workRequest.getReceiver() == null) {
 
             workRequest.setReceiver(userAccount);
 
             workRequest.setStatus("Accepted");
 
             Refresh();
-        }
-
-        else
-        {
-            JOptionPane.showMessageDialog(this, "The task is already assogned to other person");
+        } else {
+            JOptionPane.showMessageDialog(this, "The task is already assigned to other person");
         }
     }//GEN-LAST:event_assignButtonActionPerformed
 
     private void backButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backButtonActionPerformed
         // TODO add your handling code here:
         userProcessContainer.remove(this);
-        CardLayout cardLayout=(CardLayout)userProcessContainer.getLayout();
+        CardLayout cardLayout = (CardLayout) userProcessContainer.getLayout();
         cardLayout.previous(userProcessContainer);
     }//GEN-LAST:event_backButtonActionPerformed
 

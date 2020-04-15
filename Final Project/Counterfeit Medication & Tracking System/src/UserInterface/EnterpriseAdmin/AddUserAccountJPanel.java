@@ -19,7 +19,7 @@ import javax.swing.JPanel;
  * @author nived
  */
 public class AddUserAccountJPanel extends javax.swing.JPanel {
-    
+
     JPanel userProcessContainer;
     Network network;
     UserAccount userAccount;
@@ -27,23 +27,22 @@ public class AddUserAccountJPanel extends javax.swing.JPanel {
     /**
      * Creates new form AddUserAccountJPanel
      */
-    public AddUserAccountJPanel(JPanel userProcessContainer,Network network,UserAccount userAccount) {
+    public AddUserAccountJPanel(JPanel userProcessContainer, Network network, UserAccount userAccount) {
         initComponents();
-        this.userProcessContainer=userProcessContainer;
-        this.network=network;
-        this.userAccount=userAccount;
-        
-        
+        this.userProcessContainer = userProcessContainer;
+        this.network = network;
+        this.userAccount = userAccount;
+
         organizationJComboBox.removeAllItems();
-        
-         Enterprise e=network.getEnterpriseDirectory().getMyEnterprise(userAccount);
-        organizationJComboBox.addItem((Organization)e);        
-        for(Organization org : e.getOrganizationDirectory().getOrgList()) {
+
+        Enterprise e = network.getEnterpriseDirectory().getMyEnterprise(userAccount);
+        organizationJComboBox.addItem((Organization) e);
+        for (Organization org : e.getOrganizationDirectory().getOrgList()) {
             organizationJComboBox.addItem(org);
         }
-        
+
         roleJComboBox.removeAllItems();
-        for(Role role : e.getSupportedRoles()) {
+        for (Role role : e.getSupportedRoles()) {
             roleJComboBox.addItem(role);
         }
     }
@@ -113,10 +112,9 @@ public class AddUserAccountJPanel extends javax.swing.JPanel {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(160, 160, 160)
+                        .addGap(178, 178, 178)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addGroup(layout.createSequentialGroup()
                                 .addGap(136, 136, 136)
@@ -140,17 +138,20 @@ public class AddUserAccountJPanel extends javax.swing.JPanel {
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addComponent(roleJComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, 218, javax.swing.GroupLayout.PREFERRED_SIZE))))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(280, 280, 280)
-                        .addComponent(jLabel2))
-                    .addComponent(backJButton, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(268, Short.MAX_VALUE))
+                        .addGap(21, 21, 21)
+                        .addComponent(backJButton, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(185, 185, 185)
+                        .addComponent(jLabel2)))
+                .addGap(268, 268, 268))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(21, 21, 21)
-                .addComponent(jLabel2)
-                .addGap(43, 43, 43)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel2)
+                    .addComponent(backJButton))
+                .addGap(27, 27, 27)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel3)
                     .addComponent(organizationJComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -172,26 +173,22 @@ public class AddUserAccountJPanel extends javax.swing.JPanel {
                     .addComponent(roleJComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addComponent(addUserAccountJButton)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 62, Short.MAX_VALUE)
-                .addComponent(backJButton)
-                .addGap(19, 19, 19))
+                .addGap(113, 113, 113))
         );
     }// </editor-fold>//GEN-END:initComponents
 
     private void addUserAccountJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addUserAccountJButtonActionPerformed
 
-        Organization organization = (Organization)organizationJComboBox.getSelectedItem();
-        Employee employee = (Employee)employeeJComboBox.getSelectedItem();
+        Organization organization = (Organization) organizationJComboBox.getSelectedItem();
+        Employee employee = (Employee) employeeJComboBox.getSelectedItem();
 
-        if(!usernameJTextField.getText().isEmpty() && !passwordJTextField.getText().isEmpty())
-        {
-            if(!network.getEnterpriseDirectory().isUserExisting(usernameJTextField.getText()))
-            {
+        if (!usernameJTextField.getText().isEmpty() && !passwordJTextField.getText().isEmpty()) {
+            if (!network.getEnterpriseDirectory().isUserExisting(usernameJTextField.getText())) {
                 UserAccount ua = organization.getUserAccountDirectory().newAccount();
                 ua.setUserName(usernameJTextField.getText());
                 ua.setPassword(passwordJTextField.getText());
 
-                Role role = (Role)roleJComboBox.getSelectedItem();
+                Role role = (Role) roleJComboBox.getSelectedItem();
                 ua.setRole(role);
 
                 ua.setEmployee(employee);
@@ -200,16 +197,10 @@ public class AddUserAccountJPanel extends javax.swing.JPanel {
 
                 usernameJTextField.setText("");
                 passwordJTextField.setText("");
-            }
-
-            else
-            {
+            } else {
                 JOptionPane.showMessageDialog(this, "User Name already present");
             }
-        }
-
-        else
-        {
+        } else {
 
             JOptionPane.showMessageDialog(this, "UserName/Password cannot be left blank");
         }
@@ -219,11 +210,11 @@ public class AddUserAccountJPanel extends javax.swing.JPanel {
     private void organizationJComboBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_organizationJComboBoxActionPerformed
         // TODO add your handling code here:
 
-        Organization organization = (Organization)organizationJComboBox.getSelectedItem();
+        Organization organization = (Organization) organizationJComboBox.getSelectedItem();
 
-        if(organization != null) {
+        if (organization != null) {
             employeeJComboBox.removeAllItems();
-            for(Employee employee : organization.getEmployeeDirectory().getEmployeeList()) {
+            for (Employee employee : organization.getEmployeeDirectory().getEmployeeList()) {
                 employeeJComboBox.addItem(employee);
             }
         }

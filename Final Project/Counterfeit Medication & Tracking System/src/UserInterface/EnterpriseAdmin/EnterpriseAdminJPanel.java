@@ -75,7 +75,7 @@ public class EnterpriseAdminJPanel extends javax.swing.JPanel {
                         .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING, false)
                             .add(manageUserAccountButton, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .add(manageEmployeeButton, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
-                .addContainerGap(276, Short.MAX_VALUE))
+                .add(276, 276, 276))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
@@ -86,7 +86,7 @@ public class EnterpriseAdminJPanel extends javax.swing.JPanel {
                 .add(manageEmployeeButton)
                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.UNRELATED)
                 .add(manageUserAccountButton)
-                .addContainerGap(184, Short.MAX_VALUE))
+                .add(184, 184, 184))
         );
     }// </editor-fold>//GEN-END:initComponents
 

@@ -101,12 +101,9 @@ public class ManageNetworkJPanel extends javax.swing.JPanel {
         });
         jScrollPane1.setViewportView(networkTable);
 
-        add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(139, 92, -1, 99));
+        add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(72, 92, 610, 130));
+        add(refreshButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(139, 55, 50, 26));
 
-        refreshButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/UserInterface/refresh_button.jpg"))); // NOI18N
-        add(refreshButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(139, 55, 24, 26));
-
-        backButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/UserInterface/backButton.jpg"))); // NOI18N
         backButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 backButtonActionPerformed(evt);

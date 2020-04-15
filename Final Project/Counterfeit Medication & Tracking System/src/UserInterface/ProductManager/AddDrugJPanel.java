@@ -9,7 +9,7 @@ import Business.Enterprise;
 import Business.ManufacturerEnterprise;
 import Business.Network;
 import Business.Organization;
-import Business.ProductManagerWorkRequest;
+import Business.WorkRequests.ProductManagerWorkRequest;
 import Business.UserAccount;
 import java.awt.CardLayout;
 import javax.swing.JOptionPane;
@@ -135,7 +135,7 @@ public class AddDrugJPanel extends javax.swing.JPanel {
         layout.setHorizontalGroup(
             layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
             .add(org.jdesktop.layout.GroupLayout.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap()
                 .add(saveButton)
                 .add(104, 104, 104))
             .add(layout.createSequentialGroup()
@@ -170,7 +170,7 @@ public class AddDrugJPanel extends javax.swing.JPanel {
                             .add(actPriceField, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 132, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
                             .add(drugMgField, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 132, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
                             .add(drugForField, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 132, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))))
-                .add(45, 108, Short.MAX_VALUE))
+                .add(108, 108, 108))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
@@ -207,7 +207,7 @@ public class AddDrugJPanel extends javax.swing.JPanel {
                 .add(saveButton)
                 .add(38, 38, 38)
                 .add(infoLabel)
-                .addContainerGap(44, Short.MAX_VALUE))
+                .add(44, 44, 44))
         );
     }// </editor-fold>//GEN-END:initComponents
 

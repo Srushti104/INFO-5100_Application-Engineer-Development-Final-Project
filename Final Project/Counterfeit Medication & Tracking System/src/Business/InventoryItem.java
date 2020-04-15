@@ -11,18 +11,17 @@ import java.util.Date;
  * @author srush
  */
 public class InventoryItem {
-    
-    
+
     private String drugName;
     private int drugID;
-    private int quantity=0;
+    private int quantity = 0;
     private Date dateOfPurchase;
     private Drug drug;
     private Package1 package1;
 
     public InventoryItem() {
-        
-        dateOfPurchase=new Date();
+
+        dateOfPurchase = new Date();
     }
 
     public Package1 getPackage1() {
@@ -32,8 +31,6 @@ public class InventoryItem {
     public void setPackage1(Package1 package1) {
         this.package1 = package1;
     }
-    
-    
 
     public Drug getDrug() {
         return drug;
@@ -42,10 +39,6 @@ public class InventoryItem {
     public void setDrug(Drug drug) {
         this.drug = drug;
     }
-    
-    
-    
-    
 
     public String getDrugName() {
         return drugName;
@@ -76,14 +69,12 @@ public class InventoryItem {
     }
 
     public void setDateOfPurchase(Date dateOfPurchase) {
-        dateOfPurchase=new Date();
+        dateOfPurchase = new Date();
     }
-    
+
     @Override
-    public String toString()
-    {
+    public String toString() {
         return drug.getDrugName();
     }
-    
-    
+
 }

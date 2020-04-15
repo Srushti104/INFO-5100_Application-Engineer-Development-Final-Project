@@ -4,7 +4,9 @@
  */
 package Business;
 
+import Business.Roles.ManagerRole;
 import Business.Roles.Role;
+import Business.Roles.SalesManagerRole;
 import Business.Roles.WarehouseManagerRole;
 import java.util.ArrayList;
 
@@ -12,27 +14,24 @@ import java.util.ArrayList;
  *
  * @author nived
  */
-public class DistributorEnterprise extends Enterprise{
+public class DistributorEnterprise extends Enterprise {
 
     private WarehouseOrganization warehouseOrganization;
     private SalesManagementOrganization salesManagementOrganization;
-    private AccountingOrganization accountingOrganization;
     private ManagementOrganization managementOrganization;
     private InventoryCatalog inventoryCatalog;
     private DrugCatalog drugCatalog;
-    private int threshold=5;
+    private int threshold = 5;
     private int licenseNumber;
-    
+
     public DistributorEnterprise(String enterpriseName) {
         super(enterpriseName);
-        warehouseOrganization=(WarehouseOrganization)getOrganizationDirectory().newOrganization(Organization.WAREHOUSE);
-        salesManagementOrganization=(SalesManagementOrganization)getOrganizationDirectory().newOrganization(Organization.SALES);
-        accountingOrganization=(AccountingOrganization)getOrganizationDirectory().newOrganization(Organization.ACCOUNTING);
-        managementOrganization=(ManagementOrganization)getOrganizationDirectory().newOrganization(Organization.MANAGEMENT);
-        drugCatalog=new DrugCatalog();
-        inventoryCatalog=new InventoryCatalog();
-    
-    
+        warehouseOrganization = (WarehouseOrganization) getOrganizationDirectory().newOrganization(Organization.WAREHOUSE);
+        salesManagementOrganization = (SalesManagementOrganization) getOrganizationDirectory().newOrganization(Organization.SALES);
+        managementOrganization = (ManagementOrganization) getOrganizationDirectory().newOrganization(Organization.MANAGEMENT);
+        drugCatalog = new DrugCatalog();
+        inventoryCatalog = new InventoryCatalog();
+
     }
 
     public WarehouseOrganization getWarehouseOrganization() {
@@ -49,14 +48,6 @@ public class DistributorEnterprise extends Enterprise{
 
     public void setSalesManagementOrganization(SalesManagementOrganization salesManagementOrganization) {
         this.salesManagementOrganization = salesManagementOrganization;
-    }
-
-    public AccountingOrganization getAccountingOrganization() {
-        return accountingOrganization;
-    }
-
-    public void setAccountingOrganization(AccountingOrganization accountingOrganization) {
-        this.accountingOrganization = accountingOrganization;
     }
 
     public ManagementOrganization getManagementOrganization() {
@@ -99,21 +90,14 @@ public class DistributorEnterprise extends Enterprise{
         this.licenseNumber = licenseNumber;
     }
 
-    
-    
-    
     @Override
     public ArrayList<Role> getSupportedRoles() {
-        
-        
+
         ArrayList<Role> roles = new ArrayList<Role>();
         roles.add(new WarehouseManagerRole());
-       
-        
-        return roles; 
+        roles.add(new SalesManagerRole());
+        roles.add(new ManagerRole());
+        return roles;
     }
-    
-    
-    
-    
+
 }

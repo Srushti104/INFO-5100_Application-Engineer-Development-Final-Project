@@ -11,15 +11,14 @@ import java.util.ArrayList;
  * @author nived
  */
 public class InventoryCatalog {
-    
-    
-     ArrayList<InventoryItem> inventoryList;
-     ArrayList<InventoryItem> package1List;
+
+    ArrayList<InventoryItem> inventoryList;
+    ArrayList<InventoryItem> package1List;
 
     public InventoryCatalog() {
-        
-        inventoryList=new ArrayList<InventoryItem>();
-        package1List=new ArrayList<InventoryItem>();
+
+        inventoryList = new ArrayList<InventoryItem>();
+        package1List = new ArrayList<InventoryItem>();
     }
 
     public ArrayList<InventoryItem> getInventoryList() {
@@ -30,66 +29,51 @@ public class InventoryCatalog {
         return package1List;
     }
 
-   
-    public InventoryItem newSuspectedDrug(Package1 package1)
-    {
-        InventoryItem inventoryItem1=new InventoryItem();
+    public InventoryItem newSuspectedDrug(Package1 package1) {
+        InventoryItem inventoryItem1 = new InventoryItem();
         inventoryList.add(inventoryItem1);
         inventoryItem1.setPackage1(package1);
-      
+
         return inventoryItem1;
     }
-    
-    public InventoryItem newInventoryItem(Package1 package1)
-    {
-        InventoryItem inventoryItem=new InventoryItem();
+
+    public InventoryItem newInventoryItem(Package1 package1) {
+        InventoryItem inventoryItem = new InventoryItem();
         inventoryList.add(inventoryItem);
         inventoryItem.setPackage1(package1);
-      
+
         return inventoryItem;
     }
-    
-    public void deleteInventoryItem(InventoryItem inventoryItem)
-    {
+
+    public void deleteInventoryItem(InventoryItem inventoryItem) {
         inventoryList.remove(inventoryItem);
     }
-    
-     
-    public int getTotalInventory(Drug drug)
-    {
-        int totQuantity=0;
-        
-        
-        
-        for(InventoryItem inventoryItem:inventoryList)
-        {
-            
-            if(inventoryItem.getPackage1().getDrug()== drug)
-            {
-                totQuantity=totQuantity+inventoryItem.getQuantity();
+
+    public int getTotalInventory(Drug drug) {
+        int totQuantity = 0;
+
+        for (InventoryItem inventoryItem : inventoryList) {
+
+            if (inventoryItem.getPackage1().getDrug() == drug) {
+                totQuantity = totQuantity + inventoryItem.getQuantity();
             }
         }
-        
+
         return totQuantity;
     }
-   
-    
-    public int getTotalQuantity(Drug drug)
-            {
-                
-                int tquant=0;
-                
-                for(InventoryItem inventoryItem:inventoryList)
-                {
-                   if( inventoryItem.getPackage1().getDrug()== drug && inventoryItem.getPackage1().getPackageStatus()!="Illegetimate Drug")
-                   {
-                   
-                       tquant++;
-                   }
-                }
-                
-                
-                return tquant;
+
+    public int getTotalQuantity(Drug drug) {
+
+        int tquant = 0;
+
+        for (InventoryItem inventoryItem : inventoryList) {
+            if (inventoryItem.getPackage1().getDrug() == drug && inventoryItem.getPackage1().getPackageStatus() != "Illegetimate Drug") {
+
+                tquant++;
             }
-    
+        }
+
+        return tquant;
+    }
+
 }

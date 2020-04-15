@@ -9,23 +9,22 @@ package Business;
  * @author srush
  */
 public abstract class Organization {
-    
-    
-    public static final String PRODUCCT="Product Management Organization";
-    public static final String INVENTORY="Inventory Management Organization";
-    public static final String INSPECTING="Inspecting Organization";
-    public static final String SALES="Sales Management Organization";
-    public static final String SHIPPING="Shipping management Organization";
-    public static final String ADMIN="Admin";
-    public static final String LICENSING="Licensing Organization";
-    public static final String WAREHOUSE="Warehouse Organization";
-    public static final String RETURNS="Returns Processor Organization";
-    public static final String DRUGTESTING="Drug Testing Organization";
-    public static final String MANAGEMENT="Management Organization";
-    public static final String EMERGENCY="Emergency Handling Organization";
-    public static final String ACCOUNTING="Accounting Organization";
+
+    public static final String PRODUCT = "Product Management Organization";
+    public static final String INVENTORY = "Inventory Management Organization";
+    public static final String INSPECTING = "Inspecting Organization";
+    public static final String SALES = "Sales Management Organization";
+    public static final String SHIPPING = "Shipping management Organization";
+    public static final String ADMIN = "Admin";
+    public static final String LICENSING = "Licensing Organization";
+    public static final String WAREHOUSE = "Warehouse Organization";
+    public static final String RETURNS = "Returns Processor Organization";
+    public static final String DRUGTESTING = "Drug Testing Organization";
+    public static final String MANAGEMENT = "Management Organization";
+    public static final String EMERGENCY = "Emergency Handling Organization";
+    public static final String ACCOUNTING = "Accounting Organization";
     private String organizationName;
-    
+
     UserAccountDirectory userAccountDirectory;
     private EmployeeDirectory employeeDirectory;
     private WorkQueue workQueue;
@@ -33,11 +32,11 @@ public abstract class Organization {
 
     public Organization(String organizationName) {
         this.organizationName = organizationName;
-        
-        userAccountDirectory=new UserAccountDirectory();
-        employeeDirectory=new EmployeeDirectory();
-        workQueue=new WorkQueue();
-        sentWorkQueue=new WorkQueue();
+
+        userAccountDirectory = new UserAccountDirectory();
+        employeeDirectory = new EmployeeDirectory();
+        workQueue = new WorkQueue();
+        sentWorkQueue = new WorkQueue();
     }
 
     public String getOrganizationName() {
@@ -48,8 +47,6 @@ public abstract class Organization {
         this.organizationName = organizationName;
     }
 
-    
-    
     public UserAccountDirectory getUserAccountDirectory() {
         return userAccountDirectory;
     }
@@ -74,18 +71,9 @@ public abstract class Organization {
         this.sentWorkQueue = sentWorkQueue;
     }
 
-    
-    
-    
-    
-    
-    public String toString()
-    {
-        
+    public String toString() {
+
         return organizationName;
     }
-    
-    
-    
-    
+
 }
