@@ -1,23 +1,27 @@
 /*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
+ * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
 package Business.Views;
 
 import Business.Business;
 import Business.UserAccount;
-import UserInterface.DWarehouseManager.WarehouseAdminJPanel;
+import UserInterface.WarehouseManager.WarehouseManagerJPanel;
 import javax.swing.JPanel;
 
 /**
  *
- * @author srush
+ * @author bobba
  */
 public class WarehouseManagerView extends View{
-    
+
     public WarehouseManagerView(JPanel userProcessContainer,Business business,UserAccount userAccount) {
-    viewPanel = new WarehouseAdminJPanel(userProcessContainer,business,userAccount);
-    
+        
+        
+        viewPanel=new WarehouseManagerJPanel(userProcessContainer,business,userAccount);
     }
+    
+    
+    
+    
 }
