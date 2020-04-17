@@ -1,5 +1,6 @@
 /*
- * To change this template, choose Tools | Templates
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
 package UserInterface.Manager;
@@ -7,34 +8,29 @@ package UserInterface.Manager;
 import Business.Business;
 import Business.DistributorEnterprise;
 import Business.Enterprise;
-import Business.ManufacturerEnterprise;
 import Business.Network;
 import Business.Organization;
 import Business.UserAccount;
-import UserInterface.ProductManager.ViewSentWorkRequestsJPanel;
-import UserInterface.ProductManager.ViewWorkRequestProductManagerJPanel;
 import java.awt.CardLayout;
 import javax.swing.JPanel;
 
 /**
  *
- * @author bobba
+ * @author nived
  */
 public class ManagerJPanel extends javax.swing.JPanel {
-    
-    JPanel userProcessContainer;
-    Business business;
-    UserAccount userAccount;
 
     /**
      * Creates new form ManagerJPanel
      */
+    JPanel userProcessContainer;
+    Business business;
+    UserAccount userAccount;
     public ManagerJPanel(JPanel userProcessContainer, Business business, UserAccount userAccount) {
         initComponents();
         this.userProcessContainer=userProcessContainer;
         this.business=business;
         this.userAccount=userAccount;
-        managerLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/UserInterface/manager.jpg")));
     }
 
     /**
@@ -50,9 +46,6 @@ public class ManagerJPanel extends javax.swing.JPanel {
         sentRequestButton = new javax.swing.JButton();
         workRequestButton = new javax.swing.JButton();
         requestLicenseButton = new javax.swing.JButton();
-        managerLabel = new javax.swing.JLabel();
-
-        setBackground(new java.awt.Color(204, 255, 255));
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jLabel1.setText("Manager Work Area");
@@ -78,131 +71,115 @@ public class ManagerJPanel extends javax.swing.JPanel {
             }
         });
 
-        org.jdesktop.layout.GroupLayout layout = new org.jdesktop.layout.GroupLayout(this);
+        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
-            layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-            .add(layout.createSequentialGroup()
-                .addContainerGap()
-                .add(managerLabel, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 355, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED, 83, Short.MAX_VALUE)
-                .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-                    .add(org.jdesktop.layout.GroupLayout.TRAILING, layout.createSequentialGroup()
-                        .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.TRAILING, false)
-                            .add(workRequestButton, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .add(requestLicenseButton, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .add(sentRequestButton, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                        .add(120, 120, 120))
-                    .add(org.jdesktop.layout.GroupLayout.TRAILING, layout.createSequentialGroup()
-                        .add(jLabel1)
-                        .add(130, 130, 130))))
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(123, 123, 123)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(sentRequestButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jLabel1)
+                    .addComponent(workRequestButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(requestLicenseButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(122, 122, 122))
         );
         layout.setVerticalGroup(
-            layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-            .add(layout.createSequentialGroup()
-                .add(14, 14, 14)
-                .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-                    .add(layout.createSequentialGroup()
-                        .add(jLabel1)
-                        .add(24, 24, 24)
-                        .add(sentRequestButton)
-                        .add(18, 18, 18)
-                        .add(workRequestButton)
-                        .add(18, 18, 18)
-                        .add(requestLicenseButton)
-                        .add(0, 135, Short.MAX_VALUE))
-                    .add(managerLabel, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap())
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(34, 34, 34)
+                .addComponent(jLabel1)
+                .addGap(35, 35, 35)
+                .addComponent(sentRequestButton)
+                .addGap(18, 18, 18)
+                .addComponent(workRequestButton)
+                .addGap(18, 18, 18)
+                .addComponent(requestLicenseButton)
+                .addGap(109, 109, 109))
         );
     }// </editor-fold>//GEN-END:initComponents
-
-    private void requestLicenseButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_requestLicenseButtonActionPerformed
-        // TODO add your handling code here:
-        
-         for(Network network:business.getNetworkDirectory().getNetworkList())
-        {
-            for(Enterprise enterprise:network.getEnterpriseDirectory().getEnterpriseList())
-            {
-                for(Organization organization:enterprise.getOrganizationDirectory().getOrgList())
-                {
-            for(UserAccount userAccount1:organization.getUserAccountDirectory().getUserAccountList())
-            {
-                if(userAccount== userAccount1){
-                    RequestLicenseJPanel requestLicenseJPanel=new RequestLicenseJPanel(userProcessContainer,network,userAccount);
-                    userProcessContainer.add("RequestLicense",requestLicenseJPanel);
-                    CardLayout cardLayout=(CardLayout)userProcessContainer.getLayout();
-                    cardLayout.next(userProcessContainer);
-                    
-                    
-                    
-                    
-                }
-                    
-                    
-            }
-            }
-        }
-        }
-    }//GEN-LAST:event_requestLicenseButtonActionPerformed
-
-    private void workRequestButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_workRequestButtonActionPerformed
-        // TODO add your handling code here:
-        
-          for(Network network:business.getNetworkDirectory().getNetworkList())
-        {
-            for(Enterprise enterprise:network.getEnterpriseDirectory().getEnterpriseList())
-                
-            {
-                for(Organization organization:enterprise.getOrganizationDirectory().getOrgList())
-                {
-                for(UserAccount userAccount1:organization.getUserAccountDirectory().getUserAccountList())
-                {
-                    if(userAccount == userAccount1){
-                        ViewWorkRequestsJPanel viewWorkRequestsJPanel=new ViewWorkRequestsJPanel(userProcessContainer,network,userAccount);
-                        userProcessContainer.add("Viewsentwork",viewWorkRequestsJPanel);
-                        CardLayout cardLayout=(CardLayout)userProcessContainer.getLayout();
-                        cardLayout.next(userProcessContainer);
-
-                    }
-
-                }
-            }
-        }
-        }
-
-    }//GEN-LAST:event_workRequestButtonActionPerformed
 
     private void sentRequestButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_sentRequestButtonActionPerformed
         // TODO add your handling code here:
         for(Network network:business.getNetworkDirectory().getNetworkList())
         {
-        for(Enterprise enterprise:network.getEnterpriseDirectory().getEnterpriseList())
-        {
-            
-        for(Organization organization:enterprise.getOrganizationDirectory().getOrgList())
-        {
-            for(UserAccount userAccount1:organization.getUserAccountDirectory().getUserAccountList())
+            for(Enterprise enterprise:network.getEnterpriseDirectory().getEnterpriseList())
             {
-                if(userAccount==userAccount1)
+
+                for(Organization organization:enterprise.getOrganizationDirectory().getOrgList())
                 {
-        
-        
-        DistributorEnterprise e=(DistributorEnterprise)network.getEnterpriseDirectory().getMyEnterprise(userAccount);
-        Organization org=e.getManagementOrganization();
-        ViewSentWorkRequestsForDistributor viewSentWorkRequestsForDistributor=new ViewSentWorkRequestsForDistributor(userProcessContainer,org.getSentWorkQueue());
-        userProcessContainer.add("ViewSentWorkreqDis", viewSentWorkRequestsForDistributor);
-        CardLayout cardLayout = (CardLayout) userProcessContainer.getLayout();
-        cardLayout.next(userProcessContainer);
+                    for(UserAccount userAccount1:organization.getUserAccountDirectory().getUserAccountList())
+                    {
+                        if(userAccount==userAccount1)
+                        {
+
+                            DistributorEnterprise e=(DistributorEnterprise)network.getEnterpriseDirectory().getMyEnterprise(userAccount);
+                            Organization org=e.getManagementOrganization();
+                            ViewSentWorkRequestsForDistributor viewSentWorkRequestsForDistributor=new ViewSentWorkRequestsForDistributor(userProcessContainer,org.getSentWorkQueue());
+                            userProcessContainer.add("ViewSentWorkreqDis", viewSentWorkRequestsForDistributor);
+                            CardLayout cardLayout = (CardLayout) userProcessContainer.getLayout();
+                            cardLayout.next(userProcessContainer);
+                        }
+                    }
                 }
             }
         }
-        }
-        }
     }//GEN-LAST:event_sentRequestButtonActionPerformed
+
+    private void workRequestButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_workRequestButtonActionPerformed
+        // TODO add your handling code here:
+
+        for(Network network:business.getNetworkDirectory().getNetworkList())
+        {
+            for(Enterprise enterprise:network.getEnterpriseDirectory().getEnterpriseList())
+
+            {
+                for(Organization organization:enterprise.getOrganizationDirectory().getOrgList())
+                {
+                    for(UserAccount userAccount1:organization.getUserAccountDirectory().getUserAccountList())
+                    {
+                        if(userAccount == userAccount1){
+                            ViewWorkRequestsJPanel viewWorkRequestsJPanel=new ViewWorkRequestsJPanel(userProcessContainer,network,userAccount);
+                            userProcessContainer.add("Viewsentwork",viewWorkRequestsJPanel);
+                            CardLayout cardLayout=(CardLayout)userProcessContainer.getLayout();
+                            cardLayout.next(userProcessContainer);
+
+                        }
+
+                    }
+                }
+            }
+        }
+    }//GEN-LAST:event_workRequestButtonActionPerformed
+
+    private void requestLicenseButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_requestLicenseButtonActionPerformed
+        // TODO add your handling code here:
+
+        for(Network network:business.getNetworkDirectory().getNetworkList())
+        {
+            for(Enterprise enterprise:network.getEnterpriseDirectory().getEnterpriseList())
+            {
+                for(Organization organization:enterprise.getOrganizationDirectory().getOrgList())
+                {
+                    for(UserAccount userAccount1:organization.getUserAccountDirectory().getUserAccountList())
+                    {
+                        if(userAccount== userAccount1){
+                            RequestLicenseJPanel requestLicenseJPanel=new RequestLicenseJPanel(userProcessContainer,network,userAccount);
+                            userProcessContainer.add("RequestLicense",requestLicenseJPanel);
+                            CardLayout cardLayout=(CardLayout)userProcessContainer.getLayout();
+                            cardLayout.next(userProcessContainer);
+
+                        }
+
+                    }
+                }
+            }
+        }
+    }//GEN-LAST:event_requestLicenseButtonActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel managerLabel;
     private javax.swing.JButton requestLicenseButton;
     private javax.swing.JButton sentRequestButton;
     private javax.swing.JButton workRequestButton;

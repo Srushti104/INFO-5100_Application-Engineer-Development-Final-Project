@@ -85,7 +85,6 @@ public class ViewSentWorkRequestsJPanel extends javax.swing.JPanel {
         });
         jScrollPane1.setViewportView(sentWorkRequestJTable);
 
-        backButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/UserInterface/backButton.jpg"))); // NOI18N
         backButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 backButtonActionPerformed(evt);

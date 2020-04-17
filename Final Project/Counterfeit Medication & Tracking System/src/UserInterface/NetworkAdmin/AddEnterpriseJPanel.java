@@ -42,7 +42,7 @@ public class AddEnterpriseJPanel extends javax.swing.JPanel {
         enterpriseTypeComboBox.addItem(Enterprise.MANUFACTURER);
         enterpriseTypeComboBox.addItem(Enterprise.DISTRIBUTOR);
         enterpriseTypeComboBox.addItem(Enterprise.HOSPITAL);
-//        enterpriseTypeComboBox.addItem(Enterprise.STATEREGULATORYAFFAIRS);
+        enterpriseTypeComboBox.addItem(Enterprise.STATEREGULATORYAFFAIRS);
 //        enterpriseTypeComboBox.addItem(Enterprise.LAWENFORCEMENTUNIT);
 
     }

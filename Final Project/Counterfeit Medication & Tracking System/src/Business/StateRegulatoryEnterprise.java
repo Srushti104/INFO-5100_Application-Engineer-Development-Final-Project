@@ -44,8 +44,5 @@ public class StateRegulatoryEnterprise extends Enterprise{
         roles.add(new LicenseInspectorRole());
         return roles;   
     }
-    
-    
-    
-    
+ 
 }
