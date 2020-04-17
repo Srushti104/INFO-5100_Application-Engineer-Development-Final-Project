@@ -9,6 +9,7 @@ import Business.Drug;
 import Business.Enterprise;
 import Business.LotOfDrug;
 import Business.Network;
+import Business.Order;
 //import Business.Order;
 import Business.Organization;
 import Business.Package1;
@@ -143,14 +144,12 @@ public class ViewReceivedOrderJPanel extends javax.swing.JPanel {
         });
         jScrollPane1.setViewportView(requestsTable);
 
-        refreshButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/UserInterface/refresh_button.jpg"))); // NOI18N
         refreshButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 refreshButtonActionPerformed(evt);
             }
         });
 
-        backButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/UserInterface/backButton.jpg"))); // NOI18N
         backButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 backButtonActionPerformed(evt);
@@ -247,16 +246,47 @@ public class ViewReceivedOrderJPanel extends javax.swing.JPanel {
 
     private void addDrugButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addDrugButtonActionPerformed
         // TODO add your handling code here:
-        int selectedRow = requestsTable.getSelectedRow();
+        int selectedRow=requestsTable.getSelectedRow();
 
-        if (selectedRow < 0) {
+        if(selectedRow<0)
+        {
             JOptionPane.showMessageDialog(null, "Please select a work request");
             return;
         }
 
-        WarehouseManagerWorkRequest wareHouseManagerWorkRequest = (WarehouseManagerWorkRequest) requestsTable.getValueAt(selectedRow, 0);
+        WarehouseManagerWorkRequest wareHouseManagerWorkRequest=(WarehouseManagerWorkRequest)requestsTable.getValueAt(selectedRow, 0);
 
+        if(wareHouseManagerWorkRequest.getReceiver()!= null && userAccount == wareHouseManagerWorkRequest.getReceiver())
+        {
+            for(Enterprise enterprise:network.getEnterpriseDirectory().getEnterpriseList())
+            {
+                if(enterprise.getClass().equals(DistributorEnterprise.class))
+                {
+                    DistributorEnterprise distributorEnterprise=(DistributorEnterprise)enterprise;
+                                        
+                    int q=wareHouseManagerWorkRequest.getQuantity();
+                    
+                    Order ord=wareHouseManagerWorkRequest.getOrder();
+                    
+                    for(LotOfDrug lotOfDrug:ord.getLotOfDrugsList())
+                    {
+                    for(Package1 p:lotOfDrug.getPackageList())
+                    {
+                        distributorEnterprise.getInventoryCatalog().newInventoryItem(p);
+                        addDrugButton.setEnabled(false);
+                    }
+                    
+                    }
+                    
+                    JOptionPane.showMessageDialog(null,"Drugs added to Inventory");
+                }
+            }
+        }
 
+        else
+        {
+            JOptionPane.showMessageDialog(this, "Please assign it and then proceed/Task might be assigned to other person");
+        }
     }//GEN-LAST:event_addDrugButtonActionPerformed
 
     private void refreshButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_refreshButtonActionPerformed

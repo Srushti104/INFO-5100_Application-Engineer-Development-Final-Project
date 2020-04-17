@@ -15,7 +15,7 @@ import javax.swing.JPanel;
  */
 public class ProductManagerView extends View{
 
-    public ProductManagerView(JPanel userProcessContainer, Business business, UserAccount userAccount) {
+    public ProductManagerView(JPanel userProcessContainer,Business business, UserAccount userAccount) {
         
         viewPanel=new ProductManagerJPanel(userProcessContainer,business,userAccount);
     }

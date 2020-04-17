@@ -172,7 +172,6 @@ public class ViewOrdersJPanel extends javax.swing.JPanel {
         jLabel1.setText("View Order Requests");
         add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(321, 11, -1, -1));
 
-        refreshButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/UserInterface/refresh_button.jpg"))); // NOI18N
         refreshButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 refreshButtonActionPerformed(evt);
@@ -180,7 +179,6 @@ public class ViewOrdersJPanel extends javax.swing.JPanel {
         });
         add(refreshButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(123, 63, 24, 23));
 
-        backButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/UserInterface/backButton.jpg"))); // NOI18N
         backButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 backButtonActionPerformed(evt);
@@ -286,15 +284,15 @@ public class ViewOrdersJPanel extends javax.swing.JPanel {
 
                     for (int j = 0; j < 5 && i > 0; j++) {
                         Package1 p = new Package1();
-                        Transaction transaction = network.getTransactionHistory().newTransaction();
+                        //Transaction transaction = network.getTransactionHistory().newTransaction();
                         p.setDrug(salesManagerWorkRequest.getDrug());
                         p.setManuLotID(lotOfDrug.getLotID());
                         p.setPackageStatus("Normal");
                         lotOfDrug.addPackage(p);
-                        transaction.setPackage(p);
-                        transaction.setManufacturerEnterprise(manufacturerEnterprise);
-                        transaction.setTransactionStatus("Sold");
-                        transaction.setDistributorEnterprise(distributorEnterprise);
+                       // transaction.setPackage(p);
+                       // transaction.setManufacturerEnterprise(manufacturerEnterprise);
+                       // transaction.setTransactionStatus("Sold");
+                        //transaction.setDistributorEnterprise(distributorEnterprise);
 
                         i--;
                     }
