@@ -4,6 +4,7 @@
  */
 package Business;
 
+import Business.Roles.DrugTesterRole;
 import Business.Roles.LicenseInspectorRole;
 import Business.Roles.Role;
 import java.util.ArrayList;
@@ -54,6 +55,7 @@ public class FDAEnterprise extends Enterprise {
     public ArrayList<Role> getSupportedRoles() {
         ArrayList<Role> roles = new ArrayList<Role>();
         roles.add(new LicenseInspectorRole());
+        roles.add(new DrugTesterRole());
         return roles;
 
     }
