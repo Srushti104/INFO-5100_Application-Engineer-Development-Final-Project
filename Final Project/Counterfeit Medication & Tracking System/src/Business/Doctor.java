@@ -9,20 +9,18 @@ package Business;
  * @author srush
  */
 public class Doctor extends Person {
-    
+
     private String hsopName;
     private String dateVisit;
     DrugCatalog drugCatalog;
 
     public Doctor() {
-        drugCatalog=new DrugCatalog();
+        drugCatalog = new DrugCatalog();
     }
 
     public DrugCatalog getDrugCatalog() {
         return drugCatalog;
     }
-    
-    
 
     public String getHsopName() {
         return hsopName;
@@ -39,8 +37,5 @@ public class Doctor extends Person {
     public void setDateVisit(String dateVisit) {
         this.dateVisit = dateVisit;
     }
-    
-    
-    
-    
+
 }

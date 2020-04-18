@@ -13,6 +13,7 @@ import Business.Order;
 //import Business.Order;
 import Business.Organization;
 import Business.Package1;
+import Business.Transaction;
 import Business.UserAccount;
 import Business.WorkRequests.WarehouseManagerWorkRequest;
 import Business.WorkRequests.WorkRequest;
@@ -78,7 +79,7 @@ public class ViewReceivedOrderJPanel extends javax.swing.JPanel {
             row[3] = workRequest.getStatus();
             row[4] = wareHouseManagerWorkRequest.getDrug();
             row[5] = wareHouseManagerWorkRequest.getQuantity();
-            //   row[6]=wareHouseManagerWorkRequest.getOrder();
+            row[6] = wareHouseManagerWorkRequest.getOrder();
             //  row[4]=workRequest.getDrugName();
             //  row[5]=workRequest.getQuantity();
 
@@ -135,7 +136,7 @@ public class ViewReceivedOrderJPanel extends javax.swing.JPanel {
             }
         ) {
             boolean[] canEdit = new boolean [] {
-                false, false, false, false, false, true, false
+                false, false, false, false, false, true, true
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
@@ -240,51 +241,42 @@ public class ViewReceivedOrderJPanel extends javax.swing.JPanel {
             //addDrugButton.setEnabled(true);
             Refresh();
         } else {
-            JOptionPane.showMessageDialog(this, "The task is already assogned to other person");
+            JOptionPane.showMessageDialog(this, "The task is already assigned to other person");
         }
     }//GEN-LAST:event_assignButtonActionPerformed
 
     private void addDrugButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addDrugButtonActionPerformed
         // TODO add your handling code here:
-        int selectedRow=requestsTable.getSelectedRow();
+        int selectedRow = requestsTable.getSelectedRow();
 
-        if(selectedRow<0)
-        {
+        if (selectedRow < 0) {
             JOptionPane.showMessageDialog(null, "Please select a work request");
             return;
         }
 
-        WarehouseManagerWorkRequest wareHouseManagerWorkRequest=(WarehouseManagerWorkRequest)requestsTable.getValueAt(selectedRow, 0);
+        WarehouseManagerWorkRequest wareHouseManagerWorkRequest = (WarehouseManagerWorkRequest) requestsTable.getValueAt(selectedRow, 0);
 
-        if(wareHouseManagerWorkRequest.getReceiver()!= null && userAccount == wareHouseManagerWorkRequest.getReceiver())
-        {
-            for(Enterprise enterprise:network.getEnterpriseDirectory().getEnterpriseList())
-            {
-                if(enterprise.getClass().equals(DistributorEnterprise.class))
-                {
-                    DistributorEnterprise distributorEnterprise=(DistributorEnterprise)enterprise;
-                                        
-                    int q=wareHouseManagerWorkRequest.getQuantity();
-                    
-                    Order ord=wareHouseManagerWorkRequest.getOrder();
-                    
-                    for(LotOfDrug lotOfDrug:ord.getLotOfDrugsList())
-                    {
-                    for(Package1 p:lotOfDrug.getPackageList())
-                    {
-                        distributorEnterprise.getInventoryCatalog().newInventoryItem(p);
-                        addDrugButton.setEnabled(false);
+        if (wareHouseManagerWorkRequest.getReceiver() != null && userAccount == wareHouseManagerWorkRequest.getReceiver()) {
+            for (Enterprise enterprise : network.getEnterpriseDirectory().getEnterpriseList()) {
+                if (enterprise.getClass().equals(DistributorEnterprise.class)) {
+                    DistributorEnterprise distributorEnterprise = (DistributorEnterprise) enterprise;
+
+                    int q = wareHouseManagerWorkRequest.getQuantity();
+
+                    Order ord = wareHouseManagerWorkRequest.getOrder();
+
+                    for (LotOfDrug lotOfDrug : ord.getLotOfDrugsList()) {
+                        for (Package1 p : lotOfDrug.getPackageList()) {
+                            distributorEnterprise.getInventoryCatalog().newInventoryItem(p);
+                            addDrugButton.setEnabled(false);
+                        }
+
                     }
-                    
-                    }
-                    
-                    JOptionPane.showMessageDialog(null,"Drugs added to Inventory");
+
+                    JOptionPane.showMessageDialog(null, "Drugs added to Inventory");
                 }
             }
-        }
-
-        else
-        {
+        } else {
             JOptionPane.showMessageDialog(this, "Please assign it and then proceed/Task might be assigned to other person");
         }
     }//GEN-LAST:event_addDrugButtonActionPerformed
@@ -313,60 +305,42 @@ public class ViewReceivedOrderJPanel extends javax.swing.JPanel {
 
         WarehouseManagerWorkRequest wareHouseManagerWorkRequest = (WarehouseManagerWorkRequest) requestsTable.getValueAt(selectedRow, 0);
 
-//        for(Transaction transaction:network.getTransactionHistory().getTransactionList())
-//        {
-//            Order ord=wareHouseManagerWorkRequest.getOrder();
-//                    
-//                    
-//                    for(LotOfDrug lotOfDrug:ord.getLotOfDrugsList())
-//                    {
-//                     
-//                    
-//                    for(Package1 p:lotOfDrug.getPackageList())
-//                    {
-//                       if(transaction.getPackage1().getPackageID()== p.getPackageID())
-//                       {
-//                           if(transaction.getManufacturerEnterprise() == null || transaction.getDistributorEnterprise() == null)
-//                           {
-//                               JOptionPane.showMessageDialog(null,"Drugs are suspected");
-//                               addDrugButton.setEnabled(false);
-//                               viewSuspectDrugsButton.setVisible(true);
-//                               //viewSuspectDrugsButton.setVisible(true);
-//                               p.setPackageStatus("Suspect Drug");
-//                              
-//                               viewSuspectDrugsButton.setEnabled(true);
-//                               int lotid=p.getDisLotID();
-//                               
-//                               for(Package1 p1:lotOfDrug.getPackageList())
-//                               {
-//                                   if(p1.getDisLotID()== lotid)
-//                                   {
-//                                       p1.setPackageStatus("Suspect Drug");
-//                                       
-//                                   }
-//                               }
-//                                       
-//                               
-//                               
-//                               
-//                           }
-//                           
-//                           else if(transaction.getManufacturerEnterprise() != null && transaction.getManufacturerEnterprise().getLicenseNumber() == 0)
-//                           {
-//                               JOptionPane.showMessageDialog(null,"Not a licensed manufacturer,drugs are not safe");
-//                           }
-//                           
-//                           
-//                    }
-//                       
-//                       
-//                    }
-//
-//                    
-//            }
-//            
-//        }
-//        
+        for (Transaction transaction : network.getTransactionHistory().getTransactionList()) {
+            Order ord = wareHouseManagerWorkRequest.getOrder();
+
+            for (LotOfDrug lotOfDrug : ord.getLotOfDrugsList()) {
+
+                for (Package1 p : lotOfDrug.getPackageList()) {
+                    if (transaction.getPackage().getPackageID() == p.getPackageID()) {
+                        if (transaction.getManufacturerEnterprise() == null || transaction.getDistributorEnterprise() == null) {
+                            JOptionPane.showMessageDialog(null, "Drugs are suspected");
+                            addDrugButton.setEnabled(false);
+                            viewSuspectDrugsButton.setVisible(true);
+                            //viewSuspectDrugsButton.setVisible(true);
+                            p.setPackageStatus("Suspect Drug");
+
+                            viewSuspectDrugsButton.setEnabled(true);
+                            int lotid = p.getDisLotID();
+
+                            for (Package1 p1 : lotOfDrug.getPackageList()) {
+                                if (p1.getDisLotID() == lotid) {
+                                    p1.setPackageStatus("Suspect Drug");
+
+                                }
+                            }
+
+                        } else if (transaction.getManufacturerEnterprise() != null && transaction.getManufacturerEnterprise().getLicenseNumber() == 0) {
+                            JOptionPane.showMessageDialog(null, "Not a licensed manufacturer,drugs are not safe");
+                        }
+
+                    }
+
+                }
+
+            }
+
+        }
+
         addDrugButton.setEnabled(true);
         //   JOptionPane.showMessageDialog(null,"drugs are safe");
 

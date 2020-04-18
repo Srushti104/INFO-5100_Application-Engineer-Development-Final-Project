@@ -17,7 +17,7 @@ public class Network extends Enterprise {
     private String networkName;
     public static int count = 0;
     EnterpriseDirectory enterpriseDirectory;
-    TransactionHistory TransactionHistory;
+    TransactionHistory transactionHistory;
 
     public Network() {
 
@@ -25,6 +25,7 @@ public class Network extends Enterprise {
         count++;
         networkID = count;
         enterpriseDirectory = new EnterpriseDirectory();
+         transactionHistory=new TransactionHistory();
     }
 
     public EnterpriseDirectory getEnterpriseDirectory() {
@@ -52,13 +53,14 @@ public class Network extends Enterprise {
     }
 
     public TransactionHistory getTransactionHistory() {
-        return TransactionHistory;
+        return transactionHistory;
     }
 
-    public void setTransationHistory(TransactionHistory transactionHistory) {
-        this.TransactionHistory = transactionHistory;
+    public void setTransactionHistory(TransactionHistory transactionHistory) {
+        this.transactionHistory = transactionHistory;
     }
 
+   
     @Override
     public ArrayList<Role> getSupportedRoles() {
         throw new UnsupportedOperationException("Not supported yet.");

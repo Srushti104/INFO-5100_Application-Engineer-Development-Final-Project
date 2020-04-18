@@ -52,7 +52,7 @@ public class ProductManagerJPanel extends javax.swing.JPanel {
         sentRequestButton = new javax.swing.JButton();
         requestLicenseButton = new javax.swing.JButton();
         workRequestButton = new javax.swing.JButton();
-        jButton1 = new javax.swing.JButton();
+        addDrugsBtn = new javax.swing.JButton();
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jLabel1.setText("Product Manager Work Area");
@@ -78,10 +78,10 @@ public class ProductManagerJPanel extends javax.swing.JPanel {
             }
         });
 
-        jButton1.setText("Add Drugs");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        addDrugsBtn.setText("Add Drugs");
+        addDrugsBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                addDrugsBtnActionPerformed(evt);
             }
         });
 
@@ -99,7 +99,7 @@ public class ProductManagerJPanel extends javax.swing.JPanel {
                             .add(org.jdesktop.layout.GroupLayout.LEADING, requestLicenseButton, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .add(org.jdesktop.layout.GroupLayout.LEADING, workRequestButton, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .add(sentRequestButton, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 175, Short.MAX_VALUE)
-                            .add(jButton1, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                            .add(addDrugsBtn, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
                 .add(178, 178, 178))
         );
         layout.setVerticalGroup(
@@ -114,7 +114,7 @@ public class ProductManagerJPanel extends javax.swing.JPanel {
                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.UNRELATED)
                 .add(requestLicenseButton)
                 .add(18, 18, 18)
-                .add(jButton1)
+                .add(addDrugsBtn)
                 .addContainerGap())
         );
     }// </editor-fold>//GEN-END:initComponents
@@ -186,16 +186,16 @@ public class ProductManagerJPanel extends javax.swing.JPanel {
 
     }//GEN-LAST:event_sentRequestButtonActionPerformed
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void addDrugsBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addDrugsBtnActionPerformed
         // TODO add your handling code here:
         AddDrugJPanel addDrugJPanel = new AddDrugJPanel(userProcessContainer, business,userAccount);
         userProcessContainer.add("AddDrugJPanel", addDrugJPanel);
         CardLayout cardLayout = (CardLayout) userProcessContainer.getLayout();
         cardLayout.next(userProcessContainer);
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_addDrugsBtnActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
+    private javax.swing.JButton addDrugsBtn;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JButton requestLicenseButton;
     private javax.swing.JButton sentRequestButton;

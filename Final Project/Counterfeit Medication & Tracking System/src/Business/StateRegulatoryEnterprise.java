@@ -4,7 +4,6 @@
  */
 package Business;
 
-
 import Business.Roles.LicenseInspectorRole;
 import Business.Roles.Role;
 import java.util.ArrayList;
@@ -13,16 +12,14 @@ import java.util.ArrayList;
  *
  * @author srush
  */
-public class StateRegulatoryEnterprise extends Enterprise{
-    
+public class StateRegulatoryEnterprise extends Enterprise {
+
     private LicensingOrganization licensingOrganization;
 
     public StateRegulatoryEnterprise(String enterpriseName) {
         super(enterpriseName);
-        licensingOrganization=(LicensingOrganization)getOrganizationDirectory().newOrganization(Organization.LICENSING);
-        
-        
-        
+        licensingOrganization = (LicensingOrganization) getOrganizationDirectory().newOrganization(Organization.LICENSING);
+
     }
 
     public LicensingOrganization getLicensingOrganization() {
@@ -33,16 +30,12 @@ public class StateRegulatoryEnterprise extends Enterprise{
         this.licensingOrganization = licensingOrganization;
     }
 
-    
-    
-    
-
     @Override
     public ArrayList<Role> getSupportedRoles() {
-        
+
         ArrayList<Role> roles = new ArrayList<Role>();
         roles.add(new LicenseInspectorRole());
-        return roles;   
+        return roles;
     }
- 
+
 }

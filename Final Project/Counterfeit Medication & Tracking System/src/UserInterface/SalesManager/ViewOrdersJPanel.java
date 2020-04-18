@@ -129,7 +129,8 @@ public class ViewOrdersJPanel extends javax.swing.JPanel {
                 row[3] = workRequest.getStatus();
                 row[4] = salesManagerWorkRequest.getDrug();
                 row[5] = salesManagerWorkRequest.getQuant();
-                row[6] = distributorEnterprise.getInventoryCatalog().getTotalQuantity(salesManagerWorkRequest.getDrug());
+               // row[6] = distributorEnterprise.getInventoryCatalog().getTotalQuantity(salesManagerWorkRequest.getDrug());
+               // row[6] = salesManagerWorkRequest.getOrder();
                 //  row[4]=workRequest.getDrugName();
                 //  row[5]=workRequest.getQuantity();
 
@@ -270,7 +271,7 @@ public class ViewOrdersJPanel extends javax.swing.JPanel {
                 warehouseManagerWorkRequest.setDrugName(salesManagerWorkRequest.getDrName());
                 warehouseManagerWorkRequest.setDrug(salesManagerWorkRequest.getDrug());
                 warehouseManagerWorkRequest.setQuantity(salesManagerWorkRequest.getQuant());
-          //      shipmentManagerWorkRequest.setShippedTo(salesManagerWorkRequest.getSender());
+               // warehouseManagerWorkRequest.setOrder(salesManagerWorkRequest.getOrder());
 
                 salesManagerWorkRequest.setStatus("Sent to warehouse");
 
@@ -284,22 +285,22 @@ public class ViewOrdersJPanel extends javax.swing.JPanel {
 
                     for (int j = 0; j < 5 && i > 0; j++) {
                         Package1 p = new Package1();
-                        //Transaction transaction = network.getTransactionHistory().newTransaction();
+                       // Transaction transaction = network.getTransactionHistory().newTransaction();
                         p.setDrug(salesManagerWorkRequest.getDrug());
                         p.setManuLotID(lotOfDrug.getLotID());
                         p.setPackageStatus("Normal");
                         lotOfDrug.addPackage(p);
-                       // transaction.setPackage(p);
-                       // transaction.setManufacturerEnterprise(manufacturerEnterprise);
-                       // transaction.setTransactionStatus("Sold");
-                        //transaction.setDistributorEnterprise(distributorEnterprise);
+//                        transaction.setPackage(p);
+//                        transaction.setManufacturerEnterprise(manufacturerEnterprise);
+//                        transaction.setTransactionStatus("Sold");
+//                        transaction.setDistributorEnterprise(distributorEnterprise);
 
                         i--;
                     }
                     order.addLot(lotOfDrug);
                 }
 
-            //    warehouseManagerWorkRequest.setOrder(order);
+                warehouseManagerWorkRequest.setOrder(order);
 
                 ManufacturerEnterprise e = (ManufacturerEnterprise) network.getEnterpriseDirectory().getMyEnterprise(userAccount);
 
@@ -391,9 +392,8 @@ public class ViewOrdersJPanel extends javax.swing.JPanel {
                     }
 
                 }
-
-//                   
-            //    shipmentManagerWorkRequest.setOrder(order);
+               
+                 inventoryManagerWorkRequest.setOrder(order);
 
                 DistributorEnterprise e = (DistributorEnterprise) network.getEnterpriseDirectory().getMyEnterprise(userAccount);
 

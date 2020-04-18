@@ -16,12 +16,21 @@ public class WarehouseManagerWorkRequest extends WorkRequest {
     private String result;
     private Drug drug;
     private Order order;
+    private SalesManagerWorkRequest salesManagerWorkRequest;
+
+    public SalesManagerWorkRequest getSalesManagerWorkRequest() {
+        return salesManagerWorkRequest;
+    }
+
+    public void setSalesManagerWorkRequest(SalesManagerWorkRequest salesManagerWorkRequest) {
+        this.salesManagerWorkRequest = salesManagerWorkRequest;
+    }
+
     // private int licenseNumber;
     // LicenseManagerWorkRequest licenseManagerWorkRequest;
     //  private int quant;
     // private String manuName;
     // private String drName;
-
     public Order getOrder() {
         return order;
     }
@@ -29,7 +38,6 @@ public class WarehouseManagerWorkRequest extends WorkRequest {
     public void setOrder(Order order) {
         this.order = order;
     }
-
 
     public String getResult() {
         return result;
