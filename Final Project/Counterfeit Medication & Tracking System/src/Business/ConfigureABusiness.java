@@ -6,7 +6,6 @@ package Business;
 
 import Business.Roles.AdminRole;
 import Business.Roles.EnterpriseAdminRole;
-import Business.Roles.LicenseInspectorRole;
 import Business.Roles.NetworkAdminRole;
 import Business.Roles.ProductManagerRole;
 import Business.Roles.WarehouseManagerRole;

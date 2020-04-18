@@ -2,7 +2,7 @@
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
-package UserInterface.LawEnforcementOfficer;
+package UserInterface.FDAInspector;
 
 import Business.Business;
 import Business.Enterprise;
@@ -16,7 +16,7 @@ import javax.swing.JPanel;
  *
  * @author nived
  */
-public class LawEnforcementInspectorJPanel extends javax.swing.JPanel {
+public class FDAInspectorJPanel extends javax.swing.JPanel {
 
     JPanel userProcessContainer;
     Business business;
@@ -25,7 +25,7 @@ public class LawEnforcementInspectorJPanel extends javax.swing.JPanel {
     /**
      * Creates new form LawEnforcementInspectorJPanel
      */
-    public LawEnforcementInspectorJPanel(JPanel userProcessContainer, Business business, UserAccount userAccount) {
+    public FDAInspectorJPanel(JPanel userProcessContainer, Business business, UserAccount userAccount) {
         initComponents();
         this.userProcessContainer = userProcessContainer;
         this.business = business;

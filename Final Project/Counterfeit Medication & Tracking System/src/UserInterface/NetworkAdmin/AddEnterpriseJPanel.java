@@ -12,7 +12,6 @@ import Business.HospitalEnterprise;
 import Business.ManufacturerEnterprise;
 import Business.Network;
 import Business.Roles.EnterpriseAdminRole;
-import Business.StateRegulatoryEnterprise;
 import Business.UserAccount;
 import java.awt.CardLayout;
 import javax.swing.JOptionPane;
@@ -42,8 +41,6 @@ public class AddEnterpriseJPanel extends javax.swing.JPanel {
         enterpriseTypeComboBox.addItem(Enterprise.MANUFACTURER);
         enterpriseTypeComboBox.addItem(Enterprise.DISTRIBUTOR);
         enterpriseTypeComboBox.addItem(Enterprise.HOSPITAL);
-        enterpriseTypeComboBox.addItem(Enterprise.STATEREGULATORYAFFAIRS);
-//        enterpriseTypeComboBox.addItem(Enterprise.LAWENFORCEMENTUNIT);
 
     }
 
@@ -232,44 +229,44 @@ public class AddEnterpriseJPanel extends javax.swing.JPanel {
             }
 
         }
-        if (enterprise == Enterprise.STATEREGULATORYAFFAIRS) {
-
-            if (!userNameField.getText().isEmpty() && !passwordField.getText().isEmpty()) {
-                //getText() != null && passwordField.getText() != null
-
-                if (!network.getEnterpriseDirectory().isUserExisting(userNameField.getText())) {
-
-                    StateRegulatoryEnterprise stateRegulatoryEnterprise = (StateRegulatoryEnterprise) network.getEnterpriseDirectory().newEnterprise(Enterprise.STATEREGULATORYAFFAIRS, enpName);
-
-                    Employee employee = stateRegulatoryEnterprise.getEmployeeDirectory().newEmployee();
-                    employee.setFirstName(firstNameField.getText());
-                    employee.setLastName(lastNameField.getText());
-
-                    stateRegulatoryEnterprise.setEnterpriseName(enpName);
-                    stateRegulatoryEnterprise.setEnterpriseType(enterprise);
-
-                    UserAccount userAccount1 = stateRegulatoryEnterprise.getUserAccountDirectory().newAccount();
-                    userAccount1.setUserName(userNameField.getText());
-                    userAccount1.setPassword(passwordField.getText());
-                    userAccount1.setRole(new EnterpriseAdminRole());
-                    userAccount1.setEmployee(employee);
-
-                    JOptionPane.showMessageDialog(this, "State Reulatory Affairs Enterprise added");
-
-                    enterpriseNameField.setText("");
-                    firstNameField.setText("");
-                    lastNameField.setText("");
-                    userNameField.setText("");
-                    passwordField.setText("");
-                } else {
-                    JOptionPane.showMessageDialog(this, "Username already existing");
-
-                }
-            } else {
-                JOptionPane.showMessageDialog(this, "Username/Password is empty");
-            }
-
-        }
+//        if (enterprise == Enterprise.STATEREGULATORYAFFAIRS) {
+//
+//            if (!userNameField.getText().isEmpty() && !passwordField.getText().isEmpty()) {
+//                //getText() != null && passwordField.getText() != null
+//
+//                if (!network.getEnterpriseDirectory().isUserExisting(userNameField.getText())) {
+//
+//                    StateRegulatoryEnterprise stateRegulatoryEnterprise = (StateRegulatoryEnterprise) network.getEnterpriseDirectory().newEnterprise(Enterprise.STATEREGULATORYAFFAIRS, enpName);
+//
+//                    Employee employee = stateRegulatoryEnterprise.getEmployeeDirectory().newEmployee();
+//                    employee.setFirstName(firstNameField.getText());
+//                    employee.setLastName(lastNameField.getText());
+//
+//                    stateRegulatoryEnterprise.setEnterpriseName(enpName);
+//                    stateRegulatoryEnterprise.setEnterpriseType(enterprise);
+//
+//                    UserAccount userAccount1 = stateRegulatoryEnterprise.getUserAccountDirectory().newAccount();
+//                    userAccount1.setUserName(userNameField.getText());
+//                    userAccount1.setPassword(passwordField.getText());
+//                    userAccount1.setRole(new EnterpriseAdminRole());
+//                    userAccount1.setEmployee(employee);
+//
+//                    JOptionPane.showMessageDialog(this, "State Reulatory Affairs Enterprise added");
+//
+//                    enterpriseNameField.setText("");
+//                    firstNameField.setText("");
+//                    lastNameField.setText("");
+//                    userNameField.setText("");
+//                    passwordField.setText("");
+//                } else {
+//                    JOptionPane.showMessageDialog(this, "Username already existing");
+//
+//                }
+//            } else {
+//                JOptionPane.showMessageDialog(this, "Username/Password is empty");
+//            }
+//
+//        }
 
 //        if (enterprise == Enterprise.LAWENFORCEMENTUNIT) {
 //

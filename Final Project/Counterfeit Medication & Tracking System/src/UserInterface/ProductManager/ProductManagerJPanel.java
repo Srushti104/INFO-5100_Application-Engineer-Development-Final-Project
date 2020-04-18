@@ -5,17 +5,14 @@
 package UserInterface.ProductManager;
 
 import Business.Business;
-import Business.DistributorEnterprise;
-import Business.Drug;
 import Business.Enterprise;
-import Business.InventoryItem;
 import Business.ManufacturerEnterprise;
 import Business.Network;
 import Business.Organization;
+import Business.Transaction;
 import Business.UserAccount;
 import java.awt.CardLayout;
 import javax.swing.JPanel;
-import javax.swing.table.DefaultTableModel;
 
 /**
  *
@@ -35,8 +32,32 @@ public class ProductManagerJPanel extends javax.swing.JPanel {
         this.userProcessContainer = userProcessContainer;
         this.business = business;
         this.userAccount = userAccount;
-        // infoLabel.setVisible(false);
+        infoLabel.setVisible(false);
+        refresh();
 
+    }
+
+    public void refresh() {
+        for (Network network : business.getNetworkDirectory().getNetworkList()) {
+            for (Enterprise enterprise : network.getEnterpriseDirectory().getEnterpriseList()) {
+                if (enterprise.getClass().equals(ManufacturerEnterprise.class)) {
+
+                    ManufacturerEnterprise manufacturerEnterprise = (ManufacturerEnterprise) enterprise;
+
+                    for (Transaction transaction : network.getTransactionHistory().getTransactionList()) {
+
+                        if (transaction.getManufacturerEnterprise() == null) {
+                            return;
+                        }
+                        if (transaction.getManufacturerEnterprise().getEnterpriseName() == manufacturerEnterprise.getEnterpriseName()) {
+                            if (transaction.getPackage().getPackageStatus().equalsIgnoreCase("Illegetimate Drug")) {
+                                infoLabel.setVisible(true);
+                            }
+                        }
+                    }
+                }
+            }
+        }
     }
 
     /**
@@ -49,34 +70,11 @@ public class ProductManagerJPanel extends javax.swing.JPanel {
     private void initComponents() {
 
         jLabel1 = new javax.swing.JLabel();
-        sentRequestButton = new javax.swing.JButton();
-        requestLicenseButton = new javax.swing.JButton();
-        workRequestButton = new javax.swing.JButton();
         addDrugsBtn = new javax.swing.JButton();
+        infoLabel = new javax.swing.JLabel();
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jLabel1.setText("Product Manager Work Area");
-
-        sentRequestButton.setText("View Sent Work Requests");
-        sentRequestButton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                sentRequestButtonActionPerformed(evt);
-            }
-        });
-
-        requestLicenseButton.setText("Request License");
-        requestLicenseButton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                requestLicenseButtonActionPerformed(evt);
-            }
-        });
-
-        workRequestButton.setText("View Work Requests");
-        workRequestButton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                workRequestButtonActionPerformed(evt);
-            }
-        });
 
         addDrugsBtn.setText("Add Drugs");
         addDrugsBtn.addActionListener(new java.awt.event.ActionListener() {
@@ -85,22 +83,27 @@ public class ProductManagerJPanel extends javax.swing.JPanel {
             }
         });
 
+        infoLabel.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        infoLabel.setForeground(new java.awt.Color(255, 0, 0));
+        infoLabel.setText("Drugs produced are reported illegetimate");
+        infoLabel.setToolTipText("");
+
         org.jdesktop.layout.GroupLayout layout = new org.jdesktop.layout.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
             .add(layout.createSequentialGroup()
-                .add(142, 142, 142)
                 .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-                    .add(jLabel1)
                     .add(layout.createSequentialGroup()
-                        .add(9, 9, 9)
-                        .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.TRAILING, false)
-                            .add(org.jdesktop.layout.GroupLayout.LEADING, requestLicenseButton, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .add(org.jdesktop.layout.GroupLayout.LEADING, workRequestButton, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .add(sentRequestButton, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 175, Short.MAX_VALUE)
-                            .add(addDrugsBtn, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
-                .add(178, 178, 178))
+                        .add(142, 142, 142)
+                        .add(jLabel1))
+                    .add(layout.createSequentialGroup()
+                        .add(60, 60, 60)
+                        .add(infoLabel))
+                    .add(layout.createSequentialGroup()
+                        .add(151, 151, 151)
+                        .add(addDrugsBtn, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 175, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)))
+                .add(83, 83, 83))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
@@ -108,87 +111,16 @@ public class ProductManagerJPanel extends javax.swing.JPanel {
                 .add(39, 39, 39)
                 .add(jLabel1, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 27, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
                 .add(18, 18, 18)
-                .add(sentRequestButton)
-                .addPreferredGap(org.jdesktop.layout.LayoutStyle.UNRELATED)
-                .add(workRequestButton)
-                .addPreferredGap(org.jdesktop.layout.LayoutStyle.UNRELATED)
-                .add(requestLicenseButton)
-                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
                 .add(addDrugsBtn)
+                .add(78, 78, 78)
+                .add(infoLabel)
                 .addContainerGap())
         );
     }// </editor-fold>//GEN-END:initComponents
 
-    private void requestLicenseButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_requestLicenseButtonActionPerformed
-        // TODO add your handling code here:
-
-        for (Network network : business.getNetworkDirectory().getNetworkList()) {
-            for (Enterprise enterprise : network.getEnterpriseDirectory().getEnterpriseList()) {
-                for (Organization organization : enterprise.getOrganizationDirectory().getOrgList()) {
-                    for (UserAccount userAccount1 : organization.getUserAccountDirectory().getUserAccountList()) {
-                        if (userAccount == userAccount1) {
-                            RequestLicenseForManufacturingJPanel requestLicenseForManufacturingJPanel = new RequestLicenseForManufacturingJPanel(userProcessContainer, network, userAccount);
-                            userProcessContainer.add("RequestLicenseMan", requestLicenseForManufacturingJPanel);
-                            CardLayout cardLayout = (CardLayout) userProcessContainer.getLayout();
-                            cardLayout.next(userProcessContainer);
-
-                        }
-
-                    }
-                }
-            }
-        }
-    }//GEN-LAST:event_requestLicenseButtonActionPerformed
-
-    private void workRequestButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_workRequestButtonActionPerformed
-        // TODO add your handling code here:
-
-        for (Network network : business.getNetworkDirectory().getNetworkList()) {
-            for (Enterprise enterprise : network.getEnterpriseDirectory().getEnterpriseList()) {
-                for (Organization organization : enterprise.getOrganizationDirectory().getOrgList()) {
-                    for (UserAccount userAccount1 : organization.getUserAccountDirectory().getUserAccountList()) {
-                        if (userAccount == userAccount1) {
-                            ViewWorkRequestProductManagerJPanel viewWorkRequestProductManagerJPanel = new ViewWorkRequestProductManagerJPanel(userProcessContainer, network, userAccount);
-                            userProcessContainer.add("ViewLicSent", viewWorkRequestProductManagerJPanel);
-                            CardLayout cardLayout = (CardLayout) userProcessContainer.getLayout();
-                            cardLayout.next(userProcessContainer);
-
-                        }
-
-                    }
-                }
-            }
-        }
-
-    }//GEN-LAST:event_workRequestButtonActionPerformed
-
-    private void sentRequestButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_sentRequestButtonActionPerformed
-        // TODO add your handling code here:
-
-        for (Network network : business.getNetworkDirectory().getNetworkList()) {
-            for (Enterprise enterprise : network.getEnterpriseDirectory().getEnterpriseList()) {
-
-                for (Organization organization : enterprise.getOrganizationDirectory().getOrgList()) {
-                    for (UserAccount userAccount1 : organization.getUserAccountDirectory().getUserAccountList()) {
-                        if (userAccount == userAccount1) {
-
-                            ManufacturerEnterprise e = (ManufacturerEnterprise) network.getEnterpriseDirectory().getMyEnterprise(userAccount);
-                            Organization org = e.getProductManagementOrganization();
-                            ViewSentWorkRequestsJPanel viewSentWorkRequestsJPanel = new ViewSentWorkRequestsJPanel(userProcessContainer, org.getSentWorkQueue());
-                            userProcessContainer.add("ViewSentWorkQueueJPanel", viewSentWorkRequestsJPanel);
-                            CardLayout cardLayout = (CardLayout) userProcessContainer.getLayout();
-                            cardLayout.next(userProcessContainer);
-                        }
-                    }
-                }
-            }
-        }
-
-    }//GEN-LAST:event_sentRequestButtonActionPerformed
-
     private void addDrugsBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addDrugsBtnActionPerformed
         // TODO add your handling code here:
-        AddDrugJPanel addDrugJPanel = new AddDrugJPanel(userProcessContainer, business,userAccount);
+        AddDrugJPanel addDrugJPanel = new AddDrugJPanel(userProcessContainer, business, userAccount);
         userProcessContainer.add("AddDrugJPanel", addDrugJPanel);
         CardLayout cardLayout = (CardLayout) userProcessContainer.getLayout();
         cardLayout.next(userProcessContainer);
@@ -196,9 +128,7 @@ public class ProductManagerJPanel extends javax.swing.JPanel {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton addDrugsBtn;
+    private javax.swing.JLabel infoLabel;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JButton requestLicenseButton;
-    private javax.swing.JButton sentRequestButton;
-    private javax.swing.JButton workRequestButton;
     // End of variables declaration//GEN-END:variables
 }

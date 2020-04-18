@@ -10,10 +10,10 @@ import Business.WorkArea.LawEnforcementInspectorWorkArea;
  *
  * @author srush
  */
-public class LawEnforecementInspectorRole extends Role{
+public class FDAInspectorRole extends Role{
 
-    public LawEnforecementInspectorRole() {
-        super("Law Enforcement Inspector Role");
+    public FDAInspectorRole() {
+        super("FDA Inspector Role");
         workArea=new LawEnforcementInspectorWorkArea();
     }
     

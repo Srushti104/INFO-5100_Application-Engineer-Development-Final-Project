@@ -12,7 +12,6 @@ import Business.Network;
 import Business.Organization;
 import Business.UserAccount;
 import UserInterface.Manager.HospitalManagerJPanel;
-import UserInterface.Manager.ManagerJPanel;
 import javax.swing.JPanel;
 
 /**
@@ -30,10 +29,7 @@ public class ManagerView extends View {
                 for (Organization organization : enterprise.getOrganizationDirectory().getOrgList()) {
                     for (UserAccount userAccount1 : organization.getUserAccountDirectory().getUserAccountList()) {
                         if (userAccount == userAccount1) {
-                            if (enterprise.getClass().equals(DistributorEnterprise.class)) {
-
-                                viewPanel = new ManagerJPanel(userProcessContainer, business, userAccount);
-                            } else if (enterprise.getClass().equals(HospitalEnterprise.class)) {
+                            if (enterprise.getClass().equals(HospitalEnterprise.class)) {
                                 viewPanel = new HospitalManagerJPanel(userProcessContainer, business, userAccount);
                             }
                         }

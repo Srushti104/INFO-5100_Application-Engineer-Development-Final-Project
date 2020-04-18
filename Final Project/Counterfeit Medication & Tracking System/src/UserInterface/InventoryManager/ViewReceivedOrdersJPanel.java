@@ -313,6 +313,7 @@ public class ViewReceivedOrdersJPanel extends javax.swing.JPanel {
                     }
 
                     //hospitalEnterprise.getInventoryCatalog().newInventoryItem(inventoryManagerWorkRequest.getOrder());
+                     JOptionPane.showMessageDialog(this, "Drugs added to Inventory");
                 }
             }
 
