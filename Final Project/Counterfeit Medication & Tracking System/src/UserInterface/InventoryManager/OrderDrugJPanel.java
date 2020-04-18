@@ -106,7 +106,6 @@ public class OrderDrugJPanel extends javax.swing.JPanel {
 
         jLabel2.setText("Browse Inventory:");
 
-        backButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/UserInterface/backButton.jpg"))); // NOI18N
         backButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 backButtonActionPerformed(evt);
