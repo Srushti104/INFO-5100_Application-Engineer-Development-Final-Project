@@ -4,6 +4,9 @@
  */
 package Business;
 
+import Business.Roles.Role;
+import java.util.ArrayList;
+
 /**
  *
  * @author srush
@@ -75,5 +78,4 @@ public abstract class Organization {
 
         return organizationName;
     }
-
 }
