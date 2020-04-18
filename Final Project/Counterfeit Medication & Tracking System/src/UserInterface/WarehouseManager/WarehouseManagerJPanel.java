@@ -20,7 +20,7 @@ import javax.swing.JPanel;
  * @author nived
  */
 public class WarehouseManagerJPanel extends javax.swing.JPanel {
-    
+
     JPanel userProcessContainer;
     Business business;
     UserAccount userAccount;
@@ -28,65 +28,51 @@ public class WarehouseManagerJPanel extends javax.swing.JPanel {
     /**
      * Creates new form WarehouseManagerJPanel
      */
-    public WarehouseManagerJPanel(JPanel userProcessContainer,Business business,UserAccount userAccount) {
+    public WarehouseManagerJPanel(JPanel userProcessContainer, Business business, UserAccount userAccount) {
         initComponents();
-        this.userProcessContainer=userProcessContainer;
-        this.business=business;
-        this.userAccount=userAccount;
+        this.userProcessContainer = userProcessContainer;
+        this.business = business;
+        this.userAccount = userAccount;
         //imaLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/UserInterface/warehouse.jpg")));
 //        
-          infoLabel.setVisible(false);
+        infoLabel.setVisible(false);
 //        alertLabel.setVisible(false);
-        
-        
-        
+
         refresh();
     }
-    
-    public void refresh()
-    {
-        for(Network network:business.getNetworkDirectory().getNetworkList())
-        {
-            for(Enterprise enterprise:network.getEnterpriseDirectory().getEnterpriseList())
-            {
-                for(Organization organization:enterprise.getOrganizationDirectory().getOrgList())
-                {
-                    for(UserAccount userAccount1:organization.getUserAccountDirectory().getUserAccountList())
-                    {
-                        if(userAccount==userAccount1)
-                        {
-                            if(enterprise.getClass().equals(DistributorEnterprise.class))
-                            {
-                                DistributorEnterprise distributorEnterprise=(DistributorEnterprise)enterprise;
-                                
-                                if(distributorEnterprise.getLicenseNumber()==0)
-                                {
-                                    orderDrugButton.setVisible(false);
-                                    checkInventoryButton.setVisible(false);
-                                    viewRequestedOrdersButton.setVisible(false);
-                                    viewRecievedOrderButton.setVisible(false);
-                                    infoLabel.setVisible(true);
-                                }
-                                boolean flag=false;
-                                
-                                for(InventoryItem inventoryItem:distributorEnterprise.getInventoryCatalog().getInventoryList())
-                                {
-                                    if(inventoryItem.getPackage1().getPackageStatus().equalsIgnoreCase("Illegetimate Drug"))
-                                    {
-                                        flag=true;
+
+    public void refresh() {
+        for (Network network : business.getNetworkDirectory().getNetworkList()) {
+            for (Enterprise enterprise : network.getEnterpriseDirectory().getEnterpriseList()) {
+                for (Organization organization : enterprise.getOrganizationDirectory().getOrgList()) {
+                    for (UserAccount userAccount1 : organization.getUserAccountDirectory().getUserAccountList()) {
+                        if (userAccount == userAccount1) {
+                            if (enterprise.getClass().equals(DistributorEnterprise.class)) {
+                                DistributorEnterprise distributorEnterprise = (DistributorEnterprise) enterprise;
+
+//                                if (distributorEnterprise.getLicenseNumber() == 0) {
+//                                    orderDrugButton.setVisible(false);
+//                                    checkInventoryButton.setVisible(false);
+//                                    viewRequestedOrdersButton.setVisible(false);
+//                                    viewRecievedOrderButton.setVisible(false);
+//                                    infoLabel.setVisible(true);
+//                                }
+                                boolean flag = false;
+
+                                for (InventoryItem inventoryItem : distributorEnterprise.getInventoryCatalog().getInventoryList()) {
+                                    if (inventoryItem.getPackage1().getPackageStatus().equalsIgnoreCase("Illegetimate Drug")) {
+                                        flag = true;
                                     }
-                                
-                                
+
                                 }
-                                
-                                
+
                             }
                         }
                     }
                 }
             }
         }
-        
+
 //        for(Network network:business.getNetworkDirectory().getNetworkList())
 //        {
 //            for(Enterprise enterprise:network.getEnterpriseDirectory().getEnterpriseList())
@@ -110,10 +96,6 @@ public class WarehouseManagerJPanel extends javax.swing.JPanel {
 //                }
 //            }
 //        }
-        
-        
-        
-        
     }
 
     /**
@@ -172,20 +154,19 @@ public class WarehouseManagerJPanel extends javax.swing.JPanel {
         layout.setHorizontalGroup(
             layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
             .add(org.jdesktop.layout.GroupLayout.TRAILING, layout.createSequentialGroup()
-                .add(69, 69, 69)
-                .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-                    .add(org.jdesktop.layout.GroupLayout.TRAILING, layout.createSequentialGroup()
-                        .add(infoLabel)
-                        .addContainerGap())
-                    .add(org.jdesktop.layout.GroupLayout.TRAILING, layout.createSequentialGroup()
-                        .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.TRAILING)
-                            .add(jLabel1)
-                            .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.TRAILING, false)
-                                .add(viewRecievedOrderButton, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 185, Short.MAX_VALUE)
-                                .add(checkInventoryButton, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .add(orderDrugButton, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .add(viewRequestedOrdersButton, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 185, Short.MAX_VALUE)))
-                        .add(162, 162, 162))))
+                .add(105, 105, 105)
+                .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.TRAILING)
+                    .add(jLabel1)
+                    .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.TRAILING, false)
+                        .add(viewRecievedOrderButton, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 185, Short.MAX_VALUE)
+                        .add(checkInventoryButton, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .add(orderDrugButton, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .add(viewRequestedOrdersButton, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 185, Short.MAX_VALUE)))
+                .add(162, 162, 162))
+            .add(layout.createSequentialGroup()
+                .add(27, 27, 27)
+                .add(infoLabel)
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
@@ -200,7 +181,7 @@ public class WarehouseManagerJPanel extends javax.swing.JPanel {
                 .add(checkInventoryButton)
                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.UNRELATED)
                 .add(viewRecievedOrderButton)
-                .add(104, 104, 104)
+                .add(35, 35, 35)
                 .add(infoLabel)
                 .addContainerGap())
         );
@@ -208,28 +189,18 @@ public class WarehouseManagerJPanel extends javax.swing.JPanel {
 
     private void orderDrugButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_orderDrugButtonActionPerformed
         // TODO add your handling code here:
-        
-        for(Network network:business.getNetworkDirectory().getNetworkList())
-        {
-            for(Enterprise enterprise:network.getEnterpriseDirectory().getEnterpriseList())
-            {
-                for(Organization organization:enterprise.getOrganizationDirectory().getOrgList())
-                {
-                    for(UserAccount userAccount1:organization.getUserAccountDirectory().getUserAccountList())
-                    {
-                        if(userAccount==userAccount1)
-                        {
-                            OrderDrugsJPanel orderDrugsJPanel=new OrderDrugsJPanel(userProcessContainer,network,userAccount);
-                            userProcessContainer.add("OrderDRugs",orderDrugsJPanel);
-                            
-                            CardLayout cardLayout=(CardLayout)userProcessContainer.getLayout();
+
+        for (Network network : business.getNetworkDirectory().getNetworkList()) {
+            for (Enterprise enterprise : network.getEnterpriseDirectory().getEnterpriseList()) {
+                for (Organization organization : enterprise.getOrganizationDirectory().getOrgList()) {
+                    for (UserAccount userAccount1 : organization.getUserAccountDirectory().getUserAccountList()) {
+                        if (userAccount == userAccount1) {
+                            OrderDrugsJPanel orderDrugsJPanel = new OrderDrugsJPanel(userProcessContainer, network, userAccount);
+                            userProcessContainer.add("OrderDrugs", orderDrugsJPanel);
+
+                            CardLayout cardLayout = (CardLayout) userProcessContainer.getLayout();
                             cardLayout.next(userProcessContainer);
-                            
-                            
-                            
-                            
-                            
-                            
+
                         }
                     }
                 }
@@ -239,59 +210,42 @@ public class WarehouseManagerJPanel extends javax.swing.JPanel {
 
     private void viewRequestedOrdersButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_viewRequestedOrdersButtonActionPerformed
         // TODO add your handling code here:
-        
-         for(Network network:business.getNetworkDirectory().getNetworkList())
-        {
-        for(Enterprise enterprise:network.getEnterpriseDirectory().getEnterpriseList())
-        {
-            
-        for(Organization organization:enterprise.getOrganizationDirectory().getOrgList())
-        {
-            for(UserAccount userAccount1:organization.getUserAccountDirectory().getUserAccountList())
-            {
-                if(userAccount==userAccount1)
-                {
-        
-        
-        DistributorEnterprise e=(DistributorEnterprise)network.getEnterpriseDirectory().getMyEnterprise(userAccount);
-        Organization org=e.getWarehouseOrganization();
-        ViewRequestedOrdersJPanel viewRequestedOrdersJPanel=new ViewRequestedOrdersJPanel(userProcessContainer,org.getSentWorkQueue());
-        userProcessContainer.add("viewReqOrders", viewRequestedOrdersJPanel);
-        CardLayout cardLayout = (CardLayout) userProcessContainer.getLayout();
-        cardLayout.next(userProcessContainer);
+
+        for (Network network : business.getNetworkDirectory().getNetworkList()) {
+            for (Enterprise enterprise : network.getEnterpriseDirectory().getEnterpriseList()) {
+
+                for (Organization organization : enterprise.getOrganizationDirectory().getOrgList()) {
+                    for (UserAccount userAccount1 : organization.getUserAccountDirectory().getUserAccountList()) {
+                        if (userAccount == userAccount1) {
+
+                            DistributorEnterprise e = (DistributorEnterprise) network.getEnterpriseDirectory().getMyEnterprise(userAccount);
+                            Organization org = e.getWarehouseOrganization();
+                            ViewRequestedOrdersJPanel viewRequestedOrdersJPanel = new ViewRequestedOrdersJPanel(userProcessContainer, org.getSentWorkQueue());
+                            userProcessContainer.add("viewReqOrders", viewRequestedOrdersJPanel);
+                            CardLayout cardLayout = (CardLayout) userProcessContainer.getLayout();
+                            cardLayout.next(userProcessContainer);
+                        }
+                    }
                 }
             }
         }
-        }
-        }
-       
+
     }//GEN-LAST:event_viewRequestedOrdersButtonActionPerformed
 
     private void checkInventoryButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_checkInventoryButtonActionPerformed
         // TODO add your handling code here:
-        
-        
-          for(Network network:business.getNetworkDirectory().getNetworkList())
-        {
-            for(Enterprise enterprise:network.getEnterpriseDirectory().getEnterpriseList())
-            {
-                for(Organization organization:enterprise.getOrganizationDirectory().getOrgList())
-                {
-                    for(UserAccount userAccount1:organization.getUserAccountDirectory().getUserAccountList())
-                    {
-                        if(userAccount==userAccount1)
-                        {
-                            CheckWarehouseInventoryJPanel checkWarehouseInventoryJPanel=new CheckWarehouseInventoryJPanel(userProcessContainer,network,userAccount);
-                            userProcessContainer.add("CheckInv",checkWarehouseInventoryJPanel);
-                            
-                            CardLayout cardLayout=(CardLayout)userProcessContainer.getLayout();
+
+        for (Network network : business.getNetworkDirectory().getNetworkList()) {
+            for (Enterprise enterprise : network.getEnterpriseDirectory().getEnterpriseList()) {
+                for (Organization organization : enterprise.getOrganizationDirectory().getOrgList()) {
+                    for (UserAccount userAccount1 : organization.getUserAccountDirectory().getUserAccountList()) {
+                        if (userAccount == userAccount1) {
+                            CheckWarehouseInventoryJPanel checkWarehouseInventoryJPanel = new CheckWarehouseInventoryJPanel(userProcessContainer, network, userAccount);
+                            userProcessContainer.add("CheckInventory", checkWarehouseInventoryJPanel);
+
+                            CardLayout cardLayout = (CardLayout) userProcessContainer.getLayout();
                             cardLayout.next(userProcessContainer);
-                            
-                            
-                            
-                            
-                            
-                            
+
                         }
                     }
                 }
@@ -302,28 +256,22 @@ public class WarehouseManagerJPanel extends javax.swing.JPanel {
 
     private void viewRecievedOrderButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_viewRecievedOrderButtonActionPerformed
         // TODO add your handling code here:
-        
-        
-        for(Network network:business.getNetworkDirectory().getNetworkList())
-        {
-            for(Enterprise enterprise:network.getEnterpriseDirectory().getEnterpriseList())
-                
-            {
-                for(Organization organization:enterprise.getOrganizationDirectory().getOrgList())
-                {
-                for(UserAccount userAccount1:organization.getUserAccountDirectory().getUserAccountList())
-                {
-                    if(userAccount == userAccount1){
-                        ViewReceivedOrderJPanel viewReceivedOrderJPanel=new ViewReceivedOrderJPanel(userProcessContainer,network,userAccount);
-                        userProcessContainer.add("ViewRece",viewReceivedOrderJPanel);
-                        CardLayout cardLayout=(CardLayout)userProcessContainer.getLayout();
-                        cardLayout.next(userProcessContainer);
+
+        for (Network network : business.getNetworkDirectory().getNetworkList()) {
+            for (Enterprise enterprise : network.getEnterpriseDirectory().getEnterpriseList()) {
+                for (Organization organization : enterprise.getOrganizationDirectory().getOrgList()) {
+                    for (UserAccount userAccount1 : organization.getUserAccountDirectory().getUserAccountList()) {
+                        if (userAccount == userAccount1) {
+                            ViewReceivedOrderJPanel viewReceivedOrderJPanel = new ViewReceivedOrderJPanel(userProcessContainer, network, userAccount);
+                            userProcessContainer.add("ViewReceivedOrder", viewReceivedOrderJPanel);
+                            CardLayout cardLayout = (CardLayout) userProcessContainer.getLayout();
+                            cardLayout.next(userProcessContainer);
+
+                        }
 
                     }
-
                 }
             }
-        }
         }
 
     }//GEN-LAST:event_viewRecievedOrderButtonActionPerformed

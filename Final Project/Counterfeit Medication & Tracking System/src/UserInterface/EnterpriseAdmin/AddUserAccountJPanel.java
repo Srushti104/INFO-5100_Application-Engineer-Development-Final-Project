@@ -33,16 +33,16 @@ public class AddUserAccountJPanel extends javax.swing.JPanel {
         this.network = network;
         this.userAccount = userAccount;
 
-        organizationJComboBox.removeAllItems();
-
-        Enterprise e = network.getEnterpriseDirectory().getMyEnterprise(userAccount);
-        organizationJComboBox.addItem((Organization) e);
-        for (Organization org : e.getOrganizationDirectory().getOrgList()) {
+       organizationJComboBox.removeAllItems();
+        
+         Enterprise e=network.getEnterpriseDirectory().getMyEnterprise(userAccount);
+        organizationJComboBox.addItem((Organization)e);        
+        for(Organization org : e.getOrganizationDirectory().getOrgList()) {
             organizationJComboBox.addItem(org);
         }
-
+        
         roleJComboBox.removeAllItems();
-        for (Role role : e.getSupportedRoles()) {
+        for(Role role : e.getSupportedRoles()) {
             roleJComboBox.addItem(role);
         }
     }
