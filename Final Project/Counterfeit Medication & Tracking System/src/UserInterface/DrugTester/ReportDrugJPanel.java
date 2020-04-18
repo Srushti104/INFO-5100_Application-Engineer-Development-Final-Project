@@ -12,7 +12,6 @@ import Business.InspectingOrganization;
 import Business.InventoryManagementOrganization;
 import Business.WorkRequests.InventoryManagerWorkRequest;
 import Business.WorkRequests.LawEnforcementInspectorWorkRequest;
-import Business.LawEnforcementUnitEnterprise;
 import Business.Network;
 import Business.UserAccount;
 import java.awt.CardLayout;
@@ -153,10 +152,10 @@ public class ReportDrugJPanel extends javax.swing.JPanel {
             JOptionPane.showMessageDialog(null, "Incident report sent");
             JOptionPane.showMessageDialog(null, "Processed succesfully");
 
-            LawEnforcementUnitEnterprise d1 = null;
+            FDAEnterprise d1 = null;
             for (Enterprise enterprise1 : network.getEnterpriseDirectory().getEnterpriseList()) {
-                if (enterprise1.getClass().equals(LawEnforcementUnitEnterprise.class)) {
-                    d1 = (LawEnforcementUnitEnterprise) enterprise1;
+                if (enterprise1.getClass().equals(FDAEnterprise.class)) {
+                    d1 = (FDAEnterprise) enterprise1;
                 }
             }
 

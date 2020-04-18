@@ -18,7 +18,6 @@ public class DistributorEnterprise extends Enterprise {
 
     private WarehouseOrganization warehouseOrganization;
     private SalesManagementOrganization salesManagementOrganization;
-    private ManagementOrganization managementOrganization;
     private InventoryCatalog inventoryCatalog;
     private DrugCatalog drugCatalog;
     private int threshold = 5;
@@ -28,7 +27,6 @@ public class DistributorEnterprise extends Enterprise {
         super(enterpriseName);
         warehouseOrganization = (WarehouseOrganization) getOrganizationDirectory().newOrganization(Organization.WAREHOUSE);
         salesManagementOrganization = (SalesManagementOrganization) getOrganizationDirectory().newOrganization(Organization.SALES);
-        managementOrganization = (ManagementOrganization) getOrganizationDirectory().newOrganization(Organization.MANAGEMENT);
         drugCatalog = new DrugCatalog();
         inventoryCatalog = new InventoryCatalog();
 
@@ -48,14 +46,6 @@ public class DistributorEnterprise extends Enterprise {
 
     public void setSalesManagementOrganization(SalesManagementOrganization salesManagementOrganization) {
         this.salesManagementOrganization = salesManagementOrganization;
-    }
-
-    public ManagementOrganization getManagementOrganization() {
-        return managementOrganization;
-    }
-
-    public void setManagementOrganization(ManagementOrganization managementOrganization) {
-        this.managementOrganization = managementOrganization;
     }
 
     public InventoryCatalog getInventoryCatalog() {
@@ -96,7 +86,6 @@ public class DistributorEnterprise extends Enterprise {
         ArrayList<Role> roles = new ArrayList<Role>();
         roles.add(new WarehouseManagerRole());
         roles.add(new SalesManagerRole());
-        roles.add(new ManagerRole());
         return roles;
     }
 

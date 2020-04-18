@@ -2,7 +2,7 @@
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
-package UserInterface.LawEnforcementOfficer;
+package UserInterface.FDAInspector;
 
 import Business.Enterprise;
 import Business.Network;

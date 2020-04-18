@@ -6,7 +6,7 @@ package Business.WorkArea;
 
 import Business.Business;
 import Business.UserAccount;
-import Business.Views.LawEnforcementInspectorView;
+import Business.Views.FDAInspectorView;
 import Business.Views.View;
 import javax.swing.JPanel;
 
@@ -18,7 +18,7 @@ public class LawEnforcementInspectorWorkArea extends WorkArea {
 
     @Override
     public View createView(JPanel userProcessContainer, Business business, UserAccount userAccount) {
-        return new LawEnforcementInspectorView(userProcessContainer, business, userAccount);
+        return new FDAInspectorView(userProcessContainer, business, userAccount);
     }
 
 }

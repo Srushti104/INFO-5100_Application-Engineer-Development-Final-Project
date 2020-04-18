@@ -42,7 +42,7 @@ public class OrderDrugJPanel extends javax.swing.JPanel {
         distributorComboBox.removeAllItems();
 
         for (Enterprise enterprise : network.getEnterpriseDirectory().getEnterpriseList()) {
-            if (enterprise.getClass().equals(ManufacturerEnterprise.class)) {
+            if (enterprise.getClass().equals(DistributorEnterprise.class)) {
                 distributorComboBox.addItem(enterprise);
 
             }
@@ -59,20 +59,27 @@ public class OrderDrugJPanel extends javax.swing.JPanel {
 
         }
 
-        ManufacturerEnterprise manufacturerEnterprise = (ManufacturerEnterprise) distributorComboBox.getSelectedItem();
+        DistributorEnterprise distributorEnterprise = (DistributorEnterprise) distributorComboBox.getSelectedItem();
 
-        if (manufacturerEnterprise == null) {
+        if (distributorEnterprise == null) {
             return;
         }
-
-        for (Drug drug : manufacturerEnterprise.getDrugCatalog().getDrugList()) //  for(InventoryItem inventoryItem:storeInventory.getInventoryList())
-        {
+        Drug tempDrug = null;
+        for (InventoryItem inventoryItem : distributorEnterprise.getInventoryCatalog().getInventoryList()) { //for(InventoryItem inventoryItem:storeInventory.getInventoryList())
             Object row[] = new Object[3];
-            row[0] = drug;
-            row[1] = drug.getActualPrice();
-            //row[1]=
 
-            //row[2]=
+            if (inventoryItem.getPackage1().getDrug() == tempDrug) {
+                break;
+            } else {
+
+                row[0] = inventoryItem.getPackage1().getDrug();
+                row[1] = inventoryItem.getPackage1().getDrug().getActualPrice();
+                row[2] = distributorEnterprise.getInventoryCatalog().getTotalQuantity(inventoryItem.getPackage1().getDrug());
+
+                tempDrug = inventoryItem.getPackage1().getDrug();
+
+            }
+
             ((DefaultTableModel) inventoryTable.getModel()).addRow(row);
         }
 
@@ -121,17 +128,17 @@ public class OrderDrugJPanel extends javax.swing.JPanel {
 
         inventoryTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null},
-                {null, null},
-                {null, null},
-                {null, null}
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null}
             },
             new String [] {
-                "Drug Name", "Actual Price"
+                "Drug Name", "Actual Price", "Quantity"
             }
         ) {
             boolean[] canEdit = new boolean [] {
-                false, false
+                false, true, true
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
@@ -150,57 +157,52 @@ public class OrderDrugJPanel extends javax.swing.JPanel {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
+                .addGap(25, 25, 25)
+                .addComponent(backButton, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(185, 185, 185)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(addQuantityButton)
-                            .addGroup(layout.createSequentialGroup()
+                        .addGap(103, 103, 103)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                                .addGap(3, 3, 3)
                                 .addComponent(jLabel3)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(quantitySpinner, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGap(222, 222, 222))
+                                .addComponent(quantitySpinner, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(137, 137, 137)
+                                .addComponent(addQuantityButton))
+                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addGroup(layout.createSequentialGroup()
+                                    .addComponent(jLabel2)
+                                    .addGap(93, 93, 93)
+                                    .addComponent(distributorComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, 127, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 322, javax.swing.GroupLayout.PREFERRED_SIZE))))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(25, 25, 25)
-                        .addComponent(backButton, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addComponent(jLabel2)
-                                        .addGap(93, 93, 93)
-                                        .addComponent(distributorComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, 127, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 322, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(245, 245, 245)
-                                .addComponent(jLabel1)))))
-                .addGap(226, 226, 226))
+                        .addGap(213, 213, 213)
+                        .addComponent(jLabel1)))
+                .addGap(172, 172, 172))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(21, 21, 21)
+                        .addComponent(backButton, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
                         .addContainerGap()
                         .addComponent(jLabel1)
-                        .addGap(7, 7, 7)
+                        .addGap(17, 17, 17)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(jLabel2)
-                            .addComponent(distributorComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
-                        .addGap(21, 21, 21)
-                        .addComponent(backButton, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel3)
-                    .addComponent(quantitySpinner, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(addQuantityButton)
-                .addGap(239, 239, 239))
+                            .addComponent(distributorComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel3)
+                            .addComponent(quantitySpinner, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(addQuantityButton))))
+                .addGap(257, 257, 257))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -208,18 +210,22 @@ public class OrderDrugJPanel extends javax.swing.JPanel {
         // TODO add your handling code here:
         int quantity = (Integer) (quantitySpinner.getValue());
         if (quantity <= 0) {
+            JOptionPane.showMessageDialog(null, "Please select valid quantity");
+
             return;
         }
 
         int selectedRow = inventoryTable.getSelectedRow();
 
         if (selectedRow < 0) {
+            JOptionPane.showMessageDialog(null, "Please select a work request");
+
             return;
 
         }
-        ManufacturerEnterprise manufacturerEnterprise = (ManufacturerEnterprise) distributorComboBox.getSelectedItem();
+        DistributorEnterprise distributorEnterprise = (DistributorEnterprise) distributorComboBox.getSelectedItem();
 
-        for (Drug drug : manufacturerEnterprise.getDrugCatalog().getDrugList()) {
+        for (Drug drug : distributorEnterprise.getDrugCatalog().getDrugList()) {
             /* if(quantity>inventoryItem.getQuantity())
             {
                 JOptionPane.showMessageDialog(null, "The selected quantity of products are not available", "Quantity", JOptionPane.ERROR_MESSAGE);

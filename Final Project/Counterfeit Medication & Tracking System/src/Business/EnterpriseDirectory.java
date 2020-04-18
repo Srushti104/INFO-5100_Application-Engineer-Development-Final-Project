@@ -27,12 +27,7 @@ public class EnterpriseDirectory {
             enterprise = new FDAEnterprise(enterpriseName);
             enterprise.setEnterpriseType(type);
             
-        } else if (type.equals(Enterprise.STATEREGULATORYAFFAIRS)) {
-
-            enterprise = new StateRegulatoryEnterprise(enterpriseName);
-            enterprise.setEnterpriseType(type);
-
-        } else if (type.equals(Enterprise.MANUFACTURER)) {
+        }  else if (type.equals(Enterprise.MANUFACTURER)) {
 
             enterprise = new ManufacturerEnterprise(enterpriseName);
             enterprise.setEnterpriseType(type);

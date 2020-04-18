@@ -29,8 +29,6 @@ public class OrganizationDirectory {
             org = new InventoryManagementOrganization();
         } else if (orgName.equals(Organization.SALES)) {
             org = new SalesManagementOrganization();
-        } else if (orgName.equals(Organization.LICENSING)) {
-            org = new LicensingOrganization();
         } else if (orgName.equals(Organization.MANAGEMENT)) {
             org = new ManagementOrganization();
         } else if (orgName.equals(Organization.WAREHOUSE)) {

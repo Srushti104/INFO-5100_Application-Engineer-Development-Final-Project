@@ -2,11 +2,14 @@
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
-package UserInterface.LawEnforcementOfficer;
+package UserInterface.FDAInspector;
 
+import Business.DistributorEnterprise;
 import Business.Enterprise;
+import Business.FDAEnterprise;
+import Business.HospitalEnterprise;
+import Business.InventoryItem;
 import Business.WorkRequests.LawEnforcementInspectorWorkRequest;
-import Business.LawEnforcementUnitEnterprise;
 import Business.Network;
 import Business.Organization;
 import Business.UserAccount;
@@ -18,7 +21,7 @@ import javax.swing.table.DefaultTableModel;
 
 /**
  *
- * @author Avinash Vallabhaneni
+ * @author srush
  */
 public class ViewDrugIncidentsJPanel extends javax.swing.JPanel {
 
@@ -48,7 +51,7 @@ public class ViewDrugIncidentsJPanel extends javax.swing.JPanel {
 
         Enterprise e = network.getEnterpriseDirectory().getMyEnterprise(userAccount);
 
-        Organization org = ((LawEnforcementUnitEnterprise) e).getInspectingOrganization();
+        Organization org = ((FDAEnterprise) e).getInspectingOrganization();
 
         for (WorkRequest workRequest : org.getWorkQueue().getWorkRequestList()) {
             LawEnforcementInspectorWorkRequest lawEnforcementInspectorWorkRequest = (LawEnforcementInspectorWorkRequest) workRequest;
@@ -85,9 +88,7 @@ public class ViewDrugIncidentsJPanel extends javax.swing.JPanel {
         requestsTable = new javax.swing.JTable();
         jLabel1 = new javax.swing.JLabel();
         refreshButton2 = new javax.swing.JButton();
-        viewTransactioonDetailsButton = new javax.swing.JButton();
-
-        setBackground(new java.awt.Color(153, 102, 0));
+        sendEmerReportButton = new javax.swing.JButton();
 
         assignButton.setText("Assign to me");
         assignButton.addActionListener(new java.awt.event.ActionListener() {
@@ -96,7 +97,6 @@ public class ViewDrugIncidentsJPanel extends javax.swing.JPanel {
             }
         });
 
-        backButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/UserInterface/backButton.jpg"))); // NOI18N
         backButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 backButtonActionPerformed(evt);
@@ -127,17 +127,17 @@ public class ViewDrugIncidentsJPanel extends javax.swing.JPanel {
         jLabel1.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jLabel1.setText("View Reported Incidents");
 
-        refreshButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/UserInterface/refresh_button.jpg"))); // NOI18N
         refreshButton2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 refreshButton2ActionPerformed(evt);
             }
         });
 
-        viewTransactioonDetailsButton.setText("View Transaction Details");
-        viewTransactioonDetailsButton.addActionListener(new java.awt.event.ActionListener() {
+        sendEmerReportButton.setBackground(new java.awt.Color(255, 51, 51));
+        sendEmerReportButton.setText("Send Emergency Report");
+        sendEmerReportButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                viewTransactioonDetailsButtonActionPerformed(evt);
+                sendEmerReportButtonActionPerformed(evt);
             }
         });
 
@@ -153,33 +153,32 @@ public class ViewDrugIncidentsJPanel extends javax.swing.JPanel {
                             .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 452, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
                                 .addComponent(assignButton)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(viewTransactioonDetailsButton))
+                                .addGap(210, 210, 210)
+                                .addComponent(sendEmerReportButton))
                             .addComponent(refreshButton2, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(274, 274, 274)
-                        .addComponent(jLabel1))
-                    .addGroup(layout.createSequentialGroup()
                         .addContainerGap()
-                        .addComponent(backButton, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(134, Short.MAX_VALUE))
+                        .addComponent(backButton, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(226, 226, 226)
+                        .addComponent(jLabel1)))
+                .addGap(134, 134, 134))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabel1)
-                .addGap(19, 19, 19)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel1)
+                    .addComponent(backButton, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(11, 11, 11)
                 .addComponent(refreshButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(26, 26, 26)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(assignButton)
-                    .addComponent(viewTransactioonDetailsButton))
-                .addGap(54, 54, 54)
-                .addComponent(backButton, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(sendEmerReportButton))
+                .addGap(90, 90, 90))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -212,30 +211,6 @@ public class ViewDrugIncidentsJPanel extends javax.swing.JPanel {
         refresh();
     }//GEN-LAST:event_refreshButton2ActionPerformed
 
-    private void viewTransactioonDetailsButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_viewTransactioonDetailsButtonActionPerformed
-        // TODO add your handling code here:
-
-        int selectedRow = requestsTable.getSelectedRow();
-
-        if (selectedRow < 0) {
-            JOptionPane.showMessageDialog(null, "Please select a work request");
-            return;
-        }
-
-        LawEnforcementInspectorWorkRequest lawEnforcementInspectorWorkRequest = (LawEnforcementInspectorWorkRequest) requestsTable.getValueAt(selectedRow, 0);
-
-        if (lawEnforcementInspectorWorkRequest.getReceiver() != null && userAccount == lawEnforcementInspectorWorkRequest.getReceiver()) {
-
-            ViewTransactionDetailsJPanel viewTransactionDetailsJPanel = new ViewTransactionDetailsJPanel(userProcessContainer, lawEnforcementInspectorWorkRequest, network, userAccount);
-            userProcessContainer.add("viewtransdet", viewTransactionDetailsJPanel);
-
-            CardLayout cardLayout = (CardLayout) userProcessContainer.getLayout();
-            cardLayout.next(userProcessContainer);
-        } else {
-            JOptionPane.showMessageDialog(this, "Please assign it and then proceed/Task might be assigned to other person");
-        }
-    }//GEN-LAST:event_viewTransactioonDetailsButtonActionPerformed
-
     private void backButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backButtonActionPerformed
         // TODO add your handling code here:
 
@@ -245,6 +220,72 @@ public class ViewDrugIncidentsJPanel extends javax.swing.JPanel {
         cardLayout.previous(userProcessContainer);
     }//GEN-LAST:event_backButtonActionPerformed
 
+    private void sendEmerReportButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_sendEmerReportButtonActionPerformed
+        // TODO add your handling code here:
+//        int pid = Integer.parseInt(packIdField.getText());
+//
+//        lawEnforcementInspectorWorkRequest.getPackage1().setPackageStatus(statusField.getText());
+//       int did = lawEnforcementInspectorWorkRequest.getPackage1().getDisLotID();
+//        int mid = lawEnforcementInspectorWorkRequest.getPackage1().getManuLotID();
+//       int hid = lawEnforcementInspectorWorkRequest.getPackage1().getHosID();
+  int row = requestsTable.getSelectedRow();
+
+        if (row < 0) {
+            JOptionPane.showMessageDialog(null, "Please select a work request");
+            return;
+        }
+
+        WorkRequest workRequest = (WorkRequest) requestsTable.getValueAt(row, 0);
+
+
+        for (Enterprise enterprise : network.getEnterpriseDirectory().getEnterpriseList()) {
+            if (enterprise.getClass().equals(DistributorEnterprise.class)) {
+
+                DistributorEnterprise distributorEnterprise = (DistributorEnterprise) enterprise;
+                for (InventoryItem inventoryItem : distributorEnterprise.getInventoryCatalog().getInventoryList()) {
+                   
+                        //System.out.println(""+mid);
+                        // System.out.println(""+inventoryItem.getPackage1().getManuLotID());
+                        inventoryItem.getPackage1().setPackageStatus("Illegetimate Drug");
+                    
+                }
+
+            }
+
+            if (enterprise.getClass().equals(HospitalEnterprise.class)) {
+
+                HospitalEnterprise hospitalEnterprise = (HospitalEnterprise) enterprise;
+                for (InventoryItem inventoryItem : hospitalEnterprise.getInventoryCatalog().getInventoryList()) {
+
+//                    if (inventoryItem.getPackage1().getDisLotID() == did) {
+                        inventoryItem.getPackage1().setPackageStatus("Illegetimate Drug");
+
+//                    }
+
+//                    if (!patientField.getText().isEmpty()) {
+//
+//                        for (Transaction transaction : network.getTransactionHistory().getTransactionList()) {
+//                            if (transaction.getPackage().getPackageID() == lawEnforcementInspectorWorkRequest.getPackage1().getPackageID()) {
+//                                Doctor doc = transaction.getDoctor();
+//
+//                                for (Package1 package1 : doc.getDrugCatalog().getPackPatientList()) {
+//                                    if (package1.getHosID() == hid) {
+//                                        package1.setPackageStatus("Illegetimate Drug");
+//
+//                                    }
+//                                }
+//                            }
+//                        }
+//
+//                    }
+                }
+            }
+
+        }
+
+        JOptionPane.showMessageDialog(null, "Emergency Report sent to the Enterprises");
+    }//GEN-LAST:event_sendEmerReportButtonActionPerformed
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton assignButton;
     private javax.swing.JButton backButton;
@@ -252,6 +293,6 @@ public class ViewDrugIncidentsJPanel extends javax.swing.JPanel {
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JButton refreshButton2;
     private javax.swing.JTable requestsTable;
-    private javax.swing.JButton viewTransactioonDetailsButton;
+    private javax.swing.JButton sendEmerReportButton;
     // End of variables declaration//GEN-END:variables
 }

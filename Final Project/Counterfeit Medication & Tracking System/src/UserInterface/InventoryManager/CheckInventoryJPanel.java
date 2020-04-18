@@ -33,8 +33,8 @@ public class CheckInventoryJPanel extends javax.swing.JPanel {
         this.network = network;
         this.userAccount = userAccount;
 
-        thresholdField.setText("5");
-        thresholdField.setEditable(false);
+//        thresholdField.setText("5");
+//        thresholdField.setEditable(false);
 
         refresh();
 
@@ -53,7 +53,7 @@ public class CheckInventoryJPanel extends javax.swing.JPanel {
         if (e.getClass().equals(HospitalEnterprise.class)) {
 
             HospitalEnterprise hospitalEnterprise = (HospitalEnterprise) e;
-            thresholdField.setText(Integer.toString(hospitalEnterprise.getThreshold()));
+            //thresholdField.setText(Integer.toString(hospitalEnterprise.getThreshold()));
             Drug tempDrug = null;
             for (InventoryItem inventoryItem : hospitalEnterprise.getInventoryCatalog().getInventoryList()) {
 
@@ -87,8 +87,6 @@ public class CheckInventoryJPanel extends javax.swing.JPanel {
 
         jScrollPane1 = new javax.swing.JScrollPane();
         inventoryReportTable = new javax.swing.JTable();
-        jLabel3 = new javax.swing.JLabel();
-        thresholdField = new javax.swing.JTextField();
         jLabel1 = new javax.swing.JLabel();
         backButton = new javax.swing.JButton();
 
@@ -117,10 +115,6 @@ public class CheckInventoryJPanel extends javax.swing.JPanel {
 
         add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(141, 92, -1, 112));
 
-        jLabel3.setText("Threshold:");
-        add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(445, 59, -1, 22));
-        add(thresholdField, new org.netbeans.lib.awtextra.AbsoluteConstraints(514, 60, 79, -1));
-
         jLabel1.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jLabel1.setText("Manage Inventory");
         add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(296, 24, -1, -1));
@@ -144,8 +138,6 @@ public class CheckInventoryJPanel extends javax.swing.JPanel {
     private javax.swing.JButton backButton;
     private javax.swing.JTable inventoryReportTable;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel3;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTextField thresholdField;
     // End of variables declaration//GEN-END:variables
 }
