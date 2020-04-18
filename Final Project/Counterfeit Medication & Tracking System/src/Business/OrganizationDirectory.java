@@ -29,16 +29,18 @@ public class OrganizationDirectory {
             org = new InventoryManagementOrganization();
         } else if (orgName.equals(Organization.SALES)) {
             org = new SalesManagementOrganization();
-        }  else if (orgName.equals(Organization.LICENSING)) {
+        } else if (orgName.equals(Organization.LICENSING)) {
             org = new LicensingOrganization();
         } else if (orgName.equals(Organization.MANAGEMENT)) {
             org = new ManagementOrganization();
         } else if (orgName.equals(Organization.WAREHOUSE)) {
             org = new WarehouseOrganization();
         } else if (orgName.equals(Organization.INSPECTING)) {
-
             org = new InspectingOrganization();
+        } else if (orgName.equals(Organization.DRUGTESTING)) {
+            org = new DrugTestingOrganization();
         }
+
         if (org != null) {
             orgList.add(org);
         }
