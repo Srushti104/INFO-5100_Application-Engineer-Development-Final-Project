@@ -96,14 +96,12 @@ public class ReportedIncidentsJPanel extends javax.swing.JPanel {
         jLabel1 = new javax.swing.JLabel();
         reportFDAButton = new javax.swing.JButton();
 
-        backButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/UserInterface/backButton.jpg"))); // NOI18N
         backButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 backButtonActionPerformed(evt);
             }
         });
 
-        refreshButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/UserInterface/refresh_button.jpg"))); // NOI18N
         refreshButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 refreshButtonActionPerformed(evt);

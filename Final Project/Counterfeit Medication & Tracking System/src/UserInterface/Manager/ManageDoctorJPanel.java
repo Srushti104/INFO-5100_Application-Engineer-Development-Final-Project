@@ -36,25 +36,25 @@ public class ManageDoctorJPanel extends javax.swing.JPanel {
 
     public void refresh() {
 
-        int rowCount = patientTable.getRowCount();
+        int rowCount = doctorTable.getRowCount();
 
         for (int i = rowCount - 1; i >= 0; i--) {
-            ((DefaultTableModel) patientTable.getModel()).removeRow(i);
+            ((DefaultTableModel) doctorTable.getModel()).removeRow(i);
         }
 
         for (Enterprise enterprise : network.getEnterpriseDirectory().getEnterpriseList()) {
             if (enterprise.getClass().equals(HospitalEnterprise.class)) {
                 HospitalEnterprise hospitalEnterprise = (HospitalEnterprise) enterprise;
 
-                for (Doctor patient : hospitalEnterprise.getDoctorDirectory().getDoctorList()) {
+                for (Doctor doc : hospitalEnterprise.getDoctorDirectory().getDoctorList()) {
                     Object row[] = new Object[5];
-                    row[0] = patient;
-                    row[1] = patient.getAddress().getLine1();
-                    row[2] = patient.getAddress().getLine2();
-                    row[3] = patient.getAddress().getCity();
-                    row[4] = patient.getAddress().getZipcode();
+                    row[0] = doc;
+                    row[1] = doc.getAddress().getLine1();
+                    row[2] = doc.getAddress().getLine2();
+                    row[3] = doc.getAddress().getCity();
+                    row[4] = doc.getAddress().getZipcode();
 
-                    ((DefaultTableModel) patientTable.getModel()).addRow(row);
+                    ((DefaultTableModel) doctorTable.getModel()).addRow(row);
 
                 }
 
@@ -73,14 +73,14 @@ public class ManageDoctorJPanel extends javax.swing.JPanel {
     private void initComponents() {
 
         jScrollPane1 = new javax.swing.JScrollPane();
-        patientTable = new javax.swing.JTable();
+        doctorTable = new javax.swing.JTable();
         refreshButton = new javax.swing.JButton();
         backButton = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
 
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        patientTable.setModel(new javax.swing.table.DefaultTableModel(
+        doctorTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null, null},
                 {null, null, null, null, null},
@@ -99,11 +99,10 @@ public class ManageDoctorJPanel extends javax.swing.JPanel {
                 return canEdit [columnIndex];
             }
         });
-        jScrollPane1.setViewportView(patientTable);
+        jScrollPane1.setViewportView(doctorTable);
 
         add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(72, 92, 560, 99));
 
-        refreshButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/UserInterface/refresh_button.jpg"))); // NOI18N
         refreshButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 refreshButtonActionPerformed(evt);
@@ -111,7 +110,6 @@ public class ManageDoctorJPanel extends javax.swing.JPanel {
         });
         add(refreshButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 60, 24, 26));
 
-        backButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/UserInterface/backButton.jpg"))); // NOI18N
         backButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 backButtonActionPerformed(evt);
@@ -120,7 +118,7 @@ public class ManageDoctorJPanel extends javax.swing.JPanel {
         add(backButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 30, 42, 27));
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        jLabel1.setText("Manage Patient");
+        jLabel1.setText("Manage Doctor");
         add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(302, 25, -1, -1));
     }// </editor-fold>//GEN-END:initComponents
 
@@ -140,9 +138,9 @@ public class ManageDoctorJPanel extends javax.swing.JPanel {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton backButton;
+    private javax.swing.JTable doctorTable;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable patientTable;
     private javax.swing.JButton refreshButton;
     // End of variables declaration//GEN-END:variables
 }

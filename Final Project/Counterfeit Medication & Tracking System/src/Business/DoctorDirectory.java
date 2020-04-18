@@ -19,7 +19,7 @@ public class DoctorDirectory {
         doctorList=new ArrayList<Doctor>();
     }
     
-    public Doctor newPatient()
+    public Doctor newDoctor()
     {
         
         Doctor Doc=new Doctor();
