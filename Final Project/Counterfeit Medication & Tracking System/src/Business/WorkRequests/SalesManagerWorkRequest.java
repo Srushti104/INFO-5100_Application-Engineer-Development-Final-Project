@@ -5,6 +5,7 @@
 package Business.WorkRequests;
 
 import Business.Drug;
+import Business.Order;
 
 /**
  *
@@ -19,6 +20,15 @@ public class SalesManagerWorkRequest extends WorkRequest {
     private String manuName;
     private String drName;
     private Drug drug;
+    private Order order;
+
+    public Order getOrder() {
+        return order;
+    }
+
+    public void setOrder(Order order) {
+        this.order = order;
+    }
 
     public WarehouseManagerWorkRequest getWareHouseManagerWorkRequest() {
         return wareHouseManagerWorkRequest;

@@ -132,14 +132,12 @@ public class ViewWorkRequestProductManagerJPanel extends javax.swing.JPanel {
         });
         jScrollPane1.setViewportView(requestsTable);
 
-        backButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/UserInterface/backButton.jpg"))); // NOI18N
         backButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 backButtonActionPerformed(evt);
             }
         });
 
-        refreshButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/UserInterface/refresh_button.jpg"))); // NOI18N
         refreshButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 refreshButtonActionPerformed(evt);
@@ -192,24 +190,24 @@ public class ViewWorkRequestProductManagerJPanel extends javax.swing.JPanel {
 
     private void addDrugButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addDrugButtonActionPerformed
         // TODO add your handling code here:
-        int selectedRow = requestsTable.getSelectedRow();
-
-        if (selectedRow < 0) {
-            JOptionPane.showMessageDialog(null, "Please select a work request");
-            return;
-        }
-
-        ProductManagerWorkRequest productManagerWorkRequest = (ProductManagerWorkRequest) requestsTable.getValueAt(selectedRow, 0);
-
-        if (productManagerWorkRequest.getReceiver() != null && userAccount == productManagerWorkRequest.getReceiver()) {
-            AddDrugJPanel addDrugJPanel = new AddDrugJPanel(userProcessContainer, productManagerWorkRequest, userAccount, network);
-            userProcessContainer.add("test", addDrugJPanel);
-
-            CardLayout cardLayout = (CardLayout) userProcessContainer.getLayout();
-            cardLayout.next(userProcessContainer);
-        } else {
-            JOptionPane.showMessageDialog(this, "Please assign it and then proceed/Task might be assigned to other person");
-        }
+//        int selectedRow = requestsTable.getSelectedRow();
+//
+//        if (selectedRow < 0) {
+//            JOptionPane.showMessageDialog(null, "Please select a work request");
+//            return;
+//        }
+//
+//        ProductManagerWorkRequest productManagerWorkRequest = (ProductManagerWorkRequest) requestsTable.getValueAt(selectedRow, 0);
+//
+//        if (productManagerWorkRequest.getReceiver() != null && userAccount == productManagerWorkRequest.getReceiver()) {
+//            AddDrugJPanel addDrugJPanel = new AddDrugJPanel(userProcessContainer, productManagerWorkRequest, userAccount, network);
+//            userProcessContainer.add("test", addDrugJPanel);
+//
+//            CardLayout cardLayout = (CardLayout) userProcessContainer.getLayout();
+//            cardLayout.next(userProcessContainer);
+//        } else {
+//            JOptionPane.showMessageDialog(this, "Please assign it and then proceed/Task might be assigned to other person");
+//        }
     }//GEN-LAST:event_addDrugButtonActionPerformed
 
     private void assignButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_assignButtonActionPerformed

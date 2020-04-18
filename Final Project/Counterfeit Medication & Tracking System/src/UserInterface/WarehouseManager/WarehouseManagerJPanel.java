@@ -33,14 +33,14 @@ public class WarehouseManagerJPanel extends javax.swing.JPanel {
         this.userProcessContainer=userProcessContainer;
         this.business=business;
         this.userAccount=userAccount;
-//        imaLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/UserInterface/warehouse.jpg")));
+        //imaLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/UserInterface/warehouse.jpg")));
 //        
-//        infoLabel.setVisible(false);
+          infoLabel.setVisible(false);
 //        alertLabel.setVisible(false);
         
         
         
-     //  refresh();
+        refresh();
     }
     
     public void refresh()
@@ -65,9 +65,10 @@ public class WarehouseManagerJPanel extends javax.swing.JPanel {
                                     checkInventoryButton.setVisible(false);
                                     viewRequestedOrdersButton.setVisible(false);
                                     viewRecievedOrderButton.setVisible(false);
-                                    
+                                    infoLabel.setVisible(true);
                                 }
                                 boolean flag=false;
+                                
                                 for(InventoryItem inventoryItem:distributorEnterprise.getInventoryCatalog().getInventoryList())
                                 {
                                     if(inventoryItem.getPackage1().getPackageStatus().equalsIgnoreCase("Illegetimate Drug"))
@@ -129,6 +130,7 @@ public class WarehouseManagerJPanel extends javax.swing.JPanel {
         viewRequestedOrdersButton = new javax.swing.JButton();
         checkInventoryButton = new javax.swing.JButton();
         viewRecievedOrderButton = new javax.swing.JButton();
+        infoLabel = new javax.swing.JLabel();
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jLabel1.setText("Warehouse Manager Work Area");
@@ -161,30 +163,36 @@ public class WarehouseManagerJPanel extends javax.swing.JPanel {
             }
         });
 
+        infoLabel.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        infoLabel.setForeground(new java.awt.Color(255, 0, 0));
+        infoLabel.setText("Please get a License before you Order Drugs or Handle Drug Requests");
+
         org.jdesktop.layout.GroupLayout layout = new org.jdesktop.layout.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-            .add(layout.createSequentialGroup()
-                .add(28, 28, 28)
-                .add(jLabel1)
-                .addContainerGap())
             .add(org.jdesktop.layout.GroupLayout.TRAILING, layout.createSequentialGroup()
-                .add(21, 21, 21)
-                .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.TRAILING, false)
-                    .add(viewRecievedOrderButton, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 185, Short.MAX_VALUE)
-                    .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.TRAILING, false)
-                        .add(checkInventoryButton, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .add(orderDrugButton, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .add(viewRequestedOrdersButton, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 185, Short.MAX_VALUE)))
-                .add(162, 162, 162))
+                .add(69, 69, 69)
+                .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
+                    .add(org.jdesktop.layout.GroupLayout.TRAILING, layout.createSequentialGroup()
+                        .add(infoLabel)
+                        .addContainerGap())
+                    .add(org.jdesktop.layout.GroupLayout.TRAILING, layout.createSequentialGroup()
+                        .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.TRAILING)
+                            .add(jLabel1)
+                            .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.TRAILING, false)
+                                .add(viewRecievedOrderButton, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 185, Short.MAX_VALUE)
+                                .add(checkInventoryButton, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .add(orderDrugButton, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .add(viewRequestedOrdersButton, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 185, Short.MAX_VALUE)))
+                        .add(162, 162, 162))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
             .add(layout.createSequentialGroup()
                 .addContainerGap()
                 .add(jLabel1)
-                .addPreferredGap(org.jdesktop.layout.LayoutStyle.UNRELATED)
+                .add(56, 56, 56)
                 .add(orderDrugButton)
                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.UNRELATED)
                 .add(viewRequestedOrdersButton)
@@ -192,7 +200,9 @@ public class WarehouseManagerJPanel extends javax.swing.JPanel {
                 .add(checkInventoryButton)
                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.UNRELATED)
                 .add(viewRecievedOrderButton)
-                .add(67, 67, 67))
+                .add(104, 104, 104)
+                .add(infoLabel)
+                .addContainerGap())
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -320,6 +330,7 @@ public class WarehouseManagerJPanel extends javax.swing.JPanel {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton checkInventoryButton;
+    private javax.swing.JLabel infoLabel;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JButton orderDrugButton;
     private javax.swing.JButton viewRecievedOrderButton;

@@ -7,6 +7,7 @@ package UserInterface.BusinessAdmin;
 import Business.Business;
 import Business.Employee;
 import Business.Network;
+import Business.NetworkDirectory;
 import Business.Roles.NetworkAdminRole;
 import Business.UserAccount;
 import java.awt.CardLayout;
@@ -130,10 +131,18 @@ public class AddNetworkJPanel extends javax.swing.JPanel {
             if (rePasswordPattern() == false) {
                 jLabel3.setForeground(Color.red);
                 reenterPassField.setBorder(BorderFactory.createLineBorder(Color.RED));
-                JOptionPane.showMessageDialog(null, "Passwords do not match");
+                JOptionPane.showMessageDialog(null, "Passwords do not match.");
                 return;
                 
-            }            
+            } 
+            for(Network n: business.getNetworkDirectory().getNetworkList())
+            {
+                
+                if(n.getNetworkName().equalsIgnoreCase(networkNameField.getText())){
+                JOptionPane.showMessageDialog(null, "Network already exists.");
+                return;
+                }
+            }
             
             Network network = business.getNetworkDirectory().newNetwork();
             network.setNetworkName(networkNameField.getText());

@@ -85,22 +85,14 @@ public class CheckInventoryJPanel extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        backButton = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         inventoryReportTable = new javax.swing.JTable();
         jLabel3 = new javax.swing.JLabel();
         thresholdField = new javax.swing.JTextField();
         jLabel1 = new javax.swing.JLabel();
+        backButton = new javax.swing.JButton();
 
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        backButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/UserInterface/backButton.jpg"))); // NOI18N
-        backButton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                backButtonActionPerformed(evt);
-            }
-        });
-        add(backButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 579, 40, 26));
 
         inventoryReportTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -132,12 +124,18 @@ public class CheckInventoryJPanel extends javax.swing.JPanel {
         jLabel1.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jLabel1.setText("Manage Inventory");
         add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(296, 24, -1, -1));
+
+        backButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                backButtonActionPerformed(evt);
+            }
+        });
+        add(backButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 20, 43, 25));
     }// </editor-fold>//GEN-END:initComponents
 
     private void backButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backButtonActionPerformed
         // TODO add your handling code here:
         userProcessContainer.remove(this);
-
         CardLayout cardLayout = (CardLayout) userProcessContainer.getLayout();
         cardLayout.previous(userProcessContainer);
     }//GEN-LAST:event_backButtonActionPerformed

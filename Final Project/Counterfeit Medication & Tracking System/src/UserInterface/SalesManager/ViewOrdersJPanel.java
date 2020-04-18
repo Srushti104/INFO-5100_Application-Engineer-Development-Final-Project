@@ -129,7 +129,8 @@ public class ViewOrdersJPanel extends javax.swing.JPanel {
                 row[3] = workRequest.getStatus();
                 row[4] = salesManagerWorkRequest.getDrug();
                 row[5] = salesManagerWorkRequest.getQuant();
-                row[6] = distributorEnterprise.getInventoryCatalog().getTotalQuantity(salesManagerWorkRequest.getDrug());
+               // row[6] = distributorEnterprise.getInventoryCatalog().getTotalQuantity(salesManagerWorkRequest.getDrug());
+               // row[6] = salesManagerWorkRequest.getOrder();
                 //  row[4]=workRequest.getDrugName();
                 //  row[5]=workRequest.getQuantity();
 
@@ -172,7 +173,6 @@ public class ViewOrdersJPanel extends javax.swing.JPanel {
         jLabel1.setText("View Order Requests");
         add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(321, 11, -1, -1));
 
-        refreshButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/UserInterface/refresh_button.jpg"))); // NOI18N
         refreshButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 refreshButtonActionPerformed(evt);
@@ -180,7 +180,6 @@ public class ViewOrdersJPanel extends javax.swing.JPanel {
         });
         add(refreshButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(123, 63, 24, 23));
 
-        backButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/UserInterface/backButton.jpg"))); // NOI18N
         backButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 backButtonActionPerformed(evt);
@@ -272,7 +271,7 @@ public class ViewOrdersJPanel extends javax.swing.JPanel {
                 warehouseManagerWorkRequest.setDrugName(salesManagerWorkRequest.getDrName());
                 warehouseManagerWorkRequest.setDrug(salesManagerWorkRequest.getDrug());
                 warehouseManagerWorkRequest.setQuantity(salesManagerWorkRequest.getQuant());
-          //      shipmentManagerWorkRequest.setShippedTo(salesManagerWorkRequest.getSender());
+               // warehouseManagerWorkRequest.setOrder(salesManagerWorkRequest.getOrder());
 
                 salesManagerWorkRequest.setStatus("Sent to warehouse");
 
@@ -286,22 +285,22 @@ public class ViewOrdersJPanel extends javax.swing.JPanel {
 
                     for (int j = 0; j < 5 && i > 0; j++) {
                         Package1 p = new Package1();
-                        Transaction transaction = network.getTransactionHistory().newTransaction();
+                       // Transaction transaction = network.getTransactionHistory().newTransaction();
                         p.setDrug(salesManagerWorkRequest.getDrug());
                         p.setManuLotID(lotOfDrug.getLotID());
                         p.setPackageStatus("Normal");
                         lotOfDrug.addPackage(p);
-                        transaction.setPackage(p);
-                        transaction.setManufacturerEnterprise(manufacturerEnterprise);
-                        transaction.setTransactionStatus("Sold");
-                        transaction.setDistributorEnterprise(distributorEnterprise);
+//                        transaction.setPackage(p);
+//                        transaction.setManufacturerEnterprise(manufacturerEnterprise);
+//                        transaction.setTransactionStatus("Sold");
+//                        transaction.setDistributorEnterprise(distributorEnterprise);
 
                         i--;
                     }
                     order.addLot(lotOfDrug);
                 }
 
-            //    warehouseManagerWorkRequest.setOrder(order);
+                warehouseManagerWorkRequest.setOrder(order);
 
                 ManufacturerEnterprise e = (ManufacturerEnterprise) network.getEnterpriseDirectory().getMyEnterprise(userAccount);
 
@@ -393,9 +392,8 @@ public class ViewOrdersJPanel extends javax.swing.JPanel {
                     }
 
                 }
-
-//                   
-            //    shipmentManagerWorkRequest.setOrder(order);
+               
+                 inventoryManagerWorkRequest.setOrder(order);
 
                 DistributorEnterprise e = (DistributorEnterprise) network.getEnterpriseDirectory().getMyEnterprise(userAccount);
 
