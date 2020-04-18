@@ -34,7 +34,23 @@ public class AddDoctorJPanel extends javax.swing.JPanel {
         this.userProcessContainer = userProcessContainer;
         this.network = network;
         this.userAccount = userAccount;
-        hospNameField.setEditable(false);
+        hospJCombo.removeAllItems();
+        //  hospNameField.setEditable(true);
+        refresh();
+    }
+
+    public void refresh() {
+
+        for (Enterprise enterprise : network.getEnterpriseDirectory().getEnterpriseList()) {
+
+            if (enterprise.getClass().equals(HospitalEnterprise.class)) {
+                HospitalEnterprise hospital = (HospitalEnterprise) enterprise;
+
+                hospJCombo.addItem(enterprise);
+
+            }
+
+        }
     }
 
     /**
@@ -54,11 +70,10 @@ public class AddDoctorJPanel extends javax.swing.JPanel {
         jLabel6 = new javax.swing.JLabel();
         firstNameField = new javax.swing.JTextField();
         lastNameField = new javax.swing.JTextField();
-        hospNameField = new javax.swing.JTextField();
         userNameField = new javax.swing.JTextField();
         passwordField = new javax.swing.JTextField();
         backButton = new javax.swing.JButton();
-        addPatientButton = new javax.swing.JButton();
+        addDoctorButton = new javax.swing.JButton();
         stateField = new javax.swing.JTextField();
         zipcodeField = new javax.swing.JTextField();
         cityField = new javax.swing.JTextField();
@@ -71,6 +86,7 @@ public class AddDoctorJPanel extends javax.swing.JPanel {
         jLabel8 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
         jLabel13 = new javax.swing.JLabel();
+        hospJCombo = new javax.swing.JComboBox();
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jLabel1.setText("Add Doctor details");
@@ -85,17 +101,16 @@ public class AddDoctorJPanel extends javax.swing.JPanel {
 
         jLabel6.setText("Password:");
 
-        backButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/UserInterface/backButton.jpg"))); // NOI18N
         backButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 backButtonActionPerformed(evt);
             }
         });
 
-        addPatientButton.setText("Add Doctor");
-        addPatientButton.addActionListener(new java.awt.event.ActionListener() {
+        addDoctorButton.setText("Add Doctor");
+        addDoctorButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                addPatientButtonActionPerformed(evt);
+                addDoctorButtonActionPerformed(evt);
             }
         });
 
@@ -121,6 +136,8 @@ public class AddDoctorJPanel extends javax.swing.JPanel {
         jLabel13.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jLabel13.setText("Personal Details");
 
+        hospJCombo.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
@@ -135,7 +152,7 @@ public class AddDoctorJPanel extends javax.swing.JPanel {
                                 .addGap(237, 237, 237)
                                 .addComponent(jLabel1))
                             .addGroup(layout.createSequentialGroup()
-                                .addGap(216, 216, 216)
+                                .addGap(219, 219, 219)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                         .addComponent(jLabel3)
@@ -156,24 +173,24 @@ public class AddDoctorJPanel extends javax.swing.JPanel {
                                         .addGap(37, 37, 37)))
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addGroup(layout.createSequentialGroup()
-                                        .addGap(49, 49, 49)
-                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                            .addComponent(firstNameField, javax.swing.GroupLayout.DEFAULT_SIZE, 127, Short.MAX_VALUE)
-                                            .addComponent(lastNameField)
-                                            .addComponent(hospNameField)
-                                            .addComponent(userNameField)
-                                            .addComponent(passwordField)))
-                                    .addGroup(layout.createSequentialGroup()
                                         .addGap(25, 25, 25)
                                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                             .addComponent(zipcodeField)
                                             .addComponent(line1Field)
                                             .addComponent(line2Field)
                                             .addComponent(cityField)
-                                            .addComponent(stateField, javax.swing.GroupLayout.PREFERRED_SIZE, 127, javax.swing.GroupLayout.PREFERRED_SIZE))))))
+                                            .addComponent(stateField, javax.swing.GroupLayout.PREFERRED_SIZE, 127, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addGap(49, 49, 49)
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                            .addComponent(firstNameField, javax.swing.GroupLayout.DEFAULT_SIZE, 127, Short.MAX_VALUE)
+                                            .addComponent(lastNameField)
+                                            .addComponent(userNameField)
+                                            .addComponent(passwordField)
+                                            .addComponent(hospJCombo, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))))
                         .addGap(141, 141, 141))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(addPatientButton)
+                        .addComponent(addDoctorButton)
                         .addGap(91, 91, 91)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
@@ -192,19 +209,19 @@ public class AddDoctorJPanel extends javax.swing.JPanel {
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addGroup(layout.createSequentialGroup()
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                            .addComponent(jLabel2)
-                                            .addComponent(firstNameField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                        .addComponent(jLabel3))
-                                    .addComponent(lastNameField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addComponent(jLabel2)
+                                    .addComponent(firstNameField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(jLabel4))
-                            .addComponent(hospNameField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addComponent(jLabel3))
+                            .addComponent(lastNameField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jLabel4)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(jLabel5))
-                    .addComponent(userNameField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(hospJCombo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(userNameField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(jLabel6)
@@ -237,12 +254,12 @@ public class AddDoctorJPanel extends javax.swing.JPanel {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(zipcodeField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(18, 18, 18)
-                .addComponent(addPatientButton)
+                .addComponent(addDoctorButton)
                 .addContainerGap())
         );
     }// </editor-fold>//GEN-END:initComponents
 
-    private void addPatientButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addPatientButtonActionPerformed
+    private void addDoctorButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addDoctorButtonActionPerformed
         // TODO add your handling code here:
 
         for (Enterprise enterprise : network.getEnterpriseDirectory().getEnterpriseList()) {
@@ -256,12 +273,13 @@ public class AddDoctorJPanel extends javax.swing.JPanel {
                         } else {
 
                             HospitalEnterprise hospitalEnterprise = (HospitalEnterprise) enterprise;
-                            Doctor doc = hospitalEnterprise.getDoctorDirectory().newPatient();
+                            Doctor doc = hospitalEnterprise.getDoctorDirectory().newDoctor();
+                            //           HospitalEnterprise hosp = (HospitalEnterprise) hospJCombo.getSelectedItem();
 
-                            hospNameField.setText(hospitalEnterprise.getEnterpriseName());
+                            //   hospNameField.setText(hospitalEnterprise.getEnterpriseName());
                             doc.setFirstName(firstNameField.getText());
                             doc.setLastName(lastNameField.getText());
-                            doc.setHsopName(hospNameField.getText());
+                            doc.setHsopName(hospJCombo.getSelectedItem().toString());
 
                             Address address = doc.getAddress();
                             address.setLine1(line1Field.getText());
@@ -276,7 +294,7 @@ public class AddDoctorJPanel extends javax.swing.JPanel {
                             userAccount2.setRole(new DoctorRole());
                             userAccount2.setDoctor(doc);
 
-                            JOptionPane.showMessageDialog(null, "Patient added");
+                            JOptionPane.showMessageDialog(null, "Doctor added");
 
                             firstNameField.setText("");
                             lastNameField.setText("");
@@ -295,7 +313,7 @@ public class AddDoctorJPanel extends javax.swing.JPanel {
             }
         }
 
-    }//GEN-LAST:event_addPatientButtonActionPerformed
+    }//GEN-LAST:event_addDoctorButtonActionPerformed
 
     private void cityFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cityFieldActionPerformed
         // TODO add your handling code here:
@@ -311,11 +329,11 @@ public class AddDoctorJPanel extends javax.swing.JPanel {
     }//GEN-LAST:event_backButtonActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton addPatientButton;
+    private javax.swing.JButton addDoctorButton;
     private javax.swing.JButton backButton;
     private javax.swing.JTextField cityField;
     private javax.swing.JTextField firstNameField;
-    private javax.swing.JTextField hospNameField;
+    private javax.swing.JComboBox hospJCombo;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;

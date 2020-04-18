@@ -137,11 +137,11 @@ public class DoctorWorkAreaJPanel extends javax.swing.JPanel {
     private void viewDrugsPurchasedButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_viewDrugsPurchasedButtonActionPerformed
         // TODO add your handling code here:
 
-//        ViewDrugsPurchasedJPanel viewDrugsPurchasedJPanel = new ViewDrugsPurchasedJPanel(userProcessContainer, business, userAccount);
-//        userProcessContainer.add("viewdrgpurchases", viewDrugsPurchasedJPanel);
-//
-//        CardLayout cardLayout = (CardLayout) userProcessContainer.getLayout();
-//        cardLayout.next(userProcessContainer);
+        ViewDrugsPurchasedJPanel viewDrugsPurchasedJPanel = new ViewDrugsPurchasedJPanel(userProcessContainer, business, userAccount);
+        userProcessContainer.add("viewdrgpurchases", viewDrugsPurchasedJPanel);
+
+        CardLayout cardLayout = (CardLayout) userProcessContainer.getLayout();
+        cardLayout.next(userProcessContainer);
     }//GEN-LAST:event_viewDrugsPurchasedButtonActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

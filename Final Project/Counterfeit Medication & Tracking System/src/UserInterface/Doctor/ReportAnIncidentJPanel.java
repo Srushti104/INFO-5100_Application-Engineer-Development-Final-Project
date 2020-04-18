@@ -104,7 +104,6 @@ public class ReportAnIncidentJPanel extends javax.swing.JPanel {
         detailsTextArea.setRows(5);
         jScrollPane1.setViewportView(detailsTextArea);
 
-        backButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/UserInterface/backButton.jpg"))); // NOI18N
         backButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 backButtonActionPerformed(evt);
