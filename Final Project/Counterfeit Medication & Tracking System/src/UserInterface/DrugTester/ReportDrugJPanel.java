@@ -4,15 +4,16 @@
  */
 package UserInterface.DrugTester;
 
+import Business.Business;
 import Business.WorkRequests.DrugTesterWorkRequest;
 import Business.Enterprise;
 import Business.FDAEnterprise;
 import Business.HospitalEnterprise;
 import Business.InspectingOrganization;
 import Business.InventoryManagementOrganization;
+import Business.Network;
 import Business.WorkRequests.InventoryManagerWorkRequest;
 import Business.WorkRequests.LawEnforcementInspectorWorkRequest;
-import Business.Network;
 import Business.UserAccount;
 import java.awt.CardLayout;
 import java.util.Date;
@@ -28,17 +29,17 @@ public class ReportDrugJPanel extends javax.swing.JPanel {
     JPanel userProcessContainer;
     DrugTesterWorkRequest drugTesterWorkRequest;
     UserAccount userAccount;
-    Network network;
+    Business business;
 
     /**
      * Creates new form ReportDrugJPanel
      */
-    public ReportDrugJPanel(JPanel userProcessContainer, DrugTesterWorkRequest drugTesterWorkRequest, UserAccount userAccount, Network network) {
+    public ReportDrugJPanel(JPanel userProcessContainer, DrugTesterWorkRequest drugTesterWorkRequest, UserAccount userAccount, Business business) {
         initComponents();
         this.userProcessContainer = userProcessContainer;
         this.drugTesterWorkRequest = drugTesterWorkRequest;
         this.userAccount = userAccount;
-        this.network = network;
+        this.business = business;
         reportStatusComboBox.removeAllItems();
         reportStatusComboBox.addItem("Illegitimate Drug");
         reportStatusComboBox.addItem("Proper Drug");
@@ -146,61 +147,63 @@ public class ReportDrugJPanel extends javax.swing.JPanel {
             lawEnforcementInspectorWorkRequest.setEnterprise(drugTesterWorkRequest.getEnterprise());
             lawEnforcementInspectorWorkRequest.setPackage1(drugTesterWorkRequest.getPackage1());
 
-            FDAEnterprise e = (FDAEnterprise) network.getEnterpriseDirectory().getMyEnterprise(userAccount);
-
-            //userAccount.getWorkQueue().getWorkRequestList().add(shipWorkRequest);
-            JOptionPane.showMessageDialog(null, "Incident report sent");
-            JOptionPane.showMessageDialog(null, "Processed succesfully");
-
-            FDAEnterprise d1 = null;
-            for (Enterprise enterprise1 : network.getEnterpriseDirectory().getEnterpriseList()) {
-                if (enterprise1.getClass().equals(FDAEnterprise.class)) {
-                    d1 = (FDAEnterprise) enterprise1;
-                }
-            }
-
-            InspectingOrganization inspectingOrganization = d1.getInspectingOrganization();
-            inspectingOrganization.getWorkQueue().getWorkRequestList().add(lawEnforcementInspectorWorkRequest);
-            //SalesManagementOrganization salesOrganization=e1.getSalesManagementOrganization();
-            //  salesOrganization.getWorkQueue().getWorkRequestList().add(salesRequest);
-
-            // userAccount.getWorkQueue().getWorkRequestList().add(salesRequest);
-            e.getDrugTestingOrganization().getSentWorkQueue().getWorkRequestList().add(lawEnforcementInspectorWorkRequest);
-
-        } else if (reportStatusComboBox.getSelectedItem() == "Proper Drug") {
-            UserAccount sender = drugTesterWorkRequest.getSender();
-            Enterprise en = network.getEnterpriseDirectory().getMyEnterprise(sender);
-
-            if (en.getClass().equals(HospitalEnterprise.class)) {
-                InventoryManagerWorkRequest inventoryManagerWorkRequest = new InventoryManagerWorkRequest();
-                inventoryManagerWorkRequest.setSender(userAccount);
-                inventoryManagerWorkRequest.setRequestDate(new Date());
-                inventoryManagerWorkRequest.setMessage("Drugs Reported is Normal");
-                inventoryManagerWorkRequest.setStatus("Drug Reported is Normal");
-                // shipmentManagerWorkRequest.setManuName(manuNameField.getText());
-                // wareHouseManagerWorkRequest.setDrugName(shipmentManagerWorkRequest.getDrName());
-                inventoryManagerWorkRequest.setDrug(drugTesterWorkRequest.getPackage1().getDrug());
-
+            for (Network network : business.getNetworkDirectory().getNetworkList()) {
                 FDAEnterprise e = (FDAEnterprise) network.getEnterpriseDirectory().getMyEnterprise(userAccount);
 
-                HospitalEnterprise e1 = null;
-                for (Enterprise enterprise : network.getEnterpriseDirectory().getEnterpriseList()) {
-                    if (enterprise.getClass().equals(HospitalEnterprise.class)) {
-                        e1 = (HospitalEnterprise) enterprise;
+                //userAccount.getWorkQueue().getWorkRequestList().add(shipWorkRequest);
+                JOptionPane.showMessageDialog(null, "Incident report sent");
+                JOptionPane.showMessageDialog(null, "Processed succesfully");
+
+                FDAEnterprise d1 = null;
+                for (Enterprise enterprise1 : network.getEnterpriseDirectory().getEnterpriseList()) {
+                    if (enterprise1.getClass().equals(FDAEnterprise.class)) {
+                        d1 = (FDAEnterprise) enterprise1;
                     }
                 }
 
-                InventoryManagementOrganization inventoryManagementOrganization = e1.getInventoryManagementOrganization();
-                inventoryManagementOrganization.getWorkQueue().getWorkRequestList().add(inventoryManagerWorkRequest);
+                InspectingOrganization inspectingOrganization = d1.getInspectingOrganization();
+                inspectingOrganization.getWorkQueue().getWorkRequestList().add(lawEnforcementInspectorWorkRequest);
+                //SalesManagementOrganization salesOrganization=e1.getSalesManagementOrganization();
+                //  salesOrganization.getWorkQueue().getWorkRequestList().add(salesRequest);
 
                 // userAccount.getWorkQueue().getWorkRequestList().add(salesRequest);
-                e.getDrugTestingOrganization().getSentWorkQueue().getWorkRequestList().add(inventoryManagerWorkRequest);
-
-                JOptionPane.showMessageDialog(null, "Work Request Sent");
-
+                e.getDrugTestingOrganization().getSentWorkQueue().getWorkRequestList().add(lawEnforcementInspectorWorkRequest);
             }
+        } else if (reportStatusComboBox.getSelectedItem() == "Proper Drug") {
+            UserAccount sender = drugTesterWorkRequest.getSender();
+            for (Network network : business.getNetworkDirectory().getNetworkList()) {
+                Enterprise en = network.getEnterpriseDirectory().getMyEnterprise(sender);
 
+                if (en.getClass().equals(HospitalEnterprise.class)) {
+                    InventoryManagerWorkRequest inventoryManagerWorkRequest = new InventoryManagerWorkRequest();
+                    inventoryManagerWorkRequest.setSender(userAccount);
+                    inventoryManagerWorkRequest.setRequestDate(new Date());
+                    inventoryManagerWorkRequest.setMessage("Drugs Reported is Normal");
+                    inventoryManagerWorkRequest.setStatus("Drug Reported is Normal");
+                    // shipmentManagerWorkRequest.setManuName(manuNameField.getText());
+                    // wareHouseManagerWorkRequest.setDrugName(shipmentManagerWorkRequest.getDrName());
+                    inventoryManagerWorkRequest.setDrug(drugTesterWorkRequest.getPackage1().getDrug());
+
+                    FDAEnterprise e = (FDAEnterprise) network.getEnterpriseDirectory().getMyEnterprise(userAccount);
+
+                    HospitalEnterprise e1 = null;
+                    for (Enterprise enterprise : network.getEnterpriseDirectory().getEnterpriseList()) {
+                        if (enterprise.getClass().equals(HospitalEnterprise.class)) {
+                            e1 = (HospitalEnterprise) enterprise;
+                        }
+                    }
+
+                    InventoryManagementOrganization inventoryManagementOrganization = e1.getInventoryManagementOrganization();
+                    inventoryManagementOrganization.getWorkQueue().getWorkRequestList().add(inventoryManagerWorkRequest);
+
+                    // userAccount.getWorkQueue().getWorkRequestList().add(salesRequest);
+                    e.getDrugTestingOrganization().getSentWorkQueue().getWorkRequestList().add(inventoryManagerWorkRequest);
+
+                    JOptionPane.showMessageDialog(null, "Work Request Sent");
+                }
+            }
         }
+
     }//GEN-LAST:event_reportButtonActionPerformed
 
     private void backButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backButtonActionPerformed

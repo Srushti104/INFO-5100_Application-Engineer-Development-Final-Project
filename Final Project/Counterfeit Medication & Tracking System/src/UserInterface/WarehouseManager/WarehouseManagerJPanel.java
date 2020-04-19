@@ -146,7 +146,7 @@ public class WarehouseManagerJPanel extends javax.swing.JPanel {
 
         alertLabel.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         alertLabel.setForeground(new java.awt.Color(255, 0, 0));
-        alertLabel.setText("Illegetimate drugs have been reported");
+        alertLabel.setText("Illegitimate drugs have been reported.");
 
         org.jdesktop.layout.GroupLayout layout = new org.jdesktop.layout.GroupLayout(this);
         this.setLayout(layout);

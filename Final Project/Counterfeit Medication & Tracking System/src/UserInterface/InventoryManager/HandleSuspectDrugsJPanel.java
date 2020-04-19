@@ -178,8 +178,8 @@ public class HandleSuspectDrugsJPanel extends javax.swing.JPanel {
         ReturnProcessorWorkRequest returnProcessorWorkRequest = new ReturnProcessorWorkRequest();
         returnProcessorWorkRequest.setSender(userAccount);
         returnProcessorWorkRequest.setRequestDate(new Date());
-        returnProcessorWorkRequest.setMessage("Drug Disposed");
-        returnProcessorWorkRequest.setStatus("Drug Disposed");
+        returnProcessorWorkRequest.setMessage("Drug Disposed from Inventory");
+        returnProcessorWorkRequest.setStatus("Pending");
         returnProcessorWorkRequest.setResult("Drug Disposed");
         returnProcessorWorkRequest.setPackage1(package1);
         //salesManagerWorkRequest.setManuName(manuName);

@@ -75,8 +75,8 @@ public class OrderJPanel extends javax.swing.JPanel {
             } else {
 
                 row[0] = inventoryItem.getPackage1().getDrug();
-              //  row[1] = inventoryItem.getPackage1().getDrug().getActualPrice();
-                row[1]=hospitalEnterprise.getInventoryCatalog().getTotalQuantity(inventoryItem.getPackage1().getDrug());
+                row[1] = inventoryItem.getPackage1().getDrug().getActualPrice();
+                row[2]=hospitalEnterprise.getInventoryCatalog().getTotalQuantity(inventoryItem.getPackage1().getDrug());
 
                 tempDrug = inventoryItem.getPackage1().getDrug();
 
@@ -135,17 +135,17 @@ public class OrderJPanel extends javax.swing.JPanel {
 
         inventoryTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null},
-                {null, null},
-                {null, null},
-                {null, null}
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null}
             },
             new String [] {
-                "Drug Name", "Quantity"
+                "Drug Name", "Actual Price", "Quantity"
             }
         ) {
             boolean[] canEdit = new boolean [] {
-                false, false
+                false, true, true
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {

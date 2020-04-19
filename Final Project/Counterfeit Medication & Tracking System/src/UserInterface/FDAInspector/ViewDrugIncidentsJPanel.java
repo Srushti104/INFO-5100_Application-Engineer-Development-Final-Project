@@ -221,9 +221,8 @@ public class ViewDrugIncidentsJPanel extends javax.swing.JPanel {
     }//GEN-LAST:event_backButtonActionPerformed
 
     private void sendEmerReportButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_sendEmerReportButtonActionPerformed
-        // TODO add your handling code here:
+      // TODO add your handling code here:
 //        int pid = Integer.parseInt(packIdField.getText());
-//
 //        lawEnforcementInspectorWorkRequest.getPackage1().setPackageStatus(statusField.getText());
 //       int did = lawEnforcementInspectorWorkRequest.getPackage1().getDisLotID();
 //        int mid = lawEnforcementInspectorWorkRequest.getPackage1().getManuLotID();
@@ -236,7 +235,8 @@ public class ViewDrugIncidentsJPanel extends javax.swing.JPanel {
         }
 
         WorkRequest workRequest = (WorkRequest) requestsTable.getValueAt(row, 0);
-
+        workRequest.setStatus("Sent To Enterprises");
+        refresh();
 
         for (Enterprise enterprise : network.getEnterpriseDirectory().getEnterpriseList()) {
             if (enterprise.getClass().equals(DistributorEnterprise.class)) {
@@ -247,6 +247,7 @@ public class ViewDrugIncidentsJPanel extends javax.swing.JPanel {
                         //System.out.println(""+mid);
                         // System.out.println(""+inventoryItem.getPackage1().getManuLotID());
                         inventoryItem.getPackage1().setPackageStatus("Illegetimate Drug");
+                        
                     
                 }
 
