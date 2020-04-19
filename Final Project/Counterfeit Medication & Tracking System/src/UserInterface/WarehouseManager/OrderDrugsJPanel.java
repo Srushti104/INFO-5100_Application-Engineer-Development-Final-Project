@@ -98,7 +98,7 @@ public class OrderDrugsJPanel extends javax.swing.JPanel {
             }
         });
 
-        jLabel5.setText("Result:");
+        jLabel5.setText("Notes:");
 
         quantityField.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {

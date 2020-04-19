@@ -74,8 +74,6 @@ public class ViewRequestForDrugsJPanel extends javax.swing.JPanel {
         sentWorkRequestJTable = new javax.swing.JTable();
         backButton = new javax.swing.JButton();
 
-        setBackground(new java.awt.Color(255, 204, 102));
-
         jLabel1.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jLabel1.setText("Work Request Sent");
 
@@ -120,7 +118,7 @@ public class ViewRequestForDrugsJPanel extends javax.swing.JPanel {
                         .addComponent(backButton, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(255, 255, 255)
                         .addComponent(jLabel1)))
-                .addContainerGap(145, Short.MAX_VALUE))
+                .addGap(145, 145, 145))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -131,7 +129,7 @@ public class ViewRequestForDrugsJPanel extends javax.swing.JPanel {
                     .addComponent(backButton, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(53, 53, 53)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(225, Short.MAX_VALUE))
+                .addGap(225, 225, 225))
         );
     }// </editor-fold>//GEN-END:initComponents
 

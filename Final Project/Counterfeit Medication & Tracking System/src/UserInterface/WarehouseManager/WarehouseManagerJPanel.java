@@ -35,8 +35,7 @@ public class WarehouseManagerJPanel extends javax.swing.JPanel {
         this.userAccount = userAccount;
         //imaLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/UserInterface/warehouse.jpg")));
 //        
-        infoLabel.setVisible(false);
-//        alertLabel.setVisible(false);
+        alertLabel.setVisible(false);
 
         refresh();
     }
@@ -57,11 +56,11 @@ public class WarehouseManagerJPanel extends javax.swing.JPanel {
 //                                    viewRecievedOrderButton.setVisible(false);
 //                                    infoLabel.setVisible(true);
 //                                }
-                                boolean flag = false;
+                               
 
                                 for (InventoryItem inventoryItem : distributorEnterprise.getInventoryCatalog().getInventoryList()) {
                                     if (inventoryItem.getPackage1().getPackageStatus().equalsIgnoreCase("Illegetimate Drug")) {
-                                        flag = true;
+                                         alertLabel.setVisible(true);
                                     }
 
                                 }
@@ -112,7 +111,7 @@ public class WarehouseManagerJPanel extends javax.swing.JPanel {
         viewRequestedOrdersButton = new javax.swing.JButton();
         checkInventoryButton = new javax.swing.JButton();
         viewRecievedOrderButton = new javax.swing.JButton();
-        infoLabel = new javax.swing.JLabel();
+        alertLabel = new javax.swing.JLabel();
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jLabel1.setText("Warehouse Manager Work Area");
@@ -145,9 +144,9 @@ public class WarehouseManagerJPanel extends javax.swing.JPanel {
             }
         });
 
-        infoLabel.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        infoLabel.setForeground(new java.awt.Color(255, 0, 0));
-        infoLabel.setText("Please get a License before you Order Drugs or Handle Drug Requests");
+        alertLabel.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        alertLabel.setForeground(new java.awt.Color(255, 0, 0));
+        alertLabel.setText("Illegetimate drugs have been reported");
 
         org.jdesktop.layout.GroupLayout layout = new org.jdesktop.layout.GroupLayout(this);
         this.setLayout(layout);
@@ -164,8 +163,8 @@ public class WarehouseManagerJPanel extends javax.swing.JPanel {
                         .add(viewRequestedOrdersButton, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 185, Short.MAX_VALUE)))
                 .add(162, 162, 162))
             .add(layout.createSequentialGroup()
-                .add(27, 27, 27)
-                .add(infoLabel)
+                .add(32, 32, 32)
+                .add(alertLabel, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 372, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -181,9 +180,9 @@ public class WarehouseManagerJPanel extends javax.swing.JPanel {
                 .add(checkInventoryButton)
                 .addPreferredGap(org.jdesktop.layout.LayoutStyle.UNRELATED)
                 .add(viewRecievedOrderButton)
-                .add(35, 35, 35)
-                .add(infoLabel)
-                .addContainerGap())
+                .add(42, 42, 42)
+                .add(alertLabel, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 19, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                .add(56, 56, 56))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -277,8 +276,8 @@ public class WarehouseManagerJPanel extends javax.swing.JPanel {
     }//GEN-LAST:event_viewRecievedOrderButtonActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel alertLabel;
     private javax.swing.JButton checkInventoryButton;
-    private javax.swing.JLabel infoLabel;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JButton orderDrugButton;
     private javax.swing.JButton viewRecievedOrderButton;

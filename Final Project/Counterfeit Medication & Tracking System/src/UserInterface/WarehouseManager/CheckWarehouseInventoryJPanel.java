@@ -36,8 +36,8 @@ public class CheckWarehouseInventoryJPanel extends javax.swing.JPanel {
        // inventoryDetailsComboBox.addItem("All Inventory");
         
        // inventoryDetailsComboBox.addItem("Short Supply");
-        thresholdField.setText("5");
-        thresholdField.setEditable(false);
+//        thresholdField.setText("5");
+//        thresholdField.setEditable(false);
         
         refresh();
     }
@@ -67,7 +67,7 @@ public class CheckWarehouseInventoryJPanel extends javax.swing.JPanel {
         {
             
         DistributorEnterprise distributorEnterprise=(DistributorEnterprise)enterprise;
-        thresholdField.setText(Integer.toString(distributorEnterprise.getThreshold()));
+        //thresholdField.setText(Integer.toString(distributorEnterprise.getThreshold()));
         Drug tempDrug=null;
        for(InventoryItem inventoryItem:distributorEnterprise.getInventoryCatalog().getInventoryList())
         {
@@ -113,18 +113,12 @@ public class CheckWarehouseInventoryJPanel extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jLabel3 = new javax.swing.JLabel();
-        thresholdField = new javax.swing.JTextField();
         jScrollPane1 = new javax.swing.JScrollPane();
         inventoryReportTable = new javax.swing.JTable();
         backButton = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
 
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        jLabel3.setText("Threshold:");
-        add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(456, 52, -1, 22));
-        add(thresholdField, new org.netbeans.lib.awtextra.AbsoluteConstraints(525, 53, 79, -1));
 
         inventoryReportTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -173,8 +167,6 @@ public class CheckWarehouseInventoryJPanel extends javax.swing.JPanel {
     private javax.swing.JButton backButton;
     private javax.swing.JTable inventoryReportTable;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel3;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTextField thresholdField;
     // End of variables declaration//GEN-END:variables
 }

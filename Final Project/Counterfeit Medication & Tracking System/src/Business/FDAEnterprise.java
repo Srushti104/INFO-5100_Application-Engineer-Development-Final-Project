@@ -5,7 +5,7 @@
 package Business;
 
 import Business.Roles.DrugTesterRole;
-import Business.Roles.LicenseInspectorRole;
+import Business.Roles.FDAInspectorRole;
 import Business.Roles.Role;
 import java.util.ArrayList;
 
@@ -15,32 +15,22 @@ import java.util.ArrayList;
  */
 public class FDAEnterprise extends Enterprise {
 
-    private LicensingOrganization licensingOrganization;
-    private ManagementOrganization managementOrganization;
     private DrugTestingOrganization drugTestingOrganization;
+    private InspectingOrganization inspectingOrganization;
 
     public FDAEnterprise(String enterpriseName) {
         super(enterpriseName);
 
-        licensingOrganization = (LicensingOrganization) getOrganizationDirectory().newOrganization(Organization.LICENSING);
-        managementOrganization = (ManagementOrganization) getOrganizationDirectory().newOrganization(Organization.MANAGEMENT);
         drugTestingOrganization = (DrugTestingOrganization) getOrganizationDirectory().newOrganization(DRUGTESTING);
+        inspectingOrganization = (InspectingOrganization) getOrganizationDirectory().newOrganization(Organization.INSPECTING);
     }
 
-    public LicensingOrganization getLicensingOrganization() {
-        return licensingOrganization;
+    public InspectingOrganization getInspectingOrganization() {
+        return inspectingOrganization;
     }
 
-    public void setLicensingOrganization(LicensingOrganization licensingOrganization) {
-        this.licensingOrganization = licensingOrganization;
-    }
-
-    public ManagementOrganization getManagementOrganization() {
-        return managementOrganization;
-    }
-
-    public void setManagementOrganization(ManagementOrganization managementOrganization) {
-        this.managementOrganization = managementOrganization;
+    public void setInspectingOrganization(InspectingOrganization inspectingOrganization) {
+        this.inspectingOrganization = inspectingOrganization;
     }
 
     public DrugTestingOrganization getDrugTestingOrganization() {
@@ -54,8 +44,8 @@ public class FDAEnterprise extends Enterprise {
     @Override
     public ArrayList<Role> getSupportedRoles() {
         ArrayList<Role> roles = new ArrayList<Role>();
-        roles.add(new LicenseInspectorRole());
         roles.add(new DrugTesterRole());
+        roles.add(new FDAInspectorRole());
         return roles;
 
     }

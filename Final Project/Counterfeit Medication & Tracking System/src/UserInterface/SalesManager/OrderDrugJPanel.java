@@ -60,7 +60,7 @@ public class OrderDrugJPanel extends javax.swing.JPanel {
 
         jLabel2.setText("Drug Name:");
 
-        jLabel3.setText("Quantity");
+        jLabel3.setText("Quantity:");
 
         sendRequestButton.setText("Send Request");
         sendRequestButton.addActionListener(new java.awt.event.ActionListener() {
