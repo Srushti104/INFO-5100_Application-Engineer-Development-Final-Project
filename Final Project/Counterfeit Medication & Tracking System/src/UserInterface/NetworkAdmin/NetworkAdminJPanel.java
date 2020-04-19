@@ -43,21 +43,36 @@ public class NetworkAdminJPanel extends javax.swing.JPanel {
         addEnterpriseButton = new javax.swing.JButton();
         manageEnterpriseButton = new javax.swing.JButton();
 
-        setBackground(new java.awt.Color(0, 204, 255));
+        setBackground(new java.awt.Color(238, 238, 238));
+        setMaximumSize(new java.awt.Dimension(1280, 700));
+        setMinimumSize(new java.awt.Dimension(1280, 700));
+        setPreferredSize(new java.awt.Dimension(1280, 700));
 
-        jLabel1.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        jLabel1.setText("Network Admin Work Area");
+        jLabel1.setFont(new java.awt.Font("Courier New", 0, 18)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(34, 40, 49));
+        jLabel1.setText("NETWORK ADMIN WORK-AREA");
+        jLabel1.setBorder(javax.swing.BorderFactory.createMatteBorder(1, 0, 1, 0, new java.awt.Color(0, 173, 181)));
 
-        addEnterpriseButton.setFont(new java.awt.Font("Calibri", 1, 12)); // NOI18N
-        addEnterpriseButton.setText("Add Enterprises");
+        addEnterpriseButton.setBackground(new java.awt.Color(57, 62, 70));
+        addEnterpriseButton.setFont(new java.awt.Font("Courier New", 0, 12)); // NOI18N
+        addEnterpriseButton.setForeground(new java.awt.Color(238, 238, 238));
+        addEnterpriseButton.setText("ADD ENTERPRISE");
+        addEnterpriseButton.setMaximumSize(new java.awt.Dimension(200, 33));
+        addEnterpriseButton.setMinimumSize(new java.awt.Dimension(200, 33));
+        addEnterpriseButton.setPreferredSize(new java.awt.Dimension(200, 33));
         addEnterpriseButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 addEnterpriseButtonActionPerformed(evt);
             }
         });
 
-        manageEnterpriseButton.setFont(new java.awt.Font("Calibri", 1, 12)); // NOI18N
-        manageEnterpriseButton.setText("Manage Enterprises");
+        manageEnterpriseButton.setBackground(new java.awt.Color(57, 62, 70));
+        manageEnterpriseButton.setFont(new java.awt.Font("Courier New", 0, 14)); // NOI18N
+        manageEnterpriseButton.setForeground(new java.awt.Color(238, 238, 238));
+        manageEnterpriseButton.setText("MANAGE ENTERPRISES");
+        manageEnterpriseButton.setMaximumSize(new java.awt.Dimension(200, 33));
+        manageEnterpriseButton.setMinimumSize(new java.awt.Dimension(200, 33));
+        manageEnterpriseButton.setPreferredSize(new java.awt.Dimension(200, 33));
         manageEnterpriseButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 manageEnterpriseButtonActionPerformed(evt);
@@ -68,27 +83,24 @@ public class NetworkAdminJPanel extends javax.swing.JPanel {
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-            .add(org.jdesktop.layout.GroupLayout.TRAILING, layout.createSequentialGroup()
-                .add(280, 280, 280)
-                .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-                    .add(org.jdesktop.layout.GroupLayout.TRAILING, jLabel1)
-                    .add(org.jdesktop.layout.GroupLayout.TRAILING, layout.createSequentialGroup()
-                        .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.TRAILING, false)
-                            .add(manageEnterpriseButton, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .add(addEnterpriseButton, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 148, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
-                        .add(20, 20, 20)))
-                .add(258, 258, 258))
+            .add(layout.createSequentialGroup()
+                .add(513, 513, 513)
+                .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.CENTER)
+                    .add(addEnterpriseButton, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 200, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                    .add(jLabel1)
+                    .add(manageEnterpriseButton, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 200, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(514, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
             .add(layout.createSequentialGroup()
-                .add(51, 51, 51)
-                .add(jLabel1)
-                .add(46, 46, 46)
-                .add(addEnterpriseButton)
-                .add(18, 18, 18)
-                .add(manageEnterpriseButton)
-                .add(147, 147, 147))
+                .add(121, 121, 121)
+                .add(jLabel1, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 30, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                .add(100, 100, 100)
+                .add(addEnterpriseButton, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 33, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                .add(50, 50, 50)
+                .add(manageEnterpriseButton, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 33, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
         );
     }// </editor-fold>//GEN-END:initComponents
 

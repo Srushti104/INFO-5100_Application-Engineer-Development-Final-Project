@@ -26,8 +26,10 @@ public class LogoutJPanel extends javax.swing.JPanel {
         mainJFrame=frame;
         this.userAccount=userAccount;
         this.userProcessContainer=userProcessContainer;
-       userNameLabel.setText(userAccount.getUserName());
-        // userNameLabel.setText(userAccount.getEmployee().getFirstName());
+
+        userNameLabel.setText(userAccount.getUserName());
+       //  userNameLabel.setText(userAccount.getEmployee().getFirstName());
+
     }
 
     /**
@@ -53,9 +55,9 @@ public class LogoutJPanel extends javax.swing.JPanel {
         userNameLabel.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         userNameLabel.setText("username");
 
-        logoutJButton.setBackground(new java.awt.Color(0, 173, 181));
-        logoutJButton.setFont(new java.awt.Font("Courier New", 0, 12)); // NOI18N
-        logoutJButton.setForeground(new java.awt.Color(57, 62, 70));
+        logoutJButton.setBackground(new java.awt.Color(238, 238, 238));
+        logoutJButton.setFont(new java.awt.Font("Courier New", 0, 14)); // NOI18N
+        logoutJButton.setForeground(new java.awt.Color(34, 40, 49));
         logoutJButton.setText("Logout");
         logoutJButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -70,8 +72,8 @@ public class LogoutJPanel extends javax.swing.JPanel {
             .add(layout.createSequentialGroup()
                 .add(50, 50, 50)
                 .add(userNameLabel, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 218, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED, 842, Short.MAX_VALUE)
-                .add(logoutJButton, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 120, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED, 812, Short.MAX_VALUE)
+                .add(logoutJButton, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 150, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
                 .add(50, 50, 50))
         );
         layout.setVerticalGroup(

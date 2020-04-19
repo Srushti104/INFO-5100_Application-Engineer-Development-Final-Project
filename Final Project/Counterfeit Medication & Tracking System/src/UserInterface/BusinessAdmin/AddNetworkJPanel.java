@@ -61,50 +61,178 @@ public class AddNetworkJPanel extends javax.swing.JPanel {
         reenterPass = new javax.swing.JLabel();
         reenterPassField = new javax.swing.JTextField();
 
-        setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        setBackground(new java.awt.Color(238, 238, 238));
+        setMaximumSize(new java.awt.Dimension(1280, 700));
+        setMinimumSize(new java.awt.Dimension(1280, 700));
+        setPreferredSize(new java.awt.Dimension(1280, 700));
 
-        jLabel1.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        jLabel1.setText("Add Network");
-        add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(312, 22, -1, -1));
+        jLabel1.setFont(new java.awt.Font("Courier New", 0, 18)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(34, 40, 49));
+        jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel1.setText("ADD NETWORK");
+        jLabel1.setBorder(javax.swing.BorderFactory.createMatteBorder(1, 0, 1, 0, new java.awt.Color(0, 173, 181)));
 
-        jLabel2.setText("Network Name:");
-        add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(231, 78, -1, -1));
-        add(networkNameField, new org.netbeans.lib.awtextra.AbsoluteConstraints(365, 72, 119, -1));
+        jLabel2.setFont(new java.awt.Font("Courier New", 0, 14)); // NOI18N
+        jLabel2.setForeground(new java.awt.Color(34, 40, 49));
+        jLabel2.setText("NETWORK NAME");
 
+        networkNameField.setBackground(new java.awt.Color(238, 238, 238));
+        networkNameField.setFont(new java.awt.Font("Courier New", 0, 12)); // NOI18N
+        networkNameField.setForeground(new java.awt.Color(34, 40, 49));
+        networkNameField.setMaximumSize(new java.awt.Dimension(200, 24));
+        networkNameField.setMinimumSize(new java.awt.Dimension(200, 24));
+        networkNameField.setPreferredSize(new java.awt.Dimension(200, 24));
+
+        backButton.setBackground(new java.awt.Color(238, 238, 238));
+        backButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/UserInterface/Images/back.png"))); // NOI18N
+        backButton.setBorder(null);
+        backButton.setMargin(new java.awt.Insets(0, 0, 0, 0));
+        backButton.setMaximumSize(new java.awt.Dimension(60, 60));
+        backButton.setMinimumSize(new java.awt.Dimension(60, 60));
+        backButton.setPreferredSize(new java.awt.Dimension(60, 60));
         backButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 backButtonActionPerformed(evt);
             }
         });
-        add(backButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 20, 40, 30));
 
+        addButton.setFont(new java.awt.Font("Courier New", 0, 14)); // NOI18N
+        addButton.setForeground(new java.awt.Color(238, 238, 238));
         addButton.setText("Add");
         addButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 addButtonActionPerformed(evt);
             }
         });
-        add(addButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 270, -1, -1));
 
-        jLabel3.setText("User Account:");
-        add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(231, 173, -1, -1));
+        jLabel3.setFont(new java.awt.Font("Courier New", 0, 14)); // NOI18N
+        jLabel3.setForeground(new java.awt.Color(34, 40, 49));
+        jLabel3.setText("CREATE USER ACCOUNT");
 
-        jLabel4.setText("Password:");
-        add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(231, 201, -1, -1));
-        add(userAccountField, new org.netbeans.lib.awtextra.AbsoluteConstraints(365, 167, 119, -1));
-        add(passwordField, new org.netbeans.lib.awtextra.AbsoluteConstraints(365, 198, 119, -1));
+        jLabel4.setFont(new java.awt.Font("Courier New", 0, 14)); // NOI18N
+        jLabel4.setForeground(new java.awt.Color(34, 40, 49));
+        jLabel4.setText("CREATE PASSWORD");
 
-        jLabel5.setText("First Name:");
-        add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(231, 106, -1, -1));
-        add(firstNameField, new org.netbeans.lib.awtextra.AbsoluteConstraints(365, 103, 119, -1));
+        userAccountField.setBackground(new java.awt.Color(238, 238, 238));
+        userAccountField.setFont(new java.awt.Font("Courier New", 0, 12)); // NOI18N
+        userAccountField.setForeground(new java.awt.Color(34, 40, 49));
+        userAccountField.setMaximumSize(new java.awt.Dimension(200, 24));
+        userAccountField.setMinimumSize(new java.awt.Dimension(200, 24));
+        userAccountField.setPreferredSize(new java.awt.Dimension(200, 24));
 
-        jLabel6.setText("Last Name:");
-        add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(231, 137, -1, -1));
-        add(lastNameField, new org.netbeans.lib.awtextra.AbsoluteConstraints(365, 134, 119, -1));
+        passwordField.setBackground(new java.awt.Color(238, 238, 238));
+        passwordField.setFont(new java.awt.Font("Courier New", 0, 12)); // NOI18N
+        passwordField.setForeground(new java.awt.Color(34, 40, 49));
+        passwordField.setMaximumSize(new java.awt.Dimension(200, 24));
+        passwordField.setMinimumSize(new java.awt.Dimension(200, 24));
+        passwordField.setPreferredSize(new java.awt.Dimension(200, 24));
 
-        reenterPass.setText("Re-enter Password:");
-        add(reenterPass, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 240, -1, -1));
-        add(reenterPassField, new org.netbeans.lib.awtextra.AbsoluteConstraints(369, 230, 120, -1));
+        jLabel5.setFont(new java.awt.Font("Courier New", 0, 14)); // NOI18N
+        jLabel5.setForeground(new java.awt.Color(34, 40, 49));
+        jLabel5.setText("USER FIRST NAME");
+
+        firstNameField.setBackground(new java.awt.Color(238, 238, 238));
+        firstNameField.setFont(new java.awt.Font("Courier New", 0, 12)); // NOI18N
+        firstNameField.setForeground(new java.awt.Color(34, 40, 49));
+        firstNameField.setMaximumSize(new java.awt.Dimension(200, 24));
+        firstNameField.setMinimumSize(new java.awt.Dimension(200, 24));
+        firstNameField.setPreferredSize(new java.awt.Dimension(200, 24));
+
+        jLabel6.setFont(new java.awt.Font("Courier New", 0, 14)); // NOI18N
+        jLabel6.setForeground(new java.awt.Color(34, 40, 49));
+        jLabel6.setText("USER LAST NAME");
+
+        lastNameField.setBackground(new java.awt.Color(238, 238, 238));
+        lastNameField.setFont(new java.awt.Font("Courier New", 0, 12)); // NOI18N
+        lastNameField.setForeground(new java.awt.Color(34, 40, 49));
+        lastNameField.setMaximumSize(new java.awt.Dimension(200, 24));
+        lastNameField.setMinimumSize(new java.awt.Dimension(200, 24));
+        lastNameField.setPreferredSize(new java.awt.Dimension(200, 24));
+
+        reenterPass.setFont(new java.awt.Font("Courier New", 0, 14)); // NOI18N
+        reenterPass.setForeground(new java.awt.Color(34, 40, 49));
+        reenterPass.setText("RE-ENTER PASSWORD");
+
+        reenterPassField.setBackground(new java.awt.Color(238, 238, 238));
+        reenterPassField.setFont(new java.awt.Font("Courier New", 0, 12)); // NOI18N
+        reenterPassField.setForeground(new java.awt.Color(34, 40, 49));
+        reenterPassField.setMaximumSize(new java.awt.Dimension(200, 24));
+        reenterPassField.setMinimumSize(new java.awt.Dimension(200, 24));
+        reenterPassField.setPreferredSize(new java.awt.Dimension(200, 24));
+
+        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
+        this.setLayout(layout);
+        layout.setHorizontalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(layout.createSequentialGroup()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(30, 30, 30)
+                        .addComponent(backButton, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(439, 439, 439)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel4)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(jLabel3, javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel6, javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel5, javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel2, javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(reenterPass, javax.swing.GroupLayout.Alignment.LEADING))
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addGap(97, 97, 97)
+                                        .addComponent(addButton, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addGap(50, 50, 50)
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(passwordField, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addComponent(userAccountField, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addComponent(firstNameField, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addComponent(networkNameField, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addComponent(lastNameField, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addComponent(reenterPassField, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)))))))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(579, 579, 579)
+                        .addComponent(jLabel1)))
+                .addContainerGap(439, Short.MAX_VALUE))
+        );
+        layout.setVerticalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(30, 30, 30)
+                .addComponent(backButton, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(30, 30, 30)
+                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(30, 30, 30)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel2)
+                    .addComponent(networkNameField, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(30, 30, 30)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel5)
+                    .addComponent(firstNameField, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(30, 30, 30)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lastNameField, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel6))
+                .addGap(30, 30, 30)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel3)
+                    .addComponent(userAccountField, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(30, 30, 30)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel4)
+                    .addComponent(passwordField, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(30, 30, 30)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(reenterPass)
+                    .addComponent(reenterPassField, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(30, 30, 30)
+                .addComponent(addButton, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
+        );
     }// </editor-fold>//GEN-END:initComponents
 
     private void backButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backButtonActionPerformed
