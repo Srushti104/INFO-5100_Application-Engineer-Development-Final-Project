@@ -1,36 +1,76 @@
 /*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
+ * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
 package UserInterface.DrugTester;
 
 import Business.Business;
+import Business.WorkRequests.DrugTesterWorkRequest;
 import Business.Enterprise;
+import Business.FDAEnterprise;
 import Business.Network;
 import Business.Organization;
 import Business.UserAccount;
+import Business.WorkRequests.WorkRequest;
 import java.awt.CardLayout;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
- * @author nived
+ * @author srush
  */
 public class DrugTesterJPanel extends javax.swing.JPanel {
 
-    /**
-     * Creates new form DrugTesterJPanel
-     */
     JPanel userProcessContainer;
     Business business;
     UserAccount userAccount;
 
+    /**
+     * Creates new form ViewReportedIncidentsJPanel
+     */
     public DrugTesterJPanel(JPanel userProcessContainer, Business business, UserAccount userAccount) {
         initComponents();
         this.userProcessContainer = userProcessContainer;
         this.business = business;
         this.userAccount = userAccount;
+        refresh();
+    }
+
+    public void refresh() {
+        int rowcount = requestsTable.getRowCount();
+
+        for (int i = rowcount - 1; i >= 0; i--) {
+            ((DefaultTableModel) requestsTable.getModel()).removeRow(i);
+
+        }
+
+        for (Network network : business.getNetworkDirectory().getNetworkList()) {
+            Enterprise e = network.getEnterpriseDirectory().getMyEnterprise(userAccount);
+
+            if (e.getClass().equals(FDAEnterprise.class)) {
+                Organization org = ((FDAEnterprise) e).getDrugTestingOrganization();
+
+                for (WorkRequest workRequest : org.getWorkQueue().getWorkRequestList()) {
+                    DrugTesterWorkRequest drugTesterWorkRequest = (DrugTesterWorkRequest) workRequest;
+                    Object row[] = new Object[7];
+                    row[0] = workRequest;
+                    row[1] = workRequest.getSender().getEmployee().getFirstName();
+
+                    if (workRequest.getReceiver() != null) {
+                        row[2] = workRequest.getReceiver().getEmployee().getFirstName();
+
+                    }
+
+                    row[3] = workRequest.getStatus();
+                    row[4] = drugTesterWorkRequest.getEnterprise();
+                    row[5] = drugTesterWorkRequest.getPackage1();
+
+                    ((DefaultTableModel) requestsTable.getModel()).addRow(row);
+                }
+            }
+        }
     }
 
     /**
@@ -42,65 +82,183 @@ public class DrugTesterJPanel extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        viewReportedIncidentsButton = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
-
-        viewReportedIncidentsButton.setText("View Reported Incidents");
-        viewReportedIncidentsButton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                viewReportedIncidentsButtonActionPerformed(evt);
-            }
-        });
+        refreshButton2 = new javax.swing.JButton();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        requestsTable = new javax.swing.JTable();
+        backButton = new javax.swing.JButton();
+        assignButton = new javax.swing.JButton();
+        reportDrugButton = new javax.swing.JButton();
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jLabel1.setText("Drug Tester Work Area");
+
+        refreshButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                refreshButton2ActionPerformed(evt);
+            }
+        });
+
+        requestsTable.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null}
+            },
+            new String [] {
+                "Message", "Sender", "Receiver", "Status", "Enterprise", "Drug Name"
+            }
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false, false, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        jScrollPane1.setViewportView(requestsTable);
+
+        backButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                backButtonActionPerformed(evt);
+            }
+        });
+
+        assignButton.setText("Assign to me");
+        assignButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                assignButtonActionPerformed(evt);
+            }
+        });
+
+        reportDrugButton.setText("Report Drug");
+        reportDrugButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                reportDrugButtonActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(102, 102, 102)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(viewReportedIncidentsButton)
-                    .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 173, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(125, 125, 125))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(140, 140, 140)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                            .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 452, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(assignButton)
+                                .addGap(268, 268, 268)
+                                .addComponent(reportDrugButton))
+                            .addComponent(refreshButton2, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(backButton, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(223, 223, 223)
+                        .addComponent(jLabel1)))
+                .addGap(185, 185, 185))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(46, 46, 46)
-                .addComponent(jLabel1)
-                .addGap(33, 33, 33)
-                .addComponent(viewReportedIncidentsButton)
-                .addGap(172, 172, 172))
+                .addContainerGap()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel1)
+                    .addComponent(backButton, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(10, 10, 10)
+                .addComponent(refreshButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(26, 26, 26)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(assignButton)
+                    .addComponent(reportDrugButton))
+                .addGap(90, 90, 90))
         );
     }// </editor-fold>//GEN-END:initComponents
 
-    private void viewReportedIncidentsButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_viewReportedIncidentsButtonActionPerformed
+    private void refreshButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_refreshButton2ActionPerformed
         // TODO add your handling code here:
-        for (Network network : business.getNetworkDirectory().getNetworkList()) {
-            for (Enterprise enterprise : network.getEnterpriseDirectory().getEnterpriseList()) {
-                for (Organization organization : enterprise.getOrganizationDirectory().getOrgList()) {
-                    for (UserAccount userAccount1 : organization.getUserAccountDirectory().getUserAccountList()) {
+        refresh();
+    }//GEN-LAST:event_refreshButton2ActionPerformed
 
-                        if (userAccount == userAccount1) {
+    private void assignButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_assignButtonActionPerformed
+        // TODO add your handling code here:
 
-                            ViewReportedIncidentsJPanel viewReportedIncidentsJPanel = new ViewReportedIncidentsJPanel(userProcessContainer, network, userAccount);
-                            userProcessContainer.add("viewReportedIncidentsJPanel", viewReportedIncidentsJPanel);
+        int row = requestsTable.getSelectedRow();
 
-                            CardLayout cardLayout = (CardLayout) userProcessContainer.getLayout();
-                            cardLayout.next(userProcessContainer);
-                        }
-                    }
-                }
-            }
+        if (row < 0) {
+            JOptionPane.showMessageDialog(null, "Please select a work request");
+            return;
         }
-    }//GEN-LAST:event_viewReportedIncidentsButtonActionPerformed
 
+        WorkRequest workRequest = (WorkRequest) requestsTable.getValueAt(row, 0);
+
+        if (workRequest.getReceiver() == null) {
+
+            workRequest.setReceiver(userAccount);
+
+            workRequest.setStatus("Pending");
+
+            refresh();
+        } else {
+            JOptionPane.showMessageDialog(this, "The task is already assigned to other person");
+        }
+    }//GEN-LAST:event_assignButtonActionPerformed
+
+    private void reportDrugButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_reportDrugButtonActionPerformed
+        // TODO add your handling code here:
+        int selectedRow = requestsTable.getSelectedRow();
+
+        if (selectedRow < 0) {
+            JOptionPane.showMessageDialog(null, "Please select a work request");
+            return;
+        }
+        WorkRequest workRequest = (WorkRequest) requestsTable.getValueAt(selectedRow, 0);
+
+        if (workRequest.getReceiver() != null) {
+
+            workRequest.setReceiver(userAccount);
+
+            workRequest.setStatus("Report Sent");
+
+            refresh();
+        }
+
+        DrugTesterWorkRequest drugTesterWorkRequest = (DrugTesterWorkRequest) requestsTable.getValueAt(selectedRow, 0);
+
+        if (drugTesterWorkRequest.getReceiver() != null && userAccount == drugTesterWorkRequest.getReceiver()) {
+
+            ReportDrugJPanel reportDrugJPanel = new ReportDrugJPanel(userProcessContainer, drugTesterWorkRequest, userAccount, business);
+            userProcessContainer.add("repd", reportDrugJPanel);
+
+            CardLayout cardLayout = (CardLayout) userProcessContainer.getLayout();
+            cardLayout.next(userProcessContainer);
+        } else {
+            JOptionPane.showMessageDialog(this, "Please assign it and then proceed/Task might be assigned to other person");
+        }
+    }//GEN-LAST:event_reportDrugButtonActionPerformed
+
+    private void backButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backButtonActionPerformed
+        // TODO add your handling code here:
+
+        userProcessContainer.remove(this);
+
+        CardLayout cardLayout = (CardLayout) userProcessContainer.getLayout();
+        cardLayout.previous(userProcessContainer);
+    }//GEN-LAST:event_backButtonActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton assignButton;
+    private javax.swing.JButton backButton;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JButton viewReportedIncidentsButton;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JButton refreshButton2;
+    private javax.swing.JButton reportDrugButton;
+    private javax.swing.JTable requestsTable;
     // End of variables declaration//GEN-END:variables
 }

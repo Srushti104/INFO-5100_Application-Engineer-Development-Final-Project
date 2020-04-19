@@ -26,8 +26,10 @@ public class LogoutJPanel extends javax.swing.JPanel {
         mainJFrame=frame;
         this.userAccount=userAccount;
         this.userProcessContainer=userProcessContainer;
+
         userNameLabel.setText(userAccount.getUserName());
        //  userNameLabel.setText(userAccount.getEmployee().getFirstName());
+
     }
 
     /**

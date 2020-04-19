@@ -126,9 +126,9 @@ public class AddDoctorJPanel extends javax.swing.JPanel {
 
         jLabel10.setText("City:");
 
-        jLabel9.setText("Line2:");
+        jLabel9.setText("Address2:");
 
-        jLabel8.setText("Line1:");
+        jLabel8.setText("Address1:");
 
         jLabel7.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jLabel7.setText("Home Address");

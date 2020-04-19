@@ -43,7 +43,6 @@ public class ViewReceivedOrdersJPanel extends javax.swing.JPanel {
         this.network = network;
         this.userAccount = userAccount;
         addInventoryButton.setEnabled(false);
-        viewSuspectDrugsButton.setVisible(false);
         // sendButton.setEnabled(false);
         Refresh();
         buttonEnable();
@@ -138,7 +137,6 @@ public class ViewReceivedOrdersJPanel extends javax.swing.JPanel {
         addInventoryButton = new javax.swing.JButton();
         assignButton = new javax.swing.JButton();
         checkCounterFietButton = new javax.swing.JButton();
-        viewSuspectDrugsButton = new javax.swing.JButton();
         sendButton = new javax.swing.JButton();
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
@@ -198,13 +196,6 @@ public class ViewReceivedOrdersJPanel extends javax.swing.JPanel {
             }
         });
 
-        viewSuspectDrugsButton.setText("View Suspect Drugs");
-        viewSuspectDrugsButton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                viewSuspectDrugsButtonActionPerformed(evt);
-            }
-        });
-
         sendButton.setText("Send To Doctor");
         sendButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -228,9 +219,7 @@ public class ViewReceivedOrdersJPanel extends javax.swing.JPanel {
                                     .addGroup(layout.createSequentialGroup()
                                         .addComponent(assignButton)
                                         .addGap(18, 18, 18)
-                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(checkCounterFietButton, javax.swing.GroupLayout.PREFERRED_SIZE, 127, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addComponent(viewSuspectDrugsButton))
+                                        .addComponent(checkCounterFietButton, javax.swing.GroupLayout.PREFERRED_SIZE, 127, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addGap(18, 18, 18)
                                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                             .addComponent(addInventoryButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -264,9 +253,7 @@ public class ViewReceivedOrdersJPanel extends javax.swing.JPanel {
                     .addComponent(assignButton)
                     .addComponent(checkCounterFietButton))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(viewSuspectDrugsButton)
-                    .addComponent(sendButton))
+                .addComponent(sendButton)
                 .addGap(158, 158, 158))
         );
     }// </editor-fold>//GEN-END:initComponents
@@ -313,7 +300,7 @@ public class ViewReceivedOrdersJPanel extends javax.swing.JPanel {
                     }
 
                     //hospitalEnterprise.getInventoryCatalog().newInventoryItem(inventoryManagerWorkRequest.getOrder());
-                     JOptionPane.showMessageDialog(this, "Drugs added to Inventory");
+                    JOptionPane.showMessageDialog(this, "Drugs added to Inventory");
                 }
             }
 
@@ -378,7 +365,6 @@ public class ViewReceivedOrdersJPanel extends javax.swing.JPanel {
                             if (p.getPackageStatus() == "Suspect Drug") {
                                 JOptionPane.showMessageDialog(null, "Drugs are suspected");
                                 addInventoryButton.setEnabled(false);
-                                viewSuspectDrugsButton.setVisible(true);
                                 p.setPackageStatus("Suspect Drug");
 
                                 int lotid = p.getDisLotID();
@@ -406,25 +392,6 @@ public class ViewReceivedOrdersJPanel extends javax.swing.JPanel {
 
     }//GEN-LAST:event_checkCounterFietButtonActionPerformed
 
-    private void viewSuspectDrugsButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_viewSuspectDrugsButtonActionPerformed
-        // TODO add your handling code here:
-
-        int selectedRow = requestsTable.getSelectedRow();
-
-        if (selectedRow < 0) {
-            JOptionPane.showMessageDialog(null, "Please select a work request");
-            return;
-        }
-
-        InventoryManagerWorkRequest inventoryManagerWorkRequest = (InventoryManagerWorkRequest) requestsTable.getValueAt(selectedRow, 0);
-
-        ViewSuspectDrugsJPanel viewSuspectDrugsJPanel = new ViewSuspectDrugsJPanel(userProcessContainer, inventoryManagerWorkRequest, network, userAccount);
-        userProcessContainer.add("vssus", viewSuspectDrugsJPanel);
-
-        CardLayout cardLayout = (CardLayout) userProcessContainer.getLayout();
-        cardLayout.next(userProcessContainer);
-    }//GEN-LAST:event_viewSuspectDrugsButtonActionPerformed
-
     private void sendButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_sendButtonActionPerformed
         // TODO add your handling code here:
         int selectedRow = requestsTable.getSelectedRow();
@@ -433,10 +400,20 @@ public class ViewReceivedOrdersJPanel extends javax.swing.JPanel {
             JOptionPane.showMessageDialog(null, "Please select a work request");
             return;
         }
-        InventoryManagerWorkRequest inventoryManagerWorkRequest = (InventoryManagerWorkRequest) requestsTable.getValueAt(selectedRow, 0);
-        UserAccount sender = inventoryManagerWorkRequest.getSender();
-        Doctor doc = sender.getDoctor();
-        /*       ShipmentManagerWorkRequest shipmentManagerWorkRequest = new ShipmentManagerWorkRequest();
+
+        WorkRequest workRequest = (WorkRequest) requestsTable.getValueAt(selectedRow, 0);
+
+        if (workRequest.getReceiver() != null) {
+
+           // workRequest.setReceiver(userAccount);
+
+            workRequest.setStatus("Sent To Doctor");
+            Refresh();
+        }
+            InventoryManagerWorkRequest inventoryManagerWorkRequest = (InventoryManagerWorkRequest) requestsTable.getValueAt(selectedRow, 0);
+            UserAccount sender = inventoryManagerWorkRequest.getSender();
+            Doctor doc = sender.getDoctor();
+            /*       ShipmentManagerWorkRequest shipmentManagerWorkRequest = new ShipmentManagerWorkRequest();
                 shipmentManagerWorkRequest.setSender(userAccount);
                 shipmentManagerWorkRequest.setRequestDate(new Date());
                 shipmentManagerWorkRequest.setMessage("Ship the required");
@@ -447,24 +424,24 @@ public class ViewReceivedOrdersJPanel extends javax.swing.JPanel {
                 shipmentManagerWorkRequest.setQuantity(inventoryManagerWorkRequest.getQt());
                 shipmentManagerWorkRequest.setShippedTo(inventoryManagerWorkRequest.getSender());*/
 
-        Order order = new Order();
-        HospitalEnterprise hospitalEnterprise = (HospitalEnterprise) network.getEnterpriseDirectory().getMyEnterprise(userAccount);
-        Enterprise en1 = network.getEnterpriseDirectory().getMyEnterprise(inventoryManagerWorkRequest.getSender());
+            Order order = new Order();
+            HospitalEnterprise hospitalEnterprise = (HospitalEnterprise) network.getEnterpriseDirectory().getMyEnterprise(userAccount);
+            Enterprise en1 = network.getEnterpriseDirectory().getMyEnterprise(inventoryManagerWorkRequest.getSender());
 
-        if (order.getOrderSize() < inventoryManagerWorkRequest.getQt()) {
+            if (order.getOrderSize() < inventoryManagerWorkRequest.getQt()) {
 
-            int i1 = inventoryManagerWorkRequest.getQt();
+                int i1 = inventoryManagerWorkRequest.getQt();
 
-            while (i1 > 0) {
-                LotOfDrug lotOfDrug = new LotOfDrug();
-                for (int j = 0; j < 5 && i1 > 0; j++) {
-                    InventoryItem tempPackage = null;
-                    for (InventoryItem itm : hospitalEnterprise.getInventoryCatalog().getInventoryList()) {
+                while (i1 > 0) {
+                    LotOfDrug lotOfDrug = new LotOfDrug();
+                    for (int j = 0; j < 5 && i1 > 0; j++) {
+                        InventoryItem tempPackage = null;
+                        for (InventoryItem itm : hospitalEnterprise.getInventoryCatalog().getInventoryList()) {
 
-                        if (inventoryManagerWorkRequest.getDrug() == itm.getPackage1().getDrug()) {
+                            if (inventoryManagerWorkRequest.getDrug() == itm.getPackage1().getDrug()) {
 
-                            if (itm.getPackage1().getPackageStatus() != "Illegetimate Drug") {
-                                /*for(Transaction transaction1:network.getTransactionHistory().getTransactionList())
+                                if (itm.getPackage1().getPackageStatus() != "Illegetimate Drug") {
+                                    /*for(Transaction transaction1:network.getTransactionHistory().getTransactionList())
                                {
                                    if(transaction1.getPackage1().getPackageID()==itm.getPackage1().getPackageID())
                                    {
@@ -478,35 +455,35 @@ public class ViewReceivedOrdersJPanel extends javax.swing.JPanel {
                                    }
                                }*/
 
-                                lotOfDrug.addPackage(itm.getPackage1());
-                                doc.getDrugCatalog().newDrugPackage(itm.getPackage1());
-                                for (Transaction transaction : network.getTransactionHistory().getTransactionList()) {
-                                    if (transaction.getPackage().getPackageID() == itm.getPackage1().getPackageID()) {
+                                    lotOfDrug.addPackage(itm.getPackage1());
+                                    doc.getDrugCatalog().newDrugPackage(itm.getPackage1());
+                                    for (Transaction transaction : network.getTransactionHistory().getTransactionList()) {
+                                        if (transaction.getPackage().getPackageID() == itm.getPackage1().getPackageID()) {
 
-                                        transaction.setDoctor(doc);
-                                        transaction.setTransactionStatus("Sold to Patient");
+                                            transaction.setDoctor(doc);
+                                            transaction.setTransactionStatus("Sold to Doctor");
 
+                                        }
                                     }
+                                    itm.getPackage1().setHosID(lotOfDrug.getLotID());
+                                    tempPackage = itm;
+                                    break;
                                 }
-                                itm.getPackage1().setHosID(lotOfDrug.getLotID());
-                                tempPackage = itm;
-                                break;
+
                             }
-
                         }
-                    }
-                    hospitalEnterprise.getInventoryCatalog().getInventoryList().remove(tempPackage);
+                        hospitalEnterprise.getInventoryCatalog().getInventoryList().remove(tempPackage);
 
-                    i1--;
+                        i1--;
+                    }
+                    order.addLot(lotOfDrug);
                 }
-                order.addLot(lotOfDrug);
+
             }
 
-        }
-
 //                   
-        // shipmentManagerWorkRequest.setOrder(order);
-        HospitalEnterprise en2 = (HospitalEnterprise) network.getEnterpriseDirectory().getMyEnterprise(userAccount);
+            // shipmentManagerWorkRequest.setOrder(order);
+            HospitalEnterprise en2 = (HospitalEnterprise) network.getEnterpriseDirectory().getMyEnterprise(userAccount);
 
 //        ThirdPartyLogisticsEnterprise en3 = null;
 //        for (Enterprise enterprise12 : network.getEnterpriseDirectory().getEnterpriseList()) {
@@ -514,11 +491,11 @@ public class ViewReceivedOrdersJPanel extends javax.swing.JPanel {
 //                en3 = (ThirdPartyLogisticsEnterprise) enterprise12;
 //            }
 //        }
-        //   ShippingManagementOrganization shippingManagementOrganization = en3.getShippingManagementOrganization();
-        //   shippingManagementOrganization.getWorkQueue().getWorkRequestList().add(shipmentManagerWorkRequest);
-        // userAccount.getWorkQueue().getWorkRequestList().add(salesRequest);
-        //  en2.getInventoryManagementOrganization().getSentWorkQueue().getWorkRequestList().add(shipmentManagerWorkRequest);
-        JOptionPane.showMessageDialog(null, "Work Request Sent");
+            //   ShippingManagementOrganization shippingManagementOrganization = en3.getShippingManagementOrganization();
+            //   shippingManagementOrganization.getWorkQueue().getWorkRequestList().add(shipmentManagerWorkRequest);
+            // userAccount.getWorkQueue().getWorkRequestList().add(salesRequest);
+            //  en2.getInventoryManagementOrganization().getSentWorkQueue().getWorkRequestList().add(shipmentManagerWorkRequest);
+            JOptionPane.showMessageDialog(null, "Work Request Sent");
 
 
     }//GEN-LAST:event_sendButtonActionPerformed
@@ -533,6 +510,5 @@ public class ViewReceivedOrdersJPanel extends javax.swing.JPanel {
     private javax.swing.JButton refreshButton;
     private javax.swing.JTable requestsTable;
     private javax.swing.JButton sendButton;
-    private javax.swing.JButton viewSuspectDrugsButton;
     // End of variables declaration//GEN-END:variables
 }
