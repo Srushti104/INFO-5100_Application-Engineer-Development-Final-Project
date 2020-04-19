@@ -73,8 +73,6 @@ public class InventoryManagerJPanel extends javax.swing.JPanel {
         orderDrugButton = new javax.swing.JButton();
         viewReceivedOrdersButton = new javax.swing.JButton();
         viewRequestedOrdersButton = new javax.swing.JButton();
-        repSusDrugButton = new javax.swing.JButton();
-        viewTransactionButton = new javax.swing.JButton();
         infoLabel3 = new javax.swing.JLabel();
         handleSuspectDrugs = new javax.swing.JButton();
 
@@ -116,22 +114,6 @@ public class InventoryManagerJPanel extends javax.swing.JPanel {
         });
         add(viewRequestedOrdersButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 180, 160, -1));
 
-        repSusDrugButton.setText("Report Suspect Drug");
-        repSusDrugButton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                repSusDrugButtonActionPerformed(evt);
-            }
-        });
-        add(repSusDrugButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 260, 160, -1));
-
-        viewTransactionButton.setText("History Of Illegetimate Drug");
-        viewTransactionButton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                viewTransactionButtonActionPerformed(evt);
-            }
-        });
-        add(viewTransactionButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 220, 160, -1));
-
         infoLabel3.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         infoLabel3.setForeground(new java.awt.Color(255, 0, 0));
         infoLabel3.setText("Illegtimate drugs have been reported..Check Inventory");
@@ -143,7 +125,7 @@ public class InventoryManagerJPanel extends javax.swing.JPanel {
                 handleSuspectDrugsActionPerformed(evt);
             }
         });
-        add(handleSuspectDrugs, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 300, 160, -1));
+        add(handleSuspectDrugs, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 220, 160, -1));
     }// </editor-fold>//GEN-END:initComponents
 
     private void checkInventoryButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_checkInventoryButtonActionPerformed
@@ -236,50 +218,6 @@ public class InventoryManagerJPanel extends javax.swing.JPanel {
         }
     }//GEN-LAST:event_viewRequestedOrdersButtonActionPerformed
 
-    private void repSusDrugButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_repSusDrugButtonActionPerformed
-        // TODO add your handling code here:
-
-        for (Network network : business.getNetworkDirectory().getNetworkList()) {
-            for (Enterprise enterprise : network.getEnterpriseDirectory().getEnterpriseList()) {
-                for (Organization organization : enterprise.getOrganizationDirectory().getOrgList()) {
-                    for (UserAccount userAccount1 : organization.getUserAccountDirectory().getUserAccountList()) {
-                        if (userAccount == userAccount1) {
-                            ReportSuspectDrugByHospitalEnterpriseJPanel reportSuspectDrugByHospitalEnterpriseJPanel = new ReportSuspectDrugByHospitalEnterpriseJPanel(userProcessContainer, network, userAccount);
-                            userProcessContainer.add("repsusbyhospital", reportSuspectDrugByHospitalEnterpriseJPanel);
-                            CardLayout cardLayout = (CardLayout) userProcessContainer.getLayout();
-                            cardLayout.next(userProcessContainer);
-
-                        }
-
-                    }
-                }
-            }
-        }
-
-
-    }//GEN-LAST:event_repSusDrugButtonActionPerformed
-
-    private void viewTransactionButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_viewTransactionButtonActionPerformed
-        // TODO add your handling code here:
-
-        for (Network network : business.getNetworkDirectory().getNetworkList()) {
-            for (Enterprise enterprise : network.getEnterpriseDirectory().getEnterpriseList()) {
-                for (Organization organization : enterprise.getOrganizationDirectory().getOrgList()) {
-                    for (UserAccount userAccount1 : organization.getUserAccountDirectory().getUserAccountList()) {
-                        if (userAccount == userAccount1) {
-                            ViewTransactionJPanel viewTransactionJPanel = new ViewTransactionJPanel(userProcessContainer, network, userAccount);
-                            userProcessContainer.add("viewtransa", viewTransactionJPanel);
-                            CardLayout cardLayout = (CardLayout) userProcessContainer.getLayout();
-                            cardLayout.next(userProcessContainer);
-
-                        }
-
-                    }
-                }
-            }
-        }
-    }//GEN-LAST:event_viewTransactionButtonActionPerformed
-
     private void handleSuspectDrugsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_handleSuspectDrugsActionPerformed
         // TODO add your handling code here:
 
@@ -307,9 +245,7 @@ public class InventoryManagerJPanel extends javax.swing.JPanel {
     private javax.swing.JLabel infoLabel3;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JButton orderDrugButton;
-    private javax.swing.JButton repSusDrugButton;
     private javax.swing.JButton viewReceivedOrdersButton;
     private javax.swing.JButton viewRequestedOrdersButton;
-    private javax.swing.JButton viewTransactionButton;
     // End of variables declaration//GEN-END:variables
 }
