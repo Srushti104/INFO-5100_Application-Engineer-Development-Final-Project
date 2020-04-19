@@ -23,49 +23,41 @@ import javax.swing.JPanel;
  * @author bobba
  */
 public class ReportSuspectDrugByHospitalEnterpriseJPanel extends javax.swing.JPanel {
-    
 
     JPanel userProcessContainer;
-   Network network;
-   UserAccount userAccount;
+    Network network;
+    UserAccount userAccount;
 
     /**
      * Creates new form ReportSuspectDrugByHospitalEnterpriseJPanel
      */
-    public ReportSuspectDrugByHospitalEnterpriseJPanel(JPanel userProcessContainer,Network network,UserAccount userAccount) {
+    public ReportSuspectDrugByHospitalEnterpriseJPanel(JPanel userProcessContainer, Network network, UserAccount userAccount) {
         initComponents();
-        this.userProcessContainer=userProcessContainer;
-        this.network=network;
-        this.userAccount=userAccount;
+        this.userProcessContainer = userProcessContainer;
+        this.network = network;
+        this.userAccount = userAccount;
         manufacturerComboBox.removeAllItems();
         packageComboBox.removeAllItems();
         refresh();
     }
 
-    
-    public void refresh()
-    {
-       Enterprise e5=network.getEnterpriseDirectory().getMyEnterprise(userAccount);
-       HospitalEnterprise hospitalEnterprise=(HospitalEnterprise)e5;
-       
-      for(Enterprise enterprise:network.getEnterpriseDirectory().getEnterpriseList())
-      {
-          if(enterprise.getClass().equals(DistributorEnterprise.class))
-          {
-              manufacturerComboBox.addItem(enterprise);
-          }
-      }
-       
-     for(InventoryItem inventoryItem:hospitalEnterprise.getInventoryCatalog().getInventoryList())
-     {
-         packageComboBox.addItem(inventoryItem.getPackage1().getPackageID());
-         
-     }
-        
-        
-        
-        
+    public void refresh() {
+        Enterprise e5 = network.getEnterpriseDirectory().getMyEnterprise(userAccount);
+        HospitalEnterprise hospitalEnterprise = (HospitalEnterprise) e5;
+
+        for (Enterprise enterprise : network.getEnterpriseDirectory().getEnterpriseList()) {
+            if (enterprise.getClass().equals(DistributorEnterprise.class)) {
+                manufacturerComboBox.addItem(enterprise);
+            }
+        }
+
+        for (InventoryItem inventoryItem : hospitalEnterprise.getInventoryCatalog().getInventoryList()) {
+            packageComboBox.addItem(inventoryItem.getPackage1().getPackageID());
+
+        }
+
     }
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -94,7 +86,6 @@ public class ReportSuspectDrugByHospitalEnterpriseJPanel extends javax.swing.JPa
             }
         });
 
-        backButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/UserInterface/backButton.jpg"))); // NOI18N
         backButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 backButtonActionPerformed(evt);
@@ -129,9 +120,7 @@ public class ReportSuspectDrugByHospitalEnterpriseJPanel extends javax.swing.JPa
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(backButton, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(reportButton)
                 .addGap(73, 73, 73))
             .addGroup(layout.createSequentialGroup()
@@ -148,19 +137,26 @@ public class ReportSuspectDrugByHospitalEnterpriseJPanel extends javax.swing.JPa
                             .addComponent(manufacturerComboBox, 0, 158, Short.MAX_VALUE)
                             .addComponent(packageComboBox, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(283, 283, 283)
+                        .addGap(21, 21, 21)
+                        .addComponent(backButton, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(223, 223, 223)
                         .addComponent(jLabel1)))
                 .addContainerGap(178, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jLabel1)
-                .addGap(21, 21, 21)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jLabel2)
-                    .addComponent(manufacturerComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(jLabel1)
+                        .addGap(21, 21, 21)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jLabel2)
+                            .addComponent(manufacturerComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(21, 21, 21)
+                        .addComponent(backButton, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel5)
@@ -172,19 +168,15 @@ public class ReportSuspectDrugByHospitalEnterpriseJPanel extends javax.swing.JPa
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 69, Short.MAX_VALUE)
                 .addComponent(reportButton)
                 .addGap(29, 29, 29))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(backButton, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
         );
     }// </editor-fold>//GEN-END:initComponents
 
     private void reportButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_reportButtonActionPerformed
         // TODO add your handling code here:
 
-        Enterprise enterprise1=(Enterprise)manufacturerComboBox.getSelectedItem();
-        int  pid=(Integer)packageComboBox.getSelectedItem();
-        DrugTesterWorkRequest drugTesterWorkRequest=new DrugTesterWorkRequest();
+        Enterprise enterprise1 = (Enterprise) manufacturerComboBox.getSelectedItem();
+        int pid = (Integer) packageComboBox.getSelectedItem();
+        DrugTesterWorkRequest drugTesterWorkRequest = new DrugTesterWorkRequest();
         drugTesterWorkRequest.setSender(userAccount);
         drugTesterWorkRequest.setRequestDate(new Date());
         drugTesterWorkRequest.setMessage("Test the Drug");
@@ -193,30 +185,24 @@ public class ReportSuspectDrugByHospitalEnterpriseJPanel extends javax.swing.JPa
         drugTesterWorkRequest.setEnterprise(enterprise1);
         drugTesterWorkRequest.setPackID(pid);
 
-        Enterprise e=network.getEnterpriseDirectory().getMyEnterprise(userAccount);
-        HospitalEnterprise hospitalEnterprise=(HospitalEnterprise)e;
+        Enterprise e = network.getEnterpriseDirectory().getMyEnterprise(userAccount);
+        HospitalEnterprise hospitalEnterprise = (HospitalEnterprise) e;
 
-        for(InventoryItem inventoryItem:hospitalEnterprise.getInventoryCatalog().getInventoryList())
-        {
-            if(inventoryItem.getPackage1().getPackageID()== pid)
-            {
+        for (InventoryItem inventoryItem : hospitalEnterprise.getInventoryCatalog().getInventoryList()) {
+            if (inventoryItem.getPackage1().getPackageID() == pid) {
                 drugTesterWorkRequest.setPackage1(inventoryItem.getPackage1());
             }
         }
-        if(e.getClass().equals(HospitalEnterprise.class))
-        {
+        if (e.getClass().equals(HospitalEnterprise.class)) {
 
             FDAEnterprise e1 = null;
-            for(Enterprise enterprise:network.getEnterpriseDirectory().getEnterpriseList())
-            {
-                if(enterprise.getClass().equals(FDAEnterprise.class))
-
-                {
-                    e1=(FDAEnterprise)enterprise;
+            for (Enterprise enterprise : network.getEnterpriseDirectory().getEnterpriseList()) {
+                if (enterprise.getClass().equals(FDAEnterprise.class)) {
+                    e1 = (FDAEnterprise) enterprise;
                 }
             }
 
-            DrugTestingOrganization drugTestingOrganization=e1.getDrugTestingOrganization();
+            DrugTestingOrganization drugTestingOrganization = e1.getDrugTestingOrganization();
             drugTestingOrganization.getWorkQueue().getWorkRequestList().add(drugTesterWorkRequest);
 
             // userAccount.getWorkQueue().getWorkRequestList().add(salesRequest);
@@ -230,7 +216,7 @@ public class ReportSuspectDrugByHospitalEnterpriseJPanel extends javax.swing.JPa
         // TODO add your handling code here:
         userProcessContainer.remove(this);
 
-        CardLayout cardLayout=(CardLayout)userProcessContainer.getLayout();
+        CardLayout cardLayout = (CardLayout) userProcessContainer.getLayout();
         cardLayout.previous(userProcessContainer);
     }//GEN-LAST:event_backButtonActionPerformed
 

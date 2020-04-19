@@ -26,7 +26,8 @@ public class LogoutJPanel extends javax.swing.JPanel {
         mainJFrame=frame;
         this.userAccount=userAccount;
         this.userProcessContainer=userProcessContainer;
-        userNameLabel.setText(userAccount.getUserName());
+       // userNameLabel.setText(userAccount.getUserName());
+         userNameLabel.setText(userAccount.getEmployee().getFirstName());
     }
 
     /**
@@ -41,8 +42,20 @@ public class LogoutJPanel extends javax.swing.JPanel {
         userNameLabel = new javax.swing.JLabel();
         logoutJButton = new javax.swing.JButton();
 
+        setBackground(new java.awt.Color(34, 40, 49));
+        setMaximumSize(new java.awt.Dimension(1280, 100));
+        setMinimumSize(new java.awt.Dimension(1280, 100));
+        setPreferredSize(new java.awt.Dimension(1280, 100));
+
+        userNameLabel.setBackground(new java.awt.Color(34, 40, 49));
+        userNameLabel.setFont(new java.awt.Font("Courier New", 2, 18)); // NOI18N
+        userNameLabel.setForeground(new java.awt.Color(238, 238, 238));
+        userNameLabel.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         userNameLabel.setText("username");
 
+        logoutJButton.setBackground(new java.awt.Color(0, 173, 181));
+        logoutJButton.setFont(new java.awt.Font("Courier New", 0, 12)); // NOI18N
+        logoutJButton.setForeground(new java.awt.Color(57, 62, 70));
         logoutJButton.setText("Logout");
         logoutJButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -55,28 +68,27 @@ public class LogoutJPanel extends javax.swing.JPanel {
         layout.setHorizontalGroup(
             layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
             .add(layout.createSequentialGroup()
-                .addContainerGap()
-                .add(logoutJButton, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 87, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                .add(34, 34, 34))
-            .add(layout.createSequentialGroup()
-                .add(21, 21, 21)
-                .add(userNameLabel, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addContainerGap())
+                .add(50, 50, 50)
+                .add(userNameLabel, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 218, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED, 842, Short.MAX_VALUE)
+                .add(logoutJButton, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 120, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                .add(50, 50, 50))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
             .add(layout.createSequentialGroup()
-                .add(12, 12, 12)
-                .add(userNameLabel, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 19, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(org.jdesktop.layout.LayoutStyle.UNRELATED)
-                .add(logoutJButton, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 33, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
+                .add(34, 34, 34)
+                .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
+                    .add(logoutJButton)
+                    .add(userNameLabel, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .add(42, 42, 42))
         );
     }// </editor-fold>//GEN-END:initComponents
 
     private void logoutJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_logoutJButtonActionPerformed
         // TODO add your handling code here:
         mainJFrame.logoutUser(userProcessContainer);
+        
     }//GEN-LAST:event_logoutJButtonActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
