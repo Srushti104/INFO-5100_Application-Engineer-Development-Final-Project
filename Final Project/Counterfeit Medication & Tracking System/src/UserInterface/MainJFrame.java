@@ -73,6 +73,11 @@ public class MainJFrame extends javax.swing.JFrame {
         userProcessContainer.removeAll();
         userProcessContainer.repaint();
         mainJSpliPane.setLeftComponent(new LoginJPanel(this));
+//        JPanel panel = landingPageJPanel.
+//            userProcessContainer.add("WorkArea", panel);
+//            CardLayout cardLayout = (CardLayout) userProcessContainer.getLayout();
+//            cardLayout.next(userProcessContainer);
+      //  mainJSpliPane.setRightComponent(landingPageJPanel);
     }
 
     /*private void formWindowClosing(java.awt.event.WindowEvent evt)
@@ -91,13 +96,71 @@ public class MainJFrame extends javax.swing.JFrame {
 
         mainJSpliPane = new javax.swing.JSplitPane();
         userProcessContainer = new javax.swing.JPanel();
+        landingPageJPanel = new javax.swing.JPanel();
+        jLabel1 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setBounds(new java.awt.Rectangle(0, 0, 1280, 800));
+        setMaximizedBounds(new java.awt.Rectangle(0, 0, 1280, 800));
+        setMaximumSize(new java.awt.Dimension(1280, 800));
+        setMinimumSize(new java.awt.Dimension(1280, 800));
+        setPreferredSize(new java.awt.Dimension(1280, 800));
 
-        mainJSpliPane.setBackground(new java.awt.Color(153, 153, 153));
-        mainJSpliPane.setDividerSize(7);
+        mainJSpliPane.setOrientation(javax.swing.JSplitPane.VERTICAL_SPLIT);
+        mainJSpliPane.setMaximumSize(new java.awt.Dimension(1280, 700));
+        mainJSpliPane.setMinimumSize(new java.awt.Dimension(1280, 700));
+        mainJSpliPane.setPreferredSize(new java.awt.Dimension(1280, 700));
 
+        userProcessContainer.setBackground(new java.awt.Color(238, 238, 238));
+        userProcessContainer.setFont(new java.awt.Font("Courier New", 0, 12)); // NOI18N
+        userProcessContainer.setMaximumSize(new java.awt.Dimension(1280, 700));
+        userProcessContainer.setMinimumSize(new java.awt.Dimension(1280, 700));
+        userProcessContainer.setName(""); // NOI18N
+        userProcessContainer.setPreferredSize(new java.awt.Dimension(1280, 700));
         userProcessContainer.setLayout(new java.awt.CardLayout());
+
+        landingPageJPanel.setBackground(new java.awt.Color(238, 238, 238));
+        landingPageJPanel.setMaximumSize(new java.awt.Dimension(1280, 700));
+        landingPageJPanel.setMinimumSize(new java.awt.Dimension(1280, 700));
+        landingPageJPanel.setPreferredSize(new java.awt.Dimension(1280, 700));
+
+        jLabel1.setFont(new java.awt.Font("Courier New", 0, 24)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(57, 62, 70));
+        jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel1.setText("Welcome to");
+
+        jLabel2.setBackground(new java.awt.Color(252, 248, 232));
+        jLabel2.setFont(new java.awt.Font("Niagara Engraved", 0, 96)); // NOI18N
+        jLabel2.setForeground(new java.awt.Color(0, 173, 181));
+        jLabel2.setText("Counterfeit Medication & Tracking System");
+        jLabel2.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+
+        javax.swing.GroupLayout landingPageJPanelLayout = new javax.swing.GroupLayout(landingPageJPanel);
+        landingPageJPanel.setLayout(landingPageJPanelLayout);
+        landingPageJPanelLayout.setHorizontalGroup(
+            landingPageJPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(landingPageJPanelLayout.createSequentialGroup()
+                .addGap(570, 570, 570)
+                .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGap(570, 570, 570))
+            .addGroup(landingPageJPanelLayout.createSequentialGroup()
+                .addGap(178, 178, 178)
+                .addComponent(jLabel2)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+        landingPageJPanelLayout.setVerticalGroup(
+            landingPageJPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(landingPageJPanelLayout.createSequentialGroup()
+                .addGap(200, 200, 200)
+                .addComponent(jLabel1)
+                .addGap(70, 70, 70)
+                .addComponent(jLabel2)
+                .addContainerGap())
+        );
+
+        userProcessContainer.add(landingPageJPanel, "card2");
+
         mainJSpliPane.setRightComponent(userProcessContainer);
 
         getContentPane().add(mainJSpliPane, java.awt.BorderLayout.LINE_START);
@@ -141,6 +204,9 @@ public class MainJFrame extends javax.swing.JFrame {
         });
     }
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JPanel landingPageJPanel;
     private javax.swing.JSplitPane mainJSpliPane;
     private javax.swing.JPanel userProcessContainer;
     // End of variables declaration//GEN-END:variables
