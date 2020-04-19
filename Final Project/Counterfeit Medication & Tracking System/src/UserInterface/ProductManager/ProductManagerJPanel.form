@@ -31,26 +31,26 @@
     <DimensionLayout dim="0">
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" attributes="0">
-              <EmptySpace min="-2" pref="453" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="398" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="2" attributes="0">
-                  <Component id="addDrugsBtn" alignment="2" min="-2" pref="175" max="-2" attributes="0"/>
+                  <Component id="addDrugsBtn" alignment="2" min="-2" pref="200" max="-2" attributes="0"/>
                   <Component id="jLabel1" alignment="2" min="-2" max="-2" attributes="0"/>
                   <Component id="infoLabel" alignment="2" min="-2" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace pref="343" max="32767" attributes="0"/>
+              <EmptySpace pref="409" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
     <DimensionLayout dim="1">
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" alignment="0" attributes="0">
-              <EmptySpace min="-2" pref="200" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="120" max="-2" attributes="0"/>
               <Component id="jLabel1" min="-2" pref="27" max="-2" attributes="0"/>
               <EmptySpace min="-2" pref="50" max="-2" attributes="0"/>
               <Component id="addDrugsBtn" min="-2" max="-2" attributes="0"/>
-              <EmptySpace pref="170" max="32767" attributes="0"/>
+              <EmptySpace pref="353" max="32767" attributes="0"/>
               <Component id="infoLabel" min="-2" max="-2" attributes="0"/>
-              <EmptySpace min="-2" pref="200" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="100" max="-2" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -59,21 +59,24 @@
     <Component class="javax.swing.JLabel" name="jLabel1">
       <Properties>
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-          <Font name="Courier New" size="24" style="0"/>
+          <Font name="Courier New" size="18" style="0"/>
         </Property>
         <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
           <Color blue="31" green="28" red="22" type="rgb"/>
         </Property>
-        <Property name="text" type="java.lang.String" value="Product Manager Work Area"/>
+        <Property name="text" type="java.lang.String" value="YOU ARE LOGGED IN PRODUCT MANAGER WORK AREA"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JButton" name="addDrugsBtn">
       <Properties>
         <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-          <Color blue="b5" green="ad" red="0" type="rgb"/>
+          <Color blue="46" green="3e" red="39" type="rgb"/>
+        </Property>
+        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+          <Font name="Courier New" size="14" style="0"/>
         </Property>
         <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-          <Color blue="31" green="28" red="22" type="rgb"/>
+          <Color blue="ee" green="ee" red="ee" type="rgb"/>
         </Property>
         <Property name="text" type="java.lang.String" value="Add Drugs"/>
       </Properties>
@@ -84,12 +87,12 @@
     <Component class="javax.swing.JLabel" name="infoLabel">
       <Properties>
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-          <Font name="Courier New" size="18" style="0"/>
+          <Font name="Courier New" size="14" style="0"/>
         </Property>
         <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
           <Color blue="45" green="45" red="e8" type="rgb"/>
         </Property>
-        <Property name="text" type="java.lang.String" value="* Drugs produced are reported illegetimate *"/>
+        <Property name="text" type="java.lang.String" value="* DRUGS PRODUCED ARE REPORTED ILLEGETIMATE *"/>
         <Property name="toolTipText" type="java.lang.String" value=""/>
       </Properties>
     </Component>

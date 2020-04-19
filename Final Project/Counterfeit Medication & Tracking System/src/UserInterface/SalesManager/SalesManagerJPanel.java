@@ -49,17 +49,36 @@ public class SalesManagerJPanel extends javax.swing.JPanel {
         viewOrderRequestButton = new javax.swing.JButton();
         viewSentOrdersButton = new javax.swing.JButton();
 
-        jLabel1.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
-        jLabel1.setText("Sales Manager WorkArea");
+        setBackground(new java.awt.Color(238, 238, 238));
+        setMaximumSize(new java.awt.Dimension(1280, 700));
+        setMinimumSize(new java.awt.Dimension(1280, 700));
+        setPreferredSize(new java.awt.Dimension(1280, 700));
 
-        viewOrderRequestButton.setText("View Order Requests");
+        jLabel1.setFont(new java.awt.Font("Courier New", 0, 18)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(34, 40, 49));
+        jLabel1.setText("SALES MANAGER WORK-AREA");
+        jLabel1.setBorder(javax.swing.BorderFactory.createMatteBorder(1, 0, 1, 0, new java.awt.Color(0, 173, 181)));
+
+        viewOrderRequestButton.setBackground(new java.awt.Color(57, 62, 70));
+        viewOrderRequestButton.setFont(new java.awt.Font("Courier New", 0, 14)); // NOI18N
+        viewOrderRequestButton.setForeground(new java.awt.Color(238, 238, 238));
+        viewOrderRequestButton.setLabel("VIEW ORDER REQUESTS");
+        viewOrderRequestButton.setMaximumSize(new java.awt.Dimension(200, 33));
+        viewOrderRequestButton.setMinimumSize(new java.awt.Dimension(200, 33));
+        viewOrderRequestButton.setPreferredSize(new java.awt.Dimension(200, 33));
         viewOrderRequestButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 viewOrderRequestButtonActionPerformed(evt);
             }
         });
 
-        viewSentOrdersButton.setText("View Sent Orders");
+        viewSentOrdersButton.setBackground(new java.awt.Color(57, 62, 70));
+        viewSentOrdersButton.setFont(new java.awt.Font("Courier New", 0, 14)); // NOI18N
+        viewSentOrdersButton.setForeground(new java.awt.Color(238, 238, 238));
+        viewSentOrdersButton.setLabel("VIEW SENT REQUESTS");
+        viewSentOrdersButton.setMaximumSize(new java.awt.Dimension(200, 33));
+        viewSentOrdersButton.setMinimumSize(new java.awt.Dimension(200, 33));
+        viewSentOrdersButton.setPreferredSize(new java.awt.Dimension(200, 33));
         viewSentOrdersButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 viewSentOrdersButtonActionPerformed(evt);
@@ -71,26 +90,23 @@ public class SalesManagerJPanel extends javax.swing.JPanel {
         layout.setHorizontalGroup(
             layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
             .add(layout.createSequentialGroup()
-                .add(44, 44, 44)
-                .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
+                .add(514, 514, 514)
+                .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.CENTER)
+                    .add(viewOrderRequestButton, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 200, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
                     .add(jLabel1)
-                    .add(layout.createSequentialGroup()
-                        .add(10, 10, 10)
-                        .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING, false)
-                            .add(viewOrderRequestButton, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .add(viewSentOrdersButton, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 151, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))))
-                .add(92, 92, 92))
+                    .add(viewSentOrdersButton, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 200, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(513, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
             .add(layout.createSequentialGroup()
-                .add(41, 41, 41)
-                .add(jLabel1)
-                .add(35, 35, 35)
-                .add(viewOrderRequestButton)
-                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
-                .add(viewSentOrdersButton)
-                .add(105, 105, 105))
+                .add(120, 120, 120)
+                .add(jLabel1, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 30, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                .add(100, 100, 100)
+                .add(viewOrderRequestButton, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 33, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                .add(50, 50, 50)
+                .add(viewSentOrdersButton, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 33, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
         );
     }// </editor-fold>//GEN-END:initComponents
 

@@ -78,12 +78,13 @@ public class ProductManagerJPanel extends javax.swing.JPanel {
         setMinimumSize(new java.awt.Dimension(1280, 700));
         setPreferredSize(new java.awt.Dimension(1280, 700));
 
-        jLabel1.setFont(new java.awt.Font("Courier New", 0, 24)); // NOI18N
+        jLabel1.setFont(new java.awt.Font("Courier New", 0, 18)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(34, 40, 49));
-        jLabel1.setText("Product Manager Work Area");
+        jLabel1.setText("YOU ARE LOGGED IN PRODUCT MANAGER WORK AREA");
 
-        addDrugsBtn.setBackground(new java.awt.Color(0, 173, 181));
-        addDrugsBtn.setForeground(new java.awt.Color(34, 40, 49));
+        addDrugsBtn.setBackground(new java.awt.Color(57, 62, 70));
+        addDrugsBtn.setFont(new java.awt.Font("Courier New", 0, 14)); // NOI18N
+        addDrugsBtn.setForeground(new java.awt.Color(238, 238, 238));
         addDrugsBtn.setText("Add Drugs");
         addDrugsBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -91,9 +92,9 @@ public class ProductManagerJPanel extends javax.swing.JPanel {
             }
         });
 
-        infoLabel.setFont(new java.awt.Font("Courier New", 0, 18)); // NOI18N
+        infoLabel.setFont(new java.awt.Font("Courier New", 0, 14)); // NOI18N
         infoLabel.setForeground(new java.awt.Color(232, 69, 69));
-        infoLabel.setText("* Drugs produced are reported illegetimate *");
+        infoLabel.setText("* DRUGS PRODUCED ARE REPORTED ILLEGETIMATE *");
         infoLabel.setToolTipText("");
 
         org.jdesktop.layout.GroupLayout layout = new org.jdesktop.layout.GroupLayout(this);
@@ -101,23 +102,23 @@ public class ProductManagerJPanel extends javax.swing.JPanel {
         layout.setHorizontalGroup(
             layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
             .add(layout.createSequentialGroup()
-                .add(453, 453, 453)
+                .add(398, 398, 398)
                 .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.CENTER)
-                    .add(addDrugsBtn, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 175, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                    .add(addDrugsBtn, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 200, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
                     .add(jLabel1)
                     .add(infoLabel))
-                .addContainerGap(343, Short.MAX_VALUE))
+                .addContainerGap(409, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
             .add(layout.createSequentialGroup()
-                .add(200, 200, 200)
+                .add(120, 120, 120)
                 .add(jLabel1, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 27, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
                 .add(50, 50, 50)
                 .add(addDrugsBtn)
-                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED, 170, Short.MAX_VALUE)
+                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED, 353, Short.MAX_VALUE)
                 .add(infoLabel)
-                .add(200, 200, 200))
+                .add(100, 100, 100))
         );
     }// </editor-fold>//GEN-END:initComponents
 
