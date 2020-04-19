@@ -5,6 +5,7 @@
 package Business.WorkRequests;
 
 import Business.Drug;
+import Business.Package1;
 
 /**
  *
@@ -18,13 +19,13 @@ public class ReturnProcessorWorkRequest extends WorkRequest {
     private String manuName;
     private String drName;
     private Drug drug;
-    private Package package1;
+    private Package1 package1;
 
-    public Package getPackage() {
+    public Package1 getPackage1() {
         return package1;
     }
 
-    public void setPackage(Package package1) {
+    public void setPackage1(Package1 package1) {
         this.package1 = package1;
     }
 

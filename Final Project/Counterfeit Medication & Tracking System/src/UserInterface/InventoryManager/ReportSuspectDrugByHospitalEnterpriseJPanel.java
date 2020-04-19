@@ -137,9 +137,6 @@ public class ReportSuspectDrugByHospitalEnterpriseJPanel extends javax.swing.JPa
                             .addComponent(manufacturerComboBox, 0, 158, Short.MAX_VALUE)
                             .addComponent(packageComboBox, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(21, 21, 21)
-                        .addComponent(backButton, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(223, 223, 223)
                         .addComponent(jLabel1)))
                 .addContainerGap(178, Short.MAX_VALUE))
         );
