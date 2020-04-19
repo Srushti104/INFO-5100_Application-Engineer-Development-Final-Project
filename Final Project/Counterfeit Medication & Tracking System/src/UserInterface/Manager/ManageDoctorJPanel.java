@@ -88,7 +88,7 @@ public class ManageDoctorJPanel extends javax.swing.JPanel {
                 {null, null, null, null, null}
             },
             new String [] {
-                "Doctor Name", "Line 1", "Line 2", "City", "State"
+                "Doctor Name", "Address 1", "Address 2", "City", "State"
             }
         ) {
             boolean[] canEdit = new boolean [] {
