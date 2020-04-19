@@ -62,7 +62,7 @@ public class ReportedIncidentsJPanel extends javax.swing.JPanel {
                 row[1] = workRequest.getSender();
 
                 if (workRequest.getReceiver() != null) {
-                    row[2] = workRequest.getReceiver().getEmployee().getFirstName();
+                    row[2] = workRequest.getReceiver().getEmployee().getFirstName() + " "+ workRequest.getReceiver().getEmployee().getLastName();
 
                 }
 
@@ -224,7 +224,7 @@ public class ReportedIncidentsJPanel extends javax.swing.JPanel {
 
             refresh();
         } else {
-            JOptionPane.showMessageDialog(this, "The task is already assogned to other person");
+            JOptionPane.showMessageDialog(this, "The task is already assigned to other person");
         }
     }//GEN-LAST:event_assignButtonActionPerformed
 
@@ -235,6 +235,15 @@ public class ReportedIncidentsJPanel extends javax.swing.JPanel {
         if (selectedRow < 0) {
             JOptionPane.showMessageDialog(null, "Please select a work request");
             return;
+        }
+         WorkRequest workRequest = (WorkRequest) requestsTable.getValueAt(selectedRow, 0);
+
+        if (workRequest.getReceiver() != null) {
+
+            workRequest.setReceiver(userAccount);
+
+            workRequest.setStatus("Sent To FDA tester");
+            refresh();
         }
 
         ManagerWorkRequest managerWokrRequest = (ManagerWorkRequest) requestsTable.getValueAt(selectedRow, 0);
