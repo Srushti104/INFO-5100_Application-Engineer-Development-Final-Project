@@ -43,6 +43,7 @@ public class LogoutJPanel extends javax.swing.JPanel {
 
         userNameLabel.setText("username");
 
+        logoutJButton.setFont(new java.awt.Font("Calibri", 1, 12)); // NOI18N
         logoutJButton.setText("Logout");
         logoutJButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {

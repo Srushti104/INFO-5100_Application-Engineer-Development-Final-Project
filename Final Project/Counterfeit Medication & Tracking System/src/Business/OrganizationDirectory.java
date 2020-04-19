@@ -35,6 +35,8 @@ public class OrganizationDirectory {
             org = new WarehouseOrganization();
         } else if (orgName.equals(Organization.INSPECTING)) {
             org = new InspectingOrganization();
+        } else if (orgName.equals(Organization.RETURNS)) {
+            org = new ReturnsProcessOrganization();
         } else if (orgName.equals(Organization.DRUGTESTING)) {
             org = new DrugTestingOrganization();
         }

@@ -10,7 +10,9 @@ import Business.HospitalEnterprise;
 import Business.InventoryItem;
 import Business.Network;
 import Business.Package1;
+import Business.ReturnsProcessOrganization;
 import Business.UserAccount;
+import Business.WorkRequests.ReturnProcessorWorkRequest;
 import java.awt.CardLayout;
 import java.util.Date;
 import javax.swing.JOptionPane;
@@ -81,7 +83,6 @@ public class HandleSuspectDrugsJPanel extends javax.swing.JPanel {
 
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        backButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/UserInterface/backButton.jpg"))); // NOI18N
         backButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 backButtonActionPerformed(evt);
@@ -89,7 +90,6 @@ public class HandleSuspectDrugsJPanel extends javax.swing.JPanel {
         });
         add(backButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 20, 43, 27));
 
-        refreshButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/UserInterface/refresh_button.jpg"))); // NOI18N
         refreshButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 refreshButtonActionPerformed(evt);
@@ -175,29 +175,29 @@ public class HandleSuspectDrugsJPanel extends javax.swing.JPanel {
             hospitalEnterprise.getInventoryCatalog().getInventoryList().remove(itm);
         }
 
-//        ReturnProcessorWorkRequest returnProcessorWorkRequest = new ReturnProcessorWorkRequest();
-//        returnProcessorWorkRequest.setSender(userAccount);
-//        returnProcessorWorkRequest.setRequestDate(new Date());
-//        returnProcessorWorkRequest.setMessage("Drug Disposed");
-//        returnProcessorWorkRequest.setStatus("Drug Disposed");
-//        returnProcessorWorkRequest.setResult("Drug Disposed");
-//        returnProcessorWorkRequest.setPackage1(package1);
-//        //salesManagerWorkRequest.setManuName(manuName);
-//
-//        FDAEnterprise e1 = null;
-//        for (Enterprise enterprise : network.getEnterpriseDirectory().getEnterpriseList()) {
-//            if (enterprise.getClass().equals(FDAEnterprise.class)) {
-//                e1 = (FDAEnterprise) enterprise;
-//            }
-//        }
-//
-//        ReturnsProcessOrganization returnsProcessOrganization = e1.getReturnsProcessOrganization();
-//        returnsProcessOrganization.getWorkQueue().getWorkRequestList().add(returnProcessorWorkRequest);
-//
-//        // userAccount.getWorkQueue().getWorkRequestList().add(salesRequest);
-//        hospitalEnterprise.getInventoryManagementOrganization().getSentWorkQueue().getWorkRequestList().add(returnProcessorWorkRequest);
-//
-//        JOptionPane.showMessageDialog(null, "Drugs disposed");
+        ReturnProcessorWorkRequest returnProcessorWorkRequest = new ReturnProcessorWorkRequest();
+        returnProcessorWorkRequest.setSender(userAccount);
+        returnProcessorWorkRequest.setRequestDate(new Date());
+        returnProcessorWorkRequest.setMessage("Drug Disposed");
+        returnProcessorWorkRequest.setStatus("Drug Disposed");
+        returnProcessorWorkRequest.setResult("Drug Disposed");
+        returnProcessorWorkRequest.setPackage1(package1);
+        //salesManagerWorkRequest.setManuName(manuName);
+
+        FDAEnterprise e1 = null;
+        for (Enterprise enterprise : network.getEnterpriseDirectory().getEnterpriseList()) {
+            if (enterprise.getClass().equals(FDAEnterprise.class)) {
+                e1 = (FDAEnterprise) enterprise;
+            }
+        }
+
+        ReturnsProcessOrganization returnsProcessOrganization = e1.getReturnsProcessOrganization();
+        returnsProcessOrganization.getWorkQueue().getWorkRequestList().add(returnProcessorWorkRequest);
+
+        // userAccount.getWorkQueue().getWorkRequestList().add(salesRequest);
+        hospitalEnterprise.getInventoryManagementOrganization().getSentWorkQueue().getWorkRequestList().add(returnProcessorWorkRequest);
+
+        JOptionPane.showMessageDialog(null, "Drugs disposed");
 
         JOptionPane.showMessageDialog(null, "Removed from the inventory", "Success", JOptionPane.INFORMATION_MESSAGE);
         refresh();

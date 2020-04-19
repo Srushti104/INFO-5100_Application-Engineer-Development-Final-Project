@@ -9,6 +9,9 @@ import Business.ConfigureABusiness;
 import Business.Enterprise;
 import Business.UserAccount;
 import java.awt.CardLayout;
+import java.awt.Image;
+import java.awt.Toolkit;
+import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
@@ -91,10 +94,13 @@ public class MainJFrame extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
+        mainJSpliPane.setBackground(new java.awt.Color(153, 153, 153));
+        mainJSpliPane.setDividerSize(7);
+
         userProcessContainer.setLayout(new java.awt.CardLayout());
         mainJSpliPane.setRightComponent(userProcessContainer);
 
-        getContentPane().add(mainJSpliPane, java.awt.BorderLayout.CENTER);
+        getContentPane().add(mainJSpliPane, java.awt.BorderLayout.LINE_START);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents

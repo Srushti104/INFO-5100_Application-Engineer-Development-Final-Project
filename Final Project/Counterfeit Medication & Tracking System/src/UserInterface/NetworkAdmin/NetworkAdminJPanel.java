@@ -43,9 +43,12 @@ public class NetworkAdminJPanel extends javax.swing.JPanel {
         addEnterpriseButton = new javax.swing.JButton();
         manageEnterpriseButton = new javax.swing.JButton();
 
+        setBackground(new java.awt.Color(0, 204, 255));
+
         jLabel1.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jLabel1.setText("Network Admin Work Area");
 
+        addEnterpriseButton.setFont(new java.awt.Font("Calibri", 1, 12)); // NOI18N
         addEnterpriseButton.setText("Add Enterprises");
         addEnterpriseButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -53,6 +56,7 @@ public class NetworkAdminJPanel extends javax.swing.JPanel {
             }
         });
 
+        manageEnterpriseButton.setFont(new java.awt.Font("Calibri", 1, 12)); // NOI18N
         manageEnterpriseButton.setText("Manage Enterprises");
         manageEnterpriseButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -64,28 +68,27 @@ public class NetworkAdminJPanel extends javax.swing.JPanel {
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-            .add(layout.createSequentialGroup()
-                .add(261, 261, 261)
+            .add(org.jdesktop.layout.GroupLayout.TRAILING, layout.createSequentialGroup()
+                .add(280, 280, 280)
                 .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-                    .add(org.jdesktop.layout.GroupLayout.TRAILING, layout.createSequentialGroup()
-                        .add(jLabel1)
-                        .add(277, 277, 277))
+                    .add(org.jdesktop.layout.GroupLayout.TRAILING, jLabel1)
                     .add(org.jdesktop.layout.GroupLayout.TRAILING, layout.createSequentialGroup()
                         .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.TRAILING, false)
-                            .add(manageEnterpriseButton, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 148, Short.MAX_VALUE)
-                            .add(addEnterpriseButton, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                        .add(297, 297, 297))))
+                            .add(manageEnterpriseButton, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .add(addEnterpriseButton, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 148, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
+                        .add(20, 20, 20)))
+                .add(258, 258, 258))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
             .add(layout.createSequentialGroup()
-                .addContainerGap()
+                .add(51, 51, 51)
                 .add(jLabel1)
                 .add(46, 46, 46)
                 .add(addEnterpriseButton)
                 .add(18, 18, 18)
                 .add(manageEnterpriseButton)
-                .add(187, 187, 187))
+                .add(147, 147, 147))
         );
     }// </editor-fold>//GEN-END:initComponents
 
