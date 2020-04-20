@@ -11,11 +11,7 @@ import Business.Network;
 import Business.Organization;
 import Business.UserAccount;
 import java.awt.CardLayout;
-import java.util.ArrayList;
-import java.util.List;
-import javax.swing.JOptionPane;
 import javax.swing.JPanel;
-import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -23,7 +19,7 @@ import javax.swing.table.DefaultTableModel;
  * @author nived
  */
 public class ManageEmployeeJPanel extends javax.swing.JPanel {
-
+    
     JPanel userProcessContainer;
     Network network;
     UserAccount userAccount;
@@ -31,14 +27,17 @@ public class ManageEmployeeJPanel extends javax.swing.JPanel {
     /**
      * Creates new form ManageEmployeeJPanel
      */
-    public ManageEmployeeJPanel(JPanel userProcessContainer, Network network, UserAccount userAccount) {
+    public ManageEmployeeJPanel(JPanel userProcessContainer,Network network,UserAccount userAccount) {
         initComponents();
-        this.userProcessContainer = userProcessContainer;
-        this.network = network;
-        this.userAccount = userAccount;
+        this.userProcessContainer=userProcessContainer;
+        this.network=network;
+        this.userAccount=userAccount;
         refresh();
     }
-
+    
+    
+    
+    
     public void refresh() {
         int rowCount = employeeTable.getRowCount();
 
@@ -46,7 +45,7 @@ public class ManageEmployeeJPanel extends javax.swing.JPanel {
             ((DefaultTableModel) employeeTable.getModel()).removeRow(i);
         }
 
-        Enterprise e = network.getEnterpriseDirectory().getMyEnterprise(userAccount);
+        Enterprise e=network.getEnterpriseDirectory().getMyEnterprise(userAccount);
         for (Organization o : e.getOrganizationDirectory().getOrgList()) {
             Object row[] = new Object[3];
             for (Employee emp : o.getEmployeeDirectory().getEmployeeList()) {
@@ -55,9 +54,10 @@ public class ManageEmployeeJPanel extends javax.swing.JPanel {
                 row[2] = o;
                 ((DefaultTableModel) employeeTable.getModel()).addRow(row);
             }
-
+            
         }
     }
+    
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -84,7 +84,7 @@ public class ManageEmployeeJPanel extends javax.swing.JPanel {
 
         jLabel2.setFont(new java.awt.Font("Courier New", 0, 18)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(34, 40, 49));
-        jLabel2.setText("Manage Employee");
+        jLabel2.setText("MANAGE EMPLOYEE");
         jLabel2.setBorder(javax.swing.BorderFactory.createMatteBorder(1, 0, 1, 0, new java.awt.Color(0, 173, 181)));
         jLabel2.setMaximumSize(new java.awt.Dimension(165, 30));
         jLabel2.setMinimumSize(new java.awt.Dimension(165, 30));
@@ -218,78 +218,26 @@ public class ManageEmployeeJPanel extends javax.swing.JPanel {
 
     private void addButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addButtonActionPerformed
         // TODO add your handling code here:
-
-        AddEmployeeJPanel addEmployeeJPanel = new AddEmployeeJPanel(userProcessContainer, network, userAccount);
-        userProcessContainer.add("AddEmployee", addEmployeeJPanel);
-
-        CardLayout cardLayout = (CardLayout) userProcessContainer.getLayout();
+        
+        AddEmployeeJPanel addEmployeeJPanel=new AddEmployeeJPanel(userProcessContainer,network,userAccount);
+        userProcessContainer.add("AddEmployee",addEmployeeJPanel);
+        
+        
+        CardLayout cardLayout=(CardLayout)userProcessContainer.getLayout();
         cardLayout.next(userProcessContainer);
-
+        
     }//GEN-LAST:event_addButtonActionPerformed
 
     private void backButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backButtonActionPerformed
         // TODO add your handling code here:
-
+        
         userProcessContainer.remove(this);
-        CardLayout cardLayout = (CardLayout) userProcessContainer.getLayout();
+        CardLayout cardLayout=(CardLayout)userProcessContainer.getLayout();
         cardLayout.next(userProcessContainer);
     }//GEN-LAST:event_backButtonActionPerformed
 
-    private static List<Object> getRowAt(JTable jTable, int selectedRow) {
-     List<Object> result = new ArrayList<>();
-     int colCount = jTable.getColumnCount();
-     for (int i = 0; i < colCount; i++) {
-         result.add(jTable.getModel().getValueAt(selectedRow, i));
-     }
-     return result;
-    }
-    
-    private Organization findEmployeeOrganization(Employee employee) {
-        Enterprise e = network.getEnterpriseDirectory().getMyEnterprise(userAccount);
-        for (Organization o : e.getOrganizationDirectory().getOrgList()) {
-            for (Employee emp : o.getEmployeeDirectory().getEmployeeList()) {
-                if (employee.equals(emp)) {
-                    return o;
-                }
-            }
-        }
-        return null;
-    }
-    
     private void deleteButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deleteButtonActionPerformed
         // TODO add your handling code here:
-        int selectedRow = employeeTable.getSelectedRow();
-        List<Object> rowValues = getRowAt(employeeTable, selectedRow);
-        Employee selectedEmployee = (Employee) rowValues.get(0);
-        int count = employeeTable.getSelectedRowCount();
-        if (count == 1) {
-            if (selectedRow >= 0) {
-                int selectionButton = JOptionPane.YES_NO_OPTION;
-                int selectionResult = JOptionPane.showConfirmDialog(null, "Are you sure to delete??", "Warning", selectionButton);
-                if (selectionResult == JOptionPane.YES_OPTION) {
-                    
-                    Organization employeeOrganization = findEmployeeOrganization(selectedEmployee);
-                    
-                    if (employeeOrganization != null) {
-                        List<Employee> employeeList = employeeOrganization.getEmployeeDirectory().getEmployeeList();
-                        int employeeIndexInList = 0;
-                        for (; employeeIndexInList < employeeList.size(); employeeIndexInList++) {
-                            if (selectedEmployee.equals(employeeList.get(employeeIndexInList))) {
-                                break;
-                            }
-                        }
-                        
-                        if (employeeIndexInList < employeeList.size()) {
-                            employeeList.remove(employeeIndexInList);
-                            refresh();
-                        }
-                    }
-                }
-            }
-        else {
-            JOptionPane.showMessageDialog(null, "Please select a Row!!");
-            }
-        }
     }//GEN-LAST:event_deleteButtonActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

@@ -69,7 +69,7 @@ public class AddNetworkJPanel extends javax.swing.JPanel {
         jLabel1.setFont(new java.awt.Font("Courier New", 0, 18)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(34, 40, 49));
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel1.setText("ADD NETWORK");
+        jLabel1.setText("CREATE NEW NETWORK AND RESPECTIVE USER");
         jLabel1.setBorder(javax.swing.BorderFactory.createMatteBorder(1, 0, 1, 0, new java.awt.Color(0, 173, 181)));
 
         jLabel2.setFont(new java.awt.Font("Courier New", 0, 14)); // NOI18N
@@ -96,9 +96,10 @@ public class AddNetworkJPanel extends javax.swing.JPanel {
             }
         });
 
+        addButton.setBackground(new java.awt.Color(57, 62, 70));
         addButton.setFont(new java.awt.Font("Courier New", 0, 14)); // NOI18N
         addButton.setForeground(new java.awt.Color(238, 238, 238));
-        addButton.setText("Add");
+        addButton.setText("ADD NETWORK");
         addButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 addButtonActionPerformed(evt);
@@ -192,11 +193,12 @@ public class AddNetworkJPanel extends javax.swing.JPanel {
                                             .addComponent(firstNameField, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
                                             .addComponent(networkNameField, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
                                             .addComponent(lastNameField, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addComponent(reenterPassField, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)))))))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(579, 579, 579)
-                        .addComponent(jLabel1)))
+                                            .addComponent(reenterPassField, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE))))))))
                 .addContainerGap(439, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addGap(431, 431, 431)
+                .addComponent(jLabel1)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
