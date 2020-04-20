@@ -72,7 +72,7 @@
               <Component id="refreshButton" min="-2" pref="40" max="-2" attributes="0"/>
               <EmptySpace min="-2" pref="20" max="-2" attributes="0"/>
               <Component id="jScrollPane1" min="-2" pref="122" max="-2" attributes="0"/>
-              <EmptySpace min="-2" pref="50" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="30" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="orderDrugButton" alignment="3" min="-2" pref="33" max="-2" attributes="0"/>
                   <Component id="proceedButton" alignment="3" min="-2" pref="33" max="-2" attributes="0"/>

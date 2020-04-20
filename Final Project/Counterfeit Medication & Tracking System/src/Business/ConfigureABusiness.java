@@ -22,8 +22,8 @@ public class ConfigureABusiness {
      private static void addBusinessAdmin(Business business)
     {
         Employee employee=business.getEmployeeDirectory().newEmployee();
-        employee.setFirstName("Nived");
-        employee.setLastName("Srush");
+        employee.setFirstName("Network");
+        employee.setLastName("Admin");
         
         UserAccount userAccount=business.getUserAccountDirectory().newAccount();
         

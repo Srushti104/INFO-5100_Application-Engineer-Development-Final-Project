@@ -224,7 +224,7 @@
           <Color blue="31" green="28" red="22" type="rgb"/>
         </Property>
         <Property name="horizontalAlignment" type="int" value="0"/>
-        <Property name="text" type="java.lang.String" value="Manage USER ACCOUNT"/>
+        <Property name="text" type="java.lang.String" value="MANAGE USER ACCOUNT"/>
         <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
           <Border info="org.netbeans.modules.form.compat2.border.MatteColorBorderInfo">
             <MatteColorBorder bottom="1" left="0" right="0" top="1">
