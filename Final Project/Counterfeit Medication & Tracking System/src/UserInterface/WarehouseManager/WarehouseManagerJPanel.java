@@ -113,6 +113,11 @@ public class WarehouseManagerJPanel extends javax.swing.JPanel {
         viewRecievedOrderButton = new javax.swing.JButton();
         alertLabel = new javax.swing.JLabel();
 
+        setBackground(new java.awt.Color(238, 238, 238));
+        setMaximumSize(new java.awt.Dimension(1280, 700));
+        setMinimumSize(new java.awt.Dimension(1280, 700));
+        setPreferredSize(new java.awt.Dimension(1280, 700));
+
         jLabel1.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jLabel1.setText("Warehouse Manager Work Area");
 

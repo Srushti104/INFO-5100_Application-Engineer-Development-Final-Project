@@ -118,6 +118,10 @@ public class CheckWarehouseInventoryJPanel extends javax.swing.JPanel {
         backButton = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
 
+        setBackground(new java.awt.Color(238, 238, 238));
+        setMaximumSize(new java.awt.Dimension(1280, 700));
+        setMinimumSize(new java.awt.Dimension(1280, 700));
+        setPreferredSize(new java.awt.Dimension(1280, 700));
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         inventoryReportTable.setModel(new javax.swing.table.DefaultTableModel(
