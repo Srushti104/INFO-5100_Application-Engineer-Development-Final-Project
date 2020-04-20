@@ -80,16 +80,22 @@ public class AddDrugJPanel extends javax.swing.JPanel {
         setMinimumSize(new java.awt.Dimension(1280, 700));
         setPreferredSize(new java.awt.Dimension(1280, 700));
 
-        jLabel1.setFont(new java.awt.Font("Courier New", 0, 24)); // NOI18N
+        jLabel1.setFont(new java.awt.Font("Courier New", 0, 18)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(34, 40, 49));
-        jLabel1.setText("Add Drug");
+        jLabel1.setText("SUBMIT DRUG DETAILS");
+        jLabel1.setBorder(javax.swing.BorderFactory.createMatteBorder(1, 0, 1, 0, new java.awt.Color(0, 173, 181)));
+        jLabel1.setMaximumSize(new java.awt.Dimension(209, 30));
+        jLabel1.setMinimumSize(new java.awt.Dimension(209, 30));
+        jLabel1.setPreferredSize(new java.awt.Dimension(209, 30));
 
         infoLabel.setFont(new java.awt.Font("Courier New", 0, 14)); // NOI18N
         infoLabel.setForeground(new java.awt.Color(255, 0, 0));
-        infoLabel.setText("Please enter a valid price value!!!");
+        infoLabel.setText("PLEASE ENTER A VALID PRICE VALUE!!!");
 
+        saveButton.setBackground(new java.awt.Color(57, 62, 70));
         saveButton.setFont(new java.awt.Font("Courier New", 0, 14)); // NOI18N
-        saveButton.setText("Save");
+        saveButton.setForeground(new java.awt.Color(238, 238, 238));
+        saveButton.setText("SAVE DETAILS");
         saveButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 saveButtonActionPerformed(evt);
@@ -97,50 +103,115 @@ public class AddDrugJPanel extends javax.swing.JPanel {
         });
 
         backButton.setBackground(new java.awt.Color(238, 238, 238));
+        backButton.setForeground(new java.awt.Color(238, 238, 238));
         backButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/UserInterface/Images/back.png"))); // NOI18N
         backButton.setBorder(null);
-        backButton.setMaximumSize(new java.awt.Dimension(50, 50));
-        backButton.setMinimumSize(new java.awt.Dimension(50, 50));
-        backButton.setPreferredSize(new java.awt.Dimension(50, 50));
+        backButton.setBorderPainted(false);
+        backButton.setFocusPainted(false);
+        backButton.setMargin(new java.awt.Insets(0, 0, 0, 0));
+        backButton.setMaximumSize(new java.awt.Dimension(60, 60));
+        backButton.setMinimumSize(new java.awt.Dimension(60, 60));
+        backButton.setPreferredSize(new java.awt.Dimension(60, 60));
         backButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 backButtonActionPerformed(evt);
             }
         });
 
-        idLabel.setText("Drug ID:");
+        idLabel.setFont(new java.awt.Font("Courier New", 0, 14)); // NOI18N
+        idLabel.setForeground(new java.awt.Color(34, 40, 49));
+        idLabel.setText("DRUG ID");
 
-        jLabel4.setText("Actual Price:");
+        jLabel4.setFont(new java.awt.Font("Courier New", 0, 14)); // NOI18N
+        jLabel4.setForeground(new java.awt.Color(34, 40, 49));
+        jLabel4.setText("PRICE");
 
-        jLabel10.setText("Drug mg:");
+        jLabel10.setFont(new java.awt.Font("Courier New", 0, 14)); // NOI18N
+        jLabel10.setForeground(new java.awt.Color(34, 40, 49));
+        jLabel10.setText("DRUG MG");
 
-        jLabel11.setText("Drug for:");
+        jLabel11.setFont(new java.awt.Font("Courier New", 0, 14)); // NOI18N
+        jLabel11.setForeground(new java.awt.Color(34, 40, 49));
+        jLabel11.setText("USES");
 
-        jLabel12.setText("Drug contents:");
+        jLabel12.setFont(new java.awt.Font("Courier New", 0, 14)); // NOI18N
+        jLabel12.setForeground(new java.awt.Color(34, 40, 49));
+        jLabel12.setText("CONTENTS");
 
-        jLabel2.setText("Drug Name:");
+        jLabel2.setFont(new java.awt.Font("Courier New", 0, 14)); // NOI18N
+        jLabel2.setForeground(new java.awt.Color(34, 40, 49));
+        jLabel2.setText("DRUG NAME");
 
+        drugNameField.setBackground(new java.awt.Color(238, 238, 238));
+        drugNameField.setFont(new java.awt.Font("Courier New", 0, 12)); // NOI18N
+        drugNameField.setForeground(new java.awt.Color(34, 40, 49));
+        drugNameField.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 173, 181), 1, true));
+        drugNameField.setMaximumSize(new java.awt.Dimension(200, 24));
+        drugNameField.setMinimumSize(new java.awt.Dimension(200, 24));
+        drugNameField.setPreferredSize(new java.awt.Dimension(200, 24));
         drugNameField.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 drugNameFieldActionPerformed(evt);
             }
         });
 
+        drugContentsField.setBackground(new java.awt.Color(238, 238, 238));
+        drugContentsField.setFont(new java.awt.Font("Courier New", 0, 12)); // NOI18N
+        drugContentsField.setForeground(new java.awt.Color(34, 40, 49));
+        drugContentsField.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 173, 181), 1, true));
+        drugContentsField.setMaximumSize(new java.awt.Dimension(200, 24));
+        drugContentsField.setMinimumSize(new java.awt.Dimension(200, 24));
+        drugContentsField.setPreferredSize(new java.awt.Dimension(200, 24));
         drugContentsField.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 drugContentsFieldActionPerformed(evt);
             }
         });
 
+        idField.setBackground(new java.awt.Color(238, 238, 238));
+        idField.setFont(new java.awt.Font("Courier New", 0, 12)); // NOI18N
+        idField.setForeground(new java.awt.Color(34, 40, 49));
+        idField.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 173, 181), 1, true));
+        idField.setMaximumSize(new java.awt.Dimension(200, 24));
+        idField.setMinimumSize(new java.awt.Dimension(200, 24));
+        idField.setPreferredSize(new java.awt.Dimension(200, 24));
+
+        actPriceField.setBackground(new java.awt.Color(238, 238, 238));
+        actPriceField.setFont(new java.awt.Font("Courier New", 0, 12)); // NOI18N
+        actPriceField.setForeground(new java.awt.Color(34, 40, 49));
+        actPriceField.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 173, 181), 1, true));
+        actPriceField.setMaximumSize(new java.awt.Dimension(200, 24));
+        actPriceField.setMinimumSize(new java.awt.Dimension(200, 24));
+        actPriceField.setPreferredSize(new java.awt.Dimension(200, 24));
         actPriceField.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 actPriceFieldActionPerformed(evt);
             }
         });
 
+        drugMgField.setBackground(new java.awt.Color(238, 238, 238));
+        drugMgField.setFont(new java.awt.Font("Courier New", 0, 12)); // NOI18N
+        drugMgField.setForeground(new java.awt.Color(34, 40, 49));
+        drugMgField.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 173, 181), 1, true));
+        drugMgField.setMaximumSize(new java.awt.Dimension(200, 24));
+        drugMgField.setMinimumSize(new java.awt.Dimension(200, 24));
+        drugMgField.setPreferredSize(new java.awt.Dimension(200, 24));
         drugMgField.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 drugMgFieldActionPerformed(evt);
+            }
+        });
+
+        drugForField.setBackground(new java.awt.Color(238, 238, 238));
+        drugForField.setFont(new java.awt.Font("Courier New", 0, 12)); // NOI18N
+        drugForField.setForeground(new java.awt.Color(34, 40, 49));
+        drugForField.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 173, 181), 1, true));
+        drugForField.setMaximumSize(new java.awt.Dimension(200, 24));
+        drugForField.setMinimumSize(new java.awt.Dimension(200, 24));
+        drugForField.setPreferredSize(new java.awt.Dimension(200, 24));
+        drugForField.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                drugForFieldActionPerformed(evt);
             }
         });
 
@@ -152,82 +223,75 @@ public class AddDrugJPanel extends javax.swing.JPanel {
                 .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
                     .add(layout.createSequentialGroup()
                         .add(30, 30, 30)
-                        .add(backButton, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                        .add(0, 0, Short.MAX_VALUE))
+                        .add(backButton, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 60, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
                     .add(layout.createSequentialGroup()
                         .add(500, 500, 500)
-                        .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-                            .add(layout.createSequentialGroup()
-                                .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-                                    .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.TRAILING)
-                                        .add(idField, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 132, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                                        .add(layout.createSequentialGroup()
-                                            .add(jLabel2)
-                                            .add(59, 59, 59)
-                                            .add(drugNameField, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 132, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)))
-                                    .add(layout.createSequentialGroup()
-                                        .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-                                            .add(jLabel4)
-                                            .add(idLabel)
-                                            .add(jLabel10)
-                                            .add(jLabel11)
-                                            .add(jLabel12))
-                                        .add(44, 44, 44)
-                                        .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-                                            .add(drugContentsField, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 132, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                                            .add(actPriceField, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 132, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                                            .add(drugMgField, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 132, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                                            .add(drugForField, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 132, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))))
-                                .add(0, 0, Short.MAX_VALUE))
-                            .add(layout.createSequentialGroup()
-                                .add(infoLabel)
-                                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED, 350, Short.MAX_VALUE)
-                                .add(saveButton, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 100, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)))))
-                .add(50, 50, 50))
-            .add(layout.createSequentialGroup()
-                .add(570, 570, 570)
-                .add(jLabel1)
-                .addContainerGap(org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .add(infoLabel))
+                    .add(layout.createSequentialGroup()
+                        .add(479, 479, 479)
+                        .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.TRAILING)
+                            .add(saveButton, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 150, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                            .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING, false)
+                                .add(layout.createSequentialGroup()
+                                    .add(jLabel12)
+                                    .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .add(drugContentsField, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 200, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
+                                .add(layout.createSequentialGroup()
+                                    .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
+                                        .add(idLabel)
+                                        .add(jLabel2)
+                                        .add(jLabel11)
+                                        .add(jLabel10)
+                                        .add(jLabel4))
+                                    .add(50, 50, 50)
+                                    .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
+                                        .add(actPriceField, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 200, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                                        .add(drugMgField, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 200, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                                        .add(drugForField, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 200, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                                        .add(org.jdesktop.layout.GroupLayout.TRAILING, drugNameField, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 200, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                                        .add(org.jdesktop.layout.GroupLayout.TRAILING, idField, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 200, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)))))))
+                .addContainerGap(479, Short.MAX_VALUE))
+            .add(org.jdesktop.layout.GroupLayout.TRAILING, layout.createSequentialGroup()
+                .add(536, 536, 536)
+                .add(jLabel1, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(535, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
             .add(org.jdesktop.layout.GroupLayout.TRAILING, layout.createSequentialGroup()
-                .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.TRAILING)
-                    .add(layout.createSequentialGroup()
-                        .add(30, 30, 30)
-                        .add(backButton, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                        .add(11, 11, 11)
-                        .add(jLabel1)
-                        .add(52, 52, 52)
-                        .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
-                            .add(jLabel2)
-                            .add(drugNameField, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED)
-                        .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
-                            .add(idLabel)
-                            .add(idField, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(org.jdesktop.layout.LayoutStyle.UNRELATED)
-                        .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
-                            .add(jLabel4)
-                            .add(actPriceField, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(org.jdesktop.layout.LayoutStyle.UNRELATED)
-                        .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
-                            .add(jLabel10)
-                            .add(drugMgField, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(org.jdesktop.layout.LayoutStyle.UNRELATED)
-                        .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
-                            .add(jLabel11)
-                            .add(drugForField, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(org.jdesktop.layout.LayoutStyle.UNRELATED)
-                        .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
-                            .add(jLabel12)
-                            .add(drugContentsField, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED, 127, Short.MAX_VALUE)
-                        .add(infoLabel))
-                    .add(layout.createSequentialGroup()
-                        .addContainerGap(org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .add(saveButton)))
-                .add(187, 187, 187))
+                .add(30, 30, 30)
+                .add(backButton, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 60, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                .add(30, 30, 30)
+                .add(jLabel1, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 30, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                .add(28, 28, 28)
+                .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
+                    .add(drugNameField, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 24, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                    .add(jLabel2))
+                .add(30, 30, 30)
+                .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
+                    .add(idField, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 24, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                    .add(idLabel))
+                .add(30, 30, 30)
+                .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
+                    .add(actPriceField, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 24, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                    .add(jLabel4))
+                .add(30, 30, 30)
+                .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
+                    .add(drugMgField, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 24, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                    .add(jLabel10))
+                .add(30, 30, 30)
+                .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
+                    .add(drugForField, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 24, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                    .add(jLabel11))
+                .add(30, 30, 30)
+                .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
+                    .add(drugContentsField, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 24, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                    .add(jLabel12))
+                .add(30, 30, 30)
+                .add(saveButton)
+                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED, 48, Short.MAX_VALUE)
+                .add(infoLabel)
+                .add(100, 100, 100))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -297,6 +361,10 @@ public class AddDrugJPanel extends javax.swing.JPanel {
     private void drugMgFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_drugMgFieldActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_drugMgFieldActionPerformed
+
+    private void drugForFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_drugForFieldActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_drugForFieldActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTextField actPriceField;

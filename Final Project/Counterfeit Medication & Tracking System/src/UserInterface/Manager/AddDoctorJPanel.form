@@ -250,12 +250,12 @@
     </Component>
     <Component class="javax.swing.JLabel" name="jLabel9">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Line2:"/>
+        <Property name="text" type="java.lang.String" value="Address2:"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JLabel" name="jLabel8">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Line1:"/>
+        <Property name="text" type="java.lang.String" value="Address1:"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JLabel" name="jLabel7">

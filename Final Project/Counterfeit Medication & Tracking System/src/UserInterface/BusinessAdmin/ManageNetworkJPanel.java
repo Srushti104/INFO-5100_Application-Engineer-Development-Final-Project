@@ -74,12 +74,19 @@ public class ManageNetworkJPanel extends javax.swing.JPanel {
         refreshButton = new javax.swing.JButton();
         backButton = new javax.swing.JButton();
 
-        setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        setBackground(new java.awt.Color(238, 238, 238));
+        setMaximumSize(new java.awt.Dimension(1280, 700));
+        setMinimumSize(new java.awt.Dimension(1280, 700));
+        setPreferredSize(new java.awt.Dimension(1280, 700));
 
-        jLabel1.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jLabel1.setFont(new java.awt.Font("Courier New", 0, 18)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(34, 40, 49));
         jLabel1.setText("Manage Network");
-        add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(294, 20, -1, -1));
+        jLabel1.setBorder(javax.swing.BorderFactory.createMatteBorder(1, 0, 1, 0, new java.awt.Color(0, 173, 181)));
 
+        networkTable.setBackground(new java.awt.Color(238, 238, 238));
+        networkTable.setFont(new java.awt.Font("Courier New", 0, 12)); // NOI18N
+        networkTable.setForeground(new java.awt.Color(34, 40, 49));
         networkTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null},
@@ -99,17 +106,59 @@ public class ManageNetworkJPanel extends javax.swing.JPanel {
                 return canEdit [columnIndex];
             }
         });
+        networkTable.setMaximumSize(new java.awt.Dimension(680, 122));
+        networkTable.setMinimumSize(new java.awt.Dimension(680, 122));
+        networkTable.setPreferredSize(new java.awt.Dimension(680, 122));
+        networkTable.setRowHeight(20);
+        networkTable.setSelectionBackground(new java.awt.Color(0, 173, 181));
+        networkTable.setSelectionForeground(new java.awt.Color(238, 238, 238));
         jScrollPane1.setViewportView(networkTable);
 
-        add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(72, 92, 610, 130));
-        add(refreshButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(139, 55, 50, 26));
+        refreshButton.setBackground(new java.awt.Color(238, 238, 238));
+        refreshButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/UserInterface/Images/refresh.png"))); // NOI18N
+        refreshButton.setBorder(null);
 
+        backButton.setBackground(new java.awt.Color(238, 238, 238));
+        backButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/UserInterface/Images/back.png"))); // NOI18N
+        backButton.setBorder(null);
         backButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 backButtonActionPerformed(evt);
             }
         });
-        add(backButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 20, 42, 27));
+
+        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
+        this.setLayout(layout);
+        layout.setHorizontalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(layout.createSequentialGroup()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(refreshButton, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(layout.createSequentialGroup()
+                            .addGap(563, 563, 563)
+                            .addComponent(jLabel1))
+                        .addGroup(layout.createSequentialGroup()
+                            .addGap(30, 30, 30)
+                            .addComponent(backButton, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(layout.createSequentialGroup()
+                            .addGap(300, 300, 300)
+                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 680, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addContainerGap(300, Short.MAX_VALUE))
+        );
+        layout.setVerticalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(20, 20, 20)
+                .addComponent(backButton, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(30, 30, 30)
+                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(20, 20, 20)
+                .addComponent(refreshButton, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(20, 20, 20)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 122, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(358, Short.MAX_VALUE))
+        );
     }// </editor-fold>//GEN-END:initComponents
 
     private void backButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backButtonActionPerformed

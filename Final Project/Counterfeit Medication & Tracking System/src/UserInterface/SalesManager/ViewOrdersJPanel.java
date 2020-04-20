@@ -158,7 +158,6 @@ public class ViewOrdersJPanel extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jLabel1 = new javax.swing.JLabel();
         refreshButton = new javax.swing.JButton();
         backButton = new javax.swing.JButton();
         proceedButton = new javax.swing.JButton();
@@ -166,43 +165,63 @@ public class ViewOrdersJPanel extends javax.swing.JPanel {
         jScrollPane1 = new javax.swing.JScrollPane();
         requestsTable = new javax.swing.JTable();
         orderDrugButton = new javax.swing.JButton();
+        jLabel1 = new javax.swing.JLabel();
 
-        setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        setBackground(new java.awt.Color(238, 238, 238));
+        setMaximumSize(new java.awt.Dimension(1280, 700));
+        setMinimumSize(new java.awt.Dimension(1280, 700));
+        setPreferredSize(new java.awt.Dimension(1280, 700));
 
-        jLabel1.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
-        jLabel1.setText("View Order Requests");
-        add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(321, 11, -1, -1));
-
+        refreshButton.setBackground(new java.awt.Color(238, 238, 238));
+        refreshButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/UserInterface/Images/refresh.png"))); // NOI18N
+        refreshButton.setBorder(null);
+        refreshButton.setMargin(new java.awt.Insets(0, 0, 0, 0));
+        refreshButton.setMaximumSize(new java.awt.Dimension(40, 40));
+        refreshButton.setMinimumSize(new java.awt.Dimension(40, 40));
+        refreshButton.setPreferredSize(new java.awt.Dimension(40, 40));
         refreshButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 refreshButtonActionPerformed(evt);
             }
         });
-        add(refreshButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(123, 63, 24, 23));
 
+        backButton.setBackground(new java.awt.Color(238, 238, 238));
+        backButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/UserInterface/Images/back.png"))); // NOI18N
+        backButton.setBorder(null);
+        backButton.setMargin(new java.awt.Insets(0, 0, 0, 0));
+        backButton.setMaximumSize(new java.awt.Dimension(60, 60));
+        backButton.setMinimumSize(new java.awt.Dimension(60, 60));
+        backButton.setPreferredSize(new java.awt.Dimension(60, 60));
         backButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 backButtonActionPerformed(evt);
             }
         });
-        add(backButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 20, 43, 25));
 
-        proceedButton.setText("Proceed");
+        proceedButton.setBackground(new java.awt.Color(57, 62, 70));
+        proceedButton.setFont(new java.awt.Font("Courier New", 0, 14)); // NOI18N
+        proceedButton.setForeground(new java.awt.Color(238, 238, 238));
+        proceedButton.setText("PROCEED");
         proceedButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 proceedButtonActionPerformed(evt);
             }
         });
-        add(proceedButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 220, -1, -1));
 
-        assignButton.setText("Assign to me");
+        assignButton.setBackground(new java.awt.Color(57, 62, 70));
+        assignButton.setFont(new java.awt.Font("Courier New", 0, 14)); // NOI18N
+        assignButton.setForeground(new java.awt.Color(238, 238, 238));
+        assignButton.setText("ASSIGN TO ME");
         assignButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 assignButtonActionPerformed(evt);
             }
         });
-        add(assignButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 220, -1, -1));
 
+        requestsTable.setBackground(new java.awt.Color(238, 238, 238));
+        requestsTable.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 173, 181), 1, true));
+        requestsTable.setFont(new java.awt.Font("Courier New", 0, 12)); // NOI18N
+        requestsTable.setForeground(new java.awt.Color(34, 40, 49));
         requestsTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null, null, null},
@@ -222,17 +241,79 @@ public class ViewOrdersJPanel extends javax.swing.JPanel {
                 return canEdit [columnIndex];
             }
         });
+        requestsTable.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        requestsTable.setGridColor(new java.awt.Color(34, 40, 49));
+        requestsTable.setMaximumSize(new java.awt.Dimension(1000, 122));
+        requestsTable.setMinimumSize(new java.awt.Dimension(1000, 122));
+        requestsTable.setPreferredSize(new java.awt.Dimension(1000, 122));
+        requestsTable.setRowHeight(20);
+        requestsTable.setSelectionBackground(new java.awt.Color(0, 173, 181));
+        requestsTable.setSelectionForeground(new java.awt.Color(238, 238, 238));
         jScrollPane1.setViewportView(requestsTable);
 
-        add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(54, 97, 660, 92));
-
-        orderDrugButton.setText("Order Drug");
+        orderDrugButton.setBackground(new java.awt.Color(57, 62, 70));
+        orderDrugButton.setFont(new java.awt.Font("Courier New", 0, 14)); // NOI18N
+        orderDrugButton.setForeground(new java.awt.Color(238, 238, 238));
+        orderDrugButton.setText("ORDER DRUGS");
         orderDrugButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 orderDrugButtonActionPerformed(evt);
             }
         });
-        add(orderDrugButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 220, -1, -1));
+
+        jLabel1.setFont(new java.awt.Font("Courier New", 0, 18)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(34, 40, 49));
+        jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel1.setText("VIEW ORDER REQUEST");
+        jLabel1.setBorder(javax.swing.BorderFactory.createMatteBorder(1, 0, 1, 0, new java.awt.Color(0, 173, 181)));
+        jLabel1.setMaximumSize(new java.awt.Dimension(209, 30));
+        jLabel1.setMinimumSize(new java.awt.Dimension(209, 30));
+        jLabel1.setPreferredSize(new java.awt.Dimension(209, 30));
+
+        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
+        this.setLayout(layout);
+        layout.setHorizontalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(layout.createSequentialGroup()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                        .addComponent(refreshButton, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(30, 30, 30)
+                                .addComponent(backButton, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(140, 140, 140)
+                                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 1000, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGroup(layout.createSequentialGroup()
+                            .addComponent(assignButton, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGap(50, 50, 50)
+                            .addComponent(proceedButton, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGap(50, 50, 50)
+                            .addComponent(orderDrugButton, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(535, 535, 535)
+                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(140, Short.MAX_VALUE))
+        );
+        layout.setVerticalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(30, 30, 30)
+                .addComponent(backButton, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(30, 30, 30)
+                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(20, 20, 20)
+                .addComponent(refreshButton, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(20, 20, 20)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 122, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(30, 30, 30)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(orderDrugButton, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(proceedButton, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(assignButton, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(286, 286, 286))
+        );
     }// </editor-fold>//GEN-END:initComponents
 
     private void refreshButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_refreshButtonActionPerformed

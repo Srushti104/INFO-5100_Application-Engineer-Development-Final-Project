@@ -44,17 +44,30 @@ public class EnterpriseAdminJPanel extends javax.swing.JPanel {
         manageEmployeeButton = new javax.swing.JButton();
         manageUserAccountButton = new javax.swing.JButton();
 
-        jLabel1.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        jLabel1.setText("Enterprise Admin Work Area");
+        setBackground(new java.awt.Color(238, 238, 238));
+        setMaximumSize(new java.awt.Dimension(1280, 700));
+        setMinimumSize(new java.awt.Dimension(1280, 700));
+        setPreferredSize(new java.awt.Dimension(1280, 700));
 
-        manageEmployeeButton.setText("Manage Employee");
+        jLabel1.setFont(new java.awt.Font("Courier New", 0, 18)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(34, 40, 49));
+        jLabel1.setText("ENTERPRISE ADMIN WORK-AREA");
+        jLabel1.setBorder(javax.swing.BorderFactory.createMatteBorder(1, 0, 1, 0, new java.awt.Color(0, 173, 181)));
+
+        manageEmployeeButton.setBackground(new java.awt.Color(57, 62, 70));
+        manageEmployeeButton.setFont(new java.awt.Font("Courier New", 0, 14)); // NOI18N
+        manageEmployeeButton.setForeground(new java.awt.Color(238, 238, 238));
+        manageEmployeeButton.setText("MANAGE EMPLOYEE");
         manageEmployeeButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 manageEmployeeButtonActionPerformed(evt);
             }
         });
 
-        manageUserAccountButton.setText("Manage User Account");
+        manageUserAccountButton.setBackground(new java.awt.Color(57, 62, 70));
+        manageUserAccountButton.setFont(new java.awt.Font("Courier New", 0, 14)); // NOI18N
+        manageUserAccountButton.setForeground(new java.awt.Color(238, 238, 238));
+        manageUserAccountButton.setLabel("MANAGE USER ACCOUNT");
         manageUserAccountButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 manageUserAccountButtonActionPerformed(evt);
@@ -66,27 +79,23 @@ public class EnterpriseAdminJPanel extends javax.swing.JPanel {
         layout.setHorizontalGroup(
             layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
             .add(layout.createSequentialGroup()
-                .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-                    .add(layout.createSequentialGroup()
-                        .add(256, 256, 256)
-                        .add(jLabel1))
-                    .add(layout.createSequentialGroup()
-                        .add(297, 297, 297)
-                        .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING, false)
-                            .add(manageUserAccountButton, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .add(manageEmployeeButton, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
-                .add(276, 276, 276))
+                .add(497, 497, 497)
+                .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.CENTER)
+                    .add(manageEmployeeButton, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 200, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                    .add(jLabel1)
+                    .add(manageUserAccountButton, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 200, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(497, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
             .add(layout.createSequentialGroup()
-                .addContainerGap()
-                .add(jLabel1)
-                .add(47, 47, 47)
-                .add(manageEmployeeButton)
-                .addPreferredGap(org.jdesktop.layout.LayoutStyle.UNRELATED)
-                .add(manageUserAccountButton)
-                .add(184, 184, 184))
+                .add(150, 150, 150)
+                .add(jLabel1, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 30, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                .add(100, 100, 100)
+                .add(manageEmployeeButton, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 33, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                .add(50, 50, 50)
+                .add(manageUserAccountButton, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 33, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(304, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 

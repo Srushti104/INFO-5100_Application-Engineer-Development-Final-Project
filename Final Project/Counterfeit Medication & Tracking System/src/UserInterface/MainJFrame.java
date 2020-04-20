@@ -47,7 +47,7 @@ public class MainJFrame extends javax.swing.JFrame {
         if (ua != null) {
 
             //
-            mainJSpliPane.setLeftComponent(new LogoutJPanel(this, ua, userProcessContainer));
+            mainJSpliPane.setLeftComponent(new LogoutJPanel(this, ua, userProcessContainer, enterprise));
 
             userProcessContainer.removeAll();
             JPanel panel = ua.getRole().getWorkArea().createView(userProcessContainer, business, ua).getViewPanel();

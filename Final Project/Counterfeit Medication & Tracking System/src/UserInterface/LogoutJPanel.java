@@ -4,7 +4,16 @@
  */
 package UserInterface;
 
+import Business.Doctor;
+import Business.Enterprise;
+import Business.HospitalEnterprise;
+import Business.Network;
+import Business.NetworkDirectory;
+import Business.Roles.DoctorRole;
+import Business.Roles.ManagerRole;
+import Business.Roles.Role;
 import Business.UserAccount;
+import UserInterface.Manager.HospitalManagerJPanel;
 import javax.swing.JPanel;
 
 /**
@@ -12,22 +21,45 @@ import javax.swing.JPanel;
  * @author srush
  */
 public class LogoutJPanel extends javax.swing.JPanel {
-    
-     private MainJFrame mainJFrame;
+
+    private MainJFrame mainJFrame;
     private UserAccount userAccount;
     private JPanel userProcessContainer;
-
+    private Enterprise enterprise;
 
     /**
      * Creates new form LogoutJPanel
      */
-    public LogoutJPanel(MainJFrame frame, UserAccount userAccount,JPanel userProcessContainer) {
+    public LogoutJPanel(MainJFrame frame, UserAccount userAccount, JPanel userProcessContainer, Enterprise enterprise) {
         initComponents();
-        mainJFrame=frame;
-        this.userAccount=userAccount;
-        this.userProcessContainer=userProcessContainer;
-       userNameLabel.setText(userAccount.getUserName());
-        // userNameLabel.setText(userAccount.getEmployee().getFirstName());
+        mainJFrame = frame;
+        this.userAccount = userAccount;
+        this.userProcessContainer = userProcessContainer;
+        this.enterprise = enterprise;
+
+        //  userNameLabel.setText(userAccount.getUserName());
+        //  for (Enterprise enterprise : network.getEnterpriseDirectory().getEnterpriseList()) {
+//        for(NetworkDirectory network : enterprise.get)
+//        if(network)
+//
+//        for (Role role : enterprise.getSupportedRoles()) {
+//            if (role.getRoleName().equals(DoctorRole.class)) {
+//
+//                userNameLabel.setText(userAccount.getDoctor().getFirstName() + " " + userAccount.getDoctor().getLastName());
+//            } else {
+//        if (userAccount != null && !enterprise.getEnterpriseName().equals(HospitalEnterprise.MANAGEMENT)) {
+//            userNameLabel.setText(userAccount.getEmployee().getFirstName() + " " + userAccount.getEmployee().getLastName());
+             userNameLabel.setText(userAccount.getUserName());
+//        
+//        } else {
+//            for (Role role : enterprise.getSupportedRoles()) {
+//                if (role.getRoleName().equals(DoctorRole.class)) {
+//
+//                    userNameLabel.setText(userAccount.getDoctor().getFirstName() + " " + userAccount.getDoctor().getLastName());
+//                }
+//            }
+//
+//        }
     }
 
     /**
@@ -53,9 +85,9 @@ public class LogoutJPanel extends javax.swing.JPanel {
         userNameLabel.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         userNameLabel.setText("username");
 
-        logoutJButton.setBackground(new java.awt.Color(0, 173, 181));
-        logoutJButton.setFont(new java.awt.Font("Courier New", 0, 12)); // NOI18N
-        logoutJButton.setForeground(new java.awt.Color(57, 62, 70));
+        logoutJButton.setBackground(new java.awt.Color(238, 238, 238));
+        logoutJButton.setFont(new java.awt.Font("Courier New", 0, 14)); // NOI18N
+        logoutJButton.setForeground(new java.awt.Color(34, 40, 49));
         logoutJButton.setText("Logout");
         logoutJButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -69,9 +101,9 @@ public class LogoutJPanel extends javax.swing.JPanel {
             layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
             .add(layout.createSequentialGroup()
                 .add(50, 50, 50)
-                .add(userNameLabel, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 218, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED, 842, Short.MAX_VALUE)
-                .add(logoutJButton, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 120, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                .add(userNameLabel, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 500, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED, 530, Short.MAX_VALUE)
+                .add(logoutJButton, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 150, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
                 .add(50, 50, 50))
         );
         layout.setVerticalGroup(
@@ -88,7 +120,7 @@ public class LogoutJPanel extends javax.swing.JPanel {
     private void logoutJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_logoutJButtonActionPerformed
         // TODO add your handling code here:
         mainJFrame.logoutUser(userProcessContainer);
-        
+
     }//GEN-LAST:event_logoutJButtonActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

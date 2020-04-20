@@ -71,15 +71,26 @@ public class ManageUserAccountJPanel extends javax.swing.JPanel {
         userAccountJTable = new javax.swing.JTable();
         addEmployeeeJButton = new javax.swing.JButton();
         backJButton = new javax.swing.JButton();
+        deleteEmployeeeJButton = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
 
-        refreshButton.setText("Refresh");
+        setBackground(new java.awt.Color(238, 238, 238));
+        setMaximumSize(new java.awt.Dimension(1280, 700));
+        setMinimumSize(new java.awt.Dimension(1280, 700));
+        setPreferredSize(new java.awt.Dimension(1280, 700));
+
+        refreshButton.setBackground(new java.awt.Color(238, 238, 238));
+        refreshButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/UserInterface/Images/refresh.png"))); // NOI18N
+        refreshButton.setBorder(null);
         refreshButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 refreshButtonActionPerformed(evt);
             }
         });
 
+        userAccountJTable.setBackground(new java.awt.Color(238, 238, 238));
+        userAccountJTable.setFont(new java.awt.Font("Courier New", 0, 12)); // NOI18N
+        userAccountJTable.setForeground(new java.awt.Color(34, 40, 49));
         userAccountJTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
@@ -99,63 +110,100 @@ public class ManageUserAccountJPanel extends javax.swing.JPanel {
                 return canEdit [columnIndex];
             }
         });
+        userAccountJTable.setGridColor(new java.awt.Color(34, 40, 49));
+        userAccountJTable.setPreferredSize(new java.awt.Dimension(680, 122));
+        userAccountJTable.setRowHeight(22);
+        userAccountJTable.setSelectionBackground(new java.awt.Color(0, 173, 181));
+        userAccountJTable.setSelectionForeground(new java.awt.Color(238, 238, 238));
         jScrollPane1.setViewportView(userAccountJTable);
 
-        addEmployeeeJButton.setText("Add");
+        addEmployeeeJButton.setBackground(new java.awt.Color(57, 62, 70));
+        addEmployeeeJButton.setFont(new java.awt.Font("Courier New", 0, 14)); // NOI18N
+        addEmployeeeJButton.setForeground(new java.awt.Color(238, 238, 238));
+        addEmployeeeJButton.setText("ADD ACCOUNT");
+        addEmployeeeJButton.setPreferredSize(new java.awt.Dimension(150, 33));
         addEmployeeeJButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 addEmployeeeJButtonActionPerformed(evt);
             }
         });
 
-        backJButton.setText("Back");
+        backJButton.setBackground(new java.awt.Color(238, 238, 238));
+        backJButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/UserInterface/Images/back.png"))); // NOI18N
+        backJButton.setBorder(null);
+        backJButton.setMargin(new java.awt.Insets(0, 0, 0, 0));
+        backJButton.setMaximumSize(new java.awt.Dimension(60, 60));
+        backJButton.setMinimumSize(new java.awt.Dimension(60, 60));
+        backJButton.setPreferredSize(new java.awt.Dimension(60, 60));
         backJButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 backJButtonActionPerformed(evt);
             }
         });
 
-        jLabel2.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jLabel2.setText("Manage UserAccount");
+        deleteEmployeeeJButton.setBackground(new java.awt.Color(57, 62, 70));
+        deleteEmployeeeJButton.setFont(new java.awt.Font("Courier New", 0, 14)); // NOI18N
+        deleteEmployeeeJButton.setForeground(new java.awt.Color(238, 238, 238));
+        deleteEmployeeeJButton.setText("DELETE ACCOUNT");
+        deleteEmployeeeJButton.setPreferredSize(new java.awt.Dimension(150, 33));
+        deleteEmployeeeJButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                deleteEmployeeeJButtonActionPerformed(evt);
+            }
+        });
+
+        jLabel2.setFont(new java.awt.Font("Courier New", 0, 18)); // NOI18N
+        jLabel2.setForeground(new java.awt.Color(34, 40, 49));
+        jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel2.setText("MANAGE USER ACCOUNT");
+        jLabel2.setBorder(javax.swing.BorderFactory.createMatteBorder(1, 0, 1, 0, new java.awt.Color(0, 173, 181)));
+        jLabel2.setMaximumSize(new java.awt.Dimension(165, 30));
+        jLabel2.setMinimumSize(new java.awt.Dimension(165, 30));
+        jLabel2.setPreferredSize(new java.awt.Dimension(165, 30));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(1, 1, 1)
-                .addComponent(addEmployeeeJButton, javax.swing.GroupLayout.PREFERRED_SIZE, 114, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(89, 89, 89))
             .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(layout.createSequentialGroup()
+                            .addGap(30, 30, 30)
+                            .addComponent(backJButton, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                            .addGap(300, 300, 300)
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 680, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                    .addComponent(addEmployeeeJButton, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addGap(50, 50, 50)
+                                    .addComponent(deleteEmployeeeJButton, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)))))
                     .addGroup(layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(backJButton, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(50, 50, 50)
-                        .addComponent(refreshButton)
-                        .addGap(166, 166, 166)
-                        .addComponent(jLabel2))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(55, 55, 55)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 708, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(50, 50, 50))
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(refreshButton, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(300, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addGap(530, 530, 530)
+                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 220, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(backJButton)
-                        .addGap(49, 49, 49))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(jLabel2)
-                        .addComponent(refreshButton)))
-                .addGap(18, 18, 18)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 149, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(addEmployeeeJButton)
-                .addContainerGap(76, Short.MAX_VALUE))
+                .addGap(30, 30, 30)
+                .addComponent(backJButton, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(30, 30, 30)
+                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(20, 20, 20)
+                .addComponent(refreshButton, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(20, 20, 20)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 122, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(30, 30, 30)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(deleteEmployeeeJButton, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(addEmployeeeJButton, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(285, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -179,9 +227,14 @@ public class ManageUserAccountJPanel extends javax.swing.JPanel {
 
     }//GEN-LAST:event_backJButtonActionPerformed
 
+    private void deleteEmployeeeJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deleteEmployeeeJButtonActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_deleteEmployeeeJButtonActionPerformed
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton addEmployeeeJButton;
     private javax.swing.JButton backJButton;
+    private javax.swing.JButton deleteEmployeeeJButton;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JButton refreshButton;

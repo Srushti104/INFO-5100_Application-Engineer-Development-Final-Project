@@ -44,17 +44,32 @@ public class AdminJPanel extends javax.swing.JPanel {
         addNetworkButton = new javax.swing.JButton();
         manageNetworkButton = new javax.swing.JButton();
 
-        jLabel1.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
-        jLabel1.setText("Admin Work Area");
+        setBackground(new java.awt.Color(238, 238, 238));
+        setMaximumSize(new java.awt.Dimension(1280, 700));
+        setMinimumSize(new java.awt.Dimension(1280, 700));
+        setPreferredSize(new java.awt.Dimension(1280, 700));
 
-        addNetworkButton.setText("Add Network");
+        jLabel1.setFont(new java.awt.Font("Courier New", 0, 18)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(34, 40, 49));
+        jLabel1.setText("ADMIN WORK-AREA");
+        jLabel1.setBorder(javax.swing.BorderFactory.createMatteBorder(1, 0, 1, 0, new java.awt.Color(0, 173, 181)));
+
+        addNetworkButton.setBackground(new java.awt.Color(57, 62, 70));
+        addNetworkButton.setFont(new java.awt.Font("Courier New", 0, 14)); // NOI18N
+        addNetworkButton.setForeground(new java.awt.Color(238, 238, 238));
+        addNetworkButton.setText("ADD NEW NETWORK");
+        addNetworkButton.setPreferredSize(new java.awt.Dimension(150, 33));
         addNetworkButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 addNetworkButtonActionPerformed(evt);
             }
         });
 
-        manageNetworkButton.setText("ManageNetwork");
+        manageNetworkButton.setBackground(new java.awt.Color(57, 62, 70));
+        manageNetworkButton.setFont(new java.awt.Font("Courier New", 0, 14)); // NOI18N
+        manageNetworkButton.setForeground(new java.awt.Color(238, 238, 238));
+        manageNetworkButton.setText("MANAGE NETWORK");
+        manageNetworkButton.setPreferredSize(new java.awt.Dimension(150, 33));
         manageNetworkButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 manageNetworkButtonActionPerformed(evt);
@@ -66,23 +81,23 @@ public class AdminJPanel extends javax.swing.JPanel {
         layout.setHorizontalGroup(
             layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
             .add(layout.createSequentialGroup()
-                .add(114, 114, 114)
-                .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-                    .add(addNetworkButton, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 111, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                .add(558, 558, 558)
+                .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.CENTER)
+                    .add(addNetworkButton, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 150, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
                     .add(jLabel1)
-                    .add(manageNetworkButton))
-                .add(135, 135, 135))
+                    .add(manageNetworkButton, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 150, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(557, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
             .add(layout.createSequentialGroup()
-                .add(47, 47, 47)
-                .add(jLabel1)
-                .addPreferredGap(org.jdesktop.layout.LayoutStyle.UNRELATED)
-                .add(addNetworkButton)
-                .addPreferredGap(org.jdesktop.layout.LayoutStyle.UNRELATED)
-                .add(manageNetworkButton)
-                .add(167, 167, 167))
+                .add(121, 121, 121)
+                .add(jLabel1, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 30, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                .add(100, 100, 100)
+                .add(addNetworkButton, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 33, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                .add(50, 50, 50)
+                .add(manageNetworkButton, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 33, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
         );
     }// </editor-fold>//GEN-END:initComponents
 
