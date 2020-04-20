@@ -22,7 +22,7 @@ public class ConfigureABusiness {
      private static void addBusinessAdmin(Business business)
     {
         Employee employee=business.getEmployeeDirectory().newEmployee();
-        employee.setFirstName("Nived");
+        employee.setFirstName("Runtime Terror");
         employee.setLastName("Srush");
         
         UserAccount userAccount=business.getUserAccountDirectory().newAccount();

@@ -129,7 +129,7 @@ public class ManageEnterpriseJPanel extends javax.swing.JPanel {
 
         jLabel1.setFont(new java.awt.Font("Courier New", 0, 18)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(34, 40, 49));
-        jLabel1.setText("Manage Enterprise");
+        jLabel1.setText("MANAGE ENTERPRISE");
         jLabel1.setBorder(javax.swing.BorderFactory.createMatteBorder(1, 0, 1, 0, new java.awt.Color(0, 173, 181)));
         jLabel1.setMaximumSize(new java.awt.Dimension(187, 30));
         jLabel1.setMinimumSize(new java.awt.Dimension(187, 30));
@@ -138,7 +138,6 @@ public class ManageEnterpriseJPanel extends javax.swing.JPanel {
         backButton.setBackground(new java.awt.Color(238, 238, 238));
         backButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/UserInterface/Images/back.png"))); // NOI18N
         backButton.setBorder(null);
-        backButton.setLabel("");
         backButton.setMargin(new java.awt.Insets(0, 0, 0, 0));
         backButton.setMaximumSize(new java.awt.Dimension(60, 60));
         backButton.setMinimumSize(new java.awt.Dimension(60, 60));
@@ -153,12 +152,11 @@ public class ManageEnterpriseJPanel extends javax.swing.JPanel {
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(30, 30, 30)
-                .addComponent(backButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(30, 30, 30)
+                        .addComponent(backButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(546, 546, 546)
                         .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))

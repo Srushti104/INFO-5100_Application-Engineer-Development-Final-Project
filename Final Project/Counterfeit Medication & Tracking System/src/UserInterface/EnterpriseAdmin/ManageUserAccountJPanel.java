@@ -155,7 +155,7 @@ public class ManageUserAccountJPanel extends javax.swing.JPanel {
         jLabel2.setFont(new java.awt.Font("Courier New", 0, 18)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(34, 40, 49));
         jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel2.setText("Manage USER ACCOUNT");
+        jLabel2.setText("MANAGE USER ACCOUNT");
         jLabel2.setBorder(javax.swing.BorderFactory.createMatteBorder(1, 0, 1, 0, new java.awt.Color(0, 173, 181)));
         jLabel2.setMaximumSize(new java.awt.Dimension(165, 30));
         jLabel2.setMinimumSize(new java.awt.Dimension(165, 30));

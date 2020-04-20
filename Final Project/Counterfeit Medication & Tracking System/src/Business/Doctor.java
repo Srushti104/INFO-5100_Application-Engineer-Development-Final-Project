@@ -9,7 +9,9 @@ package Business;
  * @author srush
  */
 public class Doctor extends Person {
-
+    
+    private String firstName;
+    private String lastName;
     private String hsopName;
     private String dateVisit;
     DrugCatalog drugCatalog;
@@ -37,5 +39,22 @@ public class Doctor extends Person {
     public void setDateVisit(String dateVisit) {
         this.dateVisit = dateVisit;
     }
+
+    public String getFirstName() {
+        return firstName;
+    }
+
+    public void setFirstName(String firstName) {
+        this.firstName = firstName;
+    }
+
+    public String getLastName() {
+        return lastName;
+    }
+
+    public void setLastName(String lastName) {
+        this.lastName = lastName;
+    }
+    
 
 }
