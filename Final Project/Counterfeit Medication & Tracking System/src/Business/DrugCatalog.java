@@ -13,12 +13,12 @@ import java.util.ArrayList;
 public class DrugCatalog {
 
     ArrayList<Drug> drugList;
-    ArrayList<Package1> packPatientList;
+    ArrayList<Package1> packDoctorList;
 
     public DrugCatalog() {
 
         drugList = new ArrayList<Drug>();
-        packPatientList = new ArrayList<Package1>();
+        packDoctorList = new ArrayList<Package1>();
     }
 
     public ArrayList<Drug> getDrugList() {
@@ -32,7 +32,7 @@ public class DrugCatalog {
     }
 
     public void newDrugPackage(Package1 package1) {
-        packPatientList.add(package1);
+        packDoctorList.add(package1);
 
     }
 
@@ -40,15 +40,15 @@ public class DrugCatalog {
         drugList.remove(drug);
     }
 
-    public ArrayList<Package1> getPackPatientList() {
-        return packPatientList;
+    public ArrayList<Package1> getPackDoctorList() {
+        return packDoctorList;
     }
 
     public int getTotalQuantity(Drug drug) {
 
         int tquant = 0;
 
-        for (Package1 p : packPatientList) {
+        for (Package1 p : packDoctorList) {
             if (p.getDrug().getDrugName() == drug.getDrugName()) {
 
                 tquant++;

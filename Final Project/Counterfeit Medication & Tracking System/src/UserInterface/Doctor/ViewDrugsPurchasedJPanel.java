@@ -43,7 +43,7 @@ public class ViewDrugsPurchasedJPanel extends javax.swing.JPanel {
         }
         Doctor doc = userAccount.getDoctor();
         Drug tempDrug = null;
-        for (Package1 package1 : doc.getDrugCatalog().getPackPatientList()) //  for(InventoryItem inventoryItem:storeInventory.getInventoryList())
+        for (Package1 package1 : doc.getDrugCatalog().getPackDoctorList()) //  for(InventoryItem inventoryItem:storeInventory.getInventoryList())
         {
             Object row[] = new Object[3];
 
