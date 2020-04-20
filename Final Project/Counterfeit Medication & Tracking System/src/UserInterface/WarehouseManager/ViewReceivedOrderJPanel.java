@@ -116,7 +116,6 @@ public class ViewReceivedOrderJPanel extends javax.swing.JPanel {
         jLabel1.setText("VIEW REQUESTS");
         jLabel1.setBorder(javax.swing.BorderFactory.createMatteBorder(1, 0, 1, 0, new java.awt.Color(0, 173, 181)));
 
-        assignButton.setBackground(new java.awt.Color(238, 238, 238));
         assignButton.setFont(new java.awt.Font("Courier New", 0, 14)); // NOI18N
         assignButton.setForeground(new java.awt.Color(238, 238, 238));
         assignButton.setText("ASSIGN TO ME");
@@ -129,7 +128,6 @@ public class ViewReceivedOrderJPanel extends javax.swing.JPanel {
             }
         });
 
-        addDrugButton.setBackground(new java.awt.Color(238, 238, 238));
         addDrugButton.setFont(new java.awt.Font("Courier New", 0, 14)); // NOI18N
         addDrugButton.setForeground(new java.awt.Color(238, 238, 238));
         addDrugButton.setText("ADD TO INVENTORY");
@@ -196,7 +194,6 @@ public class ViewReceivedOrderJPanel extends javax.swing.JPanel {
             }
         });
 
-        checkCounterfeitButton.setBackground(new java.awt.Color(238, 238, 238));
         checkCounterfeitButton.setFont(new java.awt.Font("Courier New", 0, 14)); // NOI18N
         checkCounterfeitButton.setForeground(new java.awt.Color(238, 238, 238));
         checkCounterfeitButton.setText("CHECK COUNTERFEIT");

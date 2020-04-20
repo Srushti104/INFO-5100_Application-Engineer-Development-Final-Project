@@ -39,6 +39,7 @@ public class ReportAnIncidentJPanel extends javax.swing.JPanel {
         this.userAccount = userAccount;
         dispenserNameComboBox.removeAllItems();
         packComboBox.removeAllItems();
+        drugComboBox.removeAllItems();
         //drugNameComboBox.removeAllItems();
         refresh();
     }
@@ -54,10 +55,10 @@ public class ReportAnIncidentJPanel extends javax.swing.JPanel {
         }
         Doctor doc = userAccount.getDoctor();
         Package1 tempPackage = null;
-        for (Package1 package1 : doc.getDrugCatalog().getPackPatientList()) {
+        for (Package1 package1 : doc.getDrugCatalog().getPackDoctorList()) {
 
             packComboBox.addItem(package1.getPackageID());
-
+            drugComboBox.addItem(package1.getDrug().getDrugName());
         }
 
     }
@@ -80,9 +81,9 @@ public class ReportAnIncidentJPanel extends javax.swing.JPanel {
         detailsTextArea = new javax.swing.JTextArea();
         backButton = new javax.swing.JButton();
         reportButton = new javax.swing.JButton();
-        drugNameField = new javax.swing.JTextField();
         jLabel5 = new javax.swing.JLabel();
         packComboBox = new javax.swing.JComboBox();
+        drugComboBox = new javax.swing.JComboBox();
 
         setBackground(new java.awt.Color(238, 238, 238));
         setMaximumSize(new java.awt.Dimension(1280, 700));
@@ -144,10 +145,6 @@ public class ReportAnIncidentJPanel extends javax.swing.JPanel {
             }
         });
 
-        drugNameField.setBackground(new java.awt.Color(238, 238, 238));
-        drugNameField.setFont(new java.awt.Font("Courier New", 0, 12)); // NOI18N
-        drugNameField.setForeground(new java.awt.Color(34, 40, 49));
-
         jLabel5.setFont(new java.awt.Font("Courier New", 0, 14)); // NOI18N
         jLabel5.setForeground(new java.awt.Color(34, 40, 49));
         jLabel5.setText("PACKAGE ID");
@@ -156,6 +153,11 @@ public class ReportAnIncidentJPanel extends javax.swing.JPanel {
         packComboBox.setFont(new java.awt.Font("Courier New", 0, 12)); // NOI18N
         packComboBox.setForeground(new java.awt.Color(34, 40, 49));
         packComboBox.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+
+        drugComboBox.setBackground(new java.awt.Color(238, 238, 238));
+        drugComboBox.setFont(new java.awt.Font("Courier New", 0, 12)); // NOI18N
+        drugComboBox.setForeground(new java.awt.Color(34, 40, 49));
+        drugComboBox.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -180,14 +182,13 @@ public class ReportAnIncidentJPanel extends javax.swing.JPanel {
                                     .addGap(50, 50, 50)
                                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                         .addComponent(jScrollPane1)
-                                        .addComponent(drugNameField)
                                         .addComponent(packComboBox, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                        .addComponent(dispenserNameComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)))))))
+                                        .addComponent(dispenserNameComboBox, 0, 200, Short.MAX_VALUE)
+                                        .addComponent(drugComboBox, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(563, 563, 563)
+                        .addComponent(jLabel1)))
                 .addContainerGap(471, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(563, 563, 563)
-                .addComponent(jLabel1)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -203,7 +204,7 @@ public class ReportAnIncidentJPanel extends javax.swing.JPanel {
                 .addGap(30, 30, 30)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel3)
-                    .addComponent(drugNameField, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(drugComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(30, 30, 30)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(packComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -232,34 +233,34 @@ public class ReportAnIncidentJPanel extends javax.swing.JPanel {
         Enterprise enterprise = (Enterprise) dispenserNameComboBox.getSelectedItem();
 
         if (enterprise.getClass().equals(HospitalEnterprise.class)) {
-            Doctor patient = userAccount.getDoctor();
+            Doctor doc = userAccount.getDoctor();
+            String drugName = drugComboBox.getSelectedItem().toString();
 
-            ManagerWorkRequest managerWokrRequest = new ManagerWorkRequest();
-            managerWokrRequest.setSender(userAccount);
-            managerWokrRequest.setRequestDate(new Date());
-            managerWokrRequest.setStatus("Problem Reported");
-            managerWokrRequest.setResult("Problem reported");
+            ManagerWorkRequest managerWorkRequest = new ManagerWorkRequest();
+            managerWorkRequest.setSender(userAccount);
+            managerWorkRequest.setRequestDate(new Date());
+            managerWorkRequest.setStatus("Problem Reported");
+            managerWorkRequest.setResult("Problem reported");
             // managerWokrRequest.setLicenseNumber(Integer.parseInt(licenseNumberField.getText()));
-            managerWokrRequest.setMessage("Problem Reported");
+            managerWorkRequest.setMessage("Problem Reported");
 
             //  managerWokrRequest.setDrug(inventoryItem.getDrug());
             // managerWokrRequest.setPackage1();
-            managerWokrRequest.setProblemReported(detailsTextArea.getText());
-            managerWokrRequest.setDgName(drugNameField.getText());
+            managerWorkRequest.setProblemReported(detailsTextArea.getText());
+            managerWorkRequest.setDgName(drugName);
             // managerWokrRequest.setPackID(Integer.parseInt(packageIDField.getText()));
             int pid = (Integer) packComboBox.getSelectedItem();
 
-            for (Package1 package1 : patient.getDrugCatalog().getPackPatientList()) {
+            for (Package1 package1 : doc.getDrugCatalog().getPackDoctorList()) {
                 if (package1.getPackageID() == pid) {
-                    managerWokrRequest.setPackage1(package1);
+                    managerWorkRequest.setPackage1(package1);
                 }
             }
 
             HospitalEnterprise e = (HospitalEnterprise) network.getEnterpriseDirectory().getMyEnterprise(userAccount);
 
             //userAccount.getWorkQueue().getWorkRequestList().add(shipWorkRequest);
-            JOptionPane.showMessageDialog(null, "Incident report sent");
-            JOptionPane.showMessageDialog(null, "Processed succesfully");
+            JOptionPane.showMessageDialog(null, "Incident report sent to Hospital management successfully");
 
             HospitalEnterprise d1 = null;
             for (Enterprise enterprise1 : network.getEnterpriseDirectory().getEnterpriseList()) {
@@ -269,7 +270,8 @@ public class ReportAnIncidentJPanel extends javax.swing.JPanel {
             }
 
             ManagementOrganization managementOrganization = d1.getManagementOrganization();
-            managementOrganization.getWorkQueue().getWorkRequestList().add(managerWokrRequest);
+            managementOrganization.getWorkQueue().getWorkRequestList().add(managerWorkRequest);
+            JOptionPane.showMessageDialog(null, "Work Request Sent");
             //SalesManagementOrganization salesOrganization=e1.getSalesManagementOrganization();
             //  salesOrganization.getWorkQueue().getWorkRequestList().add(salesRequest);
 
@@ -292,7 +294,7 @@ public class ReportAnIncidentJPanel extends javax.swing.JPanel {
     private javax.swing.JButton backButton;
     private javax.swing.JTextArea detailsTextArea;
     private javax.swing.JComboBox dispenserNameComboBox;
-    private javax.swing.JTextField drugNameField;
+    private javax.swing.JComboBox drugComboBox;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;

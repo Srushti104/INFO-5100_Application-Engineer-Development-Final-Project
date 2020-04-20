@@ -346,7 +346,7 @@ public class ViewOrdersJPanel extends javax.swing.JPanel {
                 WarehouseManagerWorkRequest warehouseManagerWorkRequest = new WarehouseManagerWorkRequest();
                 warehouseManagerWorkRequest.setSender(userAccount);
                 warehouseManagerWorkRequest.setRequestDate(new Date());
-                warehouseManagerWorkRequest.setMessage("Sent to Warehouse");
+                warehouseManagerWorkRequest.setMessage("Manufacturer Sales to Warehouse");
                 warehouseManagerWorkRequest.setStatus("Sent");
                 // shipmentManagerWorkRequest.setManuName(manuNameField.getText());
                 warehouseManagerWorkRequest.setDrugName(salesManagerWorkRequest.getDrName());
@@ -408,7 +408,7 @@ public class ViewOrdersJPanel extends javax.swing.JPanel {
                 InventoryManagerWorkRequest inventoryManagerWorkRequest = new InventoryManagerWorkRequest();
                 inventoryManagerWorkRequest.setSender(userAccount);
                 inventoryManagerWorkRequest.setRequestDate(new Date());
-                inventoryManagerWorkRequest.setMessage("Order ready");
+                inventoryManagerWorkRequest.setMessage("Distributor Sales to Warehouse");
                 inventoryManagerWorkRequest.setStatus("Sent");
                 // shipmentManagerWorkRequest.setManuName(manuNameField.getText());
                 inventoryManagerWorkRequest.setDrugName(salesManagerWorkRequest.getDrName());
@@ -520,7 +520,7 @@ public class ViewOrdersJPanel extends javax.swing.JPanel {
 
             Refresh();
         } else {
-            JOptionPane.showMessageDialog(this, "The task is already assogned to other person");
+            JOptionPane.showMessageDialog(this, "The task is already assigned to other person");
         }
     }//GEN-LAST:event_assignButtonActionPerformed
 

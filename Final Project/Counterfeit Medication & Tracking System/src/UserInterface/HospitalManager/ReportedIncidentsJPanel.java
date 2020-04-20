@@ -2,7 +2,7 @@
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
-package UserInterface.Manager;
+package UserInterface.HospitalManager;
 
 import Business.WorkRequests.DrugTesterWorkRequest;
 import Business.DrugTestingOrganization;
@@ -62,13 +62,13 @@ public class ReportedIncidentsJPanel extends javax.swing.JPanel {
                 row[1] = workRequest.getSender();
 
                 if (workRequest.getReceiver() != null) {
-                    row[2] = workRequest.getReceiver().getEmployee().getFirstName() + " "+ workRequest.getReceiver().getEmployee().getLastName();
+                    row[2] = workRequest.getReceiver().getEmployee().getFirstName() + " " + workRequest.getReceiver().getEmployee().getLastName();
 
                 }
 
                 row[3] = workRequest.getStatus();
                 row[4] = hospitalEnterprise.getEnterpriseName();
-                row[5] = managerWokrRequest.getPackage1().getPackageID();
+                row[5] = managerWokrRequest.getDgName();
                 row[6] = managerWokrRequest.getProblemReported();
                 //  row[4]=workRequest.getDrugName();
                 //  row[5]=workRequest.getQuantity();
@@ -116,7 +116,7 @@ public class ReportedIncidentsJPanel extends javax.swing.JPanel {
                 {null, null, null, null, null, null, null}
             },
             new String [] {
-                "Message", "Sender", "Receiver", "Status", "Enterprise Name", "Drug", "Problem"
+                "Message", "Sender", "Receiver", "Status", "Enterprise Name", "Drug Name", "Problem"
             }
         ) {
             boolean[] canEdit = new boolean [] {
@@ -236,7 +236,7 @@ public class ReportedIncidentsJPanel extends javax.swing.JPanel {
             JOptionPane.showMessageDialog(null, "Please select a work request");
             return;
         }
-         WorkRequest workRequest = (WorkRequest) requestsTable.getValueAt(selectedRow, 0);
+        WorkRequest workRequest = (WorkRequest) requestsTable.getValueAt(selectedRow, 0);
 
         if (workRequest.getReceiver() != null) {
 

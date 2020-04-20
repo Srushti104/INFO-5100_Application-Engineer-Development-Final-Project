@@ -19,7 +19,7 @@ import javax.swing.table.DefaultTableModel;
  * @author nived
  */
 public class CheckWarehouseInventoryJPanel extends javax.swing.JPanel {
-    
+
     JPanel userProcessContainer;
     Network network;
     UserAccount userAccount;
@@ -27,79 +27,58 @@ public class CheckWarehouseInventoryJPanel extends javax.swing.JPanel {
     /**
      * Creates new form CheckWarehouseInventoryJPanel
      */
-    public CheckWarehouseInventoryJPanel(JPanel userProcessContainer,Network network,UserAccount userAccount) {
+    public CheckWarehouseInventoryJPanel(JPanel userProcessContainer, Network network, UserAccount userAccount) {
         initComponents();
-        this.userProcessContainer=userProcessContainer;
-        this.network=network;
-        this.userAccount=userAccount;
+        this.userProcessContainer = userProcessContainer;
+        this.network = network;
+        this.userAccount = userAccount;
         //inventoryDetailsComboBox.removeAllItems();
-       // inventoryDetailsComboBox.addItem("All Inventory");
-        
-       // inventoryDetailsComboBox.addItem("Short Supply");
+        // inventoryDetailsComboBox.addItem("All Inventory");
+
+        // inventoryDetailsComboBox.addItem("Short Supply");
 //        thresholdField.setText("5");
 //        thresholdField.setEditable(false);
-        
         refresh();
     }
-    
-    
-    
-    
-    public void refresh()
-    {
-        
-        
-        
-        int rowcount=inventoryReportTable.getRowCount();
-        
-        for(int i=rowcount-1;i>=0;i--)
-        {
-            ((DefaultTableModel)inventoryReportTable.getModel()).removeRow(i);
+
+    public void refresh() {
+
+        int rowcount = inventoryReportTable.getRowCount();
+
+        for (int i = rowcount - 1; i >= 0; i--) {
+            ((DefaultTableModel) inventoryReportTable.getModel()).removeRow(i);
         }
-        
-        
-        
-           
-        for(Enterprise enterprise:network.getEnterpriseDirectory().getEnterpriseList())
-        {
-            
-        if(enterprise.getClass().equals(DistributorEnterprise.class))
-        {
-            
-        DistributorEnterprise distributorEnterprise=(DistributorEnterprise)enterprise;
-        //thresholdField.setText(Integer.toString(distributorEnterprise.getThreshold()));
-        Drug tempDrug=null;
-       for(InventoryItem inventoryItem:distributorEnterprise.getInventoryCatalog().getInventoryList())
-        {
-            
-            
-          // Drug drug=inventoryItem.getDrug();
-          // System.out.println(""+inventoryItem);
-         //   int price=product.getPrice();
-         Object row[]=new Object[3];
-         
-         if(inventoryItem.getPackage1().getDrug() == tempDrug)
-         {
-             break;
-         }
-         else
-         {
-         row[0]=inventoryItem.getPackage1();
-         //Drug drug=inventoryItem.getPackage1().getPackageID();
-         row[1]=distributorEnterprise.getInventoryCatalog().getTotalQuantity(inventoryItem.getPackage1().getDrug());
-         tempDrug=inventoryItem.getPackage1().getDrug();
-         }
-         
-      //  row[1]=storeInventory.getTotalInventory(drug);
-          //  row[1]=masterOrderCatalog.getTotalNumber(product);
-            //row[2]=price*(masterOrderCatalog.getTotalNumber(product));
-            
-            
-            
-           ((DefaultTableModel)inventoryReportTable.getModel()).addRow(row);   
-            
-        }
-        }
+
+        for (Enterprise enterprise : network.getEnterpriseDirectory().getEnterpriseList()) {
+
+            if (enterprise.getClass().equals(DistributorEnterprise.class)) {
+
+                DistributorEnterprise distributorEnterprise = (DistributorEnterprise) enterprise;
+                //thresholdField.setText(Integer.toString(distributorEnterprise.getThreshold()));
+                Drug tempDrug = null;
+                for (InventoryItem inventoryItem : distributorEnterprise.getInventoryCatalog().getInventoryList()) {
+
+                    // Drug drug=inventoryItem.getDrug();
+                    // System.out.println(""+inventoryItem);
+                    //   int price=product.getPrice();
+                    Object row[] = new Object[3];
+
+                    if (inventoryItem.getPackage1().getDrug() == tempDrug) {
+                        break;
+                    } else {
+                        row[0] = inventoryItem.getPackage1();
+                        //Drug drug=inventoryItem.getPackage1().getPackageID();
+                        row[1] = distributorEnterprise.getInventoryCatalog().getTotalQuantity(inventoryItem.getPackage1().getDrug());
+                        tempDrug = inventoryItem.getPackage1().getDrug();
+                    }
+
+                    //  row[1]=storeInventory.getTotalInventory(drug);
+                    //  row[1]=masterOrderCatalog.getTotalNumber(product);
+                    //row[2]=price*(masterOrderCatalog.getTotalNumber(product));
+                    ((DefaultTableModel) inventoryReportTable.getModel()).addRow(row);
+
+                }
+            }
         }
 
     }
@@ -152,7 +131,7 @@ public class CheckWarehouseInventoryJPanel extends javax.swing.JPanel {
                 backButtonActionPerformed(evt);
             }
         });
-        add(backButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 20, 39, 24));
+        add(backButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(9, 20, 40, 30));
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jLabel1.setText("Manage Inventory");
@@ -163,7 +142,7 @@ public class CheckWarehouseInventoryJPanel extends javax.swing.JPanel {
         // TODO add your handling code here:
         userProcessContainer.remove(this);
 
-        CardLayout cardLayout=(CardLayout)userProcessContainer.getLayout();
+        CardLayout cardLayout = (CardLayout) userProcessContainer.getLayout();
         cardLayout.previous(userProcessContainer);
     }//GEN-LAST:event_backButtonActionPerformed
 
