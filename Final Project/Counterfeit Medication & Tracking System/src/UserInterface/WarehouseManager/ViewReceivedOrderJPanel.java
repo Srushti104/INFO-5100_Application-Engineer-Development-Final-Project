@@ -41,7 +41,7 @@ public class ViewReceivedOrderJPanel extends javax.swing.JPanel {
         this.network = network;
         this.userAccount = userAccount;
         addDrugButton.setEnabled(false);
-        viewSuspectDrugsButton.setVisible(false);
+        //viewSuspectDrugsButton.setVisible(false);
         Refresh();
     }
 
@@ -105,25 +105,46 @@ public class ViewReceivedOrderJPanel extends javax.swing.JPanel {
         refreshButton = new javax.swing.JButton();
         backButton = new javax.swing.JButton();
         checkCounterfeitButton = new javax.swing.JButton();
-        viewSuspectDrugsButton = new javax.swing.JButton();
 
-        jLabel1.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        jLabel1.setText("View Requests");
+        setBackground(new java.awt.Color(238, 238, 238));
+        setMaximumSize(new java.awt.Dimension(1280, 700));
+        setMinimumSize(new java.awt.Dimension(1280, 700));
+        setPreferredSize(new java.awt.Dimension(1280, 700));
 
-        assignButton.setText("Assign to me");
+        jLabel1.setFont(new java.awt.Font("Courier New", 0, 18)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(34, 40, 49));
+        jLabel1.setText("VIEW REQUESTS");
+        jLabel1.setBorder(javax.swing.BorderFactory.createMatteBorder(1, 0, 1, 0, new java.awt.Color(0, 173, 181)));
+
+        assignButton.setBackground(new java.awt.Color(238, 238, 238));
+        assignButton.setFont(new java.awt.Font("Courier New", 0, 14)); // NOI18N
+        assignButton.setForeground(new java.awt.Color(238, 238, 238));
+        assignButton.setText("ASSIGN TO ME");
+        assignButton.setMaximumSize(new java.awt.Dimension(200, 33));
+        assignButton.setMinimumSize(new java.awt.Dimension(200, 33));
+        assignButton.setPreferredSize(new java.awt.Dimension(200, 33));
         assignButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 assignButtonActionPerformed(evt);
             }
         });
 
-        addDrugButton.setText("Add To Inventory");
+        addDrugButton.setBackground(new java.awt.Color(238, 238, 238));
+        addDrugButton.setFont(new java.awt.Font("Courier New", 0, 14)); // NOI18N
+        addDrugButton.setForeground(new java.awt.Color(238, 238, 238));
+        addDrugButton.setText("ADD TO INVENTORY");
+        addDrugButton.setMaximumSize(new java.awt.Dimension(200, 33));
+        addDrugButton.setMinimumSize(new java.awt.Dimension(200, 33));
+        addDrugButton.setPreferredSize(new java.awt.Dimension(200, 33));
         addDrugButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 addDrugButtonActionPerformed(evt);
             }
         });
 
+        requestsTable.setBackground(new java.awt.Color(238, 238, 238));
+        requestsTable.setFont(new java.awt.Font("Courier New", 0, 12)); // NOI18N
+        requestsTable.setForeground(new java.awt.Color(34, 40, 49));
         requestsTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null, null, null, null},
@@ -143,31 +164,48 @@ public class ViewReceivedOrderJPanel extends javax.swing.JPanel {
                 return canEdit [columnIndex];
             }
         });
+        requestsTable.setGridColor(new java.awt.Color(34, 40, 49));
+        requestsTable.setRowHeight(20);
+        requestsTable.setSelectionBackground(new java.awt.Color(0, 173, 181));
+        requestsTable.setSelectionForeground(new java.awt.Color(238, 238, 238));
         jScrollPane1.setViewportView(requestsTable);
 
+        refreshButton.setBackground(new java.awt.Color(238, 238, 238));
+        refreshButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/UserInterface/Images/refresh.png"))); // NOI18N
+        refreshButton.setBorder(null);
+        refreshButton.setMargin(new java.awt.Insets(0, 0, 0, 0));
+        refreshButton.setMaximumSize(new java.awt.Dimension(40, 40));
+        refreshButton.setMinimumSize(new java.awt.Dimension(40, 40));
+        refreshButton.setPreferredSize(new java.awt.Dimension(40, 40));
         refreshButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 refreshButtonActionPerformed(evt);
             }
         });
 
+        backButton.setBackground(new java.awt.Color(238, 238, 238));
+        backButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/UserInterface/Images/back.png"))); // NOI18N
+        backButton.setBorder(null);
+        backButton.setMargin(new java.awt.Insets(0, 0, 0, 0));
+        backButton.setMaximumSize(new java.awt.Dimension(60, 60));
+        backButton.setMinimumSize(new java.awt.Dimension(60, 60));
+        backButton.setPreferredSize(new java.awt.Dimension(60, 60));
         backButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 backButtonActionPerformed(evt);
             }
         });
 
-        checkCounterfeitButton.setText("Check Counterfeit");
+        checkCounterfeitButton.setBackground(new java.awt.Color(238, 238, 238));
+        checkCounterfeitButton.setFont(new java.awt.Font("Courier New", 0, 14)); // NOI18N
+        checkCounterfeitButton.setForeground(new java.awt.Color(238, 238, 238));
+        checkCounterfeitButton.setText("CHECK COUNTERFEIT");
+        checkCounterfeitButton.setMaximumSize(new java.awt.Dimension(200, 33));
+        checkCounterfeitButton.setMinimumSize(new java.awt.Dimension(200, 33));
+        checkCounterfeitButton.setPreferredSize(new java.awt.Dimension(200, 33));
         checkCounterfeitButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 checkCounterfeitButtonActionPerformed(evt);
-            }
-        });
-
-        viewSuspectDrugsButton.setText("View Suspect Drugs");
-        viewSuspectDrugsButton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                viewSuspectDrugsButtonActionPerformed(evt);
             }
         });
 
@@ -178,46 +216,45 @@ public class ViewReceivedOrderJPanel extends javax.swing.JPanel {
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(backButton, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(250, 250, 250)
-                        .addComponent(jLabel1))
+                        .addGap(30, 30, 30)
+                        .addComponent(backButton, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(126, 126, 126)
+                        .addGap(569, 569, 569)
+                        .addComponent(jLabel1)))
+                .addGap(0, 0, Short.MAX_VALUE))
+            .addGroup(layout.createSequentialGroup()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                    .addGroup(layout.createSequentialGroup()
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(assignButton, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(30, 30, 30)
+                        .addComponent(checkCounterfeitButton, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(30, 30, 30)
+                        .addComponent(addDrugButton, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                        .addGap(140, 140, 140)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(refreshButton, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
-                                .addComponent(assignButton)
-                                .addGap(76, 76, 76)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(viewSuspectDrugsButton)
-                                    .addComponent(checkCounterfeitButton, javax.swing.GroupLayout.PREFERRED_SIZE, 127, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGap(39, 39, 39)
-                                .addComponent(addDrugButton))))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(18, 18, 18)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 653, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(53, 53, 53))
+                            .addComponent(refreshButton, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 1000, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addContainerGap(140, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel1)
-                    .addComponent(backButton, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(8, 8, 8)
-                .addComponent(refreshButton, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(37, 37, 37)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(addDrugButton)
-                    .addComponent(assignButton)
-                    .addComponent(checkCounterfeitButton))
+                .addGap(30, 30, 30)
+                .addComponent(backButton, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(30, 30, 30)
+                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(20, 20, 20)
+                .addComponent(refreshButton, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(viewSuspectDrugsButton)
-                .addGap(91, 91, 91))
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 122, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(32, 32, 32)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(addDrugButton, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(checkCounterfeitButton, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(assignButton, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(288, 288, 288))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -316,11 +353,11 @@ public class ViewReceivedOrderJPanel extends javax.swing.JPanel {
                         if (transaction.getManufacturerEnterprise() == null || transaction.getDistributorEnterprise() == null) {
                             JOptionPane.showMessageDialog(null, "Drugs are suspected");
                             addDrugButton.setEnabled(false);
-                            viewSuspectDrugsButton.setVisible(true);
+                            //viewSuspectDrugsButton.setVisible(true);
                             //viewSuspectDrugsButton.setVisible(true);
                             p.setPackageStatus("Suspect Drug");
 
-                            viewSuspectDrugsButton.setEnabled(true);
+                            //viewSuspectDrugsButton.setEnabled(true);
                             int lotid = p.getDisLotID();
 
                             for (Package1 p1 : lotOfDrug.getPackageList()) {
@@ -343,29 +380,10 @@ public class ViewReceivedOrderJPanel extends javax.swing.JPanel {
         }
 
         addDrugButton.setEnabled(true);
-        JOptionPane.showMessageDialog(null,"Drugs are safe");
+        JOptionPane.showMessageDialog(null, "Drugs are safe");
 
 
     }//GEN-LAST:event_checkCounterfeitButtonActionPerformed
-
-    private void viewSuspectDrugsButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_viewSuspectDrugsButtonActionPerformed
-        // TODO add your handling code here:
-
-        int selectedRow = requestsTable.getSelectedRow();
-
-        if (selectedRow < 0) {
-            JOptionPane.showMessageDialog(null, "Please select a work request");
-            return;
-        }
-
-        WarehouseManagerWorkRequest wareHouseManagerWorkRequest = (WarehouseManagerWorkRequest) requestsTable.getValueAt(selectedRow, 0);
-
-//        ViewDrugsForSuspectWhileAddingJPanel viewDrugsForSuspectWhileAddingJPanel=new ViewDrugsForSuspectWhileAddingJPanel(userProcessContainer,network,userAccount,wareHouseManagerWorkRequest);
-//        userProcessContainer.add("vssukjs",viewDrugsForSuspectWhileAddingJPanel);
-//        
-        CardLayout cardLayout = (CardLayout) userProcessContainer.getLayout();
-        cardLayout.next(userProcessContainer);
-    }//GEN-LAST:event_viewSuspectDrugsButtonActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton addDrugButton;
@@ -376,6 +394,5 @@ public class ViewReceivedOrderJPanel extends javax.swing.JPanel {
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JButton refreshButton;
     private javax.swing.JTable requestsTable;
-    private javax.swing.JButton viewSuspectDrugsButton;
     // End of variables declaration//GEN-END:variables
 }

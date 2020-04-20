@@ -76,36 +76,71 @@ public class OrderDrugsJPanel extends javax.swing.JPanel {
         manufacturerComboBox = new javax.swing.JComboBox();
         drugComboBox = new javax.swing.JComboBox();
 
-        jLabel1.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
-        jLabel1.setText("Order Drugs");
+        setBackground(new java.awt.Color(238, 238, 238));
+        setMaximumSize(new java.awt.Dimension(1280, 700));
+        setMinimumSize(new java.awt.Dimension(1280, 700));
+        setPreferredSize(new java.awt.Dimension(1280, 700));
 
-        jLabel2.setText("Name:");
+        jLabel1.setFont(new java.awt.Font("Courier New", 0, 18)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(34, 40, 49));
+        jLabel1.setText("ORDER DRUGS");
+        jLabel1.setBorder(javax.swing.BorderFactory.createMatteBorder(1, 0, 1, 0, new java.awt.Color(0, 173, 181)));
 
-        jLabel3.setText("Drugs:");
+        jLabel2.setFont(new java.awt.Font("Courier New", 0, 14)); // NOI18N
+        jLabel2.setForeground(new java.awt.Color(34, 40, 49));
+        jLabel2.setText("MANIFACTURE NAME");
 
-        jLabel4.setText("Quantity:");
+        jLabel3.setFont(new java.awt.Font("Courier New", 0, 14)); // NOI18N
+        jLabel3.setForeground(new java.awt.Color(34, 40, 49));
+        jLabel3.setText("DRUG NAME");
 
-        orderDrugButton.setText("Order Drug");
+        jLabel4.setFont(new java.awt.Font("Courier New", 0, 14)); // NOI18N
+        jLabel4.setForeground(new java.awt.Color(34, 40, 49));
+        jLabel4.setText("QUANTITY");
+
+        orderDrugButton.setBackground(new java.awt.Color(57, 62, 70));
+        orderDrugButton.setFont(new java.awt.Font("Courier New", 0, 14)); // NOI18N
+        orderDrugButton.setForeground(new java.awt.Color(238, 238, 238));
+        orderDrugButton.setText("ORDER DRUG");
         orderDrugButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 orderDrugButtonActionPerformed(evt);
             }
         });
 
+        backButton.setBackground(new java.awt.Color(238, 238, 238));
+        backButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/UserInterface/Images/back.png"))); // NOI18N
+        backButton.setBorder(null);
+        backButton.setMargin(new java.awt.Insets(0, 0, 0, 0));
+        backButton.setMaximumSize(new java.awt.Dimension(60, 60));
+        backButton.setMinimumSize(new java.awt.Dimension(60, 60));
+        backButton.setPreferredSize(new java.awt.Dimension(60, 60));
         backButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 backButtonActionPerformed(evt);
             }
         });
 
-        jLabel5.setText("Notes:");
+        jLabel5.setFont(new java.awt.Font("Courier New", 0, 14)); // NOI18N
+        jLabel5.setForeground(new java.awt.Color(34, 40, 49));
+        jLabel5.setText("ADDITIONAL INFORMATION");
 
+        resultField.setBackground(new java.awt.Color(238, 238, 238));
+        resultField.setFont(new java.awt.Font("Courier New", 0, 12)); // NOI18N
+        resultField.setForeground(new java.awt.Color(34, 40, 49));
+
+        quantityField.setBackground(new java.awt.Color(238, 238, 238));
+        quantityField.setFont(new java.awt.Font("Courier New", 0, 12)); // NOI18N
+        quantityField.setForeground(new java.awt.Color(34, 40, 49));
         quantityField.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 quantityFieldActionPerformed(evt);
             }
         });
 
+        manufacturerComboBox.setBackground(new java.awt.Color(238, 238, 238));
+        manufacturerComboBox.setFont(new java.awt.Font("Courier New", 0, 12)); // NOI18N
+        manufacturerComboBox.setForeground(new java.awt.Color(34, 40, 49));
         manufacturerComboBox.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
         manufacturerComboBox.addItemListener(new java.awt.event.ItemListener() {
             public void itemStateChanged(java.awt.event.ItemEvent evt) {
@@ -118,73 +153,68 @@ public class OrderDrugsJPanel extends javax.swing.JPanel {
             }
         });
 
+        drugComboBox.setBackground(new java.awt.Color(238, 238, 238));
+        drugComboBox.setFont(new java.awt.Font("Courier New", 0, 12)); // NOI18N
+        drugComboBox.setForeground(new java.awt.Color(34, 40, 49));
         drugComboBox.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addGap(427, 427, 427)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(orderDrugButton, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addComponent(resultField)
+                        .addComponent(quantityField, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(15, 15, 15)
-                        .addComponent(backButton, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(137, 137, 137)
-                        .addComponent(jLabel1))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(145, 145, 145)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel5)
+                            .addComponent(jLabel4)
+                            .addComponent(jLabel3)
+                            .addComponent(jLabel2))
+                        .addGap(50, 50, 50)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(orderDrugButton)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                        .addComponent(jLabel4)
-                                        .addGap(18, 18, 18))
-                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                        .addComponent(jLabel5)
-                                        .addGap(30, 30, 30)))
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(resultField, javax.swing.GroupLayout.DEFAULT_SIZE, 121, Short.MAX_VALUE)
-                                    .addComponent(quantityField)))
-                            .addGroup(layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                        .addComponent(jLabel3)
-                                        .addGap(32, 32, 32))
-                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                        .addComponent(jLabel2)
-                                        .addGap(33, 33, 33)))
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addComponent(manufacturerComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, 121, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(drugComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, 121, javax.swing.GroupLayout.PREFERRED_SIZE))))))
-                .addGap(388, 388, 388))
+                            .addComponent(manufacturerComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(drugComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addContainerGap(427, Short.MAX_VALUE))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(30, 30, 30)
+                .addComponent(backButton, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addGap(580, 580, 580)
+                .addComponent(jLabel1)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(backButton, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel1))
-                .addGap(26, 26, 26)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jLabel2)
-                    .addComponent(manufacturerComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
+                .addGap(30, 30, 30)
+                .addComponent(backButton, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(30, 30, 30)
+                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(30, 30, 30)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(manufacturerComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel2))
+                .addGap(30, 30, 30)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel3)
-                    .addComponent(drugComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jLabel4)
-                    .addComponent(quantityField, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel5)
-                    .addComponent(resultField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addComponent(orderDrugButton)
-                .addGap(173, 173, 173))
+                    .addComponent(drugComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(30, 30, 30)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(quantityField, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel4))
+                .addGap(30, 30, 30)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(resultField, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel5))
+                .addGap(30, 30, 30)
+                .addComponent(orderDrugButton, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(195, 195, 195))
         );
     }// </editor-fold>//GEN-END:initComponents
 
