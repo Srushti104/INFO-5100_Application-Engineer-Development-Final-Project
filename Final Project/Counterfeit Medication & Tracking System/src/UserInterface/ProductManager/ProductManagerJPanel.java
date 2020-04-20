@@ -5,6 +5,7 @@
 package UserInterface.ProductManager;
 
 import Business.Business;
+import Business.Drug;
 import Business.Enterprise;
 import Business.ManufacturerEnterprise;
 import Business.Network;
@@ -13,6 +14,7 @@ import Business.Transaction;
 import Business.UserAccount;
 import java.awt.CardLayout;
 import javax.swing.JPanel;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
@@ -34,6 +36,7 @@ public class ProductManagerJPanel extends javax.swing.JPanel {
         this.userAccount = userAccount;
         infoLabel.setVisible(false);
         refresh();
+        Refresh();
 
     }
 
@@ -60,6 +63,27 @@ public class ProductManagerJPanel extends javax.swing.JPanel {
         }
     }
 
+    public void Refresh() {
+
+        int rowCount = drugCatalogJTable.getRowCount();
+
+        for (int i = rowCount - 1; i >= 0; i--) {
+            ((DefaultTableModel) drugCatalogJTable.getModel()).removeRow(i);
+        }
+        for (Network network : business.getNetworkDirectory().getNetworkList()) {
+            Enterprise enterprise = network.getEnterpriseDirectory().getMyEnterprise(userAccount);
+            ManufacturerEnterprise manufacturerEnterprise = (ManufacturerEnterprise) enterprise;
+            Object row[] = new Object[4];
+            for (Drug drug : manufacturerEnterprise.getDrugCatalog().getDrugList()) {
+                row[0] = drug.getDrugID();
+                row[1] = drug.getDrugName();
+                row[2] = drug.getDrugContents();
+                row[3] = drug.getDrugFor();
+                ((DefaultTableModel) drugCatalogJTable.getModel()).addRow(row);
+            }
+        }
+    }
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -72,6 +96,9 @@ public class ProductManagerJPanel extends javax.swing.JPanel {
         jLabel1 = new javax.swing.JLabel();
         addDrugsBtn = new javax.swing.JButton();
         infoLabel = new javax.swing.JLabel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        drugCatalogJTable = new javax.swing.JTable();
+        refreshButton = new javax.swing.JButton();
 
         setBackground(new java.awt.Color(238, 238, 238));
         setMaximumSize(new java.awt.Dimension(1280, 700));
@@ -80,12 +107,12 @@ public class ProductManagerJPanel extends javax.swing.JPanel {
 
         jLabel1.setFont(new java.awt.Font("Courier New", 0, 18)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(34, 40, 49));
-        jLabel1.setText("YOU ARE LOGGED IN PRODUCT MANAGER WORK AREA");
+        jLabel1.setText("PRODUCT MANAGER WORK-AREA");
 
         addDrugsBtn.setBackground(new java.awt.Color(57, 62, 70));
         addDrugsBtn.setFont(new java.awt.Font("Courier New", 0, 14)); // NOI18N
         addDrugsBtn.setForeground(new java.awt.Color(238, 238, 238));
-        addDrugsBtn.setText("Add Drugs");
+        addDrugsBtn.setText("ADD DRUGS");
         addDrugsBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 addDrugsBtnActionPerformed(evt);
@@ -97,26 +124,84 @@ public class ProductManagerJPanel extends javax.swing.JPanel {
         infoLabel.setText("* DRUGS PRODUCED ARE REPORTED ILLEGETIMATE *");
         infoLabel.setToolTipText("");
 
+        drugCatalogJTable.setBackground(new java.awt.Color(238, 238, 238));
+        drugCatalogJTable.setFont(new java.awt.Font("Courier New", 0, 12)); // NOI18N
+        drugCatalogJTable.setForeground(new java.awt.Color(34, 40, 49));
+        drugCatalogJTable.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
+            },
+            new String [] {
+                "Drug ID", "Drug Name", "Content", "Purpose"
+            }
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        drugCatalogJTable.setGridColor(new java.awt.Color(34, 40, 49));
+        drugCatalogJTable.setMaximumSize(new java.awt.Dimension(680, 122));
+        drugCatalogJTable.setMinimumSize(new java.awt.Dimension(680, 122));
+        drugCatalogJTable.setName(""); // NOI18N
+        drugCatalogJTable.setPreferredSize(new java.awt.Dimension(680, 122));
+        drugCatalogJTable.setRowHeight(22);
+        drugCatalogJTable.setSelectionBackground(new java.awt.Color(0, 173, 181));
+        drugCatalogJTable.setSelectionForeground(new java.awt.Color(238, 238, 238));
+        jScrollPane1.setViewportView(drugCatalogJTable);
+
+        refreshButton.setBackground(new java.awt.Color(238, 238, 238));
+        refreshButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/UserInterface/Images/refresh.png"))); // NOI18N
+        refreshButton.setBorder(null);
+        refreshButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                refreshButtonActionPerformed(evt);
+            }
+        });
+
         org.jdesktop.layout.GroupLayout layout = new org.jdesktop.layout.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
             .add(layout.createSequentialGroup()
-                .add(398, 398, 398)
-                .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.CENTER)
-                    .add(addDrugsBtn, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 200, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                    .add(jLabel1)
-                    .add(infoLabel))
-                .addContainerGap(409, Short.MAX_VALUE))
+                .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.TRAILING)
+                    .add(refreshButton, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 40, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                    .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
+                        .add(layout.createSequentialGroup()
+                            .add(350, 350, 350)
+                            .add(infoLabel))
+                        .add(layout.createSequentialGroup()
+                            .add(300, 300, 300)
+                            .add(jScrollPane1, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 680, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))))
+                .addContainerGap(org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .add(org.jdesktop.layout.GroupLayout.TRAILING, layout.createSequentialGroup()
+                .add(503, 503, 503)
+                .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
+                    .add(org.jdesktop.layout.GroupLayout.TRAILING, layout.createSequentialGroup()
+                        .add(addDrugsBtn, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 200, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                        .add(302, 302, 302))
+                    .add(org.jdesktop.layout.GroupLayout.TRAILING, layout.createSequentialGroup()
+                        .add(jLabel1)
+                        .addContainerGap(502, Short.MAX_VALUE))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
             .add(layout.createSequentialGroup()
                 .add(120, 120, 120)
                 .add(jLabel1, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 27, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                .add(50, 50, 50)
+                .add(20, 20, 20)
+                .add(refreshButton, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 40, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                .add(20, 20, 20)
+                .add(jScrollPane1, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 134, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                .add(30, 30, 30)
                 .add(addDrugsBtn)
-                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED, 353, Short.MAX_VALUE)
+                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED, 159, Short.MAX_VALUE)
                 .add(infoLabel)
                 .add(100, 100, 100))
         );
@@ -130,9 +215,17 @@ public class ProductManagerJPanel extends javax.swing.JPanel {
         cardLayout.next(userProcessContainer);
     }//GEN-LAST:event_addDrugsBtnActionPerformed
 
+    private void refreshButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_refreshButtonActionPerformed
+        // TODO add your handling code here:
+        Refresh();
+    }//GEN-LAST:event_refreshButtonActionPerformed
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton addDrugsBtn;
+    private javax.swing.JTable drugCatalogJTable;
     private javax.swing.JLabel infoLabel;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JButton refreshButton;
     // End of variables declaration//GEN-END:variables
 }

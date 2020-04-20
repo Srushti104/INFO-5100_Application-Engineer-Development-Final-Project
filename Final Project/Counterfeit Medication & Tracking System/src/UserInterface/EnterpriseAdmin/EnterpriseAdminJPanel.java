@@ -51,7 +51,7 @@ public class EnterpriseAdminJPanel extends javax.swing.JPanel {
 
         jLabel1.setFont(new java.awt.Font("Courier New", 0, 18)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(34, 40, 49));
-        jLabel1.setText("Enterprise Admin Work-Area");
+        jLabel1.setText("ENTERPRISE ADMIN WORK-AREA");
         jLabel1.setBorder(javax.swing.BorderFactory.createMatteBorder(1, 0, 1, 0, new java.awt.Color(0, 173, 181)));
 
         manageEmployeeButton.setBackground(new java.awt.Color(57, 62, 70));

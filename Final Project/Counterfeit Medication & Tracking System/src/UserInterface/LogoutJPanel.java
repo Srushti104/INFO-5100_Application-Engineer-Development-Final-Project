@@ -4,7 +4,14 @@
  */
 package UserInterface;
 
+import Business.Doctor;
+import Business.Enterprise;
+import Business.Network;
+import Business.Roles.DoctorRole;
+import Business.Roles.ManagerRole;
+import Business.Roles.Role;
 import Business.UserAccount;
+import UserInterface.Manager.HospitalManagerJPanel;
 import javax.swing.JPanel;
 
 /**
@@ -12,23 +19,33 @@ import javax.swing.JPanel;
  * @author srush
  */
 public class LogoutJPanel extends javax.swing.JPanel {
-    
-     private MainJFrame mainJFrame;
+
+    private MainJFrame mainJFrame;
     private UserAccount userAccount;
     private JPanel userProcessContainer;
-
+    private Enterprise enterprise;
 
     /**
      * Creates new form LogoutJPanel
      */
-    public LogoutJPanel(MainJFrame frame, UserAccount userAccount,JPanel userProcessContainer) {
+    public LogoutJPanel(MainJFrame frame, UserAccount userAccount, JPanel userProcessContainer, Enterprise enterprise) {
         initComponents();
-        mainJFrame=frame;
-        this.userAccount=userAccount;
-        this.userProcessContainer=userProcessContainer;
+        mainJFrame = frame;
+        this.userAccount = userAccount;
+        this.userProcessContainer = userProcessContainer;
+        this.enterprise = enterprise;
 
-        userNameLabel.setText(userAccount.getUserName());
-       //  userNameLabel.setText(userAccount.getEmployee().getFirstName());
+        //  userNameLabel.setText(userAccount.getUserName());
+        //  for (Enterprise enterprise : network.getEnterpriseDirectory().getEnterpriseList()) {
+        for (Role role : enterprise.getSupportedRoles()) {
+            if (role.getRoleName().equals(DoctorRole.class)) {
+
+                userNameLabel.setText(userAccount.getDoctor().getFirstName() + " " + userAccount.getDoctor().getLastName());
+            } else {
+                userNameLabel.setText(userAccount.getEmployee().getFirstName() + " " + userAccount.getEmployee().getLastName());
+            }
+
+        }
 
     }
 
@@ -53,7 +70,6 @@ public class LogoutJPanel extends javax.swing.JPanel {
         userNameLabel.setFont(new java.awt.Font("Courier New", 2, 18)); // NOI18N
         userNameLabel.setForeground(new java.awt.Color(238, 238, 238));
         userNameLabel.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        userNameLabel.setText("username");
 
         logoutJButton.setBackground(new java.awt.Color(238, 238, 238));
         logoutJButton.setFont(new java.awt.Font("Courier New", 0, 14)); // NOI18N
@@ -90,7 +106,7 @@ public class LogoutJPanel extends javax.swing.JPanel {
     private void logoutJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_logoutJButtonActionPerformed
         // TODO add your handling code here:
         mainJFrame.logoutUser(userProcessContainer);
-        
+
     }//GEN-LAST:event_logoutJButtonActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
