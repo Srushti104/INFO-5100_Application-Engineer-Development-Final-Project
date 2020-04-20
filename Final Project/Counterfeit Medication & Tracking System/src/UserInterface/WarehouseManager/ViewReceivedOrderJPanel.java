@@ -309,6 +309,8 @@ public class ViewReceivedOrderJPanel extends javax.swing.JPanel {
                     }
 
                     JOptionPane.showMessageDialog(null, "Drugs added to Inventory");
+                    wareHouseManagerWorkRequest.setStatus("added to warehouse inventory");
+                    Refresh();
                 }
             }
         } else {

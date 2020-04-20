@@ -129,7 +129,7 @@ public class ViewOrdersJPanel extends javax.swing.JPanel {
                 row[3] = workRequest.getStatus();
                 row[4] = salesManagerWorkRequest.getDrug();
                 row[5] = salesManagerWorkRequest.getQuant();
-               // row[6] = distributorEnterprise.getInventoryCatalog().getTotalQuantity(salesManagerWorkRequest.getDrug());
+                row[6] = distributorEnterprise.getInventoryCatalog().getTotalQuantity(salesManagerWorkRequest.getDrug());
                // row[6] = salesManagerWorkRequest.getOrder();
                 //  row[4]=workRequest.getDrugName();
                 //  row[5]=workRequest.getQuantity();
@@ -224,17 +224,17 @@ public class ViewOrdersJPanel extends javax.swing.JPanel {
         requestsTable.setForeground(new java.awt.Color(34, 40, 49));
         requestsTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null}
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null}
             },
             new String [] {
-                "Message", "Sender", "Receiver", "Status", "Drug ", "Quantity"
+                "Message", "Sender", "Receiver", "Status", "Drug ", "Quantity", "Warehouse Quantity"
             }
         ) {
             boolean[] canEdit = new boolean [] {
-                false, false, false, false, false, false
+                false, false, false, false, false, true, true
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
