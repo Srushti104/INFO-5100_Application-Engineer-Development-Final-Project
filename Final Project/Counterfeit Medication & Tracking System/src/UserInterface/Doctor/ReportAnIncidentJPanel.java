@@ -16,6 +16,8 @@ import Business.Doctor;
 import Business.UserAccount;
 import java.awt.CardLayout;
 import java.util.Date;
+import java.util.HashSet;
+import java.util.Set;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
@@ -55,10 +57,13 @@ public class ReportAnIncidentJPanel extends javax.swing.JPanel {
         }
         Doctor doc = userAccount.getDoctor();
         Package1 tempPackage = null;
+        Set<String> drugNames = new HashSet<>();
         for (Package1 package1 : doc.getDrugCatalog().getPackDoctorList()) {
-
+            if (drugNames.add(package1.getDrug().getDrugName())) {
+                drugComboBox.addItem(package1.getDrug().getDrugName());
+            }
+            //drugComboBox.addItem(package1.getDrug().getDrugName());
             packComboBox.addItem(package1.getPackageID());
-            drugComboBox.addItem(package1.getDrug().getDrugName());
         }
 
     }

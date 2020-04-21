@@ -10,6 +10,8 @@ import Business.Package1;
 import Business.Doctor;
 import Business.UserAccount;
 import java.awt.CardLayout;
+import java.util.HashSet;
+import java.util.Set;
 import javax.swing.JPanel;
 import javax.swing.table.DefaultTableModel;
 
@@ -43,23 +45,24 @@ public class ViewDrugsPurchasedJPanel extends javax.swing.JPanel {
         }
         Doctor doc = userAccount.getDoctor();
         Drug tempDrug = null;
+        Set<String> drugNameSet = new HashSet<>();
         for (Package1 package1 : doc.getDrugCatalog().getPackDoctorList()) //  for(InventoryItem inventoryItem:storeInventory.getInventoryList())
         {
             Object row[] = new Object[3];
 
-            if (package1.getDrug() == tempDrug) {
-                break;
-            } else {
+//            if (package1.getDrug() == tempDrug) {
+//                break;
+//            } else {
+            if (drugNameSet.add(package1.getDrug().getDrugName())) {
 
-                row[0] = package1.getDrug();
+                row[0] = package1.getDrug().getDrugName();
                 row[1] = doc.getDrugCatalog().getTotalQuantity(package1.getDrug());
                 // row[2]=hospitalEnterprise.getInventoryCatalog().getTotalQuantity(inventoryItem.getPackage1().getDrug());
 
                 tempDrug = package1.getDrug();
 
+                ((DefaultTableModel) drugPurchasedJtable.getModel()).addRow(row);
             }
-
-            ((DefaultTableModel) drugPurchasedJtable.getModel()).addRow(row);
         }
 
     }
@@ -103,7 +106,7 @@ public class ViewDrugsPurchasedJPanel extends javax.swing.JPanel {
                 {null, null}
             },
             new String [] {
-                "Drug Name", "Purchased From"
+                "Drug Name", "Quantity"
             }
         ) {
             boolean[] canEdit = new boolean [] {

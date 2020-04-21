@@ -11,6 +11,9 @@ import Business.InventoryItem;
 import Business.Network;
 import Business.UserAccount;
 import java.awt.CardLayout;
+import java.util.HashSet;
+import java.util.Optional;
+import java.util.Set;
 import javax.swing.JPanel;
 import javax.swing.table.DefaultTableModel;
 
@@ -56,27 +59,29 @@ public class CheckWarehouseInventoryJPanel extends javax.swing.JPanel {
                 DistributorEnterprise distributorEnterprise = (DistributorEnterprise) enterprise;
                 //thresholdField.setText(Integer.toString(distributorEnterprise.getThreshold()));
                 Drug tempDrug = null;
+                Set<String> drugNamesSet = new HashSet<>();
                 for (InventoryItem inventoryItem : distributorEnterprise.getInventoryCatalog().getInventoryList()) {
-
                     // Drug drug=inventoryItem.getDrug();
                     // System.out.println(""+inventoryItem);
                     //   int price=product.getPrice();
-                    Object row[] = new Object[3];
-
-                    if (inventoryItem.getPackage1().getDrug() == tempDrug) {
-                        break;
-                    } else {
+                    Object row[] = new Object[2];
+                    if (drugNamesSet.add(inventoryItem.getPackage1().getDrug().getDrugName())) {
                         row[0] = inventoryItem.getPackage1();
-                        //Drug drug=inventoryItem.getPackage1().getPackageID();
                         row[1] = distributorEnterprise.getInventoryCatalog().getTotalQuantity(inventoryItem.getPackage1().getDrug());
-                        tempDrug = inventoryItem.getPackage1().getDrug();
+                        ((DefaultTableModel) inventoryReportTable.getModel()).addRow(row);
                     }
+                    // if (inventoryItem.getPackage1().getDrug() == tempDrug) {
+                    //break;
+                    //} else {
+                    //row[0] = inventoryItem.getPackage1();
+                    //Drug drug=inventoryItem.getPackage1().getPackageID();
+                    //row[1] = distributorEnterprise.getInventoryCatalog().getTotalQuantity(inventoryItem.getPackage1().getDrug());
+                    //tempDrug = inventoryItem.getPackage1().getDrug();
+                    // }
 
                     //  row[1]=storeInventory.getTotalInventory(drug);
                     //  row[1]=masterOrderCatalog.getTotalNumber(product);
                     //row[2]=price*(masterOrderCatalog.getTotalNumber(product));
-                    ((DefaultTableModel) inventoryReportTable.getModel()).addRow(row);
-
                 }
             }
         }

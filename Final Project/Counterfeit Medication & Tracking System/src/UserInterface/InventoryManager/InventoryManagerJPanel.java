@@ -81,21 +81,27 @@ public class InventoryManagerJPanel extends javax.swing.JPanel {
         setMaximumSize(new java.awt.Dimension(1280, 700));
         setMinimumSize(new java.awt.Dimension(1280, 700));
         setPreferredSize(new java.awt.Dimension(1280, 700));
+        setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel1.setFont(new java.awt.Font("Courier New", 0, 18)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(34, 40, 49));
         jLabel1.setText("INVENTORY MANAGER WORK-AREA");
         jLabel1.setBorder(javax.swing.BorderFactory.createMatteBorder(1, 0, 1, 0, new java.awt.Color(0, 173, 181)));
+        add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(491, 120, -1, 30));
 
         checkInventoryButton.setBackground(new java.awt.Color(57, 62, 70));
         checkInventoryButton.setFont(new java.awt.Font("Courier New", 0, 14)); // NOI18N
         checkInventoryButton.setForeground(new java.awt.Color(238, 238, 238));
         checkInventoryButton.setText("CHECK INVENTORY");
+        checkInventoryButton.setMaximumSize(new java.awt.Dimension(200, 33));
+        checkInventoryButton.setMinimumSize(new java.awt.Dimension(200, 33));
+        checkInventoryButton.setPreferredSize(new java.awt.Dimension(200, 33));
         checkInventoryButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 checkInventoryButtonActionPerformed(evt);
             }
         });
+        add(checkInventoryButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 230, -1, -1));
 
         orderDrugButton.setBackground(new java.awt.Color(57, 62, 70));
         orderDrugButton.setFont(new java.awt.Font("Courier New", 0, 14)); // NOI18N
@@ -106,6 +112,7 @@ public class InventoryManagerJPanel extends javax.swing.JPanel {
                 orderDrugButtonActionPerformed(evt);
             }
         });
+        add(orderDrugButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 293, 200, -1));
 
         viewReceivedOrdersButton.setBackground(new java.awt.Color(57, 62, 70));
         viewReceivedOrdersButton.setFont(new java.awt.Font("Courier New", 0, 14)); // NOI18N
@@ -116,6 +123,7 @@ public class InventoryManagerJPanel extends javax.swing.JPanel {
                 viewReceivedOrdersButtonActionPerformed(evt);
             }
         });
+        add(viewReceivedOrdersButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 356, 200, -1));
 
         viewRequestedOrdersButton.setBackground(new java.awt.Color(57, 62, 70));
         viewRequestedOrdersButton.setFont(new java.awt.Font("Courier New", 0, 14)); // NOI18N
@@ -126,10 +134,12 @@ public class InventoryManagerJPanel extends javax.swing.JPanel {
                 viewRequestedOrdersButtonActionPerformed(evt);
             }
         });
+        add(viewRequestedOrdersButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 419, 200, -1));
 
         infoLabel3.setFont(new java.awt.Font("Courier New", 0, 14)); // NOI18N
         infoLabel3.setForeground(new java.awt.Color(255, 0, 0));
         infoLabel3.setText("*ILLEGITIMATE DRUGS HAVE BEEN REPORTED AND REMOVED FROM THE INVENTORY");
+        add(infoLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(364, 574, -1, -1));
 
         handleSuspectDrugs.setBackground(new java.awt.Color(57, 62, 70));
         handleSuspectDrugs.setFont(new java.awt.Font("Courier New", 0, 14)); // NOI18N
@@ -140,46 +150,7 @@ public class InventoryManagerJPanel extends javax.swing.JPanel {
                 handleSuspectDrugsActionPerformed(evt);
             }
         });
-
-        org.jdesktop.layout.GroupLayout layout = new org.jdesktop.layout.GroupLayout(this);
-        this.setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-            .add(layout.createSequentialGroup()
-                .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-                    .add(layout.createSequentialGroup()
-                        .add(492, 492, 492)
-                        .add(jLabel1))
-                    .add(layout.createSequentialGroup()
-                        .add(364, 364, 364)
-                        .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.CENTER)
-                            .add(checkInventoryButton, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 200, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                            .add(orderDrugButton, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 200, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                            .add(viewReceivedOrdersButton, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 200, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                            .add(viewRequestedOrdersButton, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 200, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                            .add(handleSuspectDrugs, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 200, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                            .add(infoLabel3))))
-                .add(364, 364, 364))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-            .add(layout.createSequentialGroup()
-                .add(120, 120, 120)
-                .add(jLabel1, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 30, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                .add(50, 50, 50)
-                .add(checkInventoryButton)
-                .add(30, 30, 30)
-                .add(orderDrugButton)
-                .add(30, 30, 30)
-                .add(viewReceivedOrdersButton)
-                .add(30, 30, 30)
-                .add(viewRequestedOrdersButton)
-                .add(30, 30, 30)
-                .add(handleSuspectDrugs)
-                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED, 98, Short.MAX_VALUE)
-                .add(infoLabel3)
-                .add(100, 100, 100))
-        );
+        add(handleSuspectDrugs, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 482, 200, -1));
     }// </editor-fold>//GEN-END:initComponents
 
     private void checkInventoryButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_checkInventoryButtonActionPerformed
