@@ -6,10 +6,7 @@ package UserInterface.SalesManager;
 
 import Business.DistributorEnterprise;
 import Business.Enterprise;
-import Business.LotOfDrug;
 import Business.Network;
-import Business.Order;
-import Business.Package1;
 import Business.WorkRequests.SalesManagerWorkRequest;
 import Business.UserAccount;
 import Business.WorkRequests.WarehouseManagerWorkRequest;
@@ -40,7 +37,7 @@ public class OrderDrugJPanel extends javax.swing.JPanel {
         this.salesManagerWorkRequest = salesManagerWorkRequest;
         this.userAccount = userAccount;
     }
-
+  
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -51,12 +48,12 @@ public class OrderDrugJPanel extends javax.swing.JPanel {
     private void initComponents() {
 
         jLabel2 = new javax.swing.JLabel();
-        drugNameField = new javax.swing.JTextField();
         jLabel3 = new javax.swing.JLabel();
         quantityField = new javax.swing.JTextField();
         sendRequestButton = new javax.swing.JButton();
         backButton = new javax.swing.JButton();
         jLabel4 = new javax.swing.JLabel();
+        drugNameField = new javax.swing.JTextField();
 
         setBackground(new java.awt.Color(238, 238, 238));
         setMaximumSize(new java.awt.Dimension(1280, 700));
@@ -66,18 +63,6 @@ public class OrderDrugJPanel extends javax.swing.JPanel {
         jLabel2.setFont(new java.awt.Font("Courier New", 0, 12)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(34, 40, 49));
         jLabel2.setText("DRUG NAME");
-
-        drugNameField.setBackground(new java.awt.Color(238, 238, 238));
-        drugNameField.setForeground(new java.awt.Color(34, 40, 49));
-        drugNameField.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 173, 181), 1, true));
-        drugNameField.setMaximumSize(new java.awt.Dimension(200, 24));
-        drugNameField.setMinimumSize(new java.awt.Dimension(200, 24));
-        drugNameField.setPreferredSize(new java.awt.Dimension(200, 24));
-        drugNameField.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                drugNameFieldActionPerformed(evt);
-            }
-        });
 
         jLabel3.setFont(new java.awt.Font("Courier New", 0, 12)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(34, 40, 49));
@@ -122,6 +107,13 @@ public class OrderDrugJPanel extends javax.swing.JPanel {
         jLabel4.setText("SEND DRUG ORDER REQUEST TO INVENTORY MANAGER");
         jLabel4.setBorder(javax.swing.BorderFactory.createMatteBorder(1, 0, 1, 0, new java.awt.Color(0, 173, 181)));
 
+        drugNameField.setBackground(new java.awt.Color(238, 238, 238));
+        drugNameField.setForeground(new java.awt.Color(34, 40, 49));
+        drugNameField.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 173, 181), 1, true));
+        drugNameField.setMaximumSize(new java.awt.Dimension(200, 24));
+        drugNameField.setMinimumSize(new java.awt.Dimension(200, 24));
+        drugNameField.setPreferredSize(new java.awt.Dimension(200, 24));
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
@@ -133,18 +125,19 @@ public class OrderDrugJPanel extends javax.swing.JPanel {
                         .addComponent(backButton, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(391, 391, 391)
-                        .addComponent(jLabel4))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(483, 483, 483)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jLabel2)
-                            .addComponent(jLabel3))
-                        .addGap(50, 50, 50)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(quantityField, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(drugNameField, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(sendRequestButton, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addComponent(jLabel4)))
+                .addContainerGap(405, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jLabel2)
+                    .addComponent(jLabel3))
+                .addGap(50, 50, 50)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(quantityField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(sendRequestButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(drugNameField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(471, 471, 471))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -152,12 +145,13 @@ public class OrderDrugJPanel extends javax.swing.JPanel {
                 .addGap(30, 30, 30)
                 .addComponent(backButton, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(30, 30, 30)
-                .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(50, 50, 50)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(drugNameField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel2))
-                .addGap(30, 30, 30)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(56, 56, 56)
+                        .addComponent(jLabel2))
+                    .addComponent(drugNameField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(34, 34, 34)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel3)
                     .addComponent(quantityField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -169,7 +163,8 @@ public class OrderDrugJPanel extends javax.swing.JPanel {
 
     private void sendRequestButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_sendRequestButtonActionPerformed
         // TODO add your handling code here:
-
+        
+        
         if (drugNameField.getText().isEmpty() && quantityField.getText().isEmpty()) {
             JOptionPane.showMessageDialog(null, "Please enter the value for all fields");
         } else {
@@ -198,24 +193,6 @@ public class OrderDrugJPanel extends javax.swing.JPanel {
             wareHouseManagerWorkRequest.setResult("Sent for ordering");
             wareHouseManagerWorkRequest.setQuantity(Integer.parseInt(quantityField.getText()));
 
-//            int i = salesManagerWorkRequest.getQuant();
-//            Order order = new Order();
-//            while (i > 0) {
-//                LotOfDrug lotOfDrug = new LotOfDrug();
-//
-//                for (int j = 0; j < 5 && i > 0; j++) {
-//                    Package1 p = new Package1();
-//                    p.setDrug(salesManagerWorkRequest.getDrug());
-//                    p.setManuLotID(lotOfDrug.getLotID());
-//                    p.setPackageStatus("Normal");
-//                    lotOfDrug.addPackage(p);
-//
-//                    i--;
-//                }
-//                order.addLot(lotOfDrug);
-//            }
-//
-//            wareHouseManagerWorkRequest.setOrder(order);
 
             DistributorEnterprise e = (DistributorEnterprise) network.getEnterpriseDirectory().getMyEnterprise(userAccount);
 
@@ -243,10 +220,6 @@ public class OrderDrugJPanel extends javax.swing.JPanel {
         CardLayout cardLayout = (CardLayout) userProcessContainer.getLayout();
         cardLayout.previous(userProcessContainer);
     }//GEN-LAST:event_backButtonActionPerformed
-
-    private void drugNameFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_drugNameFieldActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_drugNameFieldActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton backButton;
