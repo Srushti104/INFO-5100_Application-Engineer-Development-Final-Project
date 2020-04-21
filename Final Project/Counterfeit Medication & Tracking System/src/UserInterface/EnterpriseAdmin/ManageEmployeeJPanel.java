@@ -50,7 +50,7 @@ public class ManageEmployeeJPanel extends javax.swing.JPanel {
         for (Organization o : e.getOrganizationDirectory().getOrgList()) {
             Object row[] = new Object[3];
             for (Employee emp : o.getEmployeeDirectory().getEmployeeList()) {
-                row[0] = emp;
+                row[0] = emp.getFirstName();
                 row[1] = emp.getLastName();
                 row[2] = o;
                 ((DefaultTableModel) employeeTable.getModel()).addRow(row);

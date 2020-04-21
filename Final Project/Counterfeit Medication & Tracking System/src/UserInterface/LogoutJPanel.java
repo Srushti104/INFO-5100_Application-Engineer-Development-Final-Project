@@ -88,7 +88,7 @@ public class LogoutJPanel extends javax.swing.JPanel {
         logoutJButton.setBackground(new java.awt.Color(238, 238, 238));
         logoutJButton.setFont(new java.awt.Font("Courier New", 0, 14)); // NOI18N
         logoutJButton.setForeground(new java.awt.Color(34, 40, 49));
-        logoutJButton.setText("Logout");
+        logoutJButton.setText("LOGOUT");
         logoutJButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 logoutJButtonActionPerformed(evt);

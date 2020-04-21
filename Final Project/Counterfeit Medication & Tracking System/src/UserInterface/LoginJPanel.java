@@ -75,13 +75,13 @@ public class LoginJPanel extends javax.swing.JPanel {
         passwordJPasswordField.setBackground(new java.awt.Color(238, 238, 238));
         passwordJPasswordField.setFont(new java.awt.Font("Courier New", 1, 12)); // NOI18N
         passwordJPasswordField.setForeground(new java.awt.Color(57, 62, 70));
-        passwordJPasswordField.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(33, 36, 61), 1, true));
+        passwordJPasswordField.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 173, 181), 1, true));
         passwordJPasswordField.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
 
         loginJButton.setBackground(new java.awt.Color(238, 238, 238));
         loginJButton.setFont(new java.awt.Font("Courier New", 0, 14)); // NOI18N
         loginJButton.setForeground(new java.awt.Color(34, 40, 49));
-        loginJButton.setText("Login");
+        loginJButton.setText("LOGIN");
         loginJButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 loginJButtonActionPerformed(evt);
@@ -91,7 +91,8 @@ public class LoginJPanel extends javax.swing.JPanel {
         usernameJTextField.setBackground(new java.awt.Color(238, 238, 238));
         usernameJTextField.setFont(new java.awt.Font("Courier New", 1, 12)); // NOI18N
         usernameJTextField.setForeground(new java.awt.Color(57, 62, 70));
-        usernameJTextField.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(33, 36, 61), 1, true));
+        usernameJTextField.setBorder(javax.swing.BorderFactory.createCompoundBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 173, 181), 1, true), null));
+        usernameJTextField.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         usernameJTextField.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 usernameJTextFieldActionPerformed(evt);
@@ -137,11 +138,11 @@ public class LoginJPanel extends javax.swing.JPanel {
                 .addGap(24, 24, 24)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
                     .addComponent(jLabel1)
-                    .addComponent(usernameJTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(usernameJTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel2)
-                    .addComponent(passwordJPasswordField, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(enterpriseJComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(loginJButton)
+                    .addComponent(passwordJPasswordField, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(enterpriseJComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(loginJButton, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel3))
                 .addContainerGap(24, Short.MAX_VALUE))
         );

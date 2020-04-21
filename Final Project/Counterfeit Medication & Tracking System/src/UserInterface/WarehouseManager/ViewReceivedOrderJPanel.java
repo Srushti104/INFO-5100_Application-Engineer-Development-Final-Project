@@ -21,6 +21,7 @@ import java.awt.CardLayout;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.table.DefaultTableModel;
+import jdk.nashorn.internal.ir.BreakNode;
 
 /**
  *
@@ -116,6 +117,7 @@ public class ViewReceivedOrderJPanel extends javax.swing.JPanel {
         jLabel1.setText("VIEW REQUESTS");
         jLabel1.setBorder(javax.swing.BorderFactory.createMatteBorder(1, 0, 1, 0, new java.awt.Color(0, 173, 181)));
 
+        assignButton.setBackground(new java.awt.Color(57, 62, 70));
         assignButton.setFont(new java.awt.Font("Courier New", 0, 14)); // NOI18N
         assignButton.setForeground(new java.awt.Color(238, 238, 238));
         assignButton.setText("ASSIGN TO ME");
@@ -128,6 +130,7 @@ public class ViewReceivedOrderJPanel extends javax.swing.JPanel {
             }
         });
 
+        addDrugButton.setBackground(new java.awt.Color(57, 62, 70));
         addDrugButton.setFont(new java.awt.Font("Courier New", 0, 14)); // NOI18N
         addDrugButton.setForeground(new java.awt.Color(238, 238, 238));
         addDrugButton.setText("ADD TO INVENTORY");
@@ -141,6 +144,7 @@ public class ViewReceivedOrderJPanel extends javax.swing.JPanel {
         });
 
         requestsTable.setBackground(new java.awt.Color(238, 238, 238));
+        requestsTable.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 173, 181), 1, true));
         requestsTable.setFont(new java.awt.Font("Courier New", 0, 12)); // NOI18N
         requestsTable.setForeground(new java.awt.Color(34, 40, 49));
         requestsTable.setModel(new javax.swing.table.DefaultTableModel(
@@ -163,6 +167,9 @@ public class ViewReceivedOrderJPanel extends javax.swing.JPanel {
             }
         });
         requestsTable.setGridColor(new java.awt.Color(34, 40, 49));
+        requestsTable.setMaximumSize(new java.awt.Dimension(1000, 122));
+        requestsTable.setMinimumSize(new java.awt.Dimension(1000, 122));
+        requestsTable.setPreferredSize(new java.awt.Dimension(1000, 122));
         requestsTable.setRowHeight(20);
         requestsTable.setSelectionBackground(new java.awt.Color(0, 173, 181));
         requestsTable.setSelectionForeground(new java.awt.Color(238, 238, 238));
@@ -194,6 +201,7 @@ public class ViewReceivedOrderJPanel extends javax.swing.JPanel {
             }
         });
 
+        checkCounterfeitButton.setBackground(new java.awt.Color(57, 62, 70));
         checkCounterfeitButton.setFont(new java.awt.Font("Courier New", 0, 14)); // NOI18N
         checkCounterfeitButton.setForeground(new java.awt.Color(238, 238, 238));
         checkCounterfeitButton.setText("CHECK COUNTERFEIT");
@@ -276,7 +284,13 @@ public class ViewReceivedOrderJPanel extends javax.swing.JPanel {
             //addDrugButton.setEnabled(true);
             Refresh();
         } else {
-            JOptionPane.showMessageDialog(this, "The task is already assigned to other person");
+            if (workRequest.getReceiver().getUserName().equals(userAccount.getUserName())) {
+                JOptionPane.showMessageDialog(this, "The task is already assigned to you.");
+                
+            } else {
+
+                JOptionPane.showMessageDialog(this, "The task is already assigned to other person.");
+            }
         }
     }//GEN-LAST:event_assignButtonActionPerformed
 

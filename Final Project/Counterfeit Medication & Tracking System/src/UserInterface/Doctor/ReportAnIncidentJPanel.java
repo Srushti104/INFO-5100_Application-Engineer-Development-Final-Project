@@ -97,12 +97,13 @@ public class ReportAnIncidentJPanel extends javax.swing.JPanel {
 
         jLabel2.setFont(new java.awt.Font("Courier New", 0, 14)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(34, 40, 49));
-        jLabel2.setText("MANIFACTURE");
+        jLabel2.setText("MANUFACTURE");
 
         dispenserNameComboBox.setBackground(new java.awt.Color(238, 238, 238));
         dispenserNameComboBox.setFont(new java.awt.Font("Courier New", 0, 12)); // NOI18N
         dispenserNameComboBox.setForeground(new java.awt.Color(34, 40, 49));
         dispenserNameComboBox.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        dispenserNameComboBox.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 173, 181), 1, true));
         dispenserNameComboBox.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 dispenserNameComboBoxActionPerformed(evt);
@@ -136,6 +137,7 @@ public class ReportAnIncidentJPanel extends javax.swing.JPanel {
             }
         });
 
+        reportButton.setBackground(new java.awt.Color(57, 62, 70));
         reportButton.setFont(new java.awt.Font("Courier New", 0, 14)); // NOI18N
         reportButton.setForeground(new java.awt.Color(238, 238, 238));
         reportButton.setText("SUBMIT REPORT");
@@ -153,11 +155,13 @@ public class ReportAnIncidentJPanel extends javax.swing.JPanel {
         packComboBox.setFont(new java.awt.Font("Courier New", 0, 12)); // NOI18N
         packComboBox.setForeground(new java.awt.Color(34, 40, 49));
         packComboBox.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        packComboBox.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 173, 181), 1, true));
 
         drugComboBox.setBackground(new java.awt.Color(238, 238, 238));
         drugComboBox.setFont(new java.awt.Font("Courier New", 0, 12)); // NOI18N
         drugComboBox.setForeground(new java.awt.Color(34, 40, 49));
         drugComboBox.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        drugComboBox.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 173, 181), 1, true));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -199,15 +203,15 @@ public class ReportAnIncidentJPanel extends javax.swing.JPanel {
                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(29, 29, 29)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(dispenserNameComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(dispenserNameComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel2))
                 .addGap(30, 30, 30)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel3)
-                    .addComponent(drugComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(drugComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(30, 30, 30)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(packComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(packComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel5))
                 .addGap(30, 30, 30)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
