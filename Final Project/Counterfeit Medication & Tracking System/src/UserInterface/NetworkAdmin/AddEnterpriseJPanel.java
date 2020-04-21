@@ -266,7 +266,8 @@ public class AddEnterpriseJPanel extends javax.swing.JPanel {
 
         String enpName = enterpriseNameField.getText();
         String enterprise = (String) enterpriseTypeComboBox.getSelectedItem();
-        // System.out.println("ent"+enterprise);
+        
+      
 
         if (enterprise == Enterprise.FDA) {
 
