@@ -11,11 +11,14 @@ import Business.HospitalEnterprise;
 import Business.InventoryItem;
 import Business.ManufacturerEnterprise;
 import Business.Network;
+import Business.Package1;
 import Business.SalesManagementOrganization;
 import Business.WorkRequests.SalesManagerWorkRequest;
 import Business.UserAccount;
 import java.awt.CardLayout;
 import java.util.Date;
+import java.util.HashSet;
+import java.util.Set;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.table.DefaultTableModel;
@@ -65,22 +68,23 @@ public class OrderDrugJPanel extends javax.swing.JPanel {
             return;
         }
         Drug tempDrug = null;
+        Set<String> drugNameSet = new HashSet<>();
         for (InventoryItem inventoryItem : distributorEnterprise.getInventoryCatalog().getInventoryList()) { //for(InventoryItem inventoryItem:storeInventory.getInventoryList())
             Object row[] = new Object[3];
 
-            if (inventoryItem.getPackage1().getDrug() == tempDrug) {
-                break;
-            } else {
-
-                row[0] = inventoryItem.getPackage1().getDrug();
+//            if (inventoryItem.getPackage1().getDrug() == tempDrug) {
+//                break;
+//            } else {
+            if (drugNameSet.add(inventoryItem.getPackage1().getDrug().getDrugName())) {
+                row[0] = inventoryItem.getPackage1();
                 row[1] = inventoryItem.getPackage1().getDrug().getActualPrice();
                 row[2] = distributorEnterprise.getInventoryCatalog().getTotalQuantity(inventoryItem.getPackage1().getDrug());
+                
 
-                tempDrug = inventoryItem.getPackage1().getDrug();
+            //    tempDrug = inventoryItem.getPackage1().getDrug();
 
+                ((DefaultTableModel) inventoryTable.getModel()).addRow(row);
             }
-
-            ((DefaultTableModel) inventoryTable.getModel()).addRow(row);
         }
 
     }
@@ -263,7 +267,7 @@ public class OrderDrugJPanel extends javax.swing.JPanel {
             }*/
         }
 
-        Drug drug = (Drug) inventoryTable.getValueAt(selectedRow, 0);
+        Package1 drug = (Package1) inventoryTable.getValueAt(selectedRow, 0);
 
         Enterprise e = network.getEnterpriseDirectory().getMyEnterprise(userAccount);
         if (e.getClass().equals(HospitalEnterprise.class)) {
@@ -278,8 +282,8 @@ public class OrderDrugJPanel extends javax.swing.JPanel {
             salesManagerWorkRequest.setQuant(quantity);
             //licenseManagerWorkRequest.setDrugManu(drugaManuTextArea.getText());
             salesManagerWorkRequest.setResult("Order request sent");
-            salesManagerWorkRequest.setDrName(drug.getDrugName());
-            salesManagerWorkRequest.setDrug(drug);
+            salesManagerWorkRequest.setDrName(drug.getDrug().getDrugName());
+            salesManagerWorkRequest.setDrug(drug.getDrug());
             //salesManagerWorkRequest.setManuName(manuName);
 
             HospitalEnterprise e2 = (HospitalEnterprise) network.getEnterpriseDirectory().getMyEnterprise(userAccount);

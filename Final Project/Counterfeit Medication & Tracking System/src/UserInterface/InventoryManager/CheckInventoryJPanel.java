@@ -11,6 +11,8 @@ import Business.InventoryItem;
 import Business.Network;
 import Business.UserAccount;
 import java.awt.CardLayout;
+import java.util.HashSet;
+import java.util.Set;
 import javax.swing.JPanel;
 import javax.swing.table.DefaultTableModel;
 
@@ -35,7 +37,6 @@ public class CheckInventoryJPanel extends javax.swing.JPanel {
 
 //        thresholdField.setText("5");
 //        thresholdField.setEditable(false);
-
         refresh();
 
     }
@@ -55,22 +56,21 @@ public class CheckInventoryJPanel extends javax.swing.JPanel {
             HospitalEnterprise hospitalEnterprise = (HospitalEnterprise) e;
             //thresholdField.setText(Integer.toString(hospitalEnterprise.getThreshold()));
             Drug tempDrug = null;
+            Set<String> drugNameSet = new HashSet<>();
             for (InventoryItem inventoryItem : hospitalEnterprise.getInventoryCatalog().getInventoryList()) {
 
                 Object row[] = new Object[3];
 
-                if (inventoryItem.getPackage1().getDrug() == tempDrug) {
-                    break;
-                } else {
+//                if (inventoryItem.getPackage1().getDrug() == tempDrug) {
+//                    break;
+//                } else {
+                if (drugNameSet.add(inventoryItem.getPackage1().getDrug().getDrugName())) {
+                    
                     row[0] = inventoryItem.getPackage1();
-
                     row[1] = hospitalEnterprise.getInventoryCatalog().getTotalQuantity(inventoryItem.getPackage1().getDrug());
 
-                    tempDrug = inventoryItem.getPackage1().getDrug();
-
+                    ((DefaultTableModel) inventoryReportTable.getModel()).addRow(row);
                 }
-
-                ((DefaultTableModel) inventoryReportTable.getModel()).addRow(row);
             }
         }
 
