@@ -326,7 +326,7 @@ public class AddDrugJPanel extends javax.swing.JPanel {
                 for (Organization organization : enterprise.getOrganizationDirectory().getOrgList()) {
                     for (UserAccount userAccount1 : organization.getUserAccountDirectory().getUserAccountList()) {
                         if (userAccount == userAccount1) {
-                            if (drugContentsField.getText().isEmpty() || drugMgField.getText().isEmpty() || drugForField.getText().isEmpty() || actPriceField.getText().isEmpty()) {
+                            if (drugNameField.getText().isEmpty() || drugContentsField.getText().isEmpty() || drugMgField.getText().isEmpty() || drugForField.getText().isEmpty() || actPriceField.getText().isEmpty()) {
                                 JOptionPane.showMessageDialog(null, "Please enter all fields");
                             } else {
                                 ManufacturerEnterprise manufacturerEnterprise = (ManufacturerEnterprise) enterprise;

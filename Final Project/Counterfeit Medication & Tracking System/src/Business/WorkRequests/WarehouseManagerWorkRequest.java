@@ -16,6 +16,15 @@ public class WarehouseManagerWorkRequest extends WorkRequest {
     private String result;
     private Drug drug;
     private Order order;
+    private String drName;
+
+    public String getDrName() {
+        return drName;
+    }
+
+    public void setDrName(String drName) {
+        this.drName = drName;
+    }
     private SalesManagerWorkRequest salesManagerWorkRequest;
 
     public SalesManagerWorkRequest getSalesManagerWorkRequest() {

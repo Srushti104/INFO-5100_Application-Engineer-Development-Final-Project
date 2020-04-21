@@ -5,6 +5,7 @@
 package UserInterface.SalesManager;
 
 import Business.DistributorEnterprise;
+import Business.Drug;
 import Business.Enterprise;
 import Business.LotOfDrug;
 import Business.Network;
@@ -39,8 +40,25 @@ public class OrderDrugJPanel extends javax.swing.JPanel {
         this.network = network;
         this.salesManagerWorkRequest = salesManagerWorkRequest;
         this.userAccount = userAccount;
+        distributorComboBox.removeAllItems();
+        drugComboBox.removeAllItems();
+        refresh();
     }
+   
+    public void refresh() {
 
+        for (Enterprise enterprise : network.getEnterpriseDirectory().getEnterpriseList()) {
+
+            if (enterprise.getClass().equals(DistributorEnterprise.class)) {
+                //manufacturerComboBox.addItem(enterprise);
+                DistributorEnterprise distributorEnterprise = (DistributorEnterprise) enterprise;
+
+                distributorComboBox.addItem(enterprise);
+
+            }
+
+        }
+    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -51,12 +69,14 @@ public class OrderDrugJPanel extends javax.swing.JPanel {
     private void initComponents() {
 
         jLabel2 = new javax.swing.JLabel();
-        drugNameField = new javax.swing.JTextField();
         jLabel3 = new javax.swing.JLabel();
         quantityField = new javax.swing.JTextField();
         sendRequestButton = new javax.swing.JButton();
         backButton = new javax.swing.JButton();
         jLabel4 = new javax.swing.JLabel();
+        jLabel5 = new javax.swing.JLabel();
+        distributorComboBox = new javax.swing.JComboBox();
+        drugComboBox = new javax.swing.JComboBox();
 
         setBackground(new java.awt.Color(238, 238, 238));
         setMaximumSize(new java.awt.Dimension(1280, 700));
@@ -66,18 +86,6 @@ public class OrderDrugJPanel extends javax.swing.JPanel {
         jLabel2.setFont(new java.awt.Font("Courier New", 0, 12)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(34, 40, 49));
         jLabel2.setText("DRUG NAME");
-
-        drugNameField.setBackground(new java.awt.Color(238, 238, 238));
-        drugNameField.setForeground(new java.awt.Color(34, 40, 49));
-        drugNameField.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 173, 181), 1, true));
-        drugNameField.setMaximumSize(new java.awt.Dimension(200, 24));
-        drugNameField.setMinimumSize(new java.awt.Dimension(200, 24));
-        drugNameField.setPreferredSize(new java.awt.Dimension(200, 24));
-        drugNameField.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                drugNameFieldActionPerformed(evt);
-            }
-        });
 
         jLabel3.setFont(new java.awt.Font("Courier New", 0, 12)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(34, 40, 49));
@@ -121,6 +129,30 @@ public class OrderDrugJPanel extends javax.swing.JPanel {
         jLabel4.setText("SEND DRUG ORGER REQUEST TO INVENTORY MANAGER");
         jLabel4.setBorder(javax.swing.BorderFactory.createMatteBorder(1, 0, 1, 0, new java.awt.Color(0, 173, 181)));
 
+        jLabel5.setFont(new java.awt.Font("Courier New", 0, 14)); // NOI18N
+        jLabel5.setForeground(new java.awt.Color(34, 40, 49));
+        jLabel5.setText("DISTRIBUTOR NAME");
+
+        distributorComboBox.setBackground(new java.awt.Color(238, 238, 238));
+        distributorComboBox.setFont(new java.awt.Font("Courier New", 0, 12)); // NOI18N
+        distributorComboBox.setForeground(new java.awt.Color(34, 40, 49));
+        distributorComboBox.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        distributorComboBox.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                distributorComboBoxItemStateChanged(evt);
+            }
+        });
+        distributorComboBox.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                distributorComboBoxActionPerformed(evt);
+            }
+        });
+
+        drugComboBox.setBackground(new java.awt.Color(238, 238, 238));
+        drugComboBox.setFont(new java.awt.Font("Courier New", 0, 12)); // NOI18N
+        drugComboBox.setForeground(new java.awt.Color(34, 40, 49));
+        drugComboBox.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
@@ -132,18 +164,29 @@ public class OrderDrugJPanel extends javax.swing.JPanel {
                         .addComponent(backButton, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(391, 391, 391)
-                        .addComponent(jLabel4))
+                        .addComponent(jLabel4)))
+                .addContainerGap(405, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(483, 483, 483)
+                        .addComponent(jLabel5)
+                        .addGap(50, 50, 50)
+                        .addComponent(distributorComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(jLabel2)
                             .addComponent(jLabel3))
-                        .addGap(50, 50, 50)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(quantityField, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(drugNameField, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(sendRequestButton, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(50, 50, 50)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(quantityField, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(sendRequestButton, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(drugComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                .addGap(479, 479, 479))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -151,12 +194,17 @@ public class OrderDrugJPanel extends javax.swing.JPanel {
                 .addGap(30, 30, 30)
                 .addComponent(backButton, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(30, 30, 30)
-                .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(50, 50, 50)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(drugNameField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel2))
-                .addGap(30, 30, 30)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(72, 72, 72)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(distributorComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel5))
+                        .addGap(33, 33, 33)
+                        .addComponent(jLabel2))
+                    .addComponent(drugComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(34, 34, 34)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel3)
                     .addComponent(quantityField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -168,8 +216,9 @@ public class OrderDrugJPanel extends javax.swing.JPanel {
 
     private void sendRequestButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_sendRequestButtonActionPerformed
         // TODO add your handling code here:
-
-        if (drugNameField.getText().isEmpty() && quantityField.getText().isEmpty()) {
+        
+        Drug drug = (Drug) drugComboBox.getSelectedItem();
+        if (quantityField.getText().isEmpty()) {
             JOptionPane.showMessageDialog(null, "Please enter the value for all fields");
         } else {
 
@@ -193,28 +242,11 @@ public class OrderDrugJPanel extends javax.swing.JPanel {
             wareHouseManagerWorkRequest.setMessage("Order for more drugs");
             wareHouseManagerWorkRequest.setStatus("warehouse low on drugs");
             //   wareHouseManagerWorkRequest.setManuName(manuNameField.getText());
-            wareHouseManagerWorkRequest.setDrug(salesManagerWorkRequest.getDrug());
+            wareHouseManagerWorkRequest.setDrName(drug.getDrugName());
+            wareHouseManagerWorkRequest.setDrug(drug);
             wareHouseManagerWorkRequest.setResult("Sent for ordering");
             wareHouseManagerWorkRequest.setQuantity(Integer.parseInt(quantityField.getText()));
 
-//            int i = salesManagerWorkRequest.getQuant();
-//            Order order = new Order();
-//            while (i > 0) {
-//                LotOfDrug lotOfDrug = new LotOfDrug();
-//
-//                for (int j = 0; j < 5 && i > 0; j++) {
-//                    Package1 p = new Package1();
-//                    p.setDrug(salesManagerWorkRequest.getDrug());
-//                    p.setManuLotID(lotOfDrug.getLotID());
-//                    p.setPackageStatus("Normal");
-//                    lotOfDrug.addPackage(p);
-//
-//                    i--;
-//                }
-//                order.addLot(lotOfDrug);
-//            }
-//
-//            wareHouseManagerWorkRequest.setOrder(order);
 
             DistributorEnterprise e = (DistributorEnterprise) network.getEnterpriseDirectory().getMyEnterprise(userAccount);
 
@@ -243,16 +275,30 @@ public class OrderDrugJPanel extends javax.swing.JPanel {
         cardLayout.previous(userProcessContainer);
     }//GEN-LAST:event_backButtonActionPerformed
 
-    private void drugNameFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_drugNameFieldActionPerformed
+    private void distributorComboBoxItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_distributorComboBoxItemStateChanged
         // TODO add your handling code here:
-    }//GEN-LAST:event_drugNameFieldActionPerformed
+    }//GEN-LAST:event_distributorComboBoxItemStateChanged
+
+    private void distributorComboBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_distributorComboBoxActionPerformed
+        // TODO add your handling code here:
+        DistributorEnterprise distributorEnterprise = (DistributorEnterprise) distributorComboBox.getSelectedItem();
+
+        if (distributorEnterprise != null) {
+            drugComboBox.removeAllItems();
+            for (Drug drug : distributorEnterprise.getDrugCatalog().getDrugList()) {
+                drugComboBox.addItem(drug);
+            }
+        }
+    }//GEN-LAST:event_distributorComboBoxActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton backButton;
-    private javax.swing.JTextField drugNameField;
+    private javax.swing.JComboBox distributorComboBox;
+    private javax.swing.JComboBox drugComboBox;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
     private javax.swing.JTextField quantityField;
     private javax.swing.JButton sendRequestButton;
     // End of variables declaration//GEN-END:variables
