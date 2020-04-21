@@ -4,12 +4,18 @@
  */
 package UserInterface.EnterpriseAdmin;
 
+import Business.Employee;
 import Business.Enterprise;
 import Business.Network;
 import Business.Organization;
 import Business.UserAccount;
+import Business.UserAccountDirectory;
 import java.awt.CardLayout;
+import java.util.ArrayList;
+import java.util.List;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
+import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -17,33 +23,29 @@ import javax.swing.table.DefaultTableModel;
  * @author nived
  */
 public class ManageUserAccountJPanel extends javax.swing.JPanel {
-    
+
     JPanel userProcessContainer;
     Network network;
     UserAccount userAccount;
-    
-    
 
     /**
      * Creates new form ManageUserAccountJPanel
      */
-    public ManageUserAccountJPanel(JPanel userProcessContainer,Network network,UserAccount userAccount) {
+    public ManageUserAccountJPanel(JPanel userProcessContainer, Network network, UserAccount userAccount) {
         initComponents();
-        this.userProcessContainer=userProcessContainer;
-        this.network=network;
-        this.userAccount=userAccount;
+        this.userProcessContainer = userProcessContainer;
+        this.network = network;
+        this.userAccount = userAccount;
         refresh();
     }
 
-    
-    
-     public void refresh() {
+    public void refresh() {
         int rowCount = userAccountJTable.getRowCount();
 
         for (int i = rowCount - 1; i >= 0; i--) {
             ((DefaultTableModel) userAccountJTable.getModel()).removeRow(i);
         }
-        Enterprise e=network.getEnterpriseDirectory().getMyEnterprise(userAccount);
+        Enterprise e = network.getEnterpriseDirectory().getMyEnterprise(userAccount);
         for (Organization o : e.getOrganizationDirectory().getOrgList()) {
             Object row[] = new Object[4];
             for (UserAccount ua : o.getUserAccountDirectory().getUserAccountList()) {
@@ -53,7 +55,7 @@ public class ManageUserAccountJPanel extends javax.swing.JPanel {
                 row[3] = o;
                 ((DefaultTableModel) userAccountJTable.getModel()).addRow(row);
             }
-            
+
         }
     }
 
@@ -71,7 +73,7 @@ public class ManageUserAccountJPanel extends javax.swing.JPanel {
         userAccountJTable = new javax.swing.JTable();
         addEmployeeeJButton = new javax.swing.JButton();
         backJButton = new javax.swing.JButton();
-        deleteEmployeeeJButton = new javax.swing.JButton();
+        deleteAccountJButton = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
 
         setBackground(new java.awt.Color(238, 238, 238));
@@ -141,14 +143,14 @@ public class ManageUserAccountJPanel extends javax.swing.JPanel {
             }
         });
 
-        deleteEmployeeeJButton.setBackground(new java.awt.Color(57, 62, 70));
-        deleteEmployeeeJButton.setFont(new java.awt.Font("Courier New", 0, 14)); // NOI18N
-        deleteEmployeeeJButton.setForeground(new java.awt.Color(238, 238, 238));
-        deleteEmployeeeJButton.setText("DELETE ACCOUNT");
-        deleteEmployeeeJButton.setPreferredSize(new java.awt.Dimension(150, 33));
-        deleteEmployeeeJButton.addActionListener(new java.awt.event.ActionListener() {
+        deleteAccountJButton.setBackground(new java.awt.Color(57, 62, 70));
+        deleteAccountJButton.setFont(new java.awt.Font("Courier New", 0, 14)); // NOI18N
+        deleteAccountJButton.setForeground(new java.awt.Color(238, 238, 238));
+        deleteAccountJButton.setText("DELETE ACCOUNT");
+        deleteAccountJButton.setPreferredSize(new java.awt.Dimension(150, 33));
+        deleteAccountJButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                deleteEmployeeeJButtonActionPerformed(evt);
+                deleteAccountJButtonActionPerformed(evt);
             }
         });
 
@@ -178,7 +180,7 @@ public class ManageUserAccountJPanel extends javax.swing.JPanel {
                                 .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                                     .addComponent(addEmployeeeJButton, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addGap(50, 50, 50)
-                                    .addComponent(deleteEmployeeeJButton, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                                    .addComponent(deleteAccountJButton, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)))))
                     .addGroup(layout.createSequentialGroup()
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(refreshButton, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)))
@@ -201,7 +203,7 @@ public class ManageUserAccountJPanel extends javax.swing.JPanel {
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 122, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(30, 30, 30)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(deleteEmployeeeJButton, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(deleteAccountJButton, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(addEmployeeeJButton, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(285, Short.MAX_VALUE))
         );
@@ -214,7 +216,7 @@ public class ManageUserAccountJPanel extends javax.swing.JPanel {
 
     private void addEmployeeeJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addEmployeeeJButtonActionPerformed
 
-        JPanel panel = new AddUserAccountJPanel(userProcessContainer,network, userAccount);
+        JPanel panel = new AddUserAccountJPanel(userProcessContainer, network, userAccount);
         userProcessContainer.add("AddUserAccountJPanel", panel);
         CardLayout cardLayout = (CardLayout) userProcessContainer.getLayout();
         cardLayout.next(userProcessContainer);
@@ -226,15 +228,65 @@ public class ManageUserAccountJPanel extends javax.swing.JPanel {
         cardLayout.previous(userProcessContainer);
 
     }//GEN-LAST:event_backJButtonActionPerformed
-
-    private void deleteEmployeeeJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deleteEmployeeeJButtonActionPerformed
+    private Organization findUserAccountOrganization(UserAccount userAccount) {
+        Enterprise e = network.getEnterpriseDirectory().getMyEnterprise(userAccount);
+        for (Organization o : e.getOrganizationDirectory().getOrgList()) {
+            for (UserAccount user : o.getUserAccountDirectory().getUserAccountList()) {
+                if (userAccount.equals(user)) {
+                    return o;
+                }
+            }
+        }
+        return null;
+    }
+    
+    private static List<Object> getRowAt(JTable jTable, int selectedRow) {
+        List<Object> result = new ArrayList<>();
+        int colCount = jTable.getColumnCount();
+        for (int i = 0; i < colCount; i++) {
+            result.add(jTable.getModel().getValueAt(selectedRow, i));
+        }
+        return result;
+    }
+    private void deleteAccountJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deleteAccountJButtonActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_deleteEmployeeeJButtonActionPerformed
+        int selectedRow = userAccountJTable.getSelectedRow();
+        List<Object> rowValues = getRowAt(userAccountJTable, selectedRow);
+        UserAccount userAccount = (UserAccount) rowValues.get(0);
+        int count = userAccountJTable.getSelectedRowCount();
+        if (count == 1) {
+            if (selectedRow >= 0) {
+                int selectionButton = JOptionPane.YES_NO_OPTION;
+                int selectionResult = JOptionPane.showConfirmDialog(null, "Are you sure to delete??", "Warning", selectionButton);
+                if (selectionResult == JOptionPane.YES_OPTION) {
+
+                    Organization userOrganization = findUserAccountOrganization(userAccount);
+
+                    if (userOrganization != null) {
+                        List<UserAccount> userAccountList = userOrganization.getUserAccountDirectory().getUserAccountList();
+                        int userIndexInList = 0;
+                        for (; userIndexInList < userAccountList.size(); userIndexInList++) {
+                            if (userAccount.equals(userAccountList.get(userIndexInList))) {
+                                break;
+                            }
+                        }
+
+                        if (userIndexInList < userAccountList.size()) {
+                            userAccountList.remove(userIndexInList);
+                            refresh();
+                        }
+                    }
+                }
+            } else {
+                JOptionPane.showMessageDialog(null, "Please select a Row!!");
+            }
+        }
+    }//GEN-LAST:event_deleteAccountJButtonActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton addEmployeeeJButton;
     private javax.swing.JButton backJButton;
-    private javax.swing.JButton deleteEmployeeeJButton;
+    private javax.swing.JButton deleteAccountJButton;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JButton refreshButton;

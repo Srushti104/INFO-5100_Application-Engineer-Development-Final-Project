@@ -50,24 +50,41 @@ public class DoctorWorkAreaJPanel extends javax.swing.JPanel {
         orderDrugButton = new javax.swing.JButton();
         viewDrugsPurchasedButton = new javax.swing.JButton();
 
-        jLabel1.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        jLabel1.setText("Doctor Work Area");
+        setBackground(new java.awt.Color(238, 238, 238));
+        setMaximumSize(new java.awt.Dimension(1280, 700));
+        setMinimumSize(new java.awt.Dimension(1280, 700));
+        setPreferredSize(new java.awt.Dimension(1280, 700));
 
-        reportAnIncidentButton.setText("Report an Incident");
+        jLabel1.setBackground(new java.awt.Color(57, 62, 70));
+        jLabel1.setFont(new java.awt.Font("Courier New", 0, 18)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(34, 40, 49));
+        jLabel1.setText("DOCTOR WORK-AREA");
+        jLabel1.setBorder(javax.swing.BorderFactory.createMatteBorder(1, 0, 1, 0, new java.awt.Color(0, 173, 181)));
+
+        reportAnIncidentButton.setBackground(new java.awt.Color(57, 62, 70));
+        reportAnIncidentButton.setFont(new java.awt.Font("Courier New", 0, 14)); // NOI18N
+        reportAnIncidentButton.setForeground(new java.awt.Color(238, 238, 238));
+        reportAnIncidentButton.setText("REPORT DRUG");
         reportAnIncidentButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 reportAnIncidentButtonActionPerformed(evt);
             }
         });
 
-        orderDrugButton.setText("Order Drug");
+        orderDrugButton.setBackground(new java.awt.Color(57, 62, 70));
+        orderDrugButton.setFont(new java.awt.Font("Courier New", 0, 14)); // NOI18N
+        orderDrugButton.setForeground(new java.awt.Color(238, 238, 238));
+        orderDrugButton.setText("ORDER DRUGS");
         orderDrugButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 orderDrugButtonActionPerformed(evt);
             }
         });
 
-        viewDrugsPurchasedButton.setText("View Purchases");
+        viewDrugsPurchasedButton.setBackground(new java.awt.Color(57, 62, 70));
+        viewDrugsPurchasedButton.setFont(new java.awt.Font("Courier New", 0, 14)); // NOI18N
+        viewDrugsPurchasedButton.setForeground(new java.awt.Color(238, 238, 238));
+        viewDrugsPurchasedButton.setText("VIEW PURCHASE ORDER");
         viewDrugsPurchasedButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 viewDrugsPurchasedButtonActionPerformed(evt);
@@ -79,27 +96,26 @@ public class DoctorWorkAreaJPanel extends javax.swing.JPanel {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(64, 64, 64)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGap(552, 552, 552)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
+                    .addComponent(orderDrugButton, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel1)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                        .addComponent(viewDrugsPurchasedButton, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(orderDrugButton, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(reportAnIncidentButton, javax.swing.GroupLayout.Alignment.LEADING)))
-                .addGap(116, 116, 116))
+                    .addComponent(reportAnIncidentButton, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(viewDrugsPurchasedButton, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(528, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(37, 37, 37)
-                .addComponent(jLabel1)
-                .addGap(29, 29, 29)
-                .addComponent(orderDrugButton)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(reportAnIncidentButton)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(viewDrugsPurchasedButton)
-                .addGap(121, 121, 121))
+                .addGap(120, 120, 120)
+                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(100, 100, 100)
+                .addComponent(orderDrugButton, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(50, 50, 50)
+                .addComponent(reportAnIncidentButton, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(50, 50, 50)
+                .addComponent(viewDrugsPurchasedButton, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(251, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 

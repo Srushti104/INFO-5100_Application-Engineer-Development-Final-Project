@@ -66,7 +66,7 @@ public class AddDrugJPanel extends javax.swing.JPanel {
         jLabel10 = new javax.swing.JLabel();
         jLabel11 = new javax.swing.JLabel();
         jLabel12 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
+        drugNameLbl = new javax.swing.JLabel();
         drugNameField = new javax.swing.JTextField();
         drugContentsField = new javax.swing.JTextField();
         idField = new javax.swing.JTextField();
@@ -138,9 +138,9 @@ public class AddDrugJPanel extends javax.swing.JPanel {
         jLabel12.setForeground(new java.awt.Color(34, 40, 49));
         jLabel12.setText("CONTENTS");
 
-        jLabel2.setFont(new java.awt.Font("Courier New", 0, 14)); // NOI18N
-        jLabel2.setForeground(new java.awt.Color(34, 40, 49));
-        jLabel2.setText("DRUG NAME");
+        drugNameLbl.setFont(new java.awt.Font("Courier New", 0, 14)); // NOI18N
+        drugNameLbl.setForeground(new java.awt.Color(34, 40, 49));
+        drugNameLbl.setText("DRUG NAME");
 
         drugNameField.setBackground(new java.awt.Color(238, 238, 238));
         drugNameField.setFont(new java.awt.Font("Courier New", 0, 12)); // NOI18N
@@ -239,7 +239,7 @@ public class AddDrugJPanel extends javax.swing.JPanel {
                                 .add(layout.createSequentialGroup()
                                     .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
                                         .add(idLabel)
-                                        .add(jLabel2)
+                                        .add(drugNameLbl)
                                         .add(jLabel11)
                                         .add(jLabel10)
                                         .add(jLabel4))
@@ -249,12 +249,11 @@ public class AddDrugJPanel extends javax.swing.JPanel {
                                         .add(drugMgField, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 200, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
                                         .add(drugForField, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 200, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
                                         .add(org.jdesktop.layout.GroupLayout.TRAILING, drugNameField, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 200, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                                        .add(org.jdesktop.layout.GroupLayout.TRAILING, idField, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 200, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)))))))
+                                        .add(org.jdesktop.layout.GroupLayout.TRAILING, idField, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 200, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))))))
+                    .add(layout.createSequentialGroup()
+                        .add(536, 536, 536)
+                        .add(jLabel1, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(479, Short.MAX_VALUE))
-            .add(org.jdesktop.layout.GroupLayout.TRAILING, layout.createSequentialGroup()
-                .add(536, 536, 536)
-                .add(jLabel1, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(535, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
@@ -266,7 +265,7 @@ public class AddDrugJPanel extends javax.swing.JPanel {
                 .add(28, 28, 28)
                 .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
                     .add(drugNameField, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 24, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                    .add(jLabel2))
+                    .add(drugNameLbl))
                 .add(30, 30, 30)
                 .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.BASELINE)
                     .add(idField, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 24, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
@@ -305,7 +304,23 @@ public class AddDrugJPanel extends javax.swing.JPanel {
 
     private void saveButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_saveButtonActionPerformed
         // TODO add your handling code here:
-
+        String price = actPriceField.getText();
+        for (Network network : business.getNetworkDirectory().getNetworkList()) {
+            Enterprise enterprise = network.getEnterpriseDirectory().getMyEnterprise(userAccount);
+            ManufacturerEnterprise manufacturerEnterprise = (ManufacturerEnterprise) enterprise;
+            for (Drug drug : manufacturerEnterprise.getDrugCatalog().getDrugList()) {
+                if (drug.getDrugName().equalsIgnoreCase(drugNameField.getText())) {
+                    JOptionPane.showMessageDialog(null, "Drug already exists in the system");
+                    return;
+                }
+            }
+        }
+        try {
+            Double.parseDouble(price);
+        } catch (NumberFormatException e) {
+            JOptionPane.showMessageDialog(null, "Please enter a valid price.");
+            return;
+        }
         for (Network network : business.getNetworkDirectory().getNetworkList()) {
             for (Enterprise enterprise : network.getEnterpriseDirectory().getEnterpriseList()) {
                 for (Organization organization : enterprise.getOrganizationDirectory().getOrgList()) {
@@ -322,22 +337,14 @@ public class AddDrugJPanel extends javax.swing.JPanel {
                                 drug.setDrugMg(drugMgField.getText());
                                 drug.setDrugID(Integer.parseInt(idField.getText()));
                                 drug.setDrugFor(drugForField.getText());
-                                //drug.setManName(manufacturer.getManufacturerName());
-                                try {
-                                    String stringPrice = actPriceField.getText();
-                                    if (stringPrice.isEmpty() == false) {
-                                        int price = Integer.parseInt(stringPrice);
-                                        drug.setActualPrice(price);
-
-                                    } else {
-                                        actPriceField.setText("N/A");
-                                    }
-                                } catch (NumberFormatException e) {
-                                    infoLabel.setVisible(true);
-                                }
 
                                 JOptionPane.showMessageDialog(null, "Drug added");
-
+                                drugNameField.setText("");
+                                idField.setText("");
+                                actPriceField.setText("");
+                                drugMgField.setText("");
+                                drugForField.setText("");
+                                drugContentsField.setText("");
                             }
                         }
                     }
@@ -373,6 +380,7 @@ public class AddDrugJPanel extends javax.swing.JPanel {
     private javax.swing.JTextField drugForField;
     private javax.swing.JTextField drugMgField;
     private javax.swing.JTextField drugNameField;
+    private javax.swing.JLabel drugNameLbl;
     private javax.swing.JTextField idField;
     private javax.swing.JLabel idLabel;
     private javax.swing.JLabel infoLabel;
@@ -380,7 +388,6 @@ public class AddDrugJPanel extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
-    private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JButton saveButton;
     // End of variables declaration//GEN-END:variables

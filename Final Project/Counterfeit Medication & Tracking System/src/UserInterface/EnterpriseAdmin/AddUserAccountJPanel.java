@@ -11,6 +11,8 @@ import Business.Organization;
 import Business.Roles.Role;
 import Business.UserAccount;
 import java.awt.CardLayout;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
@@ -33,16 +35,16 @@ public class AddUserAccountJPanel extends javax.swing.JPanel {
         this.network = network;
         this.userAccount = userAccount;
 
-       organizationJComboBox.removeAllItems();
-        
-         Enterprise e=network.getEnterpriseDirectory().getMyEnterprise(userAccount);
-        organizationJComboBox.addItem((Organization)e);        
-        for(Organization org : e.getOrganizationDirectory().getOrgList()) {
+        organizationJComboBox.removeAllItems();
+
+        Enterprise e = network.getEnterpriseDirectory().getMyEnterprise(userAccount);
+        organizationJComboBox.addItem((Organization) e);
+        for (Organization org : e.getOrganizationDirectory().getOrgList()) {
             organizationJComboBox.addItem(org);
         }
-        
+
         roleJComboBox.removeAllItems();
-        for(Role role : e.getSupportedRoles()) {
+        for (Role role : e.getSupportedRoles()) {
             roleJComboBox.addItem(role);
         }
     }
@@ -251,19 +253,25 @@ public class AddUserAccountJPanel extends javax.swing.JPanel {
 
         if (!usernameJTextField.getText().isEmpty() && !passwordJTextField.getText().isEmpty()) {
             if (!network.getEnterpriseDirectory().isUserExisting(usernameJTextField.getText())) {
-                UserAccount ua = organization.getUserAccountDirectory().newAccount();
-                ua.setUserName(usernameJTextField.getText());
-                ua.setPassword(passwordJTextField.getText());
+                if (passwordPattern() == true) {
 
-                Role role = (Role) roleJComboBox.getSelectedItem();
-                ua.setRole(role);
+                    UserAccount ua = organization.getUserAccountDirectory().newAccount();
+                    ua.setUserName(usernameJTextField.getText());
+                    ua.setPassword(passwordJTextField.getText());
 
-                ua.setEmployee(employee);
+                    Role role = (Role) roleJComboBox.getSelectedItem();
+                    ua.setRole(role);
 
-                JOptionPane.showMessageDialog(this, "UserAccount Added");
+                    ua.setEmployee(employee);
 
-                usernameJTextField.setText("");
-                passwordJTextField.setText("");
+                    JOptionPane.showMessageDialog(this, "UserAccount Added");
+
+                    usernameJTextField.setText("");
+                    passwordJTextField.setText("");
+                } else {
+                    JOptionPane.showMessageDialog(null, "Password should be at least 6 digits and contain at least one upper case letter, "
+                            + "one lower case letter, one digit and one special character $, *, # or &.");
+                }
             } else {
                 JOptionPane.showMessageDialog(this, "User Name already present");
             }
@@ -273,6 +281,13 @@ public class AddUserAccountJPanel extends javax.swing.JPanel {
         }
 
     }//GEN-LAST:event_addUserAccountJButtonActionPerformed
+
+    private boolean passwordPattern() {
+        Pattern p = Pattern.compile("^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{6,}$");
+        Matcher m = p.matcher(passwordJTextField.getText());
+        boolean b = m.matches();
+        return b;
+    }
 
     private void organizationJComboBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_organizationJComboBoxActionPerformed
         // TODO add your handling code here:

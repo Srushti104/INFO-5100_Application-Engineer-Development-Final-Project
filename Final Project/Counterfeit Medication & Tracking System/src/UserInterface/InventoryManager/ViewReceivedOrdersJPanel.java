@@ -298,10 +298,13 @@ public class ViewReceivedOrdersJPanel extends javax.swing.JPanel {
                         hospitalEnterprise.getInventoryCatalog().newInventoryItem(p);
                         addInventoryButton.setEnabled(false);
                     }
+                }
 
                     //hospitalEnterprise.getInventoryCatalog().newInventoryItem(inventoryManagerWorkRequest.getOrder());
                     JOptionPane.showMessageDialog(this, "Drugs added to Inventory");
-                }
+                    inventoryManagerWorkRequest.setStatus("added to hospital inventory");
+                    Refresh();
+                
             }
 
         } else {
@@ -495,7 +498,7 @@ public class ViewReceivedOrdersJPanel extends javax.swing.JPanel {
             //   shippingManagementOrganization.getWorkQueue().getWorkRequestList().add(shipmentManagerWorkRequest);
             // userAccount.getWorkQueue().getWorkRequestList().add(salesRequest);
             //  en2.getInventoryManagementOrganization().getSentWorkQueue().getWorkRequestList().add(shipmentManagerWorkRequest);
-            JOptionPane.showMessageDialog(null, "Work Request Sent");
+            JOptionPane.showMessageDialog(null, "Drugs sent To Doctor");
 
 
     }//GEN-LAST:event_sendButtonActionPerformed

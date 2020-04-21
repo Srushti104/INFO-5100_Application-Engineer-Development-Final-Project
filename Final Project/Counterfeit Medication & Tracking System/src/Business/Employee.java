@@ -54,19 +54,19 @@ public class Employee extends Person {
 
     public String toString() {
 
-        return firstName;
+        return firstName + " " + lastName;
     }
-    
+
     @Override
     public boolean equals(Object object) {
-        if (object == this) { 
-            return true; 
-        } 
-
-        if (!(object instanceof Employee)) { 
-            return false; 
+        if (object == this) {
+            return true;
         }
-        
+
+        if (!(object instanceof Employee)) {
+            return false;
+        }
+
         Employee employee = (Employee) object;
         return employee.empID == this.empID
                 && (this.firstName != null)
@@ -83,5 +83,4 @@ public class Employee extends Person {
         hash = 79 * hash + this.empID;
         return hash;
     }
-
 }

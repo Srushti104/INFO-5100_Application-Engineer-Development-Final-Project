@@ -2,7 +2,7 @@
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
-package UserInterface.Manager;
+package UserInterface.HospitalManager;
 
 import Business.Address;
 import Business.Enterprise;

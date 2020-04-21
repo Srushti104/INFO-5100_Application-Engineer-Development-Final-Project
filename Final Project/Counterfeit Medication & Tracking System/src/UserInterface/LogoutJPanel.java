@@ -13,7 +13,7 @@ import Business.Roles.DoctorRole;
 import Business.Roles.ManagerRole;
 import Business.Roles.Role;
 import Business.UserAccount;
-import UserInterface.Manager.HospitalManagerJPanel;
+import UserInterface.HospitalManager.HospitalManagerJPanel;
 import javax.swing.JPanel;
 
 /**

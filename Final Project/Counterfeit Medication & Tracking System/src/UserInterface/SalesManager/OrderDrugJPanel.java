@@ -6,7 +6,10 @@ package UserInterface.SalesManager;
 
 import Business.DistributorEnterprise;
 import Business.Enterprise;
+import Business.LotOfDrug;
 import Business.Network;
+import Business.Order;
+import Business.Package1;
 import Business.WorkRequests.SalesManagerWorkRequest;
 import Business.UserAccount;
 import Business.WorkRequests.WarehouseManagerWorkRequest;
@@ -187,12 +190,31 @@ public class OrderDrugJPanel extends javax.swing.JPanel {
             WarehouseManagerWorkRequest wareHouseManagerWorkRequest = new WarehouseManagerWorkRequest();
             wareHouseManagerWorkRequest.setSender(userAccount);
             wareHouseManagerWorkRequest.setRequestDate(new Date());
-            wareHouseManagerWorkRequest.setMessage("Order for drugs");
-            wareHouseManagerWorkRequest.setStatus("Order Request Sent");
+            wareHouseManagerWorkRequest.setMessage("Order for more drugs");
+            wareHouseManagerWorkRequest.setStatus("warehouse low on drugs");
             //   wareHouseManagerWorkRequest.setManuName(manuNameField.getText());
             wareHouseManagerWorkRequest.setDrug(salesManagerWorkRequest.getDrug());
-            wareHouseManagerWorkRequest.setResult("SEnt for ordering");
+            wareHouseManagerWorkRequest.setResult("Sent for ordering");
             wareHouseManagerWorkRequest.setQuantity(Integer.parseInt(quantityField.getText()));
+
+//            int i = salesManagerWorkRequest.getQuant();
+//            Order order = new Order();
+//            while (i > 0) {
+//                LotOfDrug lotOfDrug = new LotOfDrug();
+//
+//                for (int j = 0; j < 5 && i > 0; j++) {
+//                    Package1 p = new Package1();
+//                    p.setDrug(salesManagerWorkRequest.getDrug());
+//                    p.setManuLotID(lotOfDrug.getLotID());
+//                    p.setPackageStatus("Normal");
+//                    lotOfDrug.addPackage(p);
+//
+//                    i--;
+//                }
+//                order.addLot(lotOfDrug);
+//            }
+//
+//            wareHouseManagerWorkRequest.setOrder(order);
 
             DistributorEnterprise e = (DistributorEnterprise) network.getEnterpriseDirectory().getMyEnterprise(userAccount);
 

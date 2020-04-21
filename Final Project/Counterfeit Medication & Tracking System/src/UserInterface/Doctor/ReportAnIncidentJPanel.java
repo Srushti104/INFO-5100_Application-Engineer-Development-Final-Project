@@ -39,6 +39,7 @@ public class ReportAnIncidentJPanel extends javax.swing.JPanel {
         this.userAccount = userAccount;
         dispenserNameComboBox.removeAllItems();
         packComboBox.removeAllItems();
+        drugComboBox.removeAllItems();
         //drugNameComboBox.removeAllItems();
         refresh();
     }
@@ -54,10 +55,10 @@ public class ReportAnIncidentJPanel extends javax.swing.JPanel {
         }
         Doctor doc = userAccount.getDoctor();
         Package1 tempPackage = null;
-        for (Package1 package1 : doc.getDrugCatalog().getPackPatientList()) {
+        for (Package1 package1 : doc.getDrugCatalog().getPackDoctorList()) {
 
             packComboBox.addItem(package1.getPackageID());
-
+            drugComboBox.addItem(package1.getDrug().getDrugName());
         }
 
     }
@@ -80,15 +81,27 @@ public class ReportAnIncidentJPanel extends javax.swing.JPanel {
         detailsTextArea = new javax.swing.JTextArea();
         backButton = new javax.swing.JButton();
         reportButton = new javax.swing.JButton();
-        drugNameField = new javax.swing.JTextField();
         jLabel5 = new javax.swing.JLabel();
         packComboBox = new javax.swing.JComboBox();
+        drugComboBox = new javax.swing.JComboBox();
 
-        jLabel1.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        setBackground(new java.awt.Color(238, 238, 238));
+        setMaximumSize(new java.awt.Dimension(1280, 700));
+        setMinimumSize(new java.awt.Dimension(1280, 700));
+        setPreferredSize(new java.awt.Dimension(1280, 700));
+
+        jLabel1.setFont(new java.awt.Font("Courier New", 0, 18)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(34, 40, 49));
         jLabel1.setText("Report Problem");
+        jLabel1.setBorder(javax.swing.BorderFactory.createMatteBorder(1, 0, 1, 0, new java.awt.Color(0, 173, 181)));
 
-        jLabel2.setText("Drug Brought From:");
+        jLabel2.setFont(new java.awt.Font("Courier New", 0, 14)); // NOI18N
+        jLabel2.setForeground(new java.awt.Color(34, 40, 49));
+        jLabel2.setText("MANIFACTURE");
 
+        dispenserNameComboBox.setBackground(new java.awt.Color(238, 238, 238));
+        dispenserNameComboBox.setFont(new java.awt.Font("Courier New", 0, 12)); // NOI18N
+        dispenserNameComboBox.setForeground(new java.awt.Color(34, 40, 49));
         dispenserNameComboBox.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
         dispenserNameComboBox.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -96,97 +109,113 @@ public class ReportAnIncidentJPanel extends javax.swing.JPanel {
             }
         });
 
-        jLabel3.setText("Drug Name:");
+        jLabel3.setFont(new java.awt.Font("Courier New", 0, 14)); // NOI18N
+        jLabel3.setForeground(new java.awt.Color(34, 40, 49));
+        jLabel3.setText("DRUG NAME");
 
-        jLabel4.setText("Details:");
+        jLabel4.setFont(new java.awt.Font("Courier New", 0, 14)); // NOI18N
+        jLabel4.setForeground(new java.awt.Color(34, 40, 49));
+        jLabel4.setText("DETAILS");
 
+        detailsTextArea.setBackground(new java.awt.Color(238, 238, 238));
         detailsTextArea.setColumns(20);
+        detailsTextArea.setFont(new java.awt.Font("Courier New", 0, 12)); // NOI18N
+        detailsTextArea.setForeground(new java.awt.Color(34, 40, 49));
         detailsTextArea.setRows(5);
+        detailsTextArea.setMaximumSize(new java.awt.Dimension(200, 80));
+        detailsTextArea.setMinimumSize(new java.awt.Dimension(200, 80));
+        detailsTextArea.setPreferredSize(new java.awt.Dimension(200, 80));
         jScrollPane1.setViewportView(detailsTextArea);
 
+        backButton.setBackground(new java.awt.Color(238, 238, 238));
+        backButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/UserInterface/Images/back.png"))); // NOI18N
+        backButton.setBorder(null);
         backButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 backButtonActionPerformed(evt);
             }
         });
 
-        reportButton.setText("Report");
+        reportButton.setFont(new java.awt.Font("Courier New", 0, 14)); // NOI18N
+        reportButton.setForeground(new java.awt.Color(238, 238, 238));
+        reportButton.setText("SUBMIT REPORT");
         reportButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 reportButtonActionPerformed(evt);
             }
         });
 
-        jLabel5.setText("Package ID:");
+        jLabel5.setFont(new java.awt.Font("Courier New", 0, 14)); // NOI18N
+        jLabel5.setForeground(new java.awt.Color(34, 40, 49));
+        jLabel5.setText("PACKAGE ID");
 
+        packComboBox.setBackground(new java.awt.Color(238, 238, 238));
+        packComboBox.setFont(new java.awt.Font("Courier New", 0, 12)); // NOI18N
+        packComboBox.setForeground(new java.awt.Color(34, 40, 49));
         packComboBox.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+
+        drugComboBox.setBackground(new java.awt.Color(238, 238, 238));
+        drugComboBox.setFont(new java.awt.Font("Courier New", 0, 12)); // NOI18N
+        drugComboBox.setForeground(new java.awt.Color(34, 40, 49));
+        drugComboBox.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(backButton, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(255, 255, 255)
-                .addComponent(jLabel1)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(229, 229, 229)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel2)
-                            .addComponent(jLabel3)
-                            .addComponent(jLabel4)
-                            .addComponent(jLabel5))
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(67, 67, 67)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(drugNameField, javax.swing.GroupLayout.DEFAULT_SIZE, 109, Short.MAX_VALUE)
-                                    .addComponent(packComboBox, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(dispenserNameComboBox, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 23, Short.MAX_VALUE)
-                                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                        .addGap(30, 30, 30)
+                        .addComponent(backButton, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
-                        .addComponent(reportButton)))
-                .addGap(42, 42, 42))
+                        .addGap(471, 471, 471)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(reportButton, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(jLabel3)
+                                .addGroup(layout.createSequentialGroup()
+                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addComponent(jLabel2)
+                                        .addComponent(jLabel5)
+                                        .addComponent(jLabel4))
+                                    .addGap(50, 50, 50)
+                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                        .addComponent(jScrollPane1)
+                                        .addComponent(packComboBox, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addComponent(dispenserNameComboBox, 0, 200, Short.MAX_VALUE)
+                                        .addComponent(drugComboBox, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(563, 563, 563)
+                        .addComponent(jLabel1)))
+                .addContainerGap(471, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(jLabel1)
-                        .addGap(21, 21, 21)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jLabel2)
-                            .addComponent(dispenserNameComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(18, 18, 18)
-                        .addComponent(backButton, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(18, 18, 18)
+                .addGap(30, 30, 30)
+                .addComponent(backButton, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(30, 30, 30)
+                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(29, 29, 29)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(dispenserNameComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel2))
+                .addGap(30, 30, 30)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel3)
-                    .addComponent(drugNameField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabel5)
-                        .addGap(19, 19, 19))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(packComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)))
+                    .addComponent(drugComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(30, 30, 30)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(packComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel5))
+                .addGap(30, 30, 30)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel4))
-                .addGap(18, 18, 18)
-                .addComponent(reportButton)
-                .addContainerGap(17, Short.MAX_VALUE))
+                .addGap(30, 30, 30)
+                .addComponent(reportButton, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -204,34 +233,34 @@ public class ReportAnIncidentJPanel extends javax.swing.JPanel {
         Enterprise enterprise = (Enterprise) dispenserNameComboBox.getSelectedItem();
 
         if (enterprise.getClass().equals(HospitalEnterprise.class)) {
-            Doctor patient = userAccount.getDoctor();
+            Doctor doc = userAccount.getDoctor();
+            String drugName = drugComboBox.getSelectedItem().toString();
 
-            ManagerWorkRequest managerWokrRequest = new ManagerWorkRequest();
-            managerWokrRequest.setSender(userAccount);
-            managerWokrRequest.setRequestDate(new Date());
-            managerWokrRequest.setStatus("Problem Reported");
-            managerWokrRequest.setResult("Problem reported");
+            ManagerWorkRequest managerWorkRequest = new ManagerWorkRequest();
+            managerWorkRequest.setSender(userAccount);
+            managerWorkRequest.setRequestDate(new Date());
+            managerWorkRequest.setStatus("Problem Reported");
+            managerWorkRequest.setResult("Problem reported");
             // managerWokrRequest.setLicenseNumber(Integer.parseInt(licenseNumberField.getText()));
-            managerWokrRequest.setMessage("Problem Reported");
+            managerWorkRequest.setMessage("Problem Reported");
 
             //  managerWokrRequest.setDrug(inventoryItem.getDrug());
             // managerWokrRequest.setPackage1();
-            managerWokrRequest.setProblemReported(detailsTextArea.getText());
-            managerWokrRequest.setDgName(drugNameField.getText());
+            managerWorkRequest.setProblemReported(detailsTextArea.getText());
+            managerWorkRequest.setDgName(drugName);
             // managerWokrRequest.setPackID(Integer.parseInt(packageIDField.getText()));
             int pid = (Integer) packComboBox.getSelectedItem();
 
-            for (Package1 package1 : patient.getDrugCatalog().getPackPatientList()) {
+            for (Package1 package1 : doc.getDrugCatalog().getPackDoctorList()) {
                 if (package1.getPackageID() == pid) {
-                    managerWokrRequest.setPackage1(package1);
+                    managerWorkRequest.setPackage1(package1);
                 }
             }
 
             HospitalEnterprise e = (HospitalEnterprise) network.getEnterpriseDirectory().getMyEnterprise(userAccount);
 
             //userAccount.getWorkQueue().getWorkRequestList().add(shipWorkRequest);
-            JOptionPane.showMessageDialog(null, "Incident report sent");
-            JOptionPane.showMessageDialog(null, "Processed succesfully");
+            JOptionPane.showMessageDialog(null, "Incident report sent to Hospital management successfully");
 
             HospitalEnterprise d1 = null;
             for (Enterprise enterprise1 : network.getEnterpriseDirectory().getEnterpriseList()) {
@@ -241,7 +270,8 @@ public class ReportAnIncidentJPanel extends javax.swing.JPanel {
             }
 
             ManagementOrganization managementOrganization = d1.getManagementOrganization();
-            managementOrganization.getWorkQueue().getWorkRequestList().add(managerWokrRequest);
+            managementOrganization.getWorkQueue().getWorkRequestList().add(managerWorkRequest);
+            JOptionPane.showMessageDialog(null, "Work Request Sent");
             //SalesManagementOrganization salesOrganization=e1.getSalesManagementOrganization();
             //  salesOrganization.getWorkQueue().getWorkRequestList().add(salesRequest);
 
@@ -264,7 +294,7 @@ public class ReportAnIncidentJPanel extends javax.swing.JPanel {
     private javax.swing.JButton backButton;
     private javax.swing.JTextArea detailsTextArea;
     private javax.swing.JComboBox dispenserNameComboBox;
-    private javax.swing.JTextField drugNameField;
+    private javax.swing.JComboBox drugComboBox;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
