@@ -4,10 +4,8 @@
  */
 package UserInterface.Doctor;
 
-import Business.Drug;
 import Business.Enterprise;
 import Business.HospitalEnterprise;
-import Business.InventoryItem;
 import Business.ManagementOrganization;
 import Business.WorkRequests.ManagerWorkRequest;
 import Business.Network;
@@ -42,7 +40,6 @@ public class ReportAnIncidentJPanel extends javax.swing.JPanel {
         dispenserNameComboBox.removeAllItems();
         packComboBox.removeAllItems();
         drugComboBox.removeAllItems();
-        //drugNameComboBox.removeAllItems();
         refresh();
     }
 
@@ -62,7 +59,6 @@ public class ReportAnIncidentJPanel extends javax.swing.JPanel {
             if (drugNames.add(package1.getDrug().getDrugName())) {
                 drugComboBox.addItem(package1.getDrug().getDrugName());
             }
-            //drugComboBox.addItem(package1.getDrug().getDrugName());
             packComboBox.addItem(package1.getPackageID());
         }
 
@@ -237,8 +233,7 @@ public class ReportAnIncidentJPanel extends javax.swing.JPanel {
     private void reportButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_reportButtonActionPerformed
         // TODO add your handling code here:
 
-        // InventoryItem inventoryItem=(InventoryItem)drugNameComboBox.getSelectedItem();
-        // int pid=(Integer)drugNameComboBox.getSelectedItem();
+    
         Enterprise enterprise = (Enterprise) dispenserNameComboBox.getSelectedItem();
 
         if (enterprise.getClass().equals(HospitalEnterprise.class)) {
@@ -250,14 +245,11 @@ public class ReportAnIncidentJPanel extends javax.swing.JPanel {
             managerWorkRequest.setRequestDate(new Date());
             managerWorkRequest.setStatus("Problem Reported");
             managerWorkRequest.setResult("Problem reported");
-            // managerWokrRequest.setLicenseNumber(Integer.parseInt(licenseNumberField.getText()));
             managerWorkRequest.setMessage("Problem Reported");
 
-            //  managerWokrRequest.setDrug(inventoryItem.getDrug());
-            // managerWokrRequest.setPackage1();
+         
             managerWorkRequest.setProblemReported(detailsTextArea.getText());
             managerWorkRequest.setDgName(drugName);
-            // managerWokrRequest.setPackID(Integer.parseInt(packageIDField.getText()));
             int pid = (Integer) packComboBox.getSelectedItem();
 
             for (Package1 package1 : doc.getDrugCatalog().getPackDoctorList()) {
@@ -268,7 +260,6 @@ public class ReportAnIncidentJPanel extends javax.swing.JPanel {
 
             HospitalEnterprise e = (HospitalEnterprise) network.getEnterpriseDirectory().getMyEnterprise(userAccount);
 
-            //userAccount.getWorkQueue().getWorkRequestList().add(shipWorkRequest);
             JOptionPane.showMessageDialog(null, "Incident report sent to Hospital management successfully");
 
             HospitalEnterprise d1 = null;
@@ -281,11 +272,7 @@ public class ReportAnIncidentJPanel extends javax.swing.JPanel {
             ManagementOrganization managementOrganization = d1.getManagementOrganization();
             managementOrganization.getWorkQueue().getWorkRequestList().add(managerWorkRequest);
             JOptionPane.showMessageDialog(null, "Work Request Sent");
-            //SalesManagementOrganization salesOrganization=e1.getSalesManagementOrganization();
-            //  salesOrganization.getWorkQueue().getWorkRequestList().add(salesRequest);
-
-            // userAccount.getWorkQueue().getWorkRequestList().add(salesRequest);
-            //e.getLicensingOrganization().getSentWorkQueue().getWorkRequestList().add(managerWokrRequest);
+           
         }
 
 

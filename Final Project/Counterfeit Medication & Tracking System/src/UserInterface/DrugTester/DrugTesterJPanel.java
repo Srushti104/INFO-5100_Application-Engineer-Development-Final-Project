@@ -217,7 +217,7 @@ public class DrugTesterJPanel extends javax.swing.JPanel {
 
             workRequest.setReceiver(userAccount);
 
-            workRequest.setStatus("Pending");
+            workRequest.setStatus("drug under test");
 
             refresh();
         } else {

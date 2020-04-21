@@ -443,7 +443,6 @@ public class ViewReceivedOrdersJPanel extends javax.swing.JPanel {
 
         if (workRequest.getReceiver() != null) {
 
-            // workRequest.setReceiver(userAccount);
             workRequest.setStatus("Sent to doctor");
             Refresh();
         }

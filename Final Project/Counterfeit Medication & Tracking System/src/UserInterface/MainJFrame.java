@@ -5,13 +5,9 @@
 package UserInterface;
 
 import Business.Business;
-import Business.ConfigureABusiness;
 import Business.Enterprise;
 import Business.UserAccount;
 import java.awt.CardLayout;
-import java.awt.Image;
-import java.awt.Toolkit;
-import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
@@ -29,7 +25,6 @@ public class MainJFrame extends javax.swing.JFrame {
     public MainJFrame() {
         initComponents();
 
-        // business=ConfigureABusiness.initialize();
         business = db4o.db4oUtil.getBusiness();
         this.setExtendedState(MAXIMIZED_BOTH);
 
@@ -65,26 +60,17 @@ public class MainJFrame extends javax.swing.JFrame {
     }
 
     public void logoutUser(JPanel userProcessContainer) {
-        // do any cleanup here
-        // do any cleanup here
+       
         db4o.db4oUtil.storeObject(business);
         // set login jpanel
 
         userProcessContainer.removeAll();
         userProcessContainer.repaint();
         mainJSpliPane.setLeftComponent(new LoginJPanel(this));
-//        JPanel panel = landingPageJPanel.
-//            userProcessContainer.add("WorkArea", panel);
-//            CardLayout cardLayout = (CardLayout) userProcessContainer.getLayout();
-//            cardLayout.next(userProcessContainer);
-//            mainJSpliPane.setRightComponent();
+
     }
 
-    /*private void formWindowClosing(java.awt.event.WindowEvent evt)
-{
-    
-    db4o.db4oUtil.storeObject(business);
-}*/
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always

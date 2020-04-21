@@ -4,16 +4,8 @@
  */
 package UserInterface;
 
-import Business.Doctor;
 import Business.Enterprise;
-import Business.HospitalEnterprise;
-import Business.Network;
-import Business.NetworkDirectory;
-import Business.Roles.DoctorRole;
-import Business.Roles.ManagerRole;
-import Business.Roles.Role;
 import Business.UserAccount;
-import UserInterface.HospitalManager.HospitalManagerJPanel;
 import javax.swing.JPanel;
 
 /**
@@ -37,29 +29,7 @@ public class LogoutJPanel extends javax.swing.JPanel {
         this.userProcessContainer = userProcessContainer;
         this.enterprise = enterprise;
 
-        //  userNameLabel.setText(userAccount.getUserName());
-        //  for (Enterprise enterprise : network.getEnterpriseDirectory().getEnterpriseList()) {
-//        for(NetworkDirectory network : enterprise.get)
-//        if(network)
-//
-//        for (Role role : enterprise.getSupportedRoles()) {
-//            if (role.getRoleName().equals(DoctorRole.class)) {
-//
-//                userNameLabel.setText(userAccount.getDoctor().getFirstName() + " " + userAccount.getDoctor().getLastName());
-//            } else {
-//        if (userAccount != null && !enterprise.getEnterpriseName().equals(HospitalEnterprise.MANAGEMENT)) {
-//            userNameLabel.setText(userAccount.getEmployee().getFirstName() + " " + userAccount.getEmployee().getLastName());
              userNameLabel.setText(userAccount.getUserName());
-//        
-//        } else {
-//            for (Role role : enterprise.getSupportedRoles()) {
-//                if (role.getRoleName().equals(DoctorRole.class)) {
-//
-//                    userNameLabel.setText(userAccount.getDoctor().getFirstName() + " " + userAccount.getDoctor().getLastName());
-//                }
-//            }
-//
-//        }
     }
 
     /**

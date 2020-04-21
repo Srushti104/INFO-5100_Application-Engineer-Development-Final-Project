@@ -5,7 +5,6 @@
 package UserInterface.BusinessAdmin;
 
 import Business.Business;
-import Business.Enterprise;
 import Business.Network;
 import Business.Roles.NetworkAdminRole;
 import Business.UserAccount;
@@ -50,7 +49,6 @@ public class ManageNetworkJPanel extends javax.swing.JPanel {
             row[1] = network.getNetworkName();
             for (UserAccount ua : network.getUserAccountDirectory().getUserAccountList()) {
                 if (ua.getRole().getClass().equals(NetworkAdminRole.class)) {
-                   // row[1] = ua.getEmployee().getFirstName() + " " + ua.getEmployee().getLastName();
                     row[2] = ua.getUserName();
                 }
             }
