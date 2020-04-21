@@ -45,7 +45,6 @@ public class OrderDrugsJPanel extends javax.swing.JPanel {
         for (Enterprise enterprise : network.getEnterpriseDirectory().getEnterpriseList()) {
 
             if (enterprise.getClass().equals(ManufacturerEnterprise.class)) {
-                //manufacturerComboBox.addItem(enterprise);
                 ManufacturerEnterprise manufacturerEnterprise = (ManufacturerEnterprise) enterprise;
 
                 manufacturerComboBox.addItem(enterprise);
@@ -225,8 +224,7 @@ public class OrderDrugsJPanel extends javax.swing.JPanel {
     private void orderDrugButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_orderDrugButtonActionPerformed
         // TODO add your handling code here:
 
-        // String drugname=(String)drugComboBox.getSelectedItem();
-        // String manuName=(String)manufacturerComboBox.getSelectedItem();
+    
         Drug drug = (Drug) drugComboBox.getSelectedItem();
         if (quantityField.getText().isEmpty()) {
             JOptionPane.showMessageDialog(null, "Enter the value for the quantity required");
@@ -251,15 +249,10 @@ public class OrderDrugsJPanel extends javax.swing.JPanel {
             salesManagerWorkRequest.setRequestDate(new Date());
             salesManagerWorkRequest.setMessage("Request for Drugs");
             salesManagerWorkRequest.setStatus("Request for Drug Sent");
-            //productManagerWorkRequest.setManuName(manufacturerComboBox.getSelectedItem());
             salesManagerWorkRequest.setQuant(Integer.parseInt(quantityField.getText()));
-            //licenseManagerWorkRequest.setDrugManu(drugaManuTextArea.getText());
             salesManagerWorkRequest.setResult(resultField.getText());
-            //  salesManagerWorkRequest.setDrName(drug.getDrugName());
-            //    salesManagerWorkRequest.setDrug(drugNameField.getText());
             salesManagerWorkRequest.setDrName(drug.getDrugName());
             salesManagerWorkRequest.setDrug(drug);
-            //     salesManagerWorkRequest.setManuName(manuNameField.getText());
 
             DistributorEnterprise e = (DistributorEnterprise) network.getEnterpriseDirectory().getMyEnterprise(userAccount);
 
@@ -273,7 +266,6 @@ public class OrderDrugsJPanel extends javax.swing.JPanel {
             SalesManagementOrganization salesManagementOrganization = e1.getSalesManagementOrganization();
             salesManagementOrganization.getWorkQueue().getWorkRequestList().add(salesManagerWorkRequest);
 
-            // userAccount.getWorkQueue().getWorkRequestList().add(salesRequest);
             e.getWarehouseOrganization().getSentWorkQueue().getWorkRequestList().add(salesManagerWorkRequest);
 
             JOptionPane.showMessageDialog(null, "Order for Drugs Sent");

@@ -359,7 +359,6 @@ public class AddEnterpriseJPanel extends javax.swing.JPanel {
         if (enterprise == Enterprise.DISTRIBUTOR) {
 
             if (!userNameField.getText().isEmpty() && !passwordField.getText().isEmpty()) {
-                //getText() != null && passwordField.getText() != null
 
                 if (!network.getEnterpriseDirectory().isUserExisting(userNameField.getText())) {
 

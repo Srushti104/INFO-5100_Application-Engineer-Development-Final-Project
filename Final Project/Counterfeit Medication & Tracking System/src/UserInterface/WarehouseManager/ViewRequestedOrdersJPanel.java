@@ -15,51 +15,41 @@ import javax.swing.table.DefaultTableModel;
  * @author nived
  */
 public class ViewRequestedOrdersJPanel extends javax.swing.JPanel {
-    
+
     JPanel userProcessContainer;
     WorkQueue workQueue;
 
     /**
      * Creates new form ViewRequestedOrdersJPanel
      */
-    public ViewRequestedOrdersJPanel(JPanel userProcessContainer,WorkQueue workQueue) {
+    public ViewRequestedOrdersJPanel(JPanel userProcessContainer, WorkQueue workQueue) {
         initComponents();
-        this.userProcessContainer=userProcessContainer;
-        this.workQueue=workQueue;
+        this.userProcessContainer = userProcessContainer;
+        this.workQueue = workQueue;
         refresh();
     }
 
-    
-    
-    public void refresh()
-    {
-        
-        
-        
-        
-         int rowCount=sentWorkRequestJTable.getRowCount();
-        
-        for(int i=rowCount-1;i>=0;i--)
-        {
-            ((DefaultTableModel)sentWorkRequestJTable.getModel()).removeRow(i);
+    public void refresh() {
+
+        int rowCount = sentWorkRequestJTable.getRowCount();
+
+        for (int i = rowCount - 1; i >= 0; i--) {
+            ((DefaultTableModel) sentWorkRequestJTable.getModel()).removeRow(i);
         }
-        
-        
-        for(WorkRequest wr:workQueue.getWorkRequestList())
-        {
-            Object row[]=new Object[5];
-            row[0]=wr;
-            row[1]=wr.getSender().getEmployee().getFirstName();
-            if(wr.getReceiver()!=null)
-            {
-                row[2]=wr.getReceiver().getEmployee().getFirstName();
+
+        for (WorkRequest wr : workQueue.getWorkRequestList()) {
+            Object row[] = new Object[5];
+            row[0] = wr;
+            row[1] = wr.getSender().getEmployee().getFirstName();
+            if (wr.getReceiver() != null) {
+                row[2] = wr.getReceiver().getEmployee().getFirstName();
             }
-            row[3]=wr.getStatus();
-           // row[4]=((SalesWorkRequest)wr).getResult();
-            
-            ((DefaultTableModel)sentWorkRequestJTable.getModel()).addRow(row);
+            row[3] = wr.getStatus();
+
+            ((DefaultTableModel) sentWorkRequestJTable.getModel()).addRow(row);
         }
     }
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -165,7 +155,7 @@ public class ViewRequestedOrdersJPanel extends javax.swing.JPanel {
         // TODO add your handling code here:
 
         userProcessContainer.remove(this);
-        CardLayout cardLayout=(CardLayout)userProcessContainer.getLayout();
+        CardLayout cardLayout = (CardLayout) userProcessContainer.getLayout();
         cardLayout.previous(userProcessContainer);
     }//GEN-LAST:event_backButtonActionPerformed
 

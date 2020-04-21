@@ -9,7 +9,6 @@ import Business.Drug;
 import Business.Enterprise;
 import Business.ManufacturerEnterprise;
 import Business.Network;
-import Business.Organization;
 import Business.Transaction;
 import Business.UserAccount;
 import java.awt.CardLayout;

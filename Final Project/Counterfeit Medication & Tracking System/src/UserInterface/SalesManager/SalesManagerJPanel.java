@@ -19,7 +19,7 @@ import javax.swing.JPanel;
  * @author nived
  */
 public class SalesManagerJPanel extends javax.swing.JPanel {
-    
+
     JPanel userProcessContainer;
     Business business;
     UserAccount userAccount;
@@ -29,11 +29,11 @@ public class SalesManagerJPanel extends javax.swing.JPanel {
      */
     public SalesManagerJPanel(JPanel userProcessContainer, Business business, UserAccount userAccount) {
         initComponents();
-        this.userProcessContainer=userProcessContainer;
-        this.business=business;
-        this.userAccount=userAccount;
-      //  salesPanel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/UserInterface/salesmgr.jpg")));
-        
+        this.userProcessContainer = userProcessContainer;
+        this.business = business;
+        this.userAccount = userAccount;
+        //  salesPanel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/UserInterface/salesmgr.jpg")));
+
     }
 
     /**
@@ -112,73 +112,55 @@ public class SalesManagerJPanel extends javax.swing.JPanel {
 
     private void viewOrderRequestButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_viewOrderRequestButtonActionPerformed
         // TODO add your handling code here:
-        
-        for(Network network:business.getNetworkDirectory().getNetworkList())
-        {
-            for(Enterprise enterprise:network.getEnterpriseDirectory().getEnterpriseList())
-                
-            {
-                for(Organization organization:enterprise.getOrganizationDirectory().getOrgList())
-                {
-                for(UserAccount userAccount1:organization.getUserAccountDirectory().getUserAccountList())
-                {
-                    if(userAccount == userAccount1){
-                        ViewOrdersJPanel viewOrdersJPanel=new ViewOrdersJPanel(userProcessContainer,network,userAccount);
-                        userProcessContainer.add("ViewORdRE",viewOrdersJPanel);
-                        CardLayout cardLayout=(CardLayout)userProcessContainer.getLayout();
-                        cardLayout.next(userProcessContainer);
+
+        for (Network network : business.getNetworkDirectory().getNetworkList()) {
+            for (Enterprise enterprise : network.getEnterpriseDirectory().getEnterpriseList()) {
+                for (Organization organization : enterprise.getOrganizationDirectory().getOrgList()) {
+                    for (UserAccount userAccount1 : organization.getUserAccountDirectory().getUserAccountList()) {
+                        if (userAccount == userAccount1) {
+                            ViewOrdersJPanel viewOrdersJPanel = new ViewOrdersJPanel(userProcessContainer, network, userAccount);
+                            userProcessContainer.add("ViewORdRE", viewOrdersJPanel);
+                            CardLayout cardLayout = (CardLayout) userProcessContainer.getLayout();
+                            cardLayout.next(userProcessContainer);
+
+                        }
 
                     }
-
                 }
             }
-        }
         }
 
     }//GEN-LAST:event_viewOrderRequestButtonActionPerformed
 
     private void viewSentOrdersButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_viewSentOrdersButtonActionPerformed
         // TODO add your handling code here:
-        
-        
-        
-        
-        
-        for(Network network:business.getNetworkDirectory().getNetworkList())
-        {
-        for(Enterprise enterprise:network.getEnterpriseDirectory().getEnterpriseList())
-        {
-            
-        for(Organization organization:enterprise.getOrganizationDirectory().getOrgList())
-        {
-            for(UserAccount userAccount1:organization.getUserAccountDirectory().getUserAccountList())
-            {
-                if(userAccount==userAccount1)
-                {
-        
-        if(enterprise.getClass().equals(ManufacturerEnterprise.class))
-        {
-        ManufacturerEnterprise e=(ManufacturerEnterprise)network.getEnterpriseDirectory().getMyEnterprise(userAccount);
-        Organization org=e.getSalesManagementOrganization();
-        ViewSentOrdersJPanel viewSentOrdersJPanel=new ViewSentOrdersJPanel(userProcessContainer,org.getSentWorkQueue());
-        userProcessContainer.add("ViewSentordersJPanel", viewSentOrdersJPanel);
-        CardLayout cardLayout = (CardLayout) userProcessContainer.getLayout();
-        cardLayout.next(userProcessContainer);
-                }
-        
-        else if(enterprise.getClass().equals(DistributorEnterprise.class))
-        {
-        DistributorEnterprise e=(DistributorEnterprise)network.getEnterpriseDirectory().getMyEnterprise(userAccount);
-        Organization org=e.getSalesManagementOrganization();
-        ViewSentOrdersJPanel viewSentOrdersJPanel=new ViewSentOrdersJPanel(userProcessContainer,org.getSentWorkQueue());
-        userProcessContainer.add("ViewSordJPanel", viewSentOrdersJPanel);
-        CardLayout cardLayout = (CardLayout) userProcessContainer.getLayout();
-        cardLayout.next(userProcessContainer);
+
+        for (Network network : business.getNetworkDirectory().getNetworkList()) {
+            for (Enterprise enterprise : network.getEnterpriseDirectory().getEnterpriseList()) {
+
+                for (Organization organization : enterprise.getOrganizationDirectory().getOrgList()) {
+                    for (UserAccount userAccount1 : organization.getUserAccountDirectory().getUserAccountList()) {
+                        if (userAccount == userAccount1) {
+
+                            if (enterprise.getClass().equals(ManufacturerEnterprise.class)) {
+                                ManufacturerEnterprise e = (ManufacturerEnterprise) network.getEnterpriseDirectory().getMyEnterprise(userAccount);
+                                Organization org = e.getSalesManagementOrganization();
+                                ViewSentOrdersJPanel viewSentOrdersJPanel = new ViewSentOrdersJPanel(userProcessContainer, org.getSentWorkQueue());
+                                userProcessContainer.add("ViewSentordersJPanel", viewSentOrdersJPanel);
+                                CardLayout cardLayout = (CardLayout) userProcessContainer.getLayout();
+                                cardLayout.next(userProcessContainer);
+                            } else if (enterprise.getClass().equals(DistributorEnterprise.class)) {
+                                DistributorEnterprise e = (DistributorEnterprise) network.getEnterpriseDirectory().getMyEnterprise(userAccount);
+                                Organization org = e.getSalesManagementOrganization();
+                                ViewSentOrdersJPanel viewSentOrdersJPanel = new ViewSentOrdersJPanel(userProcessContainer, org.getSentWorkQueue());
+                                userProcessContainer.add("ViewSordJPanel", viewSentOrdersJPanel);
+                                CardLayout cardLayout = (CardLayout) userProcessContainer.getLayout();
+                                cardLayout.next(userProcessContainer);
+                            }
+                        }
+                    }
                 }
             }
-        }
-        }
-        }
         }
     }//GEN-LAST:event_viewSentOrdersButtonActionPerformed
 

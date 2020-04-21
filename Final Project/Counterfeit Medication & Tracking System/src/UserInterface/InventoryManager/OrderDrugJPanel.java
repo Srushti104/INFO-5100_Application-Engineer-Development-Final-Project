@@ -9,7 +9,6 @@ import Business.Drug;
 import Business.Enterprise;
 import Business.HospitalEnterprise;
 import Business.InventoryItem;
-import Business.ManufacturerEnterprise;
 import Business.Network;
 import Business.Package1;
 import Business.SalesManagementOrganization;
@@ -72,16 +71,10 @@ public class OrderDrugJPanel extends javax.swing.JPanel {
         for (InventoryItem inventoryItem : distributorEnterprise.getInventoryCatalog().getInventoryList()) { //for(InventoryItem inventoryItem:storeInventory.getInventoryList())
             Object row[] = new Object[3];
 
-//            if (inventoryItem.getPackage1().getDrug() == tempDrug) {
-//                break;
-//            } else {
             if (drugNameSet.add(inventoryItem.getPackage1().getDrug().getDrugName())) {
                 row[0] = inventoryItem.getPackage1();
                 row[1] = inventoryItem.getPackage1().getDrug().getActualPrice();
                 row[2] = distributorEnterprise.getInventoryCatalog().getTotalQuantity(inventoryItem.getPackage1().getDrug());
-                
-
-            //    tempDrug = inventoryItem.getPackage1().getDrug();
 
                 ((DefaultTableModel) inventoryTable.getModel()).addRow(row);
             }
@@ -260,11 +253,7 @@ public class OrderDrugJPanel extends javax.swing.JPanel {
         DistributorEnterprise distributorEnterprise = (DistributorEnterprise) distributorComboBox.getSelectedItem();
 
         for (Drug drug : distributorEnterprise.getDrugCatalog().getDrugList()) {
-            /* if(quantity>inventoryItem.getQuantity())
-            {
-                JOptionPane.showMessageDialog(null, "The selected quantity of products are not available", "Quantity", JOptionPane.ERROR_MESSAGE);
-            return;
-            }*/
+
         }
 
         Package1 drug = (Package1) inventoryTable.getValueAt(selectedRow, 0);
@@ -278,13 +267,11 @@ public class OrderDrugJPanel extends javax.swing.JPanel {
             salesManagerWorkRequest.setRequestDate(new Date());
             salesManagerWorkRequest.setMessage("Request for Drugs");
             salesManagerWorkRequest.setStatus("Request for Drug Sent");
-            //productManagerWorkRequest.setManuName(manufacturerComboBox.getSelectedItem());
             salesManagerWorkRequest.setQuant(quantity);
-            //licenseManagerWorkRequest.setDrugManu(drugaManuTextArea.getText());
+
             salesManagerWorkRequest.setResult("Order request sent");
             salesManagerWorkRequest.setDrName(drug.getDrug().getDrugName());
             salesManagerWorkRequest.setDrug(drug.getDrug());
-            //salesManagerWorkRequest.setManuName(manuName);
 
             HospitalEnterprise e2 = (HospitalEnterprise) network.getEnterpriseDirectory().getMyEnterprise(userAccount);
 
@@ -298,7 +285,6 @@ public class OrderDrugJPanel extends javax.swing.JPanel {
             SalesManagementOrganization salesManagementOrganization = e1.getSalesManagementOrganization();
             salesManagementOrganization.getWorkQueue().getWorkRequestList().add(salesManagerWorkRequest);
 
-            // userAccount.getWorkQueue().getWorkRequestList().add(salesRequest);
             e2.getInventoryManagementOrganization().getSentWorkQueue().getWorkRequestList().add(salesManagerWorkRequest);
 
             JOptionPane.showMessageDialog(null, "Work Request Sent");

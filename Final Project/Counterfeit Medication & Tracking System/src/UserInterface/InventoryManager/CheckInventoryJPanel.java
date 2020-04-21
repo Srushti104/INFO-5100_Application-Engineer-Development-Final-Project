@@ -35,8 +35,6 @@ public class CheckInventoryJPanel extends javax.swing.JPanel {
         this.network = network;
         this.userAccount = userAccount;
 
-//        thresholdField.setText("5");
-//        thresholdField.setEditable(false);
         refresh();
 
     }
@@ -61,9 +59,6 @@ public class CheckInventoryJPanel extends javax.swing.JPanel {
 
                 Object row[] = new Object[3];
 
-//                if (inventoryItem.getPackage1().getDrug() == tempDrug) {
-//                    break;
-//                } else {
                 if (drugNameSet.add(inventoryItem.getPackage1().getDrug().getDrugName())) {
                     
                     row[0] = inventoryItem.getPackage1();

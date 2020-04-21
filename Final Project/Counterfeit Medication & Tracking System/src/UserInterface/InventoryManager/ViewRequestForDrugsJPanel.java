@@ -50,7 +50,6 @@ public class ViewRequestForDrugsJPanel extends javax.swing.JPanel {
                 row[2]=wr.getReceiver().getEmployee().getFirstName();
             }
             row[3]=wr.getStatus();
-           // row[4]=((SalesWorkRequest)wr).getResult();
             
             ((DefaultTableModel)sentWorkRequestJTable.getModel()).addRow(row);
         }
