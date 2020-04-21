@@ -188,7 +188,6 @@ public class OrderDrugJPanel extends javax.swing.JPanel {
             wareHouseManagerWorkRequest.setRequestDate(new Date());
             wareHouseManagerWorkRequest.setMessage("Order for more drugs");
             wareHouseManagerWorkRequest.setStatus("warehouse low on drugs");
-            //   wareHouseManagerWorkRequest.setManuName(manuNameField.getText());
             wareHouseManagerWorkRequest.setDrug(salesManagerWorkRequest.getDrug());
             wareHouseManagerWorkRequest.setResult("Sent for ordering");
             wareHouseManagerWorkRequest.setQuantity(Integer.parseInt(quantityField.getText()));
@@ -206,7 +205,6 @@ public class OrderDrugJPanel extends javax.swing.JPanel {
             WarehouseOrganization warehouseOrganization = e1.getWarehouseOrganization();
             warehouseOrganization.getWorkQueue().getWorkRequestList().add(wareHouseManagerWorkRequest);
 
-            // userAccount.getWorkQueue().getWorkRequestList().add(salesRequest);
             e.getSalesManagementOrganization().getSentWorkQueue().getWorkRequestList().add(wareHouseManagerWorkRequest);
 
             JOptionPane.showMessageDialog(null, "Work Request Sent");

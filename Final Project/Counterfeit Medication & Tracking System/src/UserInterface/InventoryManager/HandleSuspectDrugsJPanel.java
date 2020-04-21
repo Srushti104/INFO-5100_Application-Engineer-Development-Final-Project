@@ -241,7 +241,6 @@ public class HandleSuspectDrugsJPanel extends javax.swing.JPanel {
         returnProcessorWorkRequest.setStatus("Pending");
         returnProcessorWorkRequest.setResult("Drug Disposed");
         returnProcessorWorkRequest.setPackage1(package1);
-        //salesManagerWorkRequest.setManuName(manuName);
 
         FDAEnterprise e1 = null;
         for (Enterprise enterprise : network.getEnterpriseDirectory().getEnterpriseList()) {
@@ -253,7 +252,6 @@ public class HandleSuspectDrugsJPanel extends javax.swing.JPanel {
         ReturnsProcessOrganization returnsProcessOrganization = e1.getReturnsProcessOrganization();
         returnsProcessOrganization.getWorkQueue().getWorkRequestList().add(returnProcessorWorkRequest);
 
-        // userAccount.getWorkQueue().getWorkRequestList().add(salesRequest);
         hospitalEnterprise.getInventoryManagementOrganization().getSentWorkQueue().getWorkRequestList().add(returnProcessorWorkRequest);
 
         JOptionPane.showMessageDialog(null, "Drugs disposed");

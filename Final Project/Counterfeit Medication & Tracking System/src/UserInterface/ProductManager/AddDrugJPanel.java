@@ -37,15 +37,8 @@ public class AddDrugJPanel extends javax.swing.JPanel {
         this.productManagerWorkRequest = productManagerWorkRequest;
         this.userAccount = userAccount;
         this.business = business;
-        //this.network=network;
 
-        // System.out.println(""+productManagerWorkRequest.getDrugName());
-        // drugNameField.setText(productManagerWorkRequest.getDrName());
-//        idField.setVisible(true);
-//        idLabel.setVisible(true);
-//        infoLabel.setVisible(false);
         drugNameField.setEditable(true);
-        //  manuNameField.setText(productManagerWorkRequest..getManufacturerName());
     }
 
     /**
@@ -308,7 +301,6 @@ public class AddDrugJPanel extends javax.swing.JPanel {
                                 drug.setDrugMg(drugMgField.getText());
                                 drug.setDrugFor(drugForField.getText());
                                 drug.setActualPrice(Integer.parseInt(price));
-                                //drug.setManName(manufacturer.getManufacturerName());
                     
                                 JOptionPane.showMessageDialog(null, "Drug added");
                                 drugNameField.setText("");

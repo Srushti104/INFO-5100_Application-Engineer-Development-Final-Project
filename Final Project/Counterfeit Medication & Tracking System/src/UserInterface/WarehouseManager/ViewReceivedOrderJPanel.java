@@ -5,12 +5,10 @@
 package UserInterface.WarehouseManager;
 
 import Business.DistributorEnterprise;
-import Business.Drug;
 import Business.Enterprise;
 import Business.LotOfDrug;
 import Business.Network;
 import Business.Order;
-//import Business.Order;
 import Business.Organization;
 import Business.Package1;
 import Business.Transaction;
@@ -21,7 +19,6 @@ import java.awt.CardLayout;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.table.DefaultTableModel;
-import jdk.nashorn.internal.ir.BreakNode;
 
 /**
  *
@@ -42,7 +39,6 @@ public class ViewReceivedOrderJPanel extends javax.swing.JPanel {
         this.network = network;
         this.userAccount = userAccount;
         addDrugButton.setEnabled(false);
-        //viewSuspectDrugsButton.setVisible(false);
         Refresh();
     }
 
@@ -56,15 +52,7 @@ public class ViewReceivedOrderJPanel extends javax.swing.JPanel {
 
         Enterprise e = network.getEnterpriseDirectory().getMyEnterprise(userAccount);
 
-        /*  SupplierEnterprise e1 = null;
-        for(Enterprise enterprise:business.getEnterpriseDirectory().getEnterpriseList())
-        {
-            if(enterprise.getClass().equals(SupplierEnterprise.class))
-                
-            {
-                e1=(SupplierEnterprise)enterprise;
-            }
-        }*/
+        
         Organization org = ((DistributorEnterprise) e).getWarehouseOrganization();
         for (WorkRequest workRequest : org.getWorkQueue().getWorkRequestList()) {
             WarehouseManagerWorkRequest wareHouseManagerWorkRequest = (WarehouseManagerWorkRequest) workRequest;
@@ -81,8 +69,7 @@ public class ViewReceivedOrderJPanel extends javax.swing.JPanel {
             row[4] = wareHouseManagerWorkRequest.getDrug();
             row[5] = wareHouseManagerWorkRequest.getQuantity();
             row[6] = wareHouseManagerWorkRequest.getOrder();
-            //  row[4]=workRequest.getDrugName();
-            //  row[5]=workRequest.getQuantity();
+        
 
             ((DefaultTableModel) requestsTable.getModel()).addRow(row);
         }
@@ -281,7 +268,6 @@ public class ViewReceivedOrderJPanel extends javax.swing.JPanel {
 
             workRequest.setStatus("Order Received");
 
-            //addDrugButton.setEnabled(true);
             Refresh();
         } else {
             if (workRequest.getReceiver().getUserName().equals(userAccount.getUserName())) {
@@ -366,11 +352,9 @@ public class ViewReceivedOrderJPanel extends javax.swing.JPanel {
                         if (transaction.getManufacturerEnterprise() == null || transaction.getDistributorEnterprise() == null) {
                             JOptionPane.showMessageDialog(null, "Drugs are suspected");
                             addDrugButton.setEnabled(false);
-                            //viewSuspectDrugsButton.setVisible(true);
-                            //viewSuspectDrugsButton.setVisible(true);
+                           
                             p.setPackageStatus("Suspect Drug");
 
-                            //viewSuspectDrugsButton.setEnabled(true);
                             int lotid = p.getDisLotID();
 
                             for (Package1 p1 : lotOfDrug.getPackageList()) {

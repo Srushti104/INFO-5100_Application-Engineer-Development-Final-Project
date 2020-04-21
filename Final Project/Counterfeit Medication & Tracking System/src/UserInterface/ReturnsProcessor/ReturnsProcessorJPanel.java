@@ -12,7 +12,6 @@ import Business.Organization;
 import Business.WorkRequests.ReturnProcessorWorkRequest;
 import Business.UserAccount;
 import Business.WorkRequests.WorkRequest;
-import java.awt.CardLayout;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.table.DefaultTableModel;
@@ -258,8 +257,6 @@ public class ReturnsProcessorJPanel extends javax.swing.JPanel {
 
         if(workRequest.getReceiver()!=null)
         {
-
-         //   workRequest.setReceiver(userAccount);
 
             workRequest.setStatus("Drugs Disposed");
 

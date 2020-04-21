@@ -11,7 +11,6 @@ import Business.InventoryItem;
 import Business.Network;
 import Business.Organization;
 import Business.UserAccount;
-import UserInterface.BusinessAdmin.AdminJPanel;
 import java.awt.CardLayout;
 import javax.swing.JPanel;
 
@@ -33,8 +32,6 @@ public class WarehouseManagerJPanel extends javax.swing.JPanel {
         this.userProcessContainer = userProcessContainer;
         this.business = business;
         this.userAccount = userAccount;
-        //imaLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/UserInterface/warehouse.jpg")));
-//        
         alertLabel.setVisible(false);
 
         refresh();
@@ -49,18 +46,9 @@ public class WarehouseManagerJPanel extends javax.swing.JPanel {
                             if (enterprise.getClass().equals(DistributorEnterprise.class)) {
                                 DistributorEnterprise distributorEnterprise = (DistributorEnterprise) enterprise;
 
-//                                if (distributorEnterprise.getLicenseNumber() == 0) {
-//                                    orderDrugButton.setVisible(false);
-//                                    checkInventoryButton.setVisible(false);
-//                                    viewRequestedOrdersButton.setVisible(false);
-//                                    viewRecievedOrderButton.setVisible(false);
-//                                    infoLabel.setVisible(true);
-//                                }
-                               
-
                                 for (InventoryItem inventoryItem : distributorEnterprise.getInventoryCatalog().getInventoryList()) {
                                     if (inventoryItem.getPackage1().getPackageStatus().equalsIgnoreCase("Illegetimate Drug")) {
-                                         alertLabel.setVisible(true);
+                                        alertLabel.setVisible(true);
                                     }
 
                                 }
@@ -72,29 +60,6 @@ public class WarehouseManagerJPanel extends javax.swing.JPanel {
             }
         }
 
-//        for(Network network:business.getNetworkDirectory().getNetworkList())
-//        {
-//            for(Enterprise enterprise:network.getEnterpriseDirectory().getEnterpriseList())
-//            {
-//                if(enterprise.getClass().equals(DistributorEnterprise.class))
-//                {
-//                    
-//                DistributorEnterprise distributorEnterprise=(DistributorEnterprise)enterprise;
-//            
-////            for(Transaction transaction:network.getTransactionHistory().getTransactionList())
-////            {
-////                if(transaction.getDistributorEnterprise() == null)
-////                {
-////                    return;
-////                }
-////             if(transaction.getDistributorEnterprise().getEnterpriseName()== distributorEnterprise.getEnterpriseName())
-////             {
-////                
-////             }
-////            }
-//                }
-//            }
-//        }
     }
 
     /**

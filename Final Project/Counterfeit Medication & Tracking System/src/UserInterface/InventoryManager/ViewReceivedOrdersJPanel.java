@@ -81,8 +81,6 @@ public class ViewReceivedOrdersJPanel extends javax.swing.JPanel {
                     row[5] = inventoryManagerWorkRequest.getQt();
                 }
                 row[6] = inventoryManagerWorkRequest.getOrder();
-                //  row[4]=workRequest.getDrugName();
-                //  row[5]=workRequest.getQuantity();
 
                 ((DefaultTableModel) requestsTable.getModel()).addRow(row);
             }
@@ -95,7 +93,6 @@ public class ViewReceivedOrdersJPanel extends javax.swing.JPanel {
         int selectedRow = requestsTable.getSelectedRow();
 
         if (selectedRow < 0) {
-            //JOptionPane.showMessageDialog(null, "Please select a work request");
             return;
         }
         InventoryManagerWorkRequest inventoryManagerWorkRequest = (InventoryManagerWorkRequest) requestsTable.getValueAt(selectedRow, 0);
@@ -339,12 +336,10 @@ public class ViewReceivedOrdersJPanel extends javax.swing.JPanel {
                         addInventoryButton.setEnabled(false);
                     }
                 }
+                JOptionPane.showMessageDialog(this, "Drugs added to Inventory");
+                inventoryManagerWorkRequest.setStatus("added to hospital inventory");
+                Refresh();
 
-                    //hospitalEnterprise.getInventoryCatalog().newInventoryItem(inventoryManagerWorkRequest.getOrder());
-                    JOptionPane.showMessageDialog(this, "Drugs added to Inventory");
-                    inventoryManagerWorkRequest.setStatus("added to hospital inventory");
-                    Refresh();
-                
             }
 
         } else {
@@ -448,76 +443,61 @@ public class ViewReceivedOrdersJPanel extends javax.swing.JPanel {
 
         if (workRequest.getReceiver() != null) {
 
-           // workRequest.setReceiver(userAccount);
-
+            // workRequest.setReceiver(userAccount);
             workRequest.setStatus("Sent to doctor");
             Refresh();
         }
-            InventoryManagerWorkRequest inventoryManagerWorkRequest = (InventoryManagerWorkRequest) requestsTable.getValueAt(selectedRow, 0);
-            UserAccount sender = inventoryManagerWorkRequest.getSender();
-            Doctor doc = sender.getDoctor();
-           
-            Order order = new Order();
-            HospitalEnterprise hospitalEnterprise = (HospitalEnterprise) network.getEnterpriseDirectory().getMyEnterprise(userAccount);
-            Enterprise en1 = network.getEnterpriseDirectory().getMyEnterprise(inventoryManagerWorkRequest.getSender());
+        InventoryManagerWorkRequest inventoryManagerWorkRequest = (InventoryManagerWorkRequest) requestsTable.getValueAt(selectedRow, 0);
+        UserAccount sender = inventoryManagerWorkRequest.getSender();
+        Doctor doc = sender.getDoctor();
 
-            if (order.getOrderSize() < inventoryManagerWorkRequest.getQt()) {
+        Order order = new Order();
+        HospitalEnterprise hospitalEnterprise = (HospitalEnterprise) network.getEnterpriseDirectory().getMyEnterprise(userAccount);
+        Enterprise en1 = network.getEnterpriseDirectory().getMyEnterprise(inventoryManagerWorkRequest.getSender());
 
-                int i1 = inventoryManagerWorkRequest.getQt();
+        if (order.getOrderSize() < inventoryManagerWorkRequest.getQt()) {
 
-                while (i1 > 0) {
-                    LotOfDrug lotOfDrug = new LotOfDrug();
-                    for (int j = 0; j < 5 && i1 > 0; j++) {
-                        InventoryItem tempPackage = null;
-                        for (InventoryItem itm : hospitalEnterprise.getInventoryCatalog().getInventoryList()) {
+            int i1 = inventoryManagerWorkRequest.getQt();
 
-                            if (inventoryManagerWorkRequest.getDrug() == itm.getPackage1().getDrug()) {
+            while (i1 > 0) {
+                LotOfDrug lotOfDrug = new LotOfDrug();
+                for (int j = 0; j < 5 && i1 > 0; j++) {
+                    InventoryItem tempPackage = null;
+                    for (InventoryItem itm : hospitalEnterprise.getInventoryCatalog().getInventoryList()) {
 
-                                if (itm.getPackage1().getPackageStatus() != "Illegetimate Drug") {
-                                    /*for(Transaction transaction1:network.getTransactionHistory().getTransactionList())
-                               {
-                                   if(transaction1.getPackage1().getPackageID()==itm.getPackage1().getPackageID())
-                                   {
-                                       if(transaction1.getDispenser()!= null)
-                                       {
-                                           
-                                       }
-                                  
-                                   
-                                       
-                                   }
-                               }*/
+                        if (inventoryManagerWorkRequest.getDrug() == itm.getPackage1().getDrug()) {
 
-                                    lotOfDrug.addPackage(itm.getPackage1());
-                                    doc.getDrugCatalog().newDrugPackage(itm.getPackage1());
-                                    for (Transaction transaction : network.getTransactionHistory().getTransactionList()) {
-                                        if (transaction.getPackage().getPackageID() == itm.getPackage1().getPackageID()) {
+                            if (itm.getPackage1().getPackageStatus() != "Illegetimate Drug") {
 
-                                            transaction.setDoctor(doc);
-                                            transaction.setTransactionStatus("Sold to Doctor");
+                                lotOfDrug.addPackage(itm.getPackage1());
+                                doc.getDrugCatalog().newDrugPackage(itm.getPackage1());
+                                for (Transaction transaction : network.getTransactionHistory().getTransactionList()) {
+                                    if (transaction.getPackage().getPackageID() == itm.getPackage1().getPackageID()) {
 
-                                        }
+                                        transaction.setDoctor(doc);
+                                        transaction.setTransactionStatus("Sold to Doctor");
+
                                     }
-                                    itm.getPackage1().setHosID(lotOfDrug.getLotID());
-                                    tempPackage = itm;
-                                    break;
                                 }
-
+                                itm.getPackage1().setHosID(lotOfDrug.getLotID());
+                                tempPackage = itm;
+                                break;
                             }
+
                         }
-                        hospitalEnterprise.getInventoryCatalog().getInventoryList().remove(tempPackage);
-
-                        i1--;
                     }
-                    order.addLot(lotOfDrug);
-                }
+                    hospitalEnterprise.getInventoryCatalog().getInventoryList().remove(tempPackage);
 
+                    i1--;
+                }
+                order.addLot(lotOfDrug);
             }
 
+        }
 
-            HospitalEnterprise en2 = (HospitalEnterprise) network.getEnterpriseDirectory().getMyEnterprise(userAccount);
+        HospitalEnterprise en2 = (HospitalEnterprise) network.getEnterpriseDirectory().getMyEnterprise(userAccount);
 
-            JOptionPane.showMessageDialog(null, "Drugs sent To Doctor");
+        JOptionPane.showMessageDialog(null, "Drugs sent To Doctor");
 
 
     }//GEN-LAST:event_sendButtonActionPerformed

@@ -17,7 +17,6 @@ import Business.Organization;
 import Business.Package1;
 import Business.WorkRequests.SalesManagerWorkRequest;
 import Business.Transaction;
-import Business.TransactionHistory;
 import Business.UserAccount;
 import Business.WarehouseOrganization;
 import Business.WorkRequests.InventoryManagerWorkRequest;
@@ -91,7 +90,6 @@ public class ViewOrdersJPanel extends javax.swing.JPanel {
 
         if (e.getClass().equals(ManufacturerEnterprise.class)) {
             Organization org = ((ManufacturerEnterprise) e).getSalesManagementOrganization();
-            //ManufacturerEnterprise manufacturerEnterprise=(ManufacturerEnterprise)e;
             for (WorkRequest workRequest : org.getWorkQueue().getWorkRequestList()) {
                 SalesManagerWorkRequest salesManagerWorkRequest = (SalesManagerWorkRequest) workRequest;
                 Object row[] = new Object[7];
@@ -130,14 +128,7 @@ public class ViewOrdersJPanel extends javax.swing.JPanel {
                 row[4] = salesManagerWorkRequest.getDrug();
                 row[5] = salesManagerWorkRequest.getQuant();
                 row[6] = distributorEnterprise.getInventoryCatalog().getTotalQuantity(salesManagerWorkRequest.getDrug());
-               // row[6] = salesManagerWorkRequest.getOrder();
-                //  row[4]=workRequest.getDrugName();
-                //  row[5]=workRequest.getQuantity();
 
-                /*if(productManagerWorkRequest.getLicenseNumber()!=0)
-                 {
-                 addDrugButton.setVisible(true);
-                 }*/
                 ((DefaultTableModel) requestsTable.getModel()).addRow(row);
 
                 if (salesManagerWorkRequest.getQuant() > distributorEnterprise.getInventoryCatalog().getTotalQuantity(salesManagerWorkRequest.getDrug())) {
@@ -339,7 +330,7 @@ public class ViewOrdersJPanel extends javax.swing.JPanel {
 
         SalesManagerWorkRequest salesManagerWorkRequest = (SalesManagerWorkRequest) requestsTable.getValueAt(selectedRow, 0);
         Enterprise e3 = network.getEnterpriseDirectory().getMyEnterprise(userAccount);
-        // DistributorEnterprise distributorEnterprise=(DistributorEnterprise)e3;
+
         if (salesManagerWorkRequest.getReceiver() != null && userAccount == salesManagerWorkRequest.getReceiver()) {
 
             if (e3.getClass().equals(ManufacturerEnterprise.class)) {
@@ -348,11 +339,9 @@ public class ViewOrdersJPanel extends javax.swing.JPanel {
                 warehouseManagerWorkRequest.setRequestDate(new Date());
                 warehouseManagerWorkRequest.setMessage("Manufacturer Sales to Warehouse");
                 warehouseManagerWorkRequest.setStatus("Sent");
-                // shipmentManagerWorkRequest.setManuName(manuNameField.getText());
                 warehouseManagerWorkRequest.setDrugName(salesManagerWorkRequest.getDrName());
                 warehouseManagerWorkRequest.setDrug(salesManagerWorkRequest.getDrug());
                 warehouseManagerWorkRequest.setQuantity(salesManagerWorkRequest.getQuant());
-               // warehouseManagerWorkRequest.setOrder(salesManagerWorkRequest.getOrder());
 
                 salesManagerWorkRequest.setStatus("Sent to warehouse");
 
@@ -366,16 +355,10 @@ public class ViewOrdersJPanel extends javax.swing.JPanel {
 
                     for (int j = 0; j < 5 && i > 0; j++) {
                         Package1 p = new Package1();
-                       // Transaction transaction = network.getTransactionHistory().newTransaction();
                         p.setDrug(salesManagerWorkRequest.getDrug());
                         p.setManuLotID(lotOfDrug.getLotID());
                         p.setPackageStatus("Normal");
                         lotOfDrug.addPackage(p);
-//                        transaction.setPackage(p);
-//                        transaction.setManufacturerEnterprise(manufacturerEnterprise);
-//                        transaction.setTransactionStatus("Sold");
-//                        transaction.setDistributorEnterprise(distributorEnterprise);
-
                         i--;
                     }
                     order.addLot(lotOfDrug);
@@ -395,8 +378,6 @@ public class ViewOrdersJPanel extends javax.swing.JPanel {
                 WarehouseOrganization warehouseManagerOrganization = e1.getWarehouseOrganization();
                 warehouseManagerOrganization.getWorkQueue().getWorkRequestList().add(warehouseManagerWorkRequest);
 
- 
-                // userAccount.getWorkQueue().getWorkRequestList().add(salesRequest);
                 e.getSalesManagementOrganization().getSentWorkQueue().getWorkRequestList().add(warehouseManagerWorkRequest);
 
                 JOptionPane.showMessageDialog(null, "Work Request Sent");
@@ -410,11 +391,9 @@ public class ViewOrdersJPanel extends javax.swing.JPanel {
                 inventoryManagerWorkRequest.setRequestDate(new Date());
                 inventoryManagerWorkRequest.setMessage("Distributor Sales to Warehouse");
                 inventoryManagerWorkRequest.setStatus("Sent");
-                // shipmentManagerWorkRequest.setManuName(manuNameField.getText());
                 inventoryManagerWorkRequest.setDrugName(salesManagerWorkRequest.getDrName());
                 inventoryManagerWorkRequest.setDrug(salesManagerWorkRequest.getDrug());
                 inventoryManagerWorkRequest.setQuantity(salesManagerWorkRequest.getQuant());
-      //          inventoryManagerWorkRequest.setShippedTo(salesManagerWorkRequest.getSender());
 
                 Order order = new Order();
                 Enterprise en1 = network.getEnterpriseDirectory().getMyEnterprise(salesManagerWorkRequest.getSender());
@@ -432,19 +411,6 @@ public class ViewOrdersJPanel extends javax.swing.JPanel {
                                 if (salesManagerWorkRequest.getDrug() == itm.getPackage1().getDrug()) {
 
                                     if (itm.getPackage1().getPackageStatus() != "Illegetimate Drug") {
-                                        /*for(Transaction transaction1:network.getTransactionHistory().getTransactionList())
-                               {
-                                   if(transaction1.getPackage1().getPackageID()==itm.getPackage1().getPackageID())
-                                   {
-                                       if(transaction1.getDispenser()!= null)
-                                       {
-                                           
-                                       }
-                                  
-                                   
-                                       
-                                   }
-                               }*/
 
                                         lotOfDrug.addPackage(itm.getPackage1());
                                         for (Transaction transaction : network.getTransactionHistory().getTransactionList()) {
@@ -473,8 +439,8 @@ public class ViewOrdersJPanel extends javax.swing.JPanel {
                     }
 
                 }
-               
-                 inventoryManagerWorkRequest.setOrder(order);
+
+                inventoryManagerWorkRequest.setOrder(order);
 
                 DistributorEnterprise e = (DistributorEnterprise) network.getEnterpriseDirectory().getMyEnterprise(userAccount);
 
@@ -488,7 +454,6 @@ public class ViewOrdersJPanel extends javax.swing.JPanel {
                 InventoryManagementOrganization inventoryManagementOrganization = e1.getInventoryManagementOrganization();
                 inventoryManagementOrganization.getWorkQueue().getWorkRequestList().add(inventoryManagerWorkRequest);
 
-                // userAccount.getWorkQueue().getWorkRequestList().add(salesRequest);
                 e.getSalesManagementOrganization().getSentWorkQueue().getWorkRequestList().add(inventoryManagerWorkRequest);
                 salesManagerWorkRequest.setStatus("Sent");
                 JOptionPane.showMessageDialog(null, "Work Request Done");
