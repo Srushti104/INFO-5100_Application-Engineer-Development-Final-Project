@@ -88,7 +88,7 @@ public class OrderDrugsJPanel extends javax.swing.JPanel {
 
         jLabel2.setFont(new java.awt.Font("Courier New", 0, 14)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(34, 40, 49));
-        jLabel2.setText("MANIFACTURE NAME");
+        jLabel2.setText("MANUFACTURE NAME");
 
         jLabel3.setFont(new java.awt.Font("Courier New", 0, 14)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(34, 40, 49));

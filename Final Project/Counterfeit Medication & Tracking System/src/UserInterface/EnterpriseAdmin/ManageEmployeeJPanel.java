@@ -258,6 +258,10 @@ public class ManageEmployeeJPanel extends javax.swing.JPanel {
     private void deleteButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deleteButtonActionPerformed
         // TODO add your handling code here:
         int selectedRow = employeeTable.getSelectedRow();
+        if (selectedRow < 0) {
+            JOptionPane.showMessageDialog(null, "Please select a row");
+            return;
+        }
         List<Object> rowValues = getRowAt(employeeTable, selectedRow);
         Employee selectedEmployee = (Employee) rowValues.get(0);
         int count = employeeTable.getSelectedRowCount();

@@ -159,7 +159,7 @@ public class InventoryManagerJPanel extends javax.swing.JPanel {
                             .add(viewRequestedOrdersButton, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 200, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
                             .add(handleSuspectDrugs, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 200, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
                             .add(infoLabel3))))
-                .addContainerGap(364, Short.MAX_VALUE))
+                .add(364, 364, 364))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)

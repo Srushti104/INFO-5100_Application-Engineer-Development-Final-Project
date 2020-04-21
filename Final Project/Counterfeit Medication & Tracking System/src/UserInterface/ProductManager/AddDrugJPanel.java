@@ -275,6 +275,23 @@ public class AddDrugJPanel extends javax.swing.JPanel {
     private void saveButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_saveButtonActionPerformed
         // TODO add your handling code here:
 
+         String price = actPriceField.getText();
+        for (Network network : business.getNetworkDirectory().getNetworkList()) {
+            Enterprise enterprise = network.getEnterpriseDirectory().getMyEnterprise(userAccount);
+            ManufacturerEnterprise manufacturerEnterprise = (ManufacturerEnterprise) enterprise;
+            for (Drug drug : manufacturerEnterprise.getDrugCatalog().getDrugList()) {
+                if (drug.getDrugName().equalsIgnoreCase(drugNameField.getText())) {
+                    JOptionPane.showMessageDialog(null, "Drug already exists in the system");
+                    return;
+                }
+            }
+        }
+        try {
+            Double.parseDouble(price);
+        } catch (NumberFormatException e) {
+            JOptionPane.showMessageDialog(null, "Please enter a valid price.");
+            return;
+        }
         for (Network network : business.getNetworkDirectory().getNetworkList()) {
             for (Enterprise enterprise : network.getEnterpriseDirectory().getEnterpriseList()) {
                 for (Organization organization : enterprise.getOrganizationDirectory().getOrgList()) {
@@ -285,26 +302,20 @@ public class AddDrugJPanel extends javax.swing.JPanel {
                             } else {
                                 ManufacturerEnterprise manufacturerEnterprise = (ManufacturerEnterprise) enterprise;
                                 Drug drug = manufacturerEnterprise.getDrugCatalog().newDrug();
-
+                    
                                 drug.setDrugName(drugNameField.getText());
                                 drug.setDrugContents(drugContentsField.getText());
                                 drug.setDrugMg(drugMgField.getText());
                                 drug.setDrugFor(drugForField.getText());
+                                drug.setActualPrice(Integer.parseInt(price));
                                 //drug.setManName(manufacturer.getManufacturerName());
-                                try {
-                                    String stringPrice = actPriceField.getText();
-                                    if (stringPrice.isEmpty() == false) {
-                                        int price = Integer.parseInt(stringPrice);
-                                        drug.setActualPrice(price);
-
-                                    } else {
-                                        actPriceField.setText("N/A");
-                                    }
-                                } catch (NumberFormatException e) {
-                                 //   infoLabel.setVisible(true);
-                                }
-
+                    
                                 JOptionPane.showMessageDialog(null, "Drug added");
+                                drugNameField.setText("");
+                                actPriceField.setText("");
+                                drugMgField.setText("");
+                                drugForField.setText("");
+                                drugContentsField.setText("");
 
                             }
                         }
