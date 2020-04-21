@@ -50,7 +50,7 @@ public class ManageUserAccountJPanel extends javax.swing.JPanel {
             Object row[] = new Object[4];
             for (UserAccount ua : o.getUserAccountDirectory().getUserAccountList()) {
                 row[0] = ua;
-                row[1] = ua.getEmployee().getFirstName() + ua.getEmployee().getLastName();
+                row[1] = ua.getEmployee().getFirstName() +" "+ ua.getEmployee().getLastName();
                 row[2] = ua.getRole().getRoleName();
                 row[3] = o;
                 ((DefaultTableModel) userAccountJTable.getModel()).addRow(row);
@@ -91,6 +91,7 @@ public class ManageUserAccountJPanel extends javax.swing.JPanel {
         });
 
         userAccountJTable.setBackground(new java.awt.Color(238, 238, 238));
+        userAccountJTable.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 173, 181), 1, true));
         userAccountJTable.setFont(new java.awt.Font("Courier New", 0, 12)); // NOI18N
         userAccountJTable.setForeground(new java.awt.Color(34, 40, 49));
         userAccountJTable.setModel(new javax.swing.table.DefaultTableModel(
@@ -113,6 +114,8 @@ public class ManageUserAccountJPanel extends javax.swing.JPanel {
             }
         });
         userAccountJTable.setGridColor(new java.awt.Color(34, 40, 49));
+        userAccountJTable.setMaximumSize(new java.awt.Dimension(680, 122));
+        userAccountJTable.setMinimumSize(new java.awt.Dimension(680, 122));
         userAccountJTable.setPreferredSize(new java.awt.Dimension(680, 122));
         userAccountJTable.setRowHeight(22);
         userAccountJTable.setSelectionBackground(new java.awt.Color(0, 173, 181));

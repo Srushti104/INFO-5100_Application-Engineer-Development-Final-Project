@@ -98,6 +98,7 @@ public class OrderDrugJPanel extends javax.swing.JPanel {
         quantityField.setMinimumSize(new java.awt.Dimension(200, 24));
         quantityField.setPreferredSize(new java.awt.Dimension(200, 24));
 
+        sendRequestButton.setBackground(new java.awt.Color(57, 62, 70));
         sendRequestButton.setFont(new java.awt.Font("Courier New", 0, 14)); // NOI18N
         sendRequestButton.setForeground(new java.awt.Color(238, 238, 238));
         sendRequestButton.setText("SEND REQUEST");
@@ -126,7 +127,7 @@ public class OrderDrugJPanel extends javax.swing.JPanel {
 
         jLabel4.setFont(new java.awt.Font("Courier New", 0, 18)); // NOI18N
         jLabel4.setForeground(new java.awt.Color(34, 40, 49));
-        jLabel4.setText("SEND DRUG ORGER REQUEST TO INVENTORY MANAGER");
+        jLabel4.setText("SEND DRUG ORDER REQUEST TO INVENTORY MANAGER");
         jLabel4.setBorder(javax.swing.BorderFactory.createMatteBorder(1, 0, 1, 0, new java.awt.Color(0, 173, 181)));
 
         jLabel5.setFont(new java.awt.Font("Courier New", 0, 14)); // NOI18N

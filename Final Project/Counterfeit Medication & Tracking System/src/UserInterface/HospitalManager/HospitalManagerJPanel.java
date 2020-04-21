@@ -50,24 +50,41 @@ public class HospitalManagerJPanel extends javax.swing.JPanel {
         addDoctorBtn = new javax.swing.JButton();
         viewReportedIncidentsButton = new javax.swing.JButton();
 
-        jLabel1.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        jLabel1.setText("Hospital Manager Work Area");
+        setBackground(new java.awt.Color(238, 238, 238));
+        setMaximumSize(new java.awt.Dimension(1280, 700));
+        setMinimumSize(new java.awt.Dimension(1280, 700));
+        setPreferredSize(new java.awt.Dimension(1280, 700));
 
-        manageDoctorBtn.setText("Manage Doctor");
+        jLabel1.setFont(new java.awt.Font("Courier New", 0, 18)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(34, 40, 49));
+        jLabel1.setText("HOSPITAL MANAGER WORK-AREA");
+        jLabel1.setBorder(javax.swing.BorderFactory.createMatteBorder(1, 0, 1, 0, new java.awt.Color(0, 173, 181)));
+
+        manageDoctorBtn.setBackground(new java.awt.Color(57, 62, 70));
+        manageDoctorBtn.setFont(new java.awt.Font("Courier New", 0, 14)); // NOI18N
+        manageDoctorBtn.setForeground(new java.awt.Color(238, 238, 238));
+        manageDoctorBtn.setText("VIEW DOCTOR PROFILE");
         manageDoctorBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 manageDoctorBtnActionPerformed(evt);
             }
         });
 
-        addDoctorBtn.setText("Add Doctors");
+        addDoctorBtn.setBackground(new java.awt.Color(57, 62, 70));
+        addDoctorBtn.setFont(new java.awt.Font("Courier New", 0, 14)); // NOI18N
+        addDoctorBtn.setForeground(new java.awt.Color(238, 238, 238));
+        addDoctorBtn.setText("ADD DOCTOR PROFILE");
+        addDoctorBtn.setPreferredSize(new java.awt.Dimension(200, 33));
         addDoctorBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 addDoctorBtnActionPerformed(evt);
             }
         });
 
-        viewReportedIncidentsButton.setText("View Reported Incidents");
+        viewReportedIncidentsButton.setBackground(new java.awt.Color(57, 62, 70));
+        viewReportedIncidentsButton.setFont(new java.awt.Font("Courier New", 0, 14)); // NOI18N
+        viewReportedIncidentsButton.setForeground(new java.awt.Color(238, 238, 238));
+        viewReportedIncidentsButton.setText("VIEW REPORTED DRUGS");
         viewReportedIncidentsButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 viewReportedIncidentsButtonActionPerformed(evt);
@@ -78,32 +95,27 @@ public class HospitalManagerJPanel extends javax.swing.JPanel {
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(72, 72, 72)
-                        .addComponent(viewReportedIncidentsButton, javax.swing.GroupLayout.PREFERRED_SIZE, 182, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                        .addComponent(addDoctorBtn, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(manageDoctorBtn, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 182, Short.MAX_VALUE)))
-                .addGap(98, 98, 98))
             .addGroup(layout.createSequentialGroup()
-                .addGap(75, 75, 75)
-                .addComponent(jLabel1)
-                .addContainerGap())
+                .addGap(497, 497, 497)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
+                    .addComponent(addDoctorBtn, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel1)
+                    .addComponent(manageDoctorBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(viewReportedIncidentsButton, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(497, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(41, 41, 41)
-                .addComponent(jLabel1)
-                .addGap(28, 28, 28)
-                .addComponent(addDoctorBtn)
-                .addGap(18, 18, 18)
-                .addComponent(manageDoctorBtn)
-                .addGap(18, 18, 18)
-                .addComponent(viewReportedIncidentsButton)
-                .addGap(78, 78, 78))
+                .addGap(120, 120, 120)
+                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(100, 100, 100)
+                .addComponent(addDoctorBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(50, 50, 50)
+                .addComponent(manageDoctorBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(50, 50, 50)
+                .addComponent(viewReportedIncidentsButton, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(251, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 

@@ -144,7 +144,7 @@
                       <Color blue="46" green="3e" red="39" type="rgb"/>
                     </Property>
                     <Property name="horizontalAlignment" type="int" value="0"/>
-                    <Property name="text" type="java.lang.String" value="Welcome to"/>
+                    <Property name="text" type="java.lang.String" value="WELCOME TO"/>
                   </Properties>
                 </Component>
                 <Component class="javax.swing.JLabel" name="jLabel2">

@@ -134,7 +134,7 @@ public class OrderJPanel extends javax.swing.JPanel {
 
         jLabel2.setFont(new java.awt.Font("Courier New", 0, 14)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(34, 40, 49));
-        jLabel2.setText("FILTER INVENTORY");
+        jLabel2.setText("SELECT INVENTORY");
 
         quantitySpinner.setFont(new java.awt.Font("Courier New", 0, 12)); // NOI18N
         quantitySpinner.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 173, 181), 1, true));
@@ -160,6 +160,7 @@ public class OrderJPanel extends javax.swing.JPanel {
         jLabel3.setText("SELECT QUANTITY");
 
         inventoryTable.setBackground(new java.awt.Color(238, 238, 238));
+        inventoryTable.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 173, 181), 1, true));
         inventoryTable.setForeground(new java.awt.Color(34, 40, 49));
         inventoryTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -181,6 +182,9 @@ public class OrderJPanel extends javax.swing.JPanel {
             }
         });
         inventoryTable.setGridColor(new java.awt.Color(34, 40, 49));
+        inventoryTable.setMaximumSize(new java.awt.Dimension(680, 122));
+        inventoryTable.setMinimumSize(new java.awt.Dimension(680, 122));
+        inventoryTable.setPreferredSize(new java.awt.Dimension(680, 122));
         inventoryTable.setRowHeight(20);
         inventoryTable.setSelectionBackground(new java.awt.Color(0, 173, 181));
         inventoryTable.setSelectionForeground(new java.awt.Color(238, 238, 238));
@@ -198,22 +202,20 @@ public class OrderJPanel extends javax.swing.JPanel {
                     .addGroup(layout.createSequentialGroup()
                         .addGap(580, 580, 580)
                         .addComponent(jLabel1))
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                        .addGroup(layout.createSequentialGroup()
-                            .addContainerGap()
-                            .addComponent(jLabel3)
-                            .addGap(18, 18, 18)
-                            .addComponent(quantitySpinner, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGap(30, 30, 30)
-                            .addComponent(addQuantityButton, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
-                            .addGap(300, 300, 300)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addGroup(layout.createSequentialGroup()
-                                    .addComponent(jLabel2)
-                                    .addGap(18, 18, 18)
-                                    .addComponent(distributorComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 680, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(300, 300, 300)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(jLabel3)
+                                .addGap(18, 18, 18)
+                                .addComponent(quantitySpinner, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(addQuantityButton, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(jLabel2)
+                                .addGap(18, 18, 18)
+                                .addComponent(distributorComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 680, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addContainerGap(300, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(

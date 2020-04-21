@@ -118,76 +118,105 @@ public class WarehouseManagerJPanel extends javax.swing.JPanel {
         setMinimumSize(new java.awt.Dimension(1280, 700));
         setPreferredSize(new java.awt.Dimension(1280, 700));
 
-        jLabel1.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
-        jLabel1.setText("Warehouse Manager Work Area");
+        jLabel1.setFont(new java.awt.Font("Courier New", 0, 18)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(34, 40, 49));
+        jLabel1.setText("WAREHOUSE MANAGER WORK-AREA");
+        jLabel1.setBorder(javax.swing.BorderFactory.createMatteBorder(1, 0, 1, 0, new java.awt.Color(0, 173, 181)));
 
-        orderDrugButton.setText("Order Drugs");
+        orderDrugButton.setBackground(new java.awt.Color(57, 62, 70));
+        orderDrugButton.setFont(new java.awt.Font("Courier New", 0, 14)); // NOI18N
+        orderDrugButton.setForeground(new java.awt.Color(238, 238, 238));
+        orderDrugButton.setText("ORDER DRUGS");
+        orderDrugButton.setMaximumSize(new java.awt.Dimension(200, 33));
+        orderDrugButton.setMinimumSize(new java.awt.Dimension(200, 33));
+        orderDrugButton.setPreferredSize(new java.awt.Dimension(200, 33));
         orderDrugButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 orderDrugButtonActionPerformed(evt);
             }
         });
 
-        viewRequestedOrdersButton.setText("View Requested Orders");
+        viewRequestedOrdersButton.setBackground(new java.awt.Color(57, 62, 70));
+        viewRequestedOrdersButton.setFont(new java.awt.Font("Courier New", 0, 14)); // NOI18N
+        viewRequestedOrdersButton.setForeground(new java.awt.Color(238, 238, 238));
+        viewRequestedOrdersButton.setText("VIEW ORDER REQUESTS");
+        viewRequestedOrdersButton.setMaximumSize(new java.awt.Dimension(200, 33));
+        viewRequestedOrdersButton.setMinimumSize(new java.awt.Dimension(200, 33));
+        viewRequestedOrdersButton.setPreferredSize(new java.awt.Dimension(200, 33));
         viewRequestedOrdersButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 viewRequestedOrdersButtonActionPerformed(evt);
             }
         });
 
-        checkInventoryButton.setText("Check Inventory");
+        checkInventoryButton.setBackground(new java.awt.Color(57, 62, 70));
+        checkInventoryButton.setFont(new java.awt.Font("Courier New", 0, 14)); // NOI18N
+        checkInventoryButton.setForeground(new java.awt.Color(238, 238, 238));
+        checkInventoryButton.setText("CHECK INVENTORY");
+        checkInventoryButton.setMaximumSize(new java.awt.Dimension(200, 33));
+        checkInventoryButton.setMinimumSize(new java.awt.Dimension(200, 33));
+        checkInventoryButton.setPreferredSize(new java.awt.Dimension(200, 33));
         checkInventoryButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 checkInventoryButtonActionPerformed(evt);
             }
         });
 
-        viewRecievedOrderButton.setText("View Received Orders");
+        viewRecievedOrderButton.setBackground(new java.awt.Color(57, 62, 70));
+        viewRecievedOrderButton.setFont(new java.awt.Font("Courier New", 0, 14)); // NOI18N
+        viewRecievedOrderButton.setForeground(new java.awt.Color(238, 238, 238));
+        viewRecievedOrderButton.setText("VIEW RECIEVED ORDERS");
+        viewRecievedOrderButton.setMaximumSize(new java.awt.Dimension(200, 33));
+        viewRecievedOrderButton.setMinimumSize(new java.awt.Dimension(200, 33));
+        viewRecievedOrderButton.setPreferredSize(new java.awt.Dimension(200, 33));
         viewRecievedOrderButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 viewRecievedOrderButtonActionPerformed(evt);
             }
         });
 
-        alertLabel.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        alertLabel.setFont(new java.awt.Font("Courier New", 0, 14)); // NOI18N
         alertLabel.setForeground(new java.awt.Color(255, 0, 0));
-        alertLabel.setText("Illegitimate drugs have been reported.");
+        alertLabel.setText("*ILLEGITIMATE DRUGS HAVE BEEN REPORTED AND REMOVED FROM THE INVENTORY");
 
         org.jdesktop.layout.GroupLayout layout = new org.jdesktop.layout.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-            .add(org.jdesktop.layout.GroupLayout.TRAILING, layout.createSequentialGroup()
-                .add(105, 105, 105)
-                .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.TRAILING)
-                    .add(jLabel1)
-                    .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.TRAILING, false)
-                        .add(viewRecievedOrderButton, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 185, Short.MAX_VALUE)
-                        .add(checkInventoryButton, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .add(orderDrugButton, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .add(viewRequestedOrdersButton, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, 185, Short.MAX_VALUE)))
-                .add(162, 162, 162))
             .add(layout.createSequentialGroup()
-                .add(32, 32, 32)
-                .add(alertLabel, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 372, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
+                .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
+                    .add(layout.createSequentialGroup()
+                        .add(491, 491, 491)
+                        .add(jLabel1))
+                    .add(layout.createSequentialGroup()
+                        .add(541, 541, 541)
+                        .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.CENTER)
+                            .add(orderDrugButton, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 200, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                            .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.TRAILING, false)
+                                .add(viewRecievedOrderButton, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .add(checkInventoryButton, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                            .add(org.jdesktop.layout.GroupLayout.LEADING, viewRequestedOrdersButton, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 200, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)))
+                    .add(layout.createSequentialGroup()
+                        .add(364, 364, 364)
+                        .add(alertLabel)))
+                .addContainerGap(364, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
             .add(layout.createSequentialGroup()
-                .addContainerGap()
-                .add(jLabel1)
-                .add(56, 56, 56)
-                .add(orderDrugButton)
-                .addPreferredGap(org.jdesktop.layout.LayoutStyle.UNRELATED)
-                .add(viewRequestedOrdersButton)
-                .addPreferredGap(org.jdesktop.layout.LayoutStyle.UNRELATED)
-                .add(checkInventoryButton)
-                .addPreferredGap(org.jdesktop.layout.LayoutStyle.UNRELATED)
-                .add(viewRecievedOrderButton)
-                .add(42, 42, 42)
+                .add(120, 120, 120)
+                .add(jLabel1, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 30, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                .add(100, 100, 100)
+                .add(orderDrugButton, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 33, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                .add(50, 50, 50)
+                .add(checkInventoryButton, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 33, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                .add(50, 50, 50)
+                .add(viewRequestedOrdersButton, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 33, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                .add(50, 50, 50)
+                .add(viewRecievedOrderButton, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 33, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(org.jdesktop.layout.LayoutStyle.RELATED, 49, Short.MAX_VALUE)
                 .add(alertLabel, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 19, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                .add(56, 56, 56))
+                .add(100, 100, 100))
         );
     }// </editor-fold>//GEN-END:initComponents
 

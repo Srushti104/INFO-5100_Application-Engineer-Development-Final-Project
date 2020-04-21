@@ -126,6 +126,7 @@ public class ProductManagerJPanel extends javax.swing.JPanel {
         infoLabel.setToolTipText("");
 
         drugCatalogJTable.setBackground(new java.awt.Color(238, 238, 238));
+        drugCatalogJTable.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 173, 181), 1, true));
         drugCatalogJTable.setFont(new java.awt.Font("Courier New", 0, 12)); // NOI18N
         drugCatalogJTable.setForeground(new java.awt.Color(34, 40, 49));
         drugCatalogJTable.setModel(new javax.swing.table.DefaultTableModel(
@@ -171,11 +172,10 @@ public class ProductManagerJPanel extends javax.swing.JPanel {
         layout.setHorizontalGroup(
             layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
             .add(layout.createSequentialGroup()
+                .add(300, 300, 300)
                 .add(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.TRAILING)
                     .add(refreshButton, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 40, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
-                    .add(layout.createSequentialGroup()
-                        .add(300, 300, 300)
-                        .add(jScrollPane1, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 680, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)))
+                    .add(jScrollPane1, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 680, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .add(org.jdesktop.layout.GroupLayout.TRAILING, layout.createSequentialGroup()
                 .add(503, 503, 503)
