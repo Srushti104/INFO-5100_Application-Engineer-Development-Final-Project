@@ -23,7 +23,7 @@ import javax.swing.JPanel;
  * @author nived
  */
 public class AddNetworkJPanel extends javax.swing.JPanel {
-    
+
     JPanel userProcessContainer;
     Business business;
 
@@ -240,7 +240,7 @@ public class AddNetworkJPanel extends javax.swing.JPanel {
     private void backButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backButtonActionPerformed
         // TODO add your handling code here:
         userProcessContainer.remove(this);
-        
+
         CardLayout cardLayout = (CardLayout) userProcessContainer.getLayout();
         cardLayout.previous(userProcessContainer);
     }//GEN-LAST:event_backButtonActionPerformed
@@ -250,45 +250,40 @@ public class AddNetworkJPanel extends javax.swing.JPanel {
 
         if (!userAccountField.getText().isEmpty() && !passwordField.getText().isEmpty() && !networkNameField.getText().isEmpty()) {
             if (passwordPattern() == false) {
-                jLabel2.setForeground(Color.red);
-                passwordField.setBorder(BorderFactory.createLineBorder(Color.RED));
                 JOptionPane.showMessageDialog(null, "Password should be at least 6 digits and contain at least one upper case letter, "
                         + "one lower case letter, one digit and one special character $, *, # or &.");
                 return;
-                
-            }            
-            
+
+            }
+
             if (rePasswordPattern() == false) {
-                jLabel3.setForeground(Color.red);
-                reenterPassField.setBorder(BorderFactory.createLineBorder(Color.RED));
                 JOptionPane.showMessageDialog(null, "Passwords do not match.");
                 return;
-                
-            } 
-            for(Network n: business.getNetworkDirectory().getNetworkList())
-            {
-                
-                if(n.getNetworkName().equalsIgnoreCase(networkNameField.getText())){
-                JOptionPane.showMessageDialog(null, "Network already exists.");
-                return;
+
+            }
+            for (Network n : business.getNetworkDirectory().getNetworkList()) {
+
+                if (n.getNetworkName().equalsIgnoreCase(networkNameField.getText())) {
+                    JOptionPane.showMessageDialog(null, "Network already exists in the system.");
+                    return;
                 }
             }
-            
+
             Network network = business.getNetworkDirectory().newNetwork();
             network.setNetworkName(networkNameField.getText());
-            
+
             Employee employee = network.getEmployeeDirectory().newEmployee();
             employee.setFirstName(firstNameField.getText());
             employee.setLastName(lastNameField.getText());
-            
+
             UserAccount userAccount1 = network.getUserAccountDirectory().newAccount();
             userAccount1.setUserName(userAccountField.getText());
             userAccount1.setPassword(passwordField.getText());
             userAccount1.setRole(new NetworkAdminRole());
             userAccount1.setEmployee(employee);
-            
+
             JOptionPane.showMessageDialog(this, "Network added");
-            
+
             networkNameField.setText("");
             firstNameField.setText("");
             lastNameField.setText("");
@@ -297,19 +292,19 @@ public class AddNetworkJPanel extends javax.swing.JPanel {
             reenterPassField.setText("");
         } else {
             JOptionPane.showMessageDialog(this, "Please enter all the fields");
-            
+
         }
-        
+
 
     }//GEN-LAST:event_addButtonActionPerformed
-    
+
     private boolean passwordPattern() {
         Pattern p = Pattern.compile("^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{6,}$");
         Matcher m = p.matcher(passwordField.getText());
         boolean b = m.matches();
         return b;
     }
-    
+
     private boolean rePasswordPattern() {
         String password = passwordField.getText();
         String rePassword = reenterPassField.getText();
