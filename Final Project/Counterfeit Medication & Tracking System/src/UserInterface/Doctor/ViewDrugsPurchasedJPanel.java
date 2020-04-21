@@ -50,14 +50,11 @@ public class ViewDrugsPurchasedJPanel extends javax.swing.JPanel {
         {
             Object row[] = new Object[3];
 
-//            if (package1.getDrug() == tempDrug) {
-//                break;
-//            } else {
+
             if (drugNameSet.add(package1.getDrug().getDrugName())) {
 
                 row[0] = package1.getDrug().getDrugName();
                 row[1] = doc.getDrugCatalog().getTotalQuantity(package1.getDrug());
-                // row[2]=hospitalEnterprise.getInventoryCatalog().getTotalQuantity(inventoryItem.getPackage1().getDrug());
 
                 tempDrug = package1.getDrug();
 

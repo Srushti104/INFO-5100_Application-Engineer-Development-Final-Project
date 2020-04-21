@@ -6,11 +6,8 @@ package UserInterface.Doctor;
 
 import Business.Business;
 import Business.Enterprise;
-import Business.HospitalEnterprise;
 import Business.Network;
-import Business.Organization;
 import Business.UserAccount;
-import UserInterface.InventoryManager.OrderDrugJPanel;
 import java.awt.CardLayout;
 import javax.swing.JPanel;
 
@@ -33,7 +30,7 @@ public class DoctorWorkAreaJPanel extends javax.swing.JPanel {
         this.business = business;
         this.userAccount = userAccount;
 
-      //  patientLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/UserInterface/patient.jpg")));
+        //  patientLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/UserInterface/patient.jpg")));
     }
 
     /**

@@ -10,8 +10,6 @@ import Business.Network;
 import Business.Organization;
 import Business.UserAccount;
 import java.awt.CardLayout;
-import javax.swing.ImageIcon;
-import javax.swing.JLabel;
 import javax.swing.JPanel;
 
 /**

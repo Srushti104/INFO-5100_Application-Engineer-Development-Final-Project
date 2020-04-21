@@ -70,8 +70,7 @@ public class ReportedIncidentsJPanel extends javax.swing.JPanel {
                 row[4] = hospitalEnterprise.getEnterpriseName();
                 row[5] = managerWokrRequest.getDgName();
                 row[6] = managerWokrRequest.getProblemReported();
-                //  row[4]=workRequest.getDrugName();
-                //  row[5]=workRequest.getQuantity();
+                
 
                 ((DefaultTableModel) requestsTable.getModel()).addRow(row);
             }
@@ -282,7 +281,7 @@ public class ReportedIncidentsJPanel extends javax.swing.JPanel {
             drugTesterWorkRequest.setSender(userAccount);
             drugTesterWorkRequest.setRequestDate(new Date());
             drugTesterWorkRequest.setMessage("Test the Drug");
-            drugTesterWorkRequest.setStatus("Drug under testing");
+            drugTesterWorkRequest.setStatus("Unassigned");
             // licenseManagerWorkRequest.setManuName(manuNameField.getText());
             // licenseManagerWorkRequest.setDrugManu(drugaManuTextArea.getText());
             drugTesterWorkRequest.setResultTest("Drug test");

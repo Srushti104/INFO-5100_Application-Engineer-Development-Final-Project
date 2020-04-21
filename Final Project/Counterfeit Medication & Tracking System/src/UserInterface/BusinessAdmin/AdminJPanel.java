@@ -5,7 +5,6 @@
 package UserInterface.BusinessAdmin;
 
 import Business.Business;
-import Business.Enterprise;
 import Business.UserAccount;
 import java.awt.CardLayout;
 import javax.swing.JPanel;
@@ -28,7 +27,6 @@ public class AdminJPanel extends javax.swing.JPanel {
         this.userProcessContainer=userProcessContainer;
         this.business=business;
         this.userAccount=userAccount;
-      //  adminLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/UserInterface/admin.jpg")));
     }
 
     /**

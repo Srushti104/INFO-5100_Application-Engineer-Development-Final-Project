@@ -35,7 +35,6 @@ public class AddDoctorJPanel extends javax.swing.JPanel {
         this.network = network;
         this.userAccount = userAccount;
         hospJCombo.removeAllItems();
-        //  hospNameField.setEditable(true);
         refresh();
     }
 
@@ -363,9 +362,7 @@ public class AddDoctorJPanel extends javax.swing.JPanel {
 
                             HospitalEnterprise hospitalEnterprise = (HospitalEnterprise) enterprise;
                             Doctor doc = hospitalEnterprise.getDoctorDirectory().newDoctor();
-                            //           HospitalEnterprise hosp = (HospitalEnterprise) hospJCombo.getSelectedItem();
-
-                            //   hospNameField.setText(hospitalEnterprise.getEnterpriseName());
+                           
                             doc.setFirstName(firstNameField.getText());
                             doc.setLastName(lastNameField.getText());
                             doc.setHsopName(hospJCombo.getSelectedItem().toString());
