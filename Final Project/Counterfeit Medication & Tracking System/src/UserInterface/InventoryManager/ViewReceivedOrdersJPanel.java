@@ -15,11 +15,9 @@ import Business.Organization;
 import Business.Package1;
 import Business.Doctor;
 import Business.Transaction;
-import Business.TransactionHistory;
 import Business.UserAccount;
 import Business.WorkRequests.WorkRequest;
 import java.awt.CardLayout;
-import java.util.Date;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.table.DefaultTableModel;
@@ -452,23 +450,13 @@ public class ViewReceivedOrdersJPanel extends javax.swing.JPanel {
 
            // workRequest.setReceiver(userAccount);
 
-            workRequest.setStatus("Sent To Doctor");
+            workRequest.setStatus("Sent to doctor");
             Refresh();
         }
             InventoryManagerWorkRequest inventoryManagerWorkRequest = (InventoryManagerWorkRequest) requestsTable.getValueAt(selectedRow, 0);
             UserAccount sender = inventoryManagerWorkRequest.getSender();
             Doctor doc = sender.getDoctor();
-            /*       ShipmentManagerWorkRequest shipmentManagerWorkRequest = new ShipmentManagerWorkRequest();
-                shipmentManagerWorkRequest.setSender(userAccount);
-                shipmentManagerWorkRequest.setRequestDate(new Date());
-                shipmentManagerWorkRequest.setMessage("Ship the required");
-                shipmentManagerWorkRequest.setStatus("Sent for shipment");
-                // shipmentManagerWorkRequest.setManuName(manuNameField.getText());
-                shipmentManagerWorkRequest.setDrugName(inventoryManagerWorkRequest.getDrug().getDrugName());
-                shipmentManagerWorkRequest.setDrug(inventoryManagerWorkRequest.getDrug());
-                shipmentManagerWorkRequest.setQuantity(inventoryManagerWorkRequest.getQt());
-                shipmentManagerWorkRequest.setShippedTo(inventoryManagerWorkRequest.getSender());*/
-
+           
             Order order = new Order();
             HospitalEnterprise hospitalEnterprise = (HospitalEnterprise) network.getEnterpriseDirectory().getMyEnterprise(userAccount);
             Enterprise en1 = network.getEnterpriseDirectory().getMyEnterprise(inventoryManagerWorkRequest.getSender());
@@ -526,20 +514,9 @@ public class ViewReceivedOrdersJPanel extends javax.swing.JPanel {
 
             }
 
-//                   
-            // shipmentManagerWorkRequest.setOrder(order);
+
             HospitalEnterprise en2 = (HospitalEnterprise) network.getEnterpriseDirectory().getMyEnterprise(userAccount);
 
-//        ThirdPartyLogisticsEnterprise en3 = null;
-//        for (Enterprise enterprise12 : network.getEnterpriseDirectory().getEnterpriseList()) {
-//            if (enterprise12.getClass().equals(ThirdPartyLogisticsEnterprise.class)) {
-//                en3 = (ThirdPartyLogisticsEnterprise) enterprise12;
-//            }
-//        }
-            //   ShippingManagementOrganization shippingManagementOrganization = en3.getShippingManagementOrganization();
-            //   shippingManagementOrganization.getWorkQueue().getWorkRequestList().add(shipmentManagerWorkRequest);
-            // userAccount.getWorkQueue().getWorkRequestList().add(salesRequest);
-            //  en2.getInventoryManagementOrganization().getSentWorkQueue().getWorkRequestList().add(shipmentManagerWorkRequest);
             JOptionPane.showMessageDialog(null, "Drugs sent To Doctor");
 
 

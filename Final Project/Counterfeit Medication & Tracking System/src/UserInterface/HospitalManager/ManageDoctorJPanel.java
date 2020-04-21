@@ -49,6 +49,7 @@ public class ManageDoctorJPanel extends javax.swing.JPanel {
                 for (Doctor doc : hospitalEnterprise.getDoctorDirectory().getDoctorList()) {
                     Object row[] = new Object[5];
                     row[0] = doc.getFirstName() + " " + doc.getLastName();
+                    row[0] = doc.getFirstName();
                     row[1] = doc.getAddress().getLine1();
                     row[2] = doc.getAddress().getLine2();
                     row[3] = doc.getAddress().getCity();
