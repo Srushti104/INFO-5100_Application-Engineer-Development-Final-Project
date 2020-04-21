@@ -14,6 +14,8 @@ import Business.Network;
 import Business.Roles.EnterpriseAdminRole;
 import Business.UserAccount;
 import java.awt.CardLayout;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
@@ -263,11 +265,8 @@ public class AddEnterpriseJPanel extends javax.swing.JPanel {
 
     private void addButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addButtonActionPerformed
         // TODO add your handling code here:
-
         String enpName = enterpriseNameField.getText();
         String enterprise = (String) enterpriseTypeComboBox.getSelectedItem();
-        
-      
 
         if (enterprise == Enterprise.FDA) {
 
@@ -275,27 +274,32 @@ public class AddEnterpriseJPanel extends javax.swing.JPanel {
 
                 if (!network.getEnterpriseDirectory().isUserExisting(userNameField.getText())) {
                     FDAEnterprise fdaEnterprise = (FDAEnterprise) network.getEnterpriseDirectory().newEnterprise(Enterprise.FDA, enpName);
+                    if (passwordPattern() == true) {
 
-                    Employee employee = fdaEnterprise.getEmployeeDirectory().newEmployee();
-                    employee.setFirstName(firstNameField.getText());
-                    employee.setLastName(lastNameField.getText());
+                        Employee employee = fdaEnterprise.getEmployeeDirectory().newEmployee();
+                        employee.setFirstName(firstNameField.getText());
+                        employee.setLastName(lastNameField.getText());
 
-                    fdaEnterprise.setEnterpriseName(enpName);
-                    fdaEnterprise.setEnterpriseType(enterprise);
+                        fdaEnterprise.setEnterpriseName(enpName);
+                        fdaEnterprise.setEnterpriseType(enterprise);
 
-                    UserAccount userAccount = fdaEnterprise.getUserAccountDirectory().newAccount();
-                    userAccount.setUserName(userNameField.getText());
-                    userAccount.setPassword(passwordField.getText());
-                    userAccount.setRole(new EnterpriseAdminRole());
-                    userAccount.setEmployee(employee);
+                        UserAccount userAccount = fdaEnterprise.getUserAccountDirectory().newAccount();
+                        userAccount.setUserName(userNameField.getText());
+                        userAccount.setPassword(passwordField.getText());
+                        userAccount.setRole(new EnterpriseAdminRole());
+                        userAccount.setEmployee(employee);
 
-                    JOptionPane.showMessageDialog(this, "FDA Enterprise added");
+                        JOptionPane.showMessageDialog(this, "FDA Enterprise added");
 
-                    enterpriseNameField.setText("");
-                    firstNameField.setText("");
-                    lastNameField.setText("");
-                    userNameField.setText("");
-                    passwordField.setText("");
+                        enterpriseNameField.setText("");
+                        firstNameField.setText("");
+                        lastNameField.setText("");
+                        userNameField.setText("");
+                        passwordField.setText("");
+                    } else {
+                        JOptionPane.showMessageDialog(null, "Password should be at least 6 digits and contain at least one upper case letter, "
+                                + "one lower case letter, one digit and one special character $, *, # or &.");
+                    }
 
                 } else {
                     JOptionPane.showMessageDialog(this, "Username is already existing");
@@ -306,94 +310,8 @@ public class AddEnterpriseJPanel extends javax.swing.JPanel {
 
                 JOptionPane.showMessageDialog(this, "Username/Password is empty");
             }
-
         }
-//        if (enterprise == Enterprise.STATEREGULATORYAFFAIRS) {
-//
-//            if (!userNameField.getText().isEmpty() && !passwordField.getText().isEmpty()) {
-//                //getText() != null && passwordField.getText() != null
-//
-//                if (!network.getEnterpriseDirectory().isUserExisting(userNameField.getText())) {
-//
-//                    StateRegulatoryEnterprise stateRegulatoryEnterprise = (StateRegulatoryEnterprise) network.getEnterpriseDirectory().newEnterprise(Enterprise.STATEREGULATORYAFFAIRS, enpName);
-//
-//                    Employee employee = stateRegulatoryEnterprise.getEmployeeDirectory().newEmployee();
-//                    employee.setFirstName(firstNameField.getText());
-//                    employee.setLastName(lastNameField.getText());
-//
-//                    stateRegulatoryEnterprise.setEnterpriseName(enpName);
-//                    stateRegulatoryEnterprise.setEnterpriseType(enterprise);
-//
-//                    UserAccount userAccount1 = stateRegulatoryEnterprise.getUserAccountDirectory().newAccount();
-//                    userAccount1.setUserName(userNameField.getText());
-//                    userAccount1.setPassword(passwordField.getText());
-//                    userAccount1.setRole(new EnterpriseAdminRole());
-//                    userAccount1.setEmployee(employee);
-//
-//                    JOptionPane.showMessageDialog(this, "State Reulatory Affairs Enterprise added");
-//
-//                    enterpriseNameField.setText("");
-//                    firstNameField.setText("");
-//                    lastNameField.setText("");
-//                    userNameField.setText("");
-//                    passwordField.setText("");
-//                } else {
-//                    JOptionPane.showMessageDialog(this, "Username already existing");
-//
-//                }
-//            } else {
-//                JOptionPane.showMessageDialog(this, "Username/Password is empty");
-//            }
-//
-//        }
 
-//        if (enterprise == Enterprise.LAWENFORCEMENTUNIT) {
-//
-//            if (!userNameField.getText().isEmpty() &&!passwordField.getText().isEmpty()) {
-//                    //getText() != null && passwordField.getText() != null
-//                
-//                 if(!network.getEnterpriseDirectory().isUserExisting(userNameField.getText()))
-//                {
-//                    
-//
-//                LawEnforcementUnitEnterprise lawEnforcementUnitEnterprise = (LawEnforcementUnitEnterprise) network.getEnterpriseDirectory().newEnterprise(Enterprise.LAWENFORCEMENTUNIT, enpName);
-//
-//
-//                Employee employee = lawEnforcementUnitEnterprise.getEmployeeDirectory().newEmployee();
-//                employee.setFirstName(firstNameField.getText());
-//                employee.setLastName(lastNameField.getText());
-//
-//                lawEnforcementUnitEnterprise.setEnterpriseName(enpName);
-//                lawEnforcementUnitEnterprise.setEnterpriseType(enterprise);
-//
-//
-//                UserAccount userAccount1 = lawEnforcementUnitEnterprise.getUserAccountDirectory().newAccount();
-//                userAccount1.setUserName(userNameField.getText());
-//                userAccount1.setPassword(passwordField.getText());
-//                userAccount1.setRole(new EnterpriseAdminRole());
-//                userAccount1.setEmployee(employee);
-//
-//
-//
-//                JOptionPane.showMessageDialog(this, "Law Enforcement Unit Enterprise added");
-//
-//                enterpriseNameField.setText("");
-//                firstNameField.setText("");
-//                lastNameField.setText("");
-//                userNameField.setText("");
-//                passwordField.setText("");
-//            } 
-//                 
-//                 else
-//                 {
-//                      JOptionPane.showMessageDialog(this, "Username already existing");
-//                     
-//                 }
-//            }
-//            else {
-//                JOptionPane.showMessageDialog(this, "Username/Password is empty");
-//            }
-        //     }
         if (enterprise == Enterprise.MANUFACTURER) {
 
             if (!userNameField.getText().isEmpty() && !passwordField.getText().isEmpty()) {
@@ -401,28 +319,34 @@ public class AddEnterpriseJPanel extends javax.swing.JPanel {
 
                 if (!network.getEnterpriseDirectory().isUserExisting(userNameField.getText())) {
 
-                    ManufacturerEnterprise manufacturerEnterprise = (ManufacturerEnterprise) network.getEnterpriseDirectory().newEnterprise(Enterprise.MANUFACTURER, enpName);
+                    if (passwordPattern() == true) {
 
-                    Employee employee = manufacturerEnterprise.getEmployeeDirectory().newEmployee();
-                    employee.setFirstName(firstNameField.getText());
-                    employee.setLastName(lastNameField.getText());
+                        ManufacturerEnterprise manufacturerEnterprise = (ManufacturerEnterprise) network.getEnterpriseDirectory().newEnterprise(Enterprise.MANUFACTURER, enpName);
 
-                    manufacturerEnterprise.setEnterpriseName(enpName);
-                    manufacturerEnterprise.setEnterpriseType(enterprise);
+                        Employee employee = manufacturerEnterprise.getEmployeeDirectory().newEmployee();
+                        employee.setFirstName(firstNameField.getText());
+                        employee.setLastName(lastNameField.getText());
 
-                    UserAccount userAccount1 = manufacturerEnterprise.getUserAccountDirectory().newAccount();
-                    userAccount1.setUserName(userNameField.getText());
-                    userAccount1.setPassword(passwordField.getText());
-                    userAccount1.setRole(new EnterpriseAdminRole());
-                    userAccount1.setEmployee(employee);
+                        manufacturerEnterprise.setEnterpriseName(enpName);
+                        manufacturerEnterprise.setEnterpriseType(enterprise);
 
-                    JOptionPane.showMessageDialog(this, "Manufacturers Enterprise added");
+                        UserAccount userAccount1 = manufacturerEnterprise.getUserAccountDirectory().newAccount();
+                        userAccount1.setUserName(userNameField.getText());
+                        userAccount1.setPassword(passwordField.getText());
+                        userAccount1.setRole(new EnterpriseAdminRole());
+                        userAccount1.setEmployee(employee);
 
-                    enterpriseNameField.setText("");
-                    firstNameField.setText("");
-                    lastNameField.setText("");
-                    userNameField.setText("");
-                    passwordField.setText("");
+                        JOptionPane.showMessageDialog(this, "Manufacturers Enterprise added");
+
+                        enterpriseNameField.setText("");
+                        firstNameField.setText("");
+                        lastNameField.setText("");
+                        userNameField.setText("");
+                        passwordField.setText("");
+                    } else {
+                        JOptionPane.showMessageDialog(null, "Password should be at least 6 digits and contain at least one upper case letter, "
+                                + "one lower case letter, one digit and one special character $, *, # or &.");
+                    }
                 } else {
                     JOptionPane.showMessageDialog(this, "Username already existing");
 
@@ -439,28 +363,35 @@ public class AddEnterpriseJPanel extends javax.swing.JPanel {
 
                 if (!network.getEnterpriseDirectory().isUserExisting(userNameField.getText())) {
 
-                    DistributorEnterprise distributorEnterprise = (DistributorEnterprise) network.getEnterpriseDirectory().newEnterprise(Enterprise.DISTRIBUTOR, enpName);
+                    if (passwordPattern() == true) {
 
-                    Employee employee = distributorEnterprise.getEmployeeDirectory().newEmployee();
-                    employee.setFirstName(firstNameField.getText());
-                    employee.setLastName(lastNameField.getText());
+                        DistributorEnterprise distributorEnterprise = (DistributorEnterprise) network.getEnterpriseDirectory().newEnterprise(Enterprise.DISTRIBUTOR, enpName);
 
-                    distributorEnterprise.setEnterpriseName(enpName);
-                    distributorEnterprise.setEnterpriseType(enterprise);
+                        Employee employee = distributorEnterprise.getEmployeeDirectory().newEmployee();
+                        employee.setFirstName(firstNameField.getText());
+                        employee.setLastName(lastNameField.getText());
 
-                    UserAccount userAccount1 = distributorEnterprise.getUserAccountDirectory().newAccount();
-                    userAccount1.setUserName(userNameField.getText());
-                    userAccount1.setPassword(passwordField.getText());
-                    userAccount1.setRole(new EnterpriseAdminRole());
-                    userAccount1.setEmployee(employee);
+                        distributorEnterprise.setEnterpriseName(enpName);
+                        distributorEnterprise.setEnterpriseType(enterprise);
 
-                    JOptionPane.showMessageDialog(this, "Distributor Enterprise added");
+                        UserAccount userAccount1 = distributorEnterprise.getUserAccountDirectory().newAccount();
+                        userAccount1.setUserName(userNameField.getText());
+                        userAccount1.setPassword(passwordField.getText());
+                        userAccount1.setRole(new EnterpriseAdminRole());
+                        userAccount1.setEmployee(employee);
 
-                    enterpriseNameField.setText("");
-                    firstNameField.setText("");
-                    lastNameField.setText("");
-                    userNameField.setText("");
-                    passwordField.setText("");
+                        JOptionPane.showMessageDialog(this, "Distributor Enterprise added");
+
+                        enterpriseNameField.setText("");
+                        firstNameField.setText("");
+                        lastNameField.setText("");
+                        userNameField.setText("");
+                        passwordField.setText("");
+
+                    } else {
+                        JOptionPane.showMessageDialog(null, "Password should be at least 6 digits and contain at least one upper case letter, "
+                                + "one lower case letter, one digit and one special character $, *, # or &.");
+                    }
                 } else {
                     JOptionPane.showMessageDialog(this, "Username already existing");
 
@@ -477,28 +408,35 @@ public class AddEnterpriseJPanel extends javax.swing.JPanel {
 
                 if (!network.getEnterpriseDirectory().isUserExisting(userNameField.getText())) {
 
-                    HospitalEnterprise hospitalEnterprise = (HospitalEnterprise) network.getEnterpriseDirectory().newEnterprise(Enterprise.HOSPITAL, enpName);
+                    if (passwordPattern() == true) {
 
-                    Employee employee = hospitalEnterprise.getEmployeeDirectory().newEmployee();
-                    employee.setFirstName(firstNameField.getText());
-                    employee.setLastName(lastNameField.getText());
+                        HospitalEnterprise hospitalEnterprise = (HospitalEnterprise) network.getEnterpriseDirectory().newEnterprise(Enterprise.HOSPITAL, enpName);
 
-                    hospitalEnterprise.setEnterpriseName(enpName);
-                    hospitalEnterprise.setEnterpriseType(enterprise);
+                        Employee employee = hospitalEnterprise.getEmployeeDirectory().newEmployee();
+                        employee.setFirstName(firstNameField.getText());
+                        employee.setLastName(lastNameField.getText());
 
-                    UserAccount userAccount1 = hospitalEnterprise.getUserAccountDirectory().newAccount();
-                    userAccount1.setUserName(userNameField.getText());
-                    userAccount1.setPassword(passwordField.getText());
-                    userAccount1.setRole(new EnterpriseAdminRole());
-                    userAccount1.setEmployee(employee);
+                        hospitalEnterprise.setEnterpriseName(enpName);
+                        hospitalEnterprise.setEnterpriseType(enterprise);
 
-                    JOptionPane.showMessageDialog(this, "Hospital Enterprise added");
+                        UserAccount userAccount1 = hospitalEnterprise.getUserAccountDirectory().newAccount();
+                        userAccount1.setUserName(userNameField.getText());
+                        userAccount1.setPassword(passwordField.getText());
+                        userAccount1.setRole(new EnterpriseAdminRole());
+                        userAccount1.setEmployee(employee);
 
-                    enterpriseNameField.setText("");
-                    firstNameField.setText("");
-                    lastNameField.setText("");
-                    userNameField.setText("");
-                    passwordField.setText("");
+                        JOptionPane.showMessageDialog(this, "Hospital Enterprise added");
+
+                        enterpriseNameField.setText("");
+                        firstNameField.setText("");
+                        lastNameField.setText("");
+                        userNameField.setText("");
+                        passwordField.setText("");
+
+                    } else {
+                        JOptionPane.showMessageDialog(null, "Password should be at least 6 digits and contain at least one upper case letter, "
+                                + "one lower case letter, one digit and one special character $, *, # or &.");
+                    }
                 } else {
                     JOptionPane.showMessageDialog(this, "Username already existing");
 
@@ -511,7 +449,12 @@ public class AddEnterpriseJPanel extends javax.swing.JPanel {
 
 
     }//GEN-LAST:event_addButtonActionPerformed
-
+    private boolean passwordPattern() {
+        Pattern p = Pattern.compile("^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{6,}$");
+        Matcher m = p.matcher(passwordField.getText());
+        boolean b = m.matches();
+        return b;
+    }
     private void backButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backButtonActionPerformed
         // TODO add your handling code here:
 
