@@ -273,6 +273,8 @@ public class OrderDrugsJPanel extends javax.swing.JPanel {
             e.getWarehouseOrganization().getSentWorkQueue().getWorkRequestList().add(salesManagerWorkRequest);
 
             JOptionPane.showMessageDialog(null, "Order for Drugs Sent");
+            quantityField.setText("");
+            resultField.setText("");
         }
     }//GEN-LAST:event_orderDrugButtonActionPerformed
 
