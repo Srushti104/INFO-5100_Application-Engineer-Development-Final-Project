@@ -254,6 +254,10 @@ public class ManageUserAccountJPanel extends javax.swing.JPanel {
     private void deleteAccountJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deleteAccountJButtonActionPerformed
         // TODO add your handling code here:
         int selectedRow = userAccountJTable.getSelectedRow();
+        if (selectedRow < 0) {
+            JOptionPane.showMessageDialog(null, "Please select a row");
+            return;
+        }
         List<Object> rowValues = getRowAt(userAccountJTable, selectedRow);
         UserAccount userAccount = (UserAccount) rowValues.get(0);
         int count = userAccountJTable.getSelectedRowCount();
