@@ -79,6 +79,7 @@ public class AddNetworkJPanel extends javax.swing.JPanel {
         networkNameField.setBackground(new java.awt.Color(238, 238, 238));
         networkNameField.setFont(new java.awt.Font("Courier New", 0, 12)); // NOI18N
         networkNameField.setForeground(new java.awt.Color(34, 40, 49));
+        networkNameField.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 173, 181), 1, true));
         networkNameField.setMaximumSize(new java.awt.Dimension(200, 24));
         networkNameField.setMinimumSize(new java.awt.Dimension(200, 24));
         networkNameField.setPreferredSize(new java.awt.Dimension(200, 24));
@@ -117,6 +118,7 @@ public class AddNetworkJPanel extends javax.swing.JPanel {
         userAccountField.setBackground(new java.awt.Color(238, 238, 238));
         userAccountField.setFont(new java.awt.Font("Courier New", 0, 12)); // NOI18N
         userAccountField.setForeground(new java.awt.Color(34, 40, 49));
+        userAccountField.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 173, 181), 1, true));
         userAccountField.setMaximumSize(new java.awt.Dimension(200, 24));
         userAccountField.setMinimumSize(new java.awt.Dimension(200, 24));
         userAccountField.setPreferredSize(new java.awt.Dimension(200, 24));
@@ -124,6 +126,7 @@ public class AddNetworkJPanel extends javax.swing.JPanel {
         passwordField.setBackground(new java.awt.Color(238, 238, 238));
         passwordField.setFont(new java.awt.Font("Courier New", 0, 12)); // NOI18N
         passwordField.setForeground(new java.awt.Color(34, 40, 49));
+        passwordField.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 173, 181), 1, true));
         passwordField.setMaximumSize(new java.awt.Dimension(200, 24));
         passwordField.setMinimumSize(new java.awt.Dimension(200, 24));
         passwordField.setPreferredSize(new java.awt.Dimension(200, 24));
@@ -135,6 +138,7 @@ public class AddNetworkJPanel extends javax.swing.JPanel {
         firstNameField.setBackground(new java.awt.Color(238, 238, 238));
         firstNameField.setFont(new java.awt.Font("Courier New", 0, 12)); // NOI18N
         firstNameField.setForeground(new java.awt.Color(34, 40, 49));
+        firstNameField.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 173, 181), 1, true));
         firstNameField.setMaximumSize(new java.awt.Dimension(200, 24));
         firstNameField.setMinimumSize(new java.awt.Dimension(200, 24));
         firstNameField.setPreferredSize(new java.awt.Dimension(200, 24));
@@ -146,6 +150,7 @@ public class AddNetworkJPanel extends javax.swing.JPanel {
         lastNameField.setBackground(new java.awt.Color(238, 238, 238));
         lastNameField.setFont(new java.awt.Font("Courier New", 0, 12)); // NOI18N
         lastNameField.setForeground(new java.awt.Color(34, 40, 49));
+        lastNameField.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 173, 181), 1, true));
         lastNameField.setMaximumSize(new java.awt.Dimension(200, 24));
         lastNameField.setMinimumSize(new java.awt.Dimension(200, 24));
         lastNameField.setPreferredSize(new java.awt.Dimension(200, 24));
@@ -157,6 +162,7 @@ public class AddNetworkJPanel extends javax.swing.JPanel {
         reenterPassField.setBackground(new java.awt.Color(238, 238, 238));
         reenterPassField.setFont(new java.awt.Font("Courier New", 0, 12)); // NOI18N
         reenterPassField.setForeground(new java.awt.Color(34, 40, 49));
+        reenterPassField.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 173, 181), 1, true));
         reenterPassField.setMaximumSize(new java.awt.Dimension(200, 24));
         reenterPassField.setMinimumSize(new java.awt.Dimension(200, 24));
         reenterPassField.setPreferredSize(new java.awt.Dimension(200, 24));
@@ -193,11 +199,10 @@ public class AddNetworkJPanel extends javax.swing.JPanel {
                                             .addComponent(firstNameField, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
                                             .addComponent(networkNameField, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
                                             .addComponent(lastNameField, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addComponent(reenterPassField, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE))))))))
-                .addContainerGap(439, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(431, 431, 431)
-                .addComponent(jLabel1)
+                                            .addComponent(reenterPassField, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)))))))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(431, 431, 431)
+                        .addComponent(jLabel1)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(

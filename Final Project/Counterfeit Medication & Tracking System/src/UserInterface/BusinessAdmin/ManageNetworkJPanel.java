@@ -81,10 +81,11 @@ public class ManageNetworkJPanel extends javax.swing.JPanel {
 
         jLabel1.setFont(new java.awt.Font("Courier New", 0, 18)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(34, 40, 49));
-        jLabel1.setText("Manage Network");
+        jLabel1.setText("MANAGE NETWORK");
         jLabel1.setBorder(javax.swing.BorderFactory.createMatteBorder(1, 0, 1, 0, new java.awt.Color(0, 173, 181)));
 
         networkTable.setBackground(new java.awt.Color(238, 238, 238));
+        networkTable.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 173, 181), 1, true));
         networkTable.setFont(new java.awt.Font("Courier New", 0, 12)); // NOI18N
         networkTable.setForeground(new java.awt.Color(34, 40, 49));
         networkTable.setModel(new javax.swing.table.DefaultTableModel(

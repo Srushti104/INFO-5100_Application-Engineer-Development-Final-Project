@@ -86,19 +86,33 @@ public class DrugTesterJPanel extends javax.swing.JPanel {
         refreshButton2 = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         requestsTable = new javax.swing.JTable();
-        backButton = new javax.swing.JButton();
         assignButton = new javax.swing.JButton();
         reportDrugButton = new javax.swing.JButton();
 
-        jLabel1.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        jLabel1.setText("Drug Tester Work Area");
+        setBackground(new java.awt.Color(238, 238, 238));
+        setMaximumSize(new java.awt.Dimension(1280, 700));
+        setMinimumSize(new java.awt.Dimension(1280, 700));
+        setPreferredSize(new java.awt.Dimension(1280, 700));
 
+        jLabel1.setFont(new java.awt.Font("Courier New", 0, 18)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(34, 40, 49));
+        jLabel1.setText("DRUG TESTER WORK-AREA");
+        jLabel1.setBorder(javax.swing.BorderFactory.createMatteBorder(1, 0, 1, 0, new java.awt.Color(0, 173, 181)));
+
+        refreshButton2.setBackground(new java.awt.Color(238, 238, 238));
+        refreshButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/UserInterface/Images/refresh.png"))); // NOI18N
+        refreshButton2.setBorder(null);
+        refreshButton2.setPreferredSize(new java.awt.Dimension(40, 40));
         refreshButton2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 refreshButton2ActionPerformed(evt);
             }
         });
 
+        requestsTable.setBackground(new java.awt.Color(238, 238, 238));
+        requestsTable.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 173, 181), 1, true));
+        requestsTable.setFont(new java.awt.Font("Courier New", 0, 12)); // NOI18N
+        requestsTable.setForeground(new java.awt.Color(34, 40, 49));
         requestsTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null, null, null},
@@ -118,22 +132,28 @@ public class DrugTesterJPanel extends javax.swing.JPanel {
                 return canEdit [columnIndex];
             }
         });
+        requestsTable.setGridColor(new java.awt.Color(34, 40, 49));
+        requestsTable.setMaximumSize(new java.awt.Dimension(1000, 122));
+        requestsTable.setMinimumSize(new java.awt.Dimension(1000, 122));
+        requestsTable.setPreferredSize(new java.awt.Dimension(1000, 122));
+        requestsTable.setSelectionBackground(new java.awt.Color(0, 173, 181));
+        requestsTable.setSelectionForeground(new java.awt.Color(238, 238, 238));
         jScrollPane1.setViewportView(requestsTable);
 
-        backButton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                backButtonActionPerformed(evt);
-            }
-        });
-
-        assignButton.setText("Assign to me");
+        assignButton.setBackground(new java.awt.Color(57, 62, 70));
+        assignButton.setFont(new java.awt.Font("Courier New", 0, 14)); // NOI18N
+        assignButton.setForeground(new java.awt.Color(238, 238, 238));
+        assignButton.setText("ASSIGN TO ME");
         assignButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 assignButtonActionPerformed(evt);
             }
         });
 
-        reportDrugButton.setText("Report Drug");
+        reportDrugButton.setBackground(new java.awt.Color(57, 62, 70));
+        reportDrugButton.setFont(new java.awt.Font("Courier New", 0, 14)); // NOI18N
+        reportDrugButton.setForeground(new java.awt.Color(238, 238, 238));
+        reportDrugButton.setText("REPORT DRUG");
         reportDrugButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 reportDrugButtonActionPerformed(evt);
@@ -145,39 +165,34 @@ public class DrugTesterJPanel extends javax.swing.JPanel {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGap(140, 140, 140)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 1000, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(refreshButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(140, 140, 140)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                            .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 452, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(assignButton)
-                                .addGap(268, 268, 268)
-                                .addComponent(reportDrugButton))
-                            .addComponent(refreshButton2, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(backButton, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(223, 223, 223)
-                        .addComponent(jLabel1)))
-                .addGap(185, 185, 185))
+                        .addComponent(assignButton, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(50, 50, 50)
+                        .addComponent(reportDrugButton, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(140, Short.MAX_VALUE))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(525, 525, 525)
+                .addComponent(jLabel1)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel1)
-                    .addComponent(backButton, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(10, 10, 10)
-                .addComponent(refreshButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(26, 26, 26)
+                .addGap(120, 120, 120)
+                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(20, 20, 20)
+                .addComponent(refreshButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(20, 20, 20)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 122, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(30, 30, 30)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(assignButton)
-                    .addComponent(reportDrugButton))
-                .addGap(90, 90, 90))
+                    .addComponent(reportDrugButton, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(assignButton, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -243,18 +258,8 @@ public class DrugTesterJPanel extends javax.swing.JPanel {
         }
     }//GEN-LAST:event_reportDrugButtonActionPerformed
 
-    private void backButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backButtonActionPerformed
-        // TODO add your handling code here:
-
-        userProcessContainer.remove(this);
-
-        CardLayout cardLayout = (CardLayout) userProcessContainer.getLayout();
-        cardLayout.previous(userProcessContainer);
-    }//GEN-LAST:event_backButtonActionPerformed
-
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton assignButton;
-    private javax.swing.JButton backButton;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JButton refreshButton2;

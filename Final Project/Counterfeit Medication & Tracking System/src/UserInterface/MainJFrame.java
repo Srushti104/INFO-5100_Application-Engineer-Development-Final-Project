@@ -77,7 +77,7 @@ public class MainJFrame extends javax.swing.JFrame {
 //            userProcessContainer.add("WorkArea", panel);
 //            CardLayout cardLayout = (CardLayout) userProcessContainer.getLayout();
 //            cardLayout.next(userProcessContainer);
-      //  mainJSpliPane.setRightComponent(landingPageJPanel);
+//            mainJSpliPane.setRightComponent();
     }
 
     /*private void formWindowClosing(java.awt.event.WindowEvent evt)
@@ -128,7 +128,7 @@ public class MainJFrame extends javax.swing.JFrame {
         jLabel1.setFont(new java.awt.Font("Courier New", 0, 24)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(57, 62, 70));
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel1.setText("Welcome to");
+        jLabel1.setText("WELCOME TO");
 
         jLabel2.setBackground(new java.awt.Color(252, 248, 232));
         jLabel2.setFont(new java.awt.Font("Niagara Engraved", 0, 96)); // NOI18N

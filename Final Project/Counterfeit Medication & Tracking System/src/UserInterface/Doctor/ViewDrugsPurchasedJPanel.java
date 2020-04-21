@@ -85,13 +85,14 @@ public class ViewDrugsPurchasedJPanel extends javax.swing.JPanel {
 
         jLabel1.setFont(new java.awt.Font("Courier New", 0, 18)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(34, 40, 49));
-        jLabel1.setText("Drugs Purchased");
+        jLabel1.setText("DRUGS PURCHASED");
         jLabel1.setBorder(javax.swing.BorderFactory.createMatteBorder(1, 0, 1, 0, new java.awt.Color(0, 173, 181)));
         jLabel1.setMaximumSize(new java.awt.Dimension(165, 30));
         jLabel1.setMinimumSize(new java.awt.Dimension(165, 30));
         jLabel1.setPreferredSize(new java.awt.Dimension(165, 30));
 
         drugPurchasedJtable.setBackground(new java.awt.Color(238, 238, 238));
+        drugPurchasedJtable.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 173, 181), 1, true));
         drugPurchasedJtable.setFont(new java.awt.Font("Courier New", 0, 12)); // NOI18N
         drugPurchasedJtable.setForeground(new java.awt.Color(34, 40, 49));
         drugPurchasedJtable.setModel(new javax.swing.table.DefaultTableModel(
@@ -113,6 +114,10 @@ public class ViewDrugsPurchasedJPanel extends javax.swing.JPanel {
                 return canEdit [columnIndex];
             }
         });
+        drugPurchasedJtable.setMaximumSize(new java.awt.Dimension(680, 122));
+        drugPurchasedJtable.setMinimumSize(new java.awt.Dimension(680, 122));
+        drugPurchasedJtable.setName(""); // NOI18N
+        drugPurchasedJtable.setPreferredSize(new java.awt.Dimension(680, 122));
         drugPurchasedJtable.setRowHeight(20);
         drugPurchasedJtable.setSelectionBackground(new java.awt.Color(0, 173, 181));
         drugPurchasedJtable.setSelectionForeground(new java.awt.Color(238, 238, 238));
@@ -138,11 +143,10 @@ public class ViewDrugsPurchasedJPanel extends javax.swing.JPanel {
                         .addComponent(backButton, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(300, 300, 300)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 680, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(300, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(558, 558, 558)
-                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 680, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(558, 558, 558)
+                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(

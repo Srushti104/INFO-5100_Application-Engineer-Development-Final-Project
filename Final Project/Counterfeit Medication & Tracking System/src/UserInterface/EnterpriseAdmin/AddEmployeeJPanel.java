@@ -67,7 +67,7 @@ public class AddEmployeeJPanel extends javax.swing.JPanel {
 
         jLabel2.setFont(new java.awt.Font("Courier New", 0, 18)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(34, 40, 49));
-        jLabel2.setText("Add Employee");
+        jLabel2.setText("ADD EMPLOYEE");
         jLabel2.setBorder(javax.swing.BorderFactory.createMatteBorder(1, 0, 1, 0, new java.awt.Color(0, 173, 181)));
         jLabel2.setMaximumSize(new java.awt.Dimension(132, 30));
         jLabel2.setMinimumSize(new java.awt.Dimension(132, 30));
@@ -172,7 +172,7 @@ public class AddEmployeeJPanel extends javax.swing.JPanel {
                 .addGap(30, 30, 30)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel3)
-                    .addComponent(organizationJComboBox, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(organizationJComboBox, javax.swing.GroupLayout.DEFAULT_SIZE, 30, Short.MAX_VALUE))
                 .addGap(30, 30, 30)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel4)
