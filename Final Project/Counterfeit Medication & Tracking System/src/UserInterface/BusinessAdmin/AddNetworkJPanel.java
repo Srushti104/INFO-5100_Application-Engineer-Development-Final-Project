@@ -69,7 +69,7 @@ public class AddNetworkJPanel extends javax.swing.JPanel {
         jLabel1.setFont(new java.awt.Font("Courier New", 0, 18)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(34, 40, 49));
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel1.setText("CREATE NEW NETWORK AND RESPECTIVE USER");
+        jLabel1.setText("CREATE NEW NETWORK AND RESPECTIVE ADMIN");
         jLabel1.setBorder(javax.swing.BorderFactory.createMatteBorder(1, 0, 1, 0, new java.awt.Color(0, 173, 181)));
 
         jLabel2.setFont(new java.awt.Font("Courier New", 0, 14)); // NOI18N

@@ -13,6 +13,8 @@ import Business.Doctor;
 import Business.Roles.DoctorRole;
 import Business.UserAccount;
 import java.awt.CardLayout;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
@@ -35,7 +37,6 @@ public class AddDoctorJPanel extends javax.swing.JPanel {
         this.network = network;
         this.userAccount = userAccount;
         hospJCombo.removeAllItems();
-        //  hospNameField.setEditable(true);
         refresh();
     }
 
@@ -78,7 +79,7 @@ public class AddDoctorJPanel extends javax.swing.JPanel {
         zipcodeField = new javax.swing.JTextField();
         cityField = new javax.swing.JTextField();
         line2Field = new javax.swing.JTextField();
-        line1Field = new javax.swing.JTextField();
+        LicenseNoField = new javax.swing.JTextField();
         jLabel12 = new javax.swing.JLabel();
         jLabel11 = new javax.swing.JLabel();
         jLabel10 = new javax.swing.JLabel();
@@ -189,10 +190,10 @@ public class AddDoctorJPanel extends javax.swing.JPanel {
         line2Field.setForeground(new java.awt.Color(34, 40, 49));
         line2Field.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 173, 181), 1, true));
 
-        line1Field.setBackground(new java.awt.Color(238, 238, 238));
-        line1Field.setFont(new java.awt.Font("Courier New", 0, 12)); // NOI18N
-        line1Field.setForeground(new java.awt.Color(34, 40, 49));
-        line1Field.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 173, 181), 1, true));
+        LicenseNoField.setBackground(new java.awt.Color(238, 238, 238));
+        LicenseNoField.setFont(new java.awt.Font("Courier New", 0, 12)); // NOI18N
+        LicenseNoField.setForeground(new java.awt.Color(34, 40, 49));
+        LicenseNoField.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 173, 181), 1, true));
 
         jLabel12.setBackground(new java.awt.Color(238, 238, 238));
         jLabel12.setFont(new java.awt.Font("Courier New", 0, 14)); // NOI18N
@@ -212,12 +213,12 @@ public class AddDoctorJPanel extends javax.swing.JPanel {
         jLabel9.setBackground(new java.awt.Color(238, 238, 238));
         jLabel9.setFont(new java.awt.Font("Courier New", 0, 14)); // NOI18N
         jLabel9.setForeground(new java.awt.Color(34, 40, 49));
-        jLabel9.setText("STREET NAME");
+        jLabel9.setText("ADDRESS");
 
         jLabel8.setBackground(new java.awt.Color(238, 238, 238));
         jLabel8.setFont(new java.awt.Font("Courier New", 0, 14)); // NOI18N
         jLabel8.setForeground(new java.awt.Color(34, 40, 49));
-        jLabel8.setText("APPARTMENT / HOUSE NO");
+        jLabel8.setText("LICENSE NUMBER");
 
         jLabel7.setBackground(new java.awt.Color(238, 238, 238));
         jLabel7.setFont(new java.awt.Font("Courier New", 0, 18)); // NOI18N
@@ -249,34 +250,38 @@ public class AddDoctorJPanel extends javax.swing.JPanel {
                             .addComponent(jLabel3)
                             .addComponent(jLabel4)
                             .addComponent(jLabel2)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                .addComponent(jLabel5)
-                                .addComponent(jLabel6))
                             .addComponent(jLabel13)
                             .addGroup(layout.createSequentialGroup()
                                 .addGap(200, 200, 200)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                                     .addComponent(lastNameField, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(firstNameField, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(hospJCombo, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(userNameField, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(passwordField, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                                    .addComponent(hospJCombo, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addComponent(jLabel7)
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(jLabel9)
+                                .addComponent(jLabel10)
+                                .addGroup(layout.createSequentialGroup()
+                                    .addGap(200, 200, 200)
+                                    .addComponent(cityField, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addComponent(line2Field, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addGap(100, 100, 100)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel8)
-                            .addComponent(jLabel9)
-                            .addComponent(jLabel10)
                             .addComponent(jLabel12)
-                            .addComponent(jLabel11)
+                            .addComponent(jLabel8)
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                .addComponent(jLabel5)
+                                .addComponent(jLabel6))
                             .addGroup(layout.createSequentialGroup()
-                                .addGap(200, 200, 200)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addComponent(line1Field, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(line2Field, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(cityField, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(jLabel11)
+                                .addGap(160, 160, 160)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(stateField, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(zipcodeField, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                            .addComponent(jLabel7)))
+                                    .addComponent(LicenseNoField, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                        .addComponent(userNameField, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(passwordField, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addComponent(zipcodeField, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)))))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(30, 30, 30)
                         .addComponent(backButton, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -296,33 +301,30 @@ public class AddDoctorJPanel extends javax.swing.JPanel {
                 .addGap(51, 51, 51)
                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(80, 80, 80)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                .addComponent(jLabel13)
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                     .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(jLabel7)
-                                .addGap(18, 18, 18)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                    .addComponent(line1Field, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jLabel8))
-                                .addGap(18, 18, 18)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addComponent(line2Field, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jLabel9))
-                                .addGap(18, 18, 18)
-                                .addComponent(cityField, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(jLabel10))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(userNameField, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel5))
                         .addGap(18, 18, 18)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(stateField, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel12))
+                            .addComponent(passwordField, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel6))
                         .addGap(18, 18, 18)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(zipcodeField, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel11)))
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabel13)
+                            .addComponent(LicenseNoField, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel8))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel12)
+                            .addComponent(zipcodeField, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(18, 18, 18)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel11)
+                            .addComponent(stateField, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(firstNameField, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel2))
@@ -335,16 +337,19 @@ public class AddDoctorJPanel extends javax.swing.JPanel {
                             .addComponent(hospJCombo, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel4))
                         .addGap(18, 18, 18)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(userNameField, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel5))
+                        .addComponent(jLabel7)
                         .addGap(18, 18, 18)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(passwordField, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel6))))
-                .addGap(50, 50, 50)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(line2Field, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jLabel9))
+                                .addGap(18, 18, 18)
+                                .addComponent(cityField, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(jLabel10))))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 88, Short.MAX_VALUE)
                 .addComponent(addDoctorButton, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(128, Short.MAX_VALUE))
+                .addGap(50, 50, 50))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -357,44 +362,49 @@ public class AddDoctorJPanel extends javax.swing.JPanel {
                 for (UserAccount userAccount1 : organization.getUserAccountDirectory().getUserAccountList()) {
                     if (userAccount == userAccount1) {
                         if (firstNameField.getText().isEmpty() || lastNameField.getText().isEmpty() || userNameField.getText().isEmpty() || passwordField.getText().isEmpty()
-                                || line1Field.getText().isEmpty() || line2Field.getText().isEmpty() || cityField.getText().isEmpty() || zipcodeField.getText().isEmpty()) {
+                                || LicenseNoField.getText().isEmpty() || line2Field.getText().isEmpty() || cityField.getText().isEmpty() || zipcodeField.getText().isEmpty()) {
                             JOptionPane.showMessageDialog(null, "Please fill all the fields");
                         } else {
+                            if (!network.getEnterpriseDirectory().isUserExisting(userNameField.getText())) {
+                                if (passwordPattern() == true) {
+                                    HospitalEnterprise hospitalEnterprise = (HospitalEnterprise) enterprise;
+                                    Doctor doc = hospitalEnterprise.getDoctorDirectory().newDoctor();
+                                    doc.setFirstName(firstNameField.getText());
+                                    doc.setLastName(lastNameField.getText());
+                                    doc.setHsopName(hospJCombo.getSelectedItem().toString());
 
-                            HospitalEnterprise hospitalEnterprise = (HospitalEnterprise) enterprise;
-                            Doctor doc = hospitalEnterprise.getDoctorDirectory().newDoctor();
-                            //           HospitalEnterprise hosp = (HospitalEnterprise) hospJCombo.getSelectedItem();
+                                    Address address = doc.getAddress();
+                                    address.setLine1(LicenseNoField.getText());
+                                    address.setLine2(line2Field.getText());
+                                    address.setCity(cityField.getText());
+                                    address.setState(stateField.getText());
+                                    address.setZipcode(zipcodeField.getText());
 
-                            //   hospNameField.setText(hospitalEnterprise.getEnterpriseName());
-                            doc.setFirstName(firstNameField.getText());
-                            doc.setLastName(lastNameField.getText());
-                            doc.setHsopName(hospJCombo.getSelectedItem().toString());
+                                    UserAccount userAccount2 = hospitalEnterprise.getUserAccountDirectory().newAccount();
+                                    userAccount2.setUserName(userNameField.getText());
+                                    userAccount2.setPassword(passwordField.getText());
+                                    userAccount2.setRole(new DoctorRole());
+                                    userAccount2.setDoctor(doc);
 
-                            Address address = doc.getAddress();
-                            address.setLine1(line1Field.getText());
-                            address.setLine2(line2Field.getText());
-                            address.setCity(cityField.getText());
-                            address.setState(stateField.getText());
-                            address.setZipcode(zipcodeField.getText());
+                                    JOptionPane.showMessageDialog(null, "Doctor added");
 
-                            UserAccount userAccount2 = hospitalEnterprise.getUserAccountDirectory().newAccount();
-                            userAccount2.setUserName(userNameField.getText());
-                            userAccount2.setPassword(passwordField.getText());
-                            userAccount2.setRole(new DoctorRole());
-                            userAccount2.setDoctor(doc);
+                                    firstNameField.setText("");
+                                    lastNameField.setText("");
+                                    userNameField.setText("");
+                                    passwordField.setText("");
 
-                            JOptionPane.showMessageDialog(null, "Doctor added");
-
-                            firstNameField.setText("");
-                            lastNameField.setText("");
-                            userNameField.setText("");
-                            passwordField.setText("");
-
-                            line1Field.setText("");
-                            line2Field.setText("");
-                            cityField.setText("");
-                            stateField.setText("");
-                            zipcodeField.setText("");
+                                    LicenseNoField.setText("");
+                                    line2Field.setText("");
+                                    cityField.setText("");
+                                    stateField.setText("");
+                                    zipcodeField.setText("");
+                                } else {
+                                    JOptionPane.showMessageDialog(null, "Password should be at least 6 digits and contain at least one upper case letter, "
+                                            + "one lower case letter, one digit and one special character $, *, # or &.");
+                                }
+                            } else {
+                                JOptionPane.showMessageDialog(this, "User Name already present");
+                            }
                         }
 
                     }
@@ -403,6 +413,13 @@ public class AddDoctorJPanel extends javax.swing.JPanel {
         }
 
     }//GEN-LAST:event_addDoctorButtonActionPerformed
+
+    private boolean passwordPattern() {
+        Pattern p = Pattern.compile("^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{6,}$");
+        Matcher m = p.matcher(passwordField.getText());
+        boolean b = m.matches();
+        return b;
+    }
 
     private void cityFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cityFieldActionPerformed
         // TODO add your handling code here:
@@ -418,6 +435,7 @@ public class AddDoctorJPanel extends javax.swing.JPanel {
     }//GEN-LAST:event_backButtonActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JTextField LicenseNoField;
     private javax.swing.JButton addDoctorButton;
     private javax.swing.JButton backButton;
     private javax.swing.JTextField cityField;
@@ -437,7 +455,6 @@ public class AddDoctorJPanel extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JTextField lastNameField;
-    private javax.swing.JTextField line1Field;
     private javax.swing.JTextField line2Field;
     private javax.swing.JTextField passwordField;
     private javax.swing.JTextField stateField;
