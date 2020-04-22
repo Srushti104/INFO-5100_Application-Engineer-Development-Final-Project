@@ -4,15 +4,14 @@
  */
 package UserInterface;
 
-import Business.Doctor;
 import Business.Enterprise;
 import Business.HospitalEnterprise;
 import Business.NetworkDirectory;
 import Business.Roles.AdminRole;
 import Business.Roles.DoctorRole;
 import Business.Roles.Role;
+
 import Business.UserAccount;
-import UserInterface.HospitalManager.HospitalManagerJPanel;
 import javax.swing.JPanel;
 
 /**
@@ -41,6 +40,7 @@ public class LogoutJPanel extends javax.swing.JPanel {
         } else if (userAccount != null) {
             userNameLabel.setText(userAccount.getEmployee().getFirstName() + " " + userAccount.getEmployee().getLastName());
         }
+
 
     }
 

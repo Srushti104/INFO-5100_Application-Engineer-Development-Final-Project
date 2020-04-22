@@ -365,6 +365,7 @@ public class AddDoctorJPanel extends javax.swing.JPanel {
                                 || LicenseNoField.getText().isEmpty() || line2Field.getText().isEmpty() || cityField.getText().isEmpty() || zipcodeField.getText().isEmpty()) {
                             JOptionPane.showMessageDialog(null, "Please fill all the fields");
                         } else {
+
                             if (!network.getEnterpriseDirectory().isUserExisting(userNameField.getText())) {
                                 if (passwordPattern() == true) {
                                     HospitalEnterprise hospitalEnterprise = (HospitalEnterprise) enterprise;
@@ -405,6 +406,7 @@ public class AddDoctorJPanel extends javax.swing.JPanel {
                             } else {
                                 JOptionPane.showMessageDialog(this, "User Name already present");
                             }
+
                         }
 
                     }

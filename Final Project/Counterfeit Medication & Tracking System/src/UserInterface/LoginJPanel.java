@@ -21,10 +21,8 @@ public class LoginJPanel extends javax.swing.JPanel {
      */
     public LoginJPanel(MainJFrame frame) {
         initComponents();
-        //     avilbl.setIcon(new javax.swing.ImageIcon(getClass().getResource("/UserInterface/trough_level_of_drugs.jpg")));
         mainJFrame = frame;
         enterpriseJComboBox.removeAllItems();
-        //Business business = Business.getInstance();
 
         Business business = frame.getBusiness();
         enterpriseJComboBox.addItem(business);

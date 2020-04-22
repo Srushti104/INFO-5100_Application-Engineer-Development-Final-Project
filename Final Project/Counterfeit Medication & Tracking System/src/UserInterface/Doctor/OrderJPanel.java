@@ -74,9 +74,7 @@ public class OrderJPanel extends javax.swing.JPanel {
         {
             Object row[] = new Object[3];
 
-//            if (inventoryItem.getPackage1().getDrug() == tempDrug) {
-//                break;
-//            } else {
+
             if (drugNameSet.add(inventoryItem.getPackage1().getDrug().getDrugName())) {
                 row[0] = inventoryItem.getPackage1();
                 row[1] = inventoryItem.getPackage1().getDrug().getActualPrice();
@@ -259,11 +257,7 @@ public class OrderJPanel extends javax.swing.JPanel {
         HospitalEnterprise hospitalEnterprise = (HospitalEnterprise) distributorComboBox.getSelectedItem();
 
         for (InventoryItem inventoryItem : hospitalEnterprise.getInventoryCatalog().getInventoryList()) {
-            /* if(quantity>inventoryItem.getQuantity())
-            {
-                JOptionPane.showMessageDialog(null, "The selected quantity of products are not available", "Quantity", JOptionPane.ERROR_MESSAGE);
-                return;
-            }*/
+      
         }
 
         Package1 drug = (Package1) inventoryTable.getValueAt(selectedRow, 0);
@@ -277,15 +271,11 @@ public class OrderJPanel extends javax.swing.JPanel {
                 inventoryManagerWorkRequest.setRequestDate(new Date());
                 inventoryManagerWorkRequest.setMessage("Request for Drugs");
                 inventoryManagerWorkRequest.setStatus("Request for Drug Sent");
-                //productManagerWorkRequest.setManuName(manufacturerComboBox.getSelectedItem());
                 inventoryManagerWorkRequest.setQt(quantity);
-                //licenseManagerWorkRequest.setDrugManu(drugaManuTextArea.getText());
                 inventoryManagerWorkRequest.setResult("Order request sent");
                 inventoryManagerWorkRequest.setDrug(drug.getDrug());
-              //  inventoryManagerWorkRequest.setDrug(drug);
-                //salesManagerWorkRequest.setManuName(manuName);
+             
 
-                // HospitalEnterprise e2=(HospitalEnterprise)network.getEnterpriseDirectory().getMyEnterprise(userAccount);
                 HospitalEnterprise eh = null;
                 for (Enterprise enterprise1 : network.getEnterpriseDirectory().getEnterpriseList()) {
                     if (enterprise1.getClass().equals(HospitalEnterprise.class)) {
@@ -296,7 +286,6 @@ public class OrderJPanel extends javax.swing.JPanel {
                 InventoryManagementOrganization inventoryManagementOrganization = eh.getInventoryManagementOrganization();
                 inventoryManagementOrganization.getWorkQueue().getWorkRequestList().add(inventoryManagerWorkRequest);
 
-                // userAccount.getWorkQueue().getWorkRequestList().add(salesRequest);
                 JOptionPane.showMessageDialog(null, "Work Request Sent");
             }
         }
