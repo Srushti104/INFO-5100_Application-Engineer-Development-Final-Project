@@ -232,11 +232,7 @@ public class FDAInspectorJPanel extends javax.swing.JPanel {
 
     private void sendEmerReportButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_sendEmerReportButtonActionPerformed
         // TODO add your handling code here:
-        //        int pid = Integer.parseInt(packIdField.getText());
-        //        lawEnforcementInspectorWorkRequest.getPackage1().setPackageStatus(statusField.getText());
-        //       int did = lawEnforcementInspectorWorkRequest.getPackage1().getDisLotID();
-        //        int mid = lawEnforcementInspectorWorkRequest.getPackage1().getManuLotID();
-        //       int hid = lawEnforcementInspectorWorkRequest.getPackage1().getHosID();
+
         int row = requestsTable.getSelectedRow();
 
         if (row < 0) {
@@ -254,8 +250,6 @@ public class FDAInspectorJPanel extends javax.swing.JPanel {
                     DistributorEnterprise distributorEnterprise = (DistributorEnterprise) enterprise;
                     for (InventoryItem inventoryItem : distributorEnterprise.getInventoryCatalog().getInventoryList()) {
 
-                        //System.out.println(""+mid);
-                        // System.out.println(""+inventoryItem.getPackage1().getManuLotID());
                         inventoryItem.getPackage1().setPackageStatus("Illegetimate Drug");
 
                     }
@@ -267,26 +261,7 @@ public class FDAInspectorJPanel extends javax.swing.JPanel {
                     HospitalEnterprise hospitalEnterprise = (HospitalEnterprise) enterprise;
                     for (InventoryItem inventoryItem : hospitalEnterprise.getInventoryCatalog().getInventoryList()) {
 
-                        //                    if (inventoryItem.getPackage1().getDisLotID() == did) {
                         inventoryItem.getPackage1().setPackageStatus("Illegetimate Drug");
-
-                        //                    }
-                        //                    if (!patientField.getText().isEmpty()) {
-                        //
-                        //                        for (Transaction transaction : network.getTransactionHistory().getTransactionList()) {
-                        //                            if (transaction.getPackage().getPackageID() == lawEnforcementInspectorWorkRequest.getPackage1().getPackageID()) {
-                        //                                Doctor doc = transaction.getDoctor();
-                        //
-                        //                                for (Package1 package1 : doc.getDrugCatalog().getPackPatientList()) {
-                        //                                    if (package1.getHosID() == hid) {
-                        //                                        package1.setPackageStatus("Illegetimate Drug");
-                        //
-                        //                                    }
-                        //                                }
-                        //                            }
-                        //                        }
-                        //
-                        //                    }
                     }
                 }
             }

@@ -5,6 +5,12 @@
 package UserInterface;
 
 import Business.Enterprise;
+import Business.HospitalEnterprise;
+import Business.NetworkDirectory;
+import Business.Roles.AdminRole;
+import Business.Roles.DoctorRole;
+import Business.Roles.Role;
+
 import Business.UserAccount;
 import javax.swing.JPanel;
 
@@ -29,7 +35,13 @@ public class LogoutJPanel extends javax.swing.JPanel {
         this.userProcessContainer = userProcessContainer;
         this.enterprise = enterprise;
 
-             userNameLabel.setText(userAccount.getUserName());
+        if (userAccount.getRole() instanceof DoctorRole) {
+            userNameLabel.setText(userAccount.getDoctor().getFirstName() + " " + userAccount.getDoctor().getLastName());
+        } else if (userAccount != null) {
+            userNameLabel.setText(userAccount.getEmployee().getFirstName() + " " + userAccount.getEmployee().getLastName());
+        }
+
+
     }
 
     /**
@@ -53,7 +65,6 @@ public class LogoutJPanel extends javax.swing.JPanel {
         userNameLabel.setFont(new java.awt.Font("Courier New", 2, 18)); // NOI18N
         userNameLabel.setForeground(new java.awt.Color(238, 238, 238));
         userNameLabel.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        userNameLabel.setText("username");
 
         logoutJButton.setBackground(new java.awt.Color(238, 238, 238));
         logoutJButton.setFont(new java.awt.Font("Courier New", 0, 14)); // NOI18N
